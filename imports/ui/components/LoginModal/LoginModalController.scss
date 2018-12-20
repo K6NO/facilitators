@@ -1,0 +1,70 @@
+@import '../../stylesheets/mixins';
+@import '../../stylesheets/colors';
+
+.LoginModalController {
+  .openButton {
+    position: relative;
+    border: 0;
+    color: $ng-ptext;
+    background: transparent;
+    margin: -1rem 0;
+    border-radius: 0;
+    padding: 1rem 0;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-size: 5vw;
+    &:hover {
+      color: $gray-light;
+      background: transparent;
+      border: 1px solid transparent;
+    }
+    &:active {
+      background: transparent;
+      border: 1px solid $ng-ptext;
+    }
+  }
+  @include breakpoint(tablet) {
+    .openButton {
+      border: 1px solid $ng-red;
+      padding: .5rem 3.5rem;
+      font-size: 1.4rem;
+    }
+   }
+}
+
+.Login.Modal {
+  position: absolute;
+  top: 4rem;
+  left: 3rem;
+  right: 3rem;
+  background: $white;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem 2rem;
+  outline: none;
+  overflow: auto;
+  --webkit-overflow-scrolling: touch;
+  @include breakpoint(tablet) {
+    top: 15rem;
+    left: 20rem;
+    right: 20rem;
+   }
+   @include breakpoint(desktop) {
+    top: 15rem;
+    left: 35rem;
+    right: 35rem;
+   }
+   @include breakpoint(desktop-large) {
+    top: 15rem;
+    left: 45rem;
+    right: 45rem;
+   }
+}
+
+.Login.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}

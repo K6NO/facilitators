@@ -1,0 +1,61 @@
+@import '../../stylesheets/colors';
+@import '../../stylesheets/mixins';
+.menuModal {
+    display: inline;
+}
+.PublicNavigation {
+    width: 100%;
+    padding-left: 15rem;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    @include breakpoint(tablet) { 
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.4rem;
+    }
+    li {
+        height: 6rem;
+        height: 8vh;               
+        text-transform: uppercase;
+        color: $ng-ptext;
+        font-weight: 100;
+        cursor: pointer;
+        &:hover {
+          color: $gray-lighter;
+          font-weight: 400;
+        }
+        &:active {
+          background: transparent;
+          color: $gray-lighter;
+        }
+        &:hover:active {
+          background: transparent;
+          color: $gray-lighter;
+        }
+        a {
+            color: $gray-lighter;
+            text-decoration: none;
+            &:hover{
+                color: $gray-lighter;
+                text-decoration: none;
+            }
+            &:active {
+                color: $gray-lighter;
+            }
+        }
+        @include breakpoint(tablet) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 1rem;
+        }
+    }
+    .menuLogo {
+        max-width: 100px;
+    }
+    svg {
+        margin-right: -12rem;
+        margin-right: -43vw;
+    }
+}
+

@@ -1,0 +1,37 @@
+@import '../../stylesheets/colors';
+
+
+.App {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-image: linear-gradient(to right, #0e0d1a88 1px, transparent 1px), linear-gradient(to bottom, #0e0d1a88 1px, transparent 1px);
+  background-size: 7rem 7rem;
+}
+
+.App .verify-email {
+  margin-bottom: 0;
+  padding: 0;
+  border-top: none;
+  border-bottom: 1px solid $gray-lighter;
+  background: #fff;
+  color: $gray-dark;
+  border-radius: 0;
+
+  .btn {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .App > .container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 572px) {
+  .App > .container {
+    max-width: 510px;
+  }
+}

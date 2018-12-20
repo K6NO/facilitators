@@ -1,0 +1,35 @@
+@import '../../stylesheets/colors';
+@import '../../stylesheets/mixins';
+
+.ProfileNewsGames {
+    color: $ng-ptext;
+    h6 {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        color: $ng-ptext;
+        font-weight: 400;
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+        margin: 0 auto;
+        @include breakpoint(tablet) {
+            font-size: 1.8rem;
+        }
+    };
+    .title {
+        line-height: 2;
+    };
+    .text {
+        font-size: 1rem;
+        color: $ng-ptext;
+        font-weight: 400;
+    };
+    img {
+        filter: url('#duotone_nice');
+        -webkit-filter: url('#duotone_nice');
+        -moz-filter: url('#duotone_nice');
+        -o-filter: url('#duotone_nice');
+        -ms-filter: url('#duotone_nice');
+    }
+}
+
+

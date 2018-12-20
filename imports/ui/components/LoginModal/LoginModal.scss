@@ -1,0 +1,36 @@
+.LoginModal { 
+  .ngLogo {
+    margin: 0 auto 2rem;
+    display: block;
+  };
+  .closeButtonHolder {
+    text-align: right;
+    .CloseButton {
+      color: #777;
+      background-color: transparent;
+      border-color: transparent;
+      padding: .5rem 2rem;
+      margin-right: -2rem;
+      .crossImage {
+        width: 20px;
+      }
+    }
+  }
+  .switchButtonHolder {
+    text-align: center;
+    .SwitchButton {
+      display: inline-block;
+      width: 100%;
+      border: 1px solid #333;
+      border-radius: 0;
+      margin: 0 auto;
+      color: #333;
+      background-color: transparent;
+      padding: .5rem 1rem;
+      margin-bottom: 0;
+      font-size: 1.4rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}

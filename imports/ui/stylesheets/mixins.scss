@@ -1,0 +1,41 @@
+@mixin breakpoint($point) {
+  @if $point == desktop-large {
+    @media (min-width: 1140px) { @content; }
+  } 
+  // Galaxz Tab S2 is not used at present - for landscape use desktop for portrait use tablet
+  @else if $point == galaxytab-ls {
+    @media (width: 1024px) and (orientation: landscape) { @content; }
+  }
+  @else if $point == galaxytab-pt {
+    @media (width: 768px) and (orientation: portrait) { @content; }
+  }
+  @else if $point == desktop {
+    @media (min-width: 960px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 720px) { @content; }
+  } 
+  @else if $point == phablet {
+    @media (min-width: 540px) { @content; }
+  } 
+  @else if $point == mobile-large {
+    @media (min-width: 330px) { @content; }
+  } 
+  @else {
+    @media (min-width: $point) { @content; }
+  }
+}
+
+@mixin ie {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+
+  @supports (-ms-accelerator:true) {
+    @content;
+  }
+}
+
+@mixin grayscale($value) {
+  filter: #{ "grayscale(" + $value + ")" };
+}

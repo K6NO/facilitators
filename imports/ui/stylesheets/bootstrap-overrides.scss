@@ -1,0 +1,25 @@
+//bootstrap-overrides
+@import './mixins';
+@import './colors';
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1440px  // <-- modified!
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 1140px,
+  xl: 1140px  // <-- modified!
+);
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+.form-control {
+  font-size: 1.6rem;
+}

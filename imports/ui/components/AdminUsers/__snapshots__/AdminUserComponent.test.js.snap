@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminUserComponent renders with props 1`] = `
+<tr>
+  <td>
+    <span>
+      
+    </span>
+  </td>
+  <td>
+    <span>
+      
+    </span>
+  </td>
+  <td>
+    
+  </td>
+  <td>
+    <span>
+      
+    </span>
+  </td>
+  <td>
+    <span>
+      
+    </span>
+  </td>
+  <td>
+    <span>
+      admin, editor, superadmin, 
+    </span>
+  </td>
+  <td>
+    
+  </td>
+  <td>
+    <button
+      aria-label={null}
+      className="switchEditModeButton btn btn-secondary"
+      onClick={[Function]}
+      type="button"
+    >
+      Edit
+    </button>
+  </td>
+</tr>
+`;

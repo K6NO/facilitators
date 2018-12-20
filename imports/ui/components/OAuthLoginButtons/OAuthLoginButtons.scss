@@ -1,0 +1,18 @@
+@import '../../stylesheets/colors';
+
+.OAuthLoginButtons {
+  margin-bottom: 10px;
+
+  &.WithEmailMessage {
+    text-align: center;
+    
+    .EmailMessage {
+      margin: 0 auto;
+      text-align: left;
+      display: block;
+      background: #fff;
+      padding-top: 30px;
+      font-weight: 600;
+    }
+  }
+}

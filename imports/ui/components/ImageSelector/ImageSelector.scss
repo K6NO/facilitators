@@ -1,0 +1,48 @@
+@import '../../stylesheets/colors';
+
+.ImageSelector {
+  min-height: 200px;
+  max-width: 300px;
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+.CloseButton {
+  color: #777;
+  background-color: transparent;
+  border-color: transparent;
+  padding: .5rem 2rem;
+  float: right;
+  margin-bottom: 0;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.searchField > input {
+  padding: .8rem 2rem;
+  margin: 1rem 0 4rem;
+  width: 40rem;
+  display: block;
+}
+
+.Image.Modal {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $white;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem 2rem;
+  outline: none;
+  overflow: auto;
+  --webkit-overflow-scrolling: touch;
+  z-index: 10;
+}

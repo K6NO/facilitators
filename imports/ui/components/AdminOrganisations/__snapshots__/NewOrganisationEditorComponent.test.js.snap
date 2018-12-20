@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewOrganisationEditorComponent renders with callback function 1`] = `
+<div
+  className="NewOrganisationEditorComponent"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <table
+        className="table"
+      >
+        <thead>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Country
+            </th>
+            <th>
+              City
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Postal code
+            </th>
+            <th />
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                name="name"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </td>
+            <td>
+              <input
+                name="country"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </td>
+            <td>
+              <input
+                name="city"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </td>
+            <td>
+              <input
+                name="city"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </td>
+            <td>
+              <input
+                name="city"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </td>
+            <td>
+              <div
+                className="btn-group"
+                role="group"
+              >
+                <button
+                  aria-label={null}
+                  className="btn btn-primary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Active
+                </button>
+                <button
+                  aria-label={null}
+                  className="btn btn-primary active"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Paused
+                </button>
+              </div>
+            </td>
+            <td>
+              <div
+                className="btn-group"
+                role="group"
+              >
+                <button
+                  aria-label={null}
+                  className="btn btn-primary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Save
+                </button>
+                <button
+                  aria-label={null}
+                  className="btn btn-danger"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Cancel
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

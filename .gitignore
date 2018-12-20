@@ -1,0 +1,9 @@
+.DS_Store
+.vscode/
+.deploy/
+.meteor/
+dump/
+node_modules/
+npm-debug.log
+private/keys
+settings-development.json

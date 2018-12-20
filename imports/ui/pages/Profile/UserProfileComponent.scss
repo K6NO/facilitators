@@ -1,0 +1,79 @@
+@import '../../stylesheets/colors';
+@import '../../stylesheets/mixins';
+
+.UserProfileComponent {
+  color: $ng-ptext;
+  label {
+    color: $ng-ptext;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 0;
+    @include breakpoint (tablet) {
+      font-size: 1.4rem;
+    }
+  };
+  .imageContainer {
+    position: relative;
+    img {   
+        max-width: 100%;
+        height: auto;
+    }
+    button {
+      position: absolute;
+      transform: translate(-50%,-50%);
+      margin-right: -50%;
+      top: 20%;
+      left: 80%;
+    }
+  }
+  .submitButton {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+.OAuthProfile {
+  .LoggedInWith {
+    padding: 20px;
+    border-radius: 3px;
+    color: #fff;
+    border: 1px solid $gray-lighter;
+    text-align: center;
+
+    img {
+      width: 100px;
+    }
+
+    &.github img {
+      width: 125px;
+    }
+
+    p {
+      margin: 20px 0 0 0;
+      color: $ng-light-gray;
+    }
+
+    .btn {
+      margin-top: 20px;
+
+      &.btn-facebook {
+        background: $facebook;
+        border-color: $facebook;
+        color: #fff;
+      }
+
+      &.btn-google {
+        background: $google;
+        border-color: $google;
+        color: #fff;
+      }
+
+      &.btn-github {
+        background: $github;
+        border-color: $github;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@import '../../stylesheets/colors';
+@import '../../stylesheets/mixins';
+.AuthenticatedNavigation {
+    width: 100%;
+    height: 100%;
+    padding-left: 15rem;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    background: transparent;
+    @include breakpoint(tablet){
+        padding-left: 0;
+
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    .navbar-nav > .active > a {
+        background: transparent;
+        color: $ng-ptext;
+    }
+    li {
+        height: 6rem;
+        height: 8vh;   
+        cursor: pointer;     
+        text-transform: uppercase;
+        color: $ng-ptext;
+        font-weight: 100;
+        &:hover {
+        color: $gray-lighter;
+        font-weight: 400;
+        }
+        &:active {
+        background: transparent;
+        color: $gray-lighter;
+        }
+        &:hover:active {
+        background: transparent;
+        color: $gray-lighter;
+        }
+        a {
+            color: $gray-lighter;
+            text-decoration: none;
+            &:hover{
+                color: $gray-lighter;
+                text-decoration: none;
+            }
+            &:active {
+                color: $gray-lighter;
+            }
+        }
+    }
+    .menuLogo {
+        max-width: 100px;
+    }
+    svg{
+        margin-right: -12rem;
+        margin-right: -55vw;
+    }
+    
+    button {
+        background: transparent;
+        border: none;
+        font-size: 1.8rem;
+        color: #edededee;
+        margin-right: 1rem;
+        cursor: pointer;
+        &:hover {
+            background: transparent;
+            color: #edededee;
+        }
+        &:active{
+            background: transparent;
+            color: #edededee;
+        }
+        &:focus{
+            background: transparent;
+            color: #edededee;
+        }
+        &:active:focus {
+            background: transparent;
+            color: #edededee;
+        }
+        &:active:hover {
+            background: transparent;
+            color: #edededee;
+        }
+    }
+}
+
+@include breakpoint(tablet) {
+    .AuthenticatedNavigation {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.4rem;
+    }
+    li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 1rem;
+    }
+    .redBorder {
+        border: 1px solid $ng-red;
+        padding: .5rem 3.5rem;
+        
+    }
+}

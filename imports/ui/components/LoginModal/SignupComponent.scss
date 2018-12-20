@@ -1,0 +1,21 @@
+@import '../../stylesheets/colors';
+
+.SignupComponent {
+    .SubmitButton {
+        color: #fff;
+        background-color: #999;
+        border-color: transparent;
+        text-transform: uppercase;
+        display: block;
+        width: 100%;
+        margin: 2rem 0;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 1.7;
+        text-align: center;
+        border-radius: 0;
+    };
+    .form-control {
+        font-size: 1.6rem;
+    }
+}

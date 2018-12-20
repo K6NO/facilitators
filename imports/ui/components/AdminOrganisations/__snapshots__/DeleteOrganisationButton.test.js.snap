@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Admin DeleteOrganisationButton with organisationId 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-danger"
+  onClick={[Function]}
+  type="button"
+>
+  Delete
+</button>
+`;
