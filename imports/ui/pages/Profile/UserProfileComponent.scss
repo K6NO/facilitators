@@ -2,9 +2,9 @@
 @import '../../stylesheets/mixins';
 
 .UserProfileComponent {
-  color: $ng-ptext;
+  
   label {
-    color: $ng-ptext;
+  
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: normal;
@@ -38,7 +38,7 @@
     padding: 20px;
     border-radius: 3px;
     color: #fff;
-    border: 1px solid $gray-lighter;
+  
     text-align: center;
 
     img {
@@ -51,7 +51,7 @@
 
     p {
       margin: 20px 0 0 0;
-      color: $ng-light-gray;
+  
     }
 
     .btn {

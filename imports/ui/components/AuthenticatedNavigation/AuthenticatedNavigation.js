@@ -25,10 +25,10 @@ class AuthenticatedNavigation extends React.Component {
   }
 
   render() {
-    const { username, name, viewportIsMobile, isEditor } = this.props;
+    const { username, name, viewportIsMobile } = this.props;
     const user = Meteor.user();
-    // const userIsAdmin = !!Roles.userIsInRole(user, ['admin', 'editor']);
-    // const userIsEditor = !!Roles.userIsInRole(user, ['editor']);
+    
+    
     const shortRedLines = (
       <svg height="20" width="140">
         <line x1="10" y1="10" x2="140" y2="10" style={{
@@ -47,38 +47,20 @@ class AuthenticatedNavigation extends React.Component {
       <div className="AuthenticatedNavigation ">
         <Nav onClick={this.props.navbarCallback} navbar>
          
-          {!isEditor && viewportIsMobile &&
+          {viewportIsMobile &&
             <NavItem>
             <span>{name ? name : username}</span>
             </NavItem>
           }
-          <NavItem>
-            <a href="http://newsgamer.com" target="_blank">More Info</a>
-            {viewportIsMobile ? longRedLines : ''}
-          </NavItem>
-          <LinkContainer to="/stories">
-            <NavItem>
-              Newsgames
-              {viewportIsMobile ? longRedLines : ''}
-            </NavItem>
-          </LinkContainer>
-          
-          {!isEditor && 
-            <LinkContainer to="/profile">
-            <NavItem onClick={this.handleScoreboardClick}>
-              Scoreboard
-              {viewportIsMobile ? shortRedLines : ''}
-            </NavItem>
-          </LinkContainer>}
           <NavItem onClick={()=> this.logoutUser()}>
-              <span className="redBorder">Logout</span>
+              <span>Logout</span>
               {viewportIsMobile ? longRedLines : ''}
           </NavItem>
           {(user && !!Roles.userIsInRole(user, ['admin', 'editor'])
             && 
-            <LinkContainer to="/editor/stories">
+            <LinkContainer to="/editor">
               <NavItem>
-              <span className="redBorder">Editor</span>
+              <span>Editor</span>
                 {viewportIsMobile ? longRedLines : ''}
               </NavItem>
           </LinkContainer>

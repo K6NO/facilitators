@@ -1,57 +1,24 @@
-$primary: #222;
-$success: #1f411f;
-$info:    #555;
-$warning: #463216;
-$danger:  #4e1d1c;
+$primary: #2BA670;
+$success: #96DF41;
+$info:    #999999;
+$warning: #1D13C6;
+$danger:  #C94823;
 
-$black-dark: #0e0d1a;
-$black-light: #1f1d31;
-$gray-darker: #222;
-$gray-dark: #333;
-$gray: #555;
-$gray-light: #777;
-$gray-lighter: #eee;
+$ef-blue: #1171AB;
+$ef-teal: #2BA670;
+$ef-green: #96DF41;
+$ef-lightgreen: #D2FF9D;
+$ef-purple: #1D13C6;
+$ef-red: #C94823;
+$ef-black: rgba(0,0,0, .8);
+$ef-gray: #999999;
+$ef-lightgray: #CCCCCC;
+$ef-whitegray: #EDEDED;
 
 $facebook: #3b5998;
 $google: #ea4335;
-$github: $gray-dark;
+$github: $ef-gray;
 $twitter: #00aced;
-
-$cb-blue: #4285F4;
-$cb-green: #00D490;
-$cb-yellow: #FFCF50;
-$cb-red: #DA5847;
-
-// NG colors
-// linear-gradient(0.25turn rgba(39, 5, 10, 0.4), rgb(14, 13, 26), rgb(14, 13, 26)), url("/img/ui/halftone_mobile2.svg")
-// vuuuuuuu - linear-gradient(rgb(37, 32, 32), rgba(255, 5, 10, .6), rgb(12, 12, 10)), url("/img/ui/halftone_mobile2.svg")
-
-
-$bg-dark: #0e0d1a;
-$bg-darker: #0e0d1a;
-$bg-dark-lighter: #1f1d31;
-$bg-choice-desktop: #181729;
-$ng-dark: #1d1c30;
-$ng-charcoal: #383d46;
-$ng-red: #ff5458;
-$ng-red70: #ff5458bb;
-$ng-red-darker: #DB4B4F;
-$ng-button-gray: #242233;
-$ng-progressbar: rgba(244, 244, 238, 0.1);
-$ng-light-gray: #f4f4ee;
-$ng-light-grayop: #f4f4eeee;
-$ng-ptext: rgba(255,255,255,.9);
-$ng-green: #1bee73;
-$white: #ffffff;
-
-$bg-gradient: 
-    linear-gradient($bg-dark, $bg-dark 50%, $bg-dark-lighter);
-$bg-squares: 
-    linear-gradient(to right, #0e0d1a 1px, transparent 1px), 
-    linear-gradient(to bottom, #0e0d1a 1px, transparent 1px);
-$bg-squares-dark: 
-    linear-gradient(to left, #d3d3d3 1px, transparent 1px), 
-    linear-gradient(to top, #d3d3d3 1px, transparent 1px);
 
 // Material color Blue Gray
 

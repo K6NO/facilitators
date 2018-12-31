@@ -17,30 +17,29 @@
         height: 6rem;
         height: 8vh;               
         text-transform: uppercase;
-        color: $ng-ptext;
-        font-weight: 100;
+                font-weight: 100;
         cursor: pointer;
         &:hover {
-          color: $gray-lighter;
+          
           font-weight: 400;
         }
         &:active {
           background: transparent;
-          color: $gray-lighter;
+         
         }
         &:hover:active {
           background: transparent;
-          color: $gray-lighter;
+         
         }
         a {
-            color: $gray-lighter;
+         
             text-decoration: none;
             &:hover{
-                color: $gray-lighter;
+         
                 text-decoration: none;
             }
             &:active {
-                color: $gray-lighter;
+         
             }
         }
         @include breakpoint(tablet) {
@@ -58,4 +57,3 @@
         margin-right: -43vw;
     }
 }
-

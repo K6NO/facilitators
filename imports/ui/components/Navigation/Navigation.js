@@ -37,8 +37,7 @@ class Navigation extends React.Component {
   };
   render () { 
     const { props } = this;
-    const { isEditor } = this.props;
-        const logoUrl = "https://via.placeholder.com/468x60?text=Place+Logo+Here"
+    const logoUrl = "https://via.placeholder.com/468x60?text=Place+Logo+Here"
 
 
     return (
@@ -54,7 +53,7 @@ class Navigation extends React.Component {
           navbar>
           {!props.authenticated ? 
             <PublicNavigation navbarCallback={this.toggleNavbar} {...props}/> 
-            : <AuthenticatedNavigation isEditor={isEditor} navbarCallback={this.toggleNavbar} {...props} />}
+            : <AuthenticatedNavigation navbarCallback={this.toggleNavbar} {...props} />}
         </Collapse>
       </Navbar>
       </div>

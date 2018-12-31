@@ -43,17 +43,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { props, state, setAfterLoginPath, setBgDark } = this;
+    const { props, state, setAfterLoginPath } = this;
     
-    // decide whether we are in the editor, so a white background is displayed
-    const isEditor = window.location.pathname.indexOf('editor') > -1;
-
     return (
       <Router>
         {!props.loading ? (
           <div className="App">
           <AnalyticsTracker />
-            <Navigation {...props} isEditor={isEditor} {...state}  />
+            <Navigation {...props} {...state}  />
               <Switch>
                 {/* Game */}
                 <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />

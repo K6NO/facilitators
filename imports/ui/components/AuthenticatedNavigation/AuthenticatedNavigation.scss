@@ -16,36 +16,36 @@
     }
     .navbar-nav > .active > a {
         background: transparent;
-        color: $ng-ptext;
+        
     }
     li {
         height: 6rem;
         height: 8vh;   
         cursor: pointer;     
         text-transform: uppercase;
-        color: $ng-ptext;
+        
         font-weight: 100;
         &:hover {
-        color: $gray-lighter;
+        
         font-weight: 400;
         }
         &:active {
         background: transparent;
-        color: $gray-lighter;
+        
         }
         &:hover:active {
         background: transparent;
-        color: $gray-lighter;
+        
         }
         a {
-            color: $gray-lighter;
+        
             text-decoration: none;
             &:hover{
-                color: $gray-lighter;
+        
                 text-decoration: none;
             }
             &:active {
-                color: $gray-lighter;
+        
             }
         }
     }
@@ -61,28 +61,28 @@
         background: transparent;
         border: none;
         font-size: 1.8rem;
-        color: #edededee;
+        
         margin-right: 1rem;
         cursor: pointer;
         &:hover {
             background: transparent;
-            color: #edededee;
+        
         }
         &:active{
             background: transparent;
-            color: #edededee;
+        
         }
         &:focus{
             background: transparent;
-            color: #edededee;
+        
         }
         &:active:focus {
             background: transparent;
-            color: #edededee;
+        
         }
         &:active:hover {
             background: transparent;
-            color: #edededee;
+        
         }
     }
 }
@@ -100,8 +100,7 @@
         padding: 0 1rem;
     }
     .redBorder {
-        border: 1px solid $ng-red;
+       
         padding: .5rem 3.5rem;
-        
     }
 }
