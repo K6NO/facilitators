@@ -7,6 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import StoriesCollection from '../../../api/Stories/Stories';
 import Loading from '../../components/Loading/Loading';
 import LoginModalController from '../../components/LoginModal/LoginModalController';
+import Welcome from '../../components/Welcome/Welcome';
 import './LandingPage.scss';
 
 class LandingPage extends React.Component {
@@ -20,6 +21,7 @@ class LandingPage extends React.Component {
       <div className="container LandingPage">
         <Row>
           <Col xs={12} id="stories" className="stories">
+                <Welcome {...props}/>
                 <h5>Site Content</h5>
                 {!userId && viewportIsMobile &&
                 <Row>
