@@ -1,6 +1,6 @@
 {
-    "_locale": "en",
-    "hello" : "Hello world!",
+    "_locale": "hu",
+    "hello" : "Üdvözlünk!",
     "menu": {
         "language" : "Select language",
         "categories" : "Categories",
