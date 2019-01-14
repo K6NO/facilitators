@@ -1,4 +1,4 @@
-### Facilitator
+### Facilitator v0.01
 
 Built with the Pup boilerplate.
 [Read the Documentation](http://cleverbeagle.com/pup) v.1.x
