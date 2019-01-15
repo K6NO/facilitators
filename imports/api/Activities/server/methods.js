@@ -2,9 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import Activities from '../Activities';
-import uploadFileLocal from './upload-file-local';
-import storeImageUrl from './store-image-url';
-
 import handleMethodException from '../../../modules/handle-method-exception';
 import rateLimit from '../../../modules/rate-limit';
 

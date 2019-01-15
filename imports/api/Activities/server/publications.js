@@ -3,9 +3,9 @@ import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import Activities from '../Activities';
 
-const getActivitiesByLang = (lang, languages, activities) => activities.map((a) => {
+const getActivitiesByLang = (locale, languages, activities) => activities.map((a) => {
     let b = languages; 
-    b.splice(b.indexOf(lang),1);    
+    b.splice(b.indexOf(locale),1);    
     b.forEach(l => delete a[l]);
     console.log(a);
     return a;
@@ -31,13 +31,13 @@ Meteor.publish('activities.all', () => {
     }
 });
 
-Meteor.publish('activities.allByLang', (lang) => {
+Meteor.publish('activities.allByLang', (locale) => {
     const userId = Meteor.userId();
     let languages = ['en', 'es', 'hu', 'ro', 'sk'];
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
             const activities = Activities.find();
-            return getActivitiesByLang(lang, languages, activities);
+            return getActivitiesByLang(locale, languages, activities);
         }
         if(Roles.userIsInRole(userId, ['editor'])) {
             const activities = Activities.find({
@@ -46,14 +46,14 @@ Meteor.publish('activities.allByLang', (lang) => {
                     { public: true }
                 ]
             });
-            return getActivitiesByLang(lang, languages, activities);
+            return getActivitiesByLang(locale, languages, activities);
         }
         const activities = Activities.find({
             $or: [{ 
                 public: true
             }]
         });
-        return getActivitiesByLang(lang, languages, activities);
+        return getActivitiesByLang(locale, languages, activities);
     }
 });
 
@@ -84,9 +84,9 @@ Meteor.publish('activities.view', (activityId) => {
     }
 });
 
-Meteor.publish('activities.viewByLang', (activityId, lang) => {
+Meteor.publish('activities.viewByLang', (activityId, locale) => {
     check(activityId, String);
-    check(lang, String);
+    check(locale, String);
     const userId = Meteor.userId();
     let languages = ['en', 'es', 'hu', 'ro', 'sk'];
 
@@ -95,7 +95,7 @@ Meteor.publish('activities.viewByLang', (activityId, lang) => {
             const activity = Activities.find({
                 _id : activityId,
             });
-            return getActivitiesByLang(lang, languages, activity);
+            return getActivitiesByLang(locale, languages, activity);
         }
         if(Roles.userIsInRole(userId, ['editor'])) {
             const activity = Activities.find({
@@ -105,7 +105,7 @@ Meteor.publish('activities.viewByLang', (activityId, lang) => {
                     { public: true }
                 ]
             });
-            return getActivitiesByLang(lang, languages, activity);
+            return getActivitiesByLang(locale, languages, activity);
         }
         const activity = Activities.find({
             _id: activityId,
@@ -113,11 +113,11 @@ Meteor.publish('activities.viewByLang', (activityId, lang) => {
                 public: true
             }]
         });
-        return getActivitiesByLang(lang, languages, activity);
+        return getActivitiesByLang(locale, languages, activity);
     }
 });
 
-Meteor.publish('activities.criteriaByLang', (field, criteria, tags, lang) => {
+Meteor.publish('activities.criteriaByLang', (field, criteria, tags, locale) => {
     check(field, String);
     check(criteria, String);
     check(tags, Array);
@@ -132,7 +132,7 @@ Meteor.publish('activities.criteriaByLang', (field, criteria, tags, lang) => {
                     { tags : {$regex: tags} }
                 ]
             });
-            return getActivitiesByLang(lang, languages, activities);
+            return getActivitiesByLang(locale, languages, activities);
         }
         if(Roles.userIsInRole(userId, ['editor'])) {
             const activities = Activities.find({
@@ -145,7 +145,7 @@ Meteor.publish('activities.criteriaByLang', (field, criteria, tags, lang) => {
                     { public: true }
                 ]
             });
-            return getActivitiesByLang(lang, languages, activities);
+            return getActivitiesByLang(locale, languages, activities);
         }
         const activities = Activities.find({
             $or: [{ 
@@ -154,6 +154,6 @@ Meteor.publish('activities.criteriaByLang', (field, criteria, tags, lang) => {
             }],
             public: true
         });
-        return getActivitiesByLang(lang, languages, activities);
+        return getActivitiesByLang(locale, languages, activities);
     }
 });
