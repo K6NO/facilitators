@@ -1,4 +1,5 @@
-import '../../api/Stories/server/publications';
+import '../../api/Activities/server/publications';
+import '../../api/Activities/server/methods';
 import '../../api/Files/server/publications';
 import '../../api/Files/server/methods';
 import '../../api/Files/server/aws';
