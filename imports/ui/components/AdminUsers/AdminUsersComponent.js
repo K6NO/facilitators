@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
 import { Table, Row, Col } from 'reactstrap';
-import Loading from '../../components/Loading/Loading';
 import AdminUserComponent from './AdminUserComponent';
 import NewUserButton from './NewUserButton';
 import sortUsers from './sortUsers';

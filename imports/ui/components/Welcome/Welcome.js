@@ -33,9 +33,9 @@ class Welcome extends React.Component {
             <h1><T _locale={locale}>menu.language</T></h1>
             <T _locale={locale}>hello</T>
             <select name="lang-select">
-                <option value="en"><p><T _locale={locale}>searchbox.en</T></p></option>
-                <option value="es"><T _locale={locale}>searchbox.es</T></option>
-                <option value="hu"><T _locale={locale}>searchbox.hu</T></option>
+                <option value="en"><p><T _locale={locale} _purify={false}>searchbox.en</T></p></option>
+                <option value="es"><T _locale={locale} _purify={false}>searchbox.es</T></option>
+                <option value="hu"><T _locale={locale} _purify={false}>searchbox.hu</T></option>
                 <option value="ro"><T _locale={locale}>searchbox.ro</T></option>
                 <option value="sk"><T _locale={locale}>searchbox.sk</T></option>
             </select>

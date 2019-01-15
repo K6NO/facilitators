@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import StoriesCollection from '../../../api/Stories/Stories';
 import Loading from '../../components/Loading/Loading';
 import LoginModalController from '../../components/LoginModal/LoginModalController';
 import Welcome from '../../components/Welcome/Welcome';
 import './LandingPage.scss';
+import ActivityComponentFooter from '../../components/ActivityComponent/ActivityComponentFooter';
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -16,12 +16,16 @@ class LandingPage extends React.Component {
   };
 
   render () {
-    const { loading, stories, match, history, userId, viewportIsMobile, ...props } = this.props;
+    const { loading, match, history, userId, viewportIsMobile, ...props } = this.props;
+    console.log()
     return (!loading ? (
       <div className="container LandingPage">
         <Row>
           <Col xs={12} id="stories" className="stories">
                 <Welcome {...props}/>
+                <ActivityComponentFooter
+                  category={'Land art'}
+                />
                 <h5>Site Content</h5>
                 {!userId && viewportIsMobile &&
                 <Row>
@@ -47,19 +51,16 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   loading: PropTypes.bool.isRequired,
-  stories: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   userId: PropTypes.string,
 };
 
 export default withTracker(() => {
-  const storiesSub = Meteor.subscribe('stories.public');
   const userId = Meteor.userId();
 
   return {
-    loading: !storiesSub.ready(),
-    stories: StoriesCollection.find().fetch(),
+    loading: false,
     userId,
   };
 })(LandingPage);
