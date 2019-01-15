@@ -1,0 +1,90 @@
+{
+    "_locale": "sk",
+    "hello" : "Szevasz szlovakul!",
+    "menu": {
+        "language" : "Select language",
+        "categories" : "Categories",
+        "about" : "About",
+        "signin" : "Sign In",
+        "signout" : "Sign out"
+    },
+    "searchbox" : {
+        "title" : "Welcome! Choose your activity.",
+        "category" : "Category",
+        "group" : "Group size",
+        "age" : "Age group",
+        "time": "Time",
+        "searchBtn" : "Search",
+        "detailedBtn" : "Detailed search",
+        "en" : "English",
+        "es" : "Spanish",
+        "hu" : "Hungarian",
+        "sk" : "Slovakian",
+        "ro" : "Romanian",
+        "matching" : "matching exercises"
+    },
+    "activity" : {
+        "category" : "Category",
+        "group" : "Group size",
+        "age" : "Age group",
+        "time": "Time",
+        "preparation" : "Preparation",
+        "description" : "Description",
+        "objectives" : "Objectives",
+        "tools" : "Tools needed",
+        "comments" : "Comments",
+        "writecomment" : "Write a comment",
+        "send" : "Send",
+        "resources" : "Resources",
+        "back" : "Back",
+        "backsearch" : "Back to search results"
+    },
+    "tags" : [
+        "1 tag", 
+        "2 tag",
+        "3 tag",
+        "4 tag",
+        "5 tag", 
+        "6 tag",
+        "7 tag",
+        "8 tag",
+        "9 tag", 
+        "10 tag",
+        "11 tag",
+        "12 tag",
+        "13 tag", 
+        "14 tag",
+        "15 tag",
+        "16 tag",
+        "17 tag", 
+        "18 tag",
+        "19 tag",
+        "20 tag"
+    ],
+    "categories" : {
+        "footprint" : "Ecological footpring",
+        "deepeco" : "Deep ecology",
+        "ecofem" : "Ecofeminism",
+        "landart" : "Land art",
+        "food" : "Food sovereignity",
+        "community" : "Community building"
+    },
+    "about" : {
+        "title" : "What is ecofacilitation",
+        "description" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+        "people" : "Our people",
+        "organisations" : "Partner organisations",
+        "sponsor" : "Sponsored by"
+    },
+    "contact" : {
+        "title" : "Want to get in touch?",
+        "email" : "Your email address",
+        "name" : "Your name",
+        "message" : "Your message",
+        "send" : "Send"
+    },
+    "footer" : {
+        "privacy" : "Privacy notice",
+        "terms" : "Terms of use"
+    }
+}
