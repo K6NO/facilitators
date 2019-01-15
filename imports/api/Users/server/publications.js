@@ -12,6 +12,7 @@ Meteor.publish(null, function usersProfile() {
         emails: 1,
         profile: 1,
         services: 1,
+        organisation: 1
       },
     });
 });

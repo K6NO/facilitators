@@ -25,6 +25,6 @@ rateLimit({
   methods: [
       'users.setEmails',
   ],
-  limit: 15,
+  limit: 5,
   timeRange: 1000,
 });

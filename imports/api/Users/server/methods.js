@@ -4,7 +4,6 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import editProfile from './edit-profile';
 import adminEditProfile from './admin-edit-profile';
-import exportData from './export-data';
 import deleteAccount from './delete-account';
 import handleMethodException from '../../../modules/handle-method-exception';
 import rateLimit from '../../../modules/rate-limit';
@@ -20,44 +19,36 @@ Meteor.methods({
           last: String,
         },
         username: String,
-        activeGame: Match.Maybe(Object),
+        imageUrl: Match.Maybe(String),
       },
     });
     const newUserId = Accounts.createUser(user);
     Roles.addUsersToRoles(newUserId, ['user']);
     return newUserId;
   },
-  'users.adminSignup' : function usersAdminSignup (user, roles) {
-    check(user, {
-      email: String,
-      password: String,
-      organisation: String,
-      profile: {
-        name: {
-          first: String,
-          last: String,
-        },
-        username: String,
-      },
-    });
-    check(roles, Array);
-    if(Roles.userIsInRole(this.userId, ['admin', 'superadmin'])) {
-      const newUserId = Accounts.createUser(user);
-      Roles.addUsersToRoles(newUserId, roles);
-      return newUserId;
-    } else {
-      console.error('Non-admin tried to perform admin role: signup');
-    }
-    
-    
-  },
   'users.updateRole': function usersUpdateRole(_id, role) {
     check(_id, String);
     check(role, String);
-    if(Roles.userIsInRole(this.userId, ['admin', 'superadmin'])) {
+    const userId = Meteor.userId();
+    if(Roles.userIsInRole(userId, ['admin'])) {
       Roles.addUsersToRoles(_id, [role]);
+      return userId;
     } else {
-      console.error('Non-admin tried to perform admin role: role change');
+      throw new Meteor.Error('Users updateRole', 'Non-admin tried to perform admin role: role change');
+    }
+  },
+  'users.updateOrg': function usersUpdateRole(_id, org) {
+    check(_id, String);
+    check(org, String);
+    const userId = Meteor.userId();
+    if(Roles.userIsInRole(userId, ['admin'])) {
+      return Meteor.users.update(userId, {
+        $set: {
+          organisation: org
+        }
+      });
+    } else {
+      throw new Meteor.Error('Users updateRole', 'Non-admin tried to perform admin role: role change');
     }
   },
   'users.adminEditProfile' : function usersAdminEditProfile(userId, profile, roles) {
@@ -76,7 +67,7 @@ Meteor.methods({
     check(userId, String);
     check(roles, Array);
     
-    if(Roles.userIsInRole(this.userId, ['admin', 'superadmin'])) {
+    if(Roles.userIsInRole(this.userId, ['admin'])) {
       return adminEditProfile({ userId, profile, roles })
       .then(response => response)
       .catch((exception) => {
@@ -90,7 +81,7 @@ Meteor.methods({
   'users.adminResetPassword' : function usersadminResetPassword(userId, newPassword) {
     check(userId, String);
     check(newPassword, String);
-    if(Roles.userIsInRole(this.userId, ['admin', 'superadmin'])) {
+    if(Roles.userIsInRole(this.userId, ['admin'])) {
       Accounts.setPassword(userId, newPassword);
     } else {
       console.error('Non-admin tried to perform admin role: reset password');
@@ -100,6 +91,7 @@ Meteor.methods({
   'users.editProfile': function usersEditProfile(profile) {
     check(profile, {
       emailAddress: String,
+      organisation: Match.Maybe(String),
       profile: {
         name: {
           first: String,
@@ -116,13 +108,6 @@ Meteor.methods({
         handleMethodException(exception);
       });
   },
-  'users.exportData': function usersExportData() {
-    return exportData({ userId: this.userId })
-      .then(response => response)
-      .catch((exception) => {
-        handleMethodException(exception);
-      });
-  },
   'users.deleteAccount': function usersDeleteAccount() {
     return deleteAccount({ userId: this.userId })
       .then(response => response)
@@ -133,7 +118,7 @@ Meteor.methods({
   'users.adminRemoveAccount' : function usersAdminRemoveAccount (userId) {
     check(userId, String);
 
-    if(Roles.userIsInRole(this.userId, ['admin', 'superadmin'])) {
+    if(Roles.userIsInRole(this.userId, ['admin'])) {
       return deleteAccount({userId})
       .then(response => response)
       .catch((exception) => {
@@ -150,13 +135,15 @@ Meteor.methods({
 rateLimit({
   methods: [
     'users.sendVerificationEmail',
+    'users.adminEditProfile',
     'users.editProfile',
-    'users.exportData',
     'users.deleteAccount',
     'users.adminRemoveAccount',
     'users.adminResetPassword' ,
     'users.adminSignup',
     'users.updateRole',
+    'users.updateOrg',
+    'user.signup,'
   ],
   limit: 5,
   timeRange: 1000,

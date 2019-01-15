@@ -134,8 +134,6 @@ Meteor.methods({
             handleMethodException(exception);
         } 
     },
-    
-    
 });
 
 rateLimit({

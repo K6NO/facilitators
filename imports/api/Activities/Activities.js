@@ -104,7 +104,7 @@ const attributeSchema = new SimpleSchema({
         max: 20,
         label: "Activity nr of participants. Max. 20 chars."
     },
-    preparation: {
+    preparations: {
         type: String,
         max: 400,
         label: "Activity prep. Max. 400 chars.",
