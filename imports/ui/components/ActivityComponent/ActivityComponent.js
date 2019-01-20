@@ -20,7 +20,8 @@ class ActivityComponent extends React.Component {
             <div className="ActivityComponent">
                 <ActivityComponentHeader />
                 <ActivityComponentBody />
-                <ActivityComponentFooter />
+                <ActivityComponentFooter
+                    activity={activity} />
             </div>
         )
     }

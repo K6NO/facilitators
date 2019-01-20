@@ -8,6 +8,7 @@ const commentSchema = new SimpleSchema({
         autoValue() {
             if (this.isInsert) return (new Date()).toISOString();
         },
+        required: true,
     },
     updatedAt: {
         type: String,
@@ -15,37 +16,30 @@ const commentSchema = new SimpleSchema({
         autoValue() {
             if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
         },
+        required: true,
     },
     userId : {
         type: String,
         type: SimpleSchema.RegEx.Id,
         label: 'Commenter UserId.',
+        required: true,
     },
     username: {
         type: String,
-        max: 120,
-        label: "Username. Max. 120 chars."
+        max: 100,
+        label: "Commenter username. Max. 120 chars.",
+        required: true,
     },
     message: {
         type: String,
         max: 600,
-        label: "Username. Max. 600 chars."
+        label: "Comment message. Max. 600 chars.",
+        required: true,
     },
     authorized: Boolean,
-});
+}, {requiredByDefault: false});
+
 const Activities = new Mongo.Collection('Activities');
-
-Activities.allow({
-  insert: () => false,
-  update: () => false,
-  remove: () => false,
-});
-
-Activities.deny({
-  insert: () => true,
-  update: () => true,
-  remove: () => true,
-});
 
 Activities.schema = new SimpleSchema({
     createdAt: {
@@ -54,6 +48,7 @@ Activities.schema = new SimpleSchema({
         autoValue() {
         if (this.isInsert) return (new Date()).toISOString();
         },
+        required: true,
     },
     updatedAt: {
         type: String,
@@ -61,315 +56,298 @@ Activities.schema = new SimpleSchema({
         autoValue() {
         if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
         },
+        required: true,
     },
     owner: {
         type: String,
         label: 'The ID of the user who uploaded this Activity.',
-        optional: true,
+        regEx: SimpleSchema.RegEx.Id,
+        required: true,
     },
     organisationId: {
         type: String,
         label: 'The ID of the users organisation who uploaded this Activity.',
-        optional: true,
+        regEx: SimpleSchema.RegEx.Id,
     },
     public: {
         type: Boolean,
         label: 'Whether or not this is accessible without being logged in',
-        optional: true,
+        required: true,
     },
-    title: {
-        en: {
-            type: String,
-            max: 200,
-            label: "Username. Max. 200 chars."
-        },
-        es: {
-            type: String,
-            max: 200,
-            label: "Username. Max. 200 chars."
-        },
-        hu: {
-            type: String,
-            max: 200,
-            label: "Username. Max. 200 chars."
-        },
-        ro: {
-            type: String,
-            max: 200,
-            label: "Username. Max. 200 chars."
-        },
-        sk: {
-            type: String,
-            max: 200,
-            label: "Username. Max. 200 chars."
-        }
+    title: Object,
+    'title.en': {
+        type: String,
+        max: 200,
+        label: "Title of the activity. Max. 200 chars."
     },
-    description: {
-        en: {
-            type: String,
-            max: 1200,
-            label: "Activity description. Max. 1200 chars."
-        },
-        es: {
-            type: String,
-            max: 1200,
-            label: "Activity description. Max. 1200 chars."
-        },
-        hu: {
-            type: String,
-            max: 1200,
-            label: "Activity description. Max. 1200 chars."
-        },
-        ro: {
-            type: String,
-            max: 1200,
-            label: "Activity description. Max. 1200 chars"
-        },
-        sk: {
-            type: String,
-            max: 1200,
-            label: "Activity description. Max. 1200 chars."
-        }
+    'title.es': {
+        type: String,
+        max: 200,
+        label: "Title of the activity. Max. 200 chars."
     },
-    category: {
-        en: {
-            type: String,
-            max: 20,
-            label: "Activity category. Max. 20 chars."
-        },
-        es: {
-            type: String,
-            max: 20,
-            label: "Activity category. Max. 20 chars."
-        },
-        hu: {
-            type: String,
-            max: 20,
-            label: "Activity category. Max. 20 chars."
-        },
-        ro: {
-            type: String,
-            max: 20,
-            label: "Activity category. Max. 20 chars."
-        },
-        sk: {
-            type: String,
-            max: 20,
-            label: "Activity category. Max. 20 chars."
-        }
+    'title.hu': {
+        type: String,
+        max: 200,
+        label: "Title of the activity. Max. 200 chars."
     },
-    age: {
-        en: {
-            type: String,
-            max: 20,
-            label: "Activity age group. Max. 20 chars."
-        },
-        es: {
-            type: String,
-            max: 20,
-            label: "Activity age group. Max. 20 chars."
-        },
-        hu: {
-            type: String,
-            max: 20,
-            label: "Activity age group. Max. 20 chars."
-        },
-        ro: {
-            type: String,
-            max: 20,
-            label: "Activity age group. Max. 20 chars."
-        },
-        sk: {
-            type: String,
-            max: 20,
-            label: "Activity age group. Max. 20 chars."
-        }
+    'title.ro': {
+        type: String,
+        max: 200,
+        label: "Title of the activity. Max. 200 chars."
     },
-    time: {
-        en: {
-            type: String,
-            max: 20,
-            label: "Activity time. Max. 20 chars."
-        },
-        es: {
-            type: String,
-            max: 20,
-            label: "Activity time. Max. 20 chars."
-        },
-        hu: {
-            type: String,
-            max: 20,
-            label: "Activity time. Max. 20 chars."
-        },
-        ro: {
-            type: String,
-            max: 20,
-            label: "Activity time. Max. 20 chars."
-        },
-        sk: {
-            type: String,
-            max: 20,
-            label: "Activity time. Max. 20 chars."
-        }
+    'title.sk': {
+        type: String,
+        max: 200,
+        label: "Title of the activity. Max. 200 chars."
     },
-    participants: {
-        en: {
-            type: String,
-            max: 20,
-            label: "Activity nr of participants. Max. 20 chars."
-        },
-        es: {
-            type: String,
-            max: 20,
-            label: "Activity nr of participants. Max. 20 chars."
-        },
-        hu: {
-            type: String,
-            max: 20,
-            label: "Activity nr of participants. Max. 20 chars."
-        },
-        ro: {
-            type: String,
-            max: 20,
-            label: "Activity nr of participants. Max. 20 chars."
-        },
-        sk: {
-            type: String,
-            max: 20,
-            label: "Activity nr of participants. Max. 20 chars."
-        }
+    description: Object,
+    'description.en': {
+        type: String,
+        max: 1200,
+        label: "Activity description. Max. 1200 chars."
     },
-    preparations: {
-        en: {
-            type: String,
-            max: 400,
-            label: "Activity prep. Max. 400 chars.",
-        },
-        es: {
-            type: String,
-            max: 400,
-            label: "Activity prep. Max. 400 chars.",
-        },
-        hu: {
-            type: String,
-            max: 400,
-            label: "Activity prep. Max. 400 chars.",
-        },
-        ro: {
-            type: String,
-            max: 400,
-            label: "Activity prep. Max. 400 chars.",
-        },
-        sk: {
-            type: String,
-            max: 400,
-            label: "Activity prep. Max. 400 chars.",
-        }
+    'description.es': {
+        type: String,
+        max: 1200,
+        label: "Activity description. Max. 1200 chars."
     },
-    objectives: {
-        en: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-        },
-        es: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-        },
-        hu: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-        },
-        ro: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-        },
-        sk: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-        }
+    'description.hu': {
+        type: String,
+        max: 1200,
+        label: "Activity description. Max. 1200 chars."
     },
-    tools: {
-        en: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
-        },
-        es: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
-        },
-        hu: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-            optional: true,
-        },
-        ro: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
-        },
-        sk: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
-        }
+    'description.ro': {
+        type: String,
+        max: 1200,
+        label: "Activity description. Max. 1200 chars"
     },
-    resources: {
-        en: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
+    'description.sk': {
+        type: String,
+        max: 1200,
+        label: "Activity description. Max. 1200 chars."
+    },
+    category: Object,
+    'category.en': {
+        type: String,
+        max: 40,
+        label: "Activity category. Max. 40 chars.",
+        allowedValues: ['Ecological footprint', "Deep ecology", "Ecofeminism", "Land art", "Food sovereignity", "Community building"],
+    },
+    'category.es': {
+        type: String,
+        max: 40,
+        label: "Activity category. Max. 40 chars.",        
+    },
+    'category.hu': {
+        type: String,
+        max: 40,
+        label: "Activity category. Max. 40 chars.",
+    },
+    'category.ro': {
+        type: String,
+        max: 40,
+        label: "Activity category. Max. 40 chars",
+    },
+    'category.sk': {
+        type: String,
+        max: 40,
+        label: "Activity category. Max. 40 chars",
+    },
+    age: Object,
+    'age.en': {
+        type: String,
+        max: 20,
+        label: "Activity age group. Max. 20 chars."
+    },
+    'age.es': {
+        type: String,
+        max: 20,
+        label: "Activity age group. Max. 20 chars."
         },
-        es: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
-        },
-        hu: {
-            type: String,
-            max: 400,
-            label: "Activity objectives. Max. 400 chars.",
-            optional: true,
-        },
-        ro: {
-            type: String,
-            max: 400,
-            label: "Activity tools. Max. 400 chars.",
-            optional: true,
-        },
-        sk: {
-            type: String,
-            max: 400,
-            label: "Activity resources. Max. 400 chars.",
-            optional: true
-        }
+    'age.hu': {
+        type: String,
+        max: 20,
+        label: "Activity age group. Max. 20 chars."
+    },
+    'age.ro': {
+        type: String,
+        max: 20,
+        label: "Activity age group. Max. 20 chars."
+    },
+    'age.sk': {
+        type: String,
+        max: 20,
+        label: "Activity age group. Max. 20 chars."
+    },
+    time: Object,
+    'time.en': {
+        type: String,
+        max: 20,
+        label: "Activity time. Max. 20 chars."
+    },
+    'time.es': {
+        type: String,
+        max: 20,
+        label: "Activity time. Max. 20 chars."
+    },
+    'time.hu': {
+        type: String,
+        max: 20,
+        label: "Activity time. Max. 20 chars."
+    },
+    'time.ro': {
+        type: String,
+        max: 20,
+        label: "Activity time. Max. 20 chars."
+    },
+    'time.sk': {
+        type: String,
+        max: 20,
+        label: "Activity time. Max. 20 chars."
+    },
+    participants: Object,
+    'participants.en': {
+        type: String,
+        max: 20,
+        label: "Activity nr of participants. Max. 20 chars."
+    },
+    'participants.es': {
+        type: String,
+        max: 20,
+        label: "Activity nr of participants. Max. 20 chars."
+    },
+    'participants.hu': {
+        type: String,
+        max: 20,
+        label: "Activity nr of participants. Max. 20 chars."
+    },
+    'participants.ro': {
+        type: String,
+        max: 20,
+        label: "Activity nr of participants. Max. 20 chars."
+    },
+    'participants.sk': {
+        type: String,
+        max: 20,
+        label: "Activity nr of participants. Max. 20 chars."
+    },
+    preparations: Object,
+    'preparations.en': {
+        type: String,
+        max: 400,
+        label: "Activity prep. Max. 400 chars.",
+    },
+    'preparations.es': {
+        type: String,
+        max: 400,
+        label: "Activity prep. Max. 400 chars.",
+    },
+    'preparations.hu': {
+        type: String,
+        max: 400,
+        label: "Activity prep. Max. 400 chars.",
+    },
+    'preparations.ro': {
+        type: String,
+        max: 400,
+        label: "Activity prep. Max. 400 chars.",
+    },
+    'preparations.sk': {
+        type: String,
+        max: 400,
+        label: "Activity prep. Max. 400 chars.",
+    },
+    objectives: Object, 
+    'objectives.en': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    'objectives.es': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    'objectives.hu': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    'objectives.ro': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    'objectives.sk': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    tools: Object,
+    'tools.en': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    'tools.es': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    'tools.hu': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    'tools.ro': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    'tools.sk': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    resources: Object,
+    'resources.en': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    'resources.es': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    'resources.hu': {
+        type: String,
+        max: 400,
+        label: "Activity objectives. Max. 400 chars.",
+    },
+    'resources.ro': {
+        type: String,
+        max: 400,
+        label: "Activity tools. Max. 400 chars.",
+    },
+    'resources.sk': {
+        type: String,
+        max: 400,
+        label: "Activity resources. Max. 400 chars.",
     },
     images: { 
         type: Array,
         label: "Images",
     },
     'images.$' : {
-            type: String,
-        },
+        type: String,
+    },
     comments: {
         type: Array,
     },
     'comments.$' : {
-          type: commentSchema,
-          label: 'CommentSchema'
+        type: commentSchema,
+        label: 'CommentSchema'
     },
     tags: {
         type: Array,
@@ -377,99 +355,8 @@ Activities.schema = new SimpleSchema({
     'tags.$': {
         type: String,
     },
-});
+}, {requiredByDefault: false});
 
 Activities.attachSchema(Activities.schema);
 
 export default Activities;
-
-// old structure
-
-// const commentSchema = new SimpleSchema({
-//     createdAt: {
-//         type: String,
-//         label: 'The date this document was created.',
-//         autoValue() {
-//             if (this.isInsert) return (new Date()).toISOString();
-//         },
-//     },
-//     updatedAt: {
-//         type: String,
-//         label: 'The date this document was last updated.',
-//         autoValue() {
-//             if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
-//         },
-//     },
-//     userId : {
-//         type: String,
-//         type: SimpleSchema.RegEx.Id,
-//         label: 'Commenter UserId.',
-//     },
-//     username: {
-//         type: String,
-//         max: 120,
-//         label: "Username. Max. 120 chars."
-//     },
-//     message: {
-//         type: String,
-//         max: 600,
-//         label: "Username. Max. 600 chars."
-//     },
-//     authorized: Boolean,
-// })
-// const attributeSchema = new SimpleSchema({
-//     title: {
-//         type: String,
-//         max: 200,
-//         label: "Username. Max. 200 chars."
-//     },
-//     description:    {
-//         type: String,
-//         max: 1200,
-//         label: "Activity description. Max. 1200 chars."
-//     },
-//     category:  {
-//         type: String,
-//         max: 20,
-//         label: "Activity category. Max. 20 chars."
-//     },
-//     age: {
-//         type: String,
-//         max: 20,
-//         label: "Activity age group. Max. 20 chars."
-//     },
-//     time: {
-//         type: String,
-//         max: 20,
-//         label: "Activity time. Max. 20 chars."
-//     },
-//     participants: {
-//         type: String,
-//         max: 20,
-//         label: "Activity nr of participants. Max. 20 chars."
-//     },
-//     preparations: {
-//         type: String,
-//         max: 400,
-//         label: "Activity prep. Max. 400 chars.",
-//         optional: true,
-//     },
-//     objectives: {
-//         type: String,
-//         max: 400,
-//         label: "Activity objectives. Max. 400 chars.",
-//         optional: true,
-//     },
-//     tools: {
-//         type: String,
-//         max: 400,
-//         label: "Activity tools. Max. 400 chars.",
-//         optional: true,
-//     },
-//     resources: {
-//         type: String,
-//         max: 400,
-//         label: "Activity tools. Max. 400 chars.",
-//         optional: true,
-//     },
-//   });
