@@ -44,25 +44,9 @@ Organisations.schema = new SimpleSchema({
     type: String,
     label: 'The name of the Organisation.',
   },
-    billingAddress: {
+  country: {
     type: String,
-    label: 'The billing address of the Organisation.',
-    optional: true,
-  },
-  billingCity: {
-    type: String,
-    label: 'The billing city of the Organisation.',
-    optional: true,
-  },
-  billingPostalCode: {
-    type: String,
-    label: 'The billing postal code of the Organisation.',
-    optional: true,
-  },
-  billingCountry: {
-    type: String,
-    label: 'The billing country of the Organisation.',
-    optional: true,
+    label: 'The country of the Organisation.',
   },
 });
 

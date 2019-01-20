@@ -68,6 +68,7 @@ Activities.schema = new SimpleSchema({
         type: String,
         label: 'The ID of the users organisation who uploaded this Activity.',
         regEx: SimpleSchema.RegEx.Id,
+        required: true,
     },
     public: {
         type: Boolean,
