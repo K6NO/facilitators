@@ -73,6 +73,7 @@ Activities.schema = new SimpleSchema({
         type: Boolean,
         label: 'Whether or not this is accessible without being logged in',
         required: true,
+        defaultValue: false,
     },
     title: Object,
     'title.en': {
