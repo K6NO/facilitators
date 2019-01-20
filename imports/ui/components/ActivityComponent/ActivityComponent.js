@@ -28,13 +28,11 @@ class ActivityComponent extends React.Component {
 }
 
 ActivityComponent.defaultProps = {
-    story: {},
-    side: defaultSide,
+    
   };
   
 ActivityComponent.propTypes = {
-    story: PropTypes.object,
-    side: PropTypes.object,
+    activity: PropTypes.object.isRequired,
 };
 
 
