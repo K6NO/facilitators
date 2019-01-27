@@ -3,13 +3,6 @@ import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import Activities from '../Activities';
 
-// const getActivitiesByLang = (locale, languages, activities) => activities.map((a) => {
-//     let b = languages; 
-//     b.splice(b.indexOf(locale),1);    
-//     b.forEach(l => delete a[l]);
-//     return a;
-// });
-
 /** 
  * Admins can view and edit all Activities
  * Registered users can view and edit public and own Activities
