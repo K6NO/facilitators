@@ -63,7 +63,7 @@ class ActivityComponentBody extends React.Component {
                                 </h5>
                             </Col>
                             <Col xs="6">
-                                {activity.participants} <T _locale={locale}>activity.participants</T>
+                                <T _locale={locale}>{activity.group}</T>
                             </Col>
                         </Row>
                         <Row>

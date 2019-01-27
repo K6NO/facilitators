@@ -17,7 +17,6 @@ class LandingPage extends React.Component {
 
   render () {
     const { loading, match, history, userId, viewportIsMobile, ...props } = this.props;
-    console.log()
     return (!loading ? (
       <div className="container LandingPage">
         <Row>
