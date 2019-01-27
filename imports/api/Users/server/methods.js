@@ -26,12 +26,12 @@ Meteor.methods({
     Roles.addUsersToRoles(newUserId, ['user']);
     return newUserId;
   },
-  'users.updateRole': function usersUpdateRole(_id, role) {
+  'users.updateRole': function usersUpdateRole(_id, roles) {
     check(_id, String);
-    check(role, String);
+    check(roles, Array);
     const userId = Meteor.userId();
     if(Roles.userIsInRole(userId, ['admin'])) {
-      Roles.addUsersToRoles(_id, [role]);
+      Roles.addUsersToRoles(_id, roles);
       return userId;
     } else {
       throw new Meteor.Error('Users updateRole', 'Non-admin tried to perform admin role: role change');
@@ -42,7 +42,7 @@ Meteor.methods({
     check(org, String);
     const userId = Meteor.userId();
     if(Roles.userIsInRole(userId, ['admin'])) {
-      return Meteor.users.update(userId, {
+      return Meteor.users.update(_id, {
         $set: {
           organisation: org
         }
@@ -51,24 +51,24 @@ Meteor.methods({
       throw new Meteor.Error('Users updateRole', 'Non-admin tried to perform admin role: role change');
     }
   },
-  'users.adminEditProfile' : function usersAdminEditProfile(userId, profile, roles) {
+  'users.adminEditProfile' : function usersAdminEditProfile(_id, profile, roles) {
     check(profile, {
       email: String,
       organisation: Match.Maybe(String),
       profile: {
         name: {
-          first: String,
-          last: String,
+          first: Match.Maybe(String),
+          last: Match.Maybe(String),
         },
-        username: String,
+        username: Match.Maybe(String),
         imageUrl: Match.Maybe(String),
       },
     });
-    check(userId, String);
+    check(_id, String);
     check(roles, Array);
     
-    if(Roles.userIsInRole(this.userId, ['admin'])) {
-      return adminEditProfile({ userId, profile, roles })
+    if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+      return adminEditProfile({ _id, profile, roles })
       .then(response => response)
       .catch((exception) => {
         handleMethodException(exception);
@@ -78,15 +78,14 @@ Meteor.methods({
     }
     
   },
-  'users.adminResetPassword' : function usersadminResetPassword(userId, newPassword) {
-    check(userId, String);
+  'users.adminResetPassword' : function usersadminResetPassword(_id, newPassword) {
+    check(_id, String);
     check(newPassword, String);
-    if(Roles.userIsInRole(this.userId, ['admin'])) {
-      Accounts.setPassword(userId, newPassword);
+    if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+      Accounts.setPassword(_id, newPassword);
     } else {
       console.error('Non-admin tried to perform admin role: reset password');
     }
-    
   },
   'users.editProfile': function usersEditProfile(profile) {
     check(profile, {
@@ -94,32 +93,32 @@ Meteor.methods({
       organisation: Match.Maybe(String),
       profile: {
         name: {
-          first: String,
-          last: String,
+          first: Match.Maybe(String),
+          last: Match.Maybe(String),
         },
-        username: String,
+        username: Match.Maybe(String),
         imageUrl: Match.Maybe(String),
       },
     });
 
-    return editProfile({ userId: this.userId, profile })
+    return editProfile({ userId: Meteor.userId(), profile })
       .then(response => response)
       .catch((exception) => {
         handleMethodException(exception);
       });
   },
   'users.deleteAccount': function usersDeleteAccount() {
-    return deleteAccount({ userId: this.userId })
+    return deleteAccount({ userId: Meteor.userId() })
       .then(response => response)
       .catch((exception) => {
         handleMethodException(exception);
       });
   },
-  'users.adminRemoveAccount' : function usersAdminRemoveAccount (userId) {
-    check(userId, String);
+  'users.adminRemoveAccount' : function usersAdminRemoveAccount (_id) {
+    check(_id, String);
 
-    if(Roles.userIsInRole(this.userId, ['admin'])) {
-      return deleteAccount({userId})
+    if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+      return deleteAccount(_id)
       .then(response => response)
       .catch((exception) => {
         handleMethodException(exception);
