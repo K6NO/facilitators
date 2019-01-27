@@ -34,25 +34,31 @@ class App extends React.Component {
     super(props);
     this.state = {
       afterLoginPath: null,
+      locale: 'en'
     };
-    autoBind(this);
   }
 
-  setAfterLoginPath(afterLoginPath) {
+  setAfterLoginPath = (afterLoginPath) => {
     this.setState({ afterLoginPath });
   }
 
+  updateLocale = (locale) => {
+    this.setState({
+      locale: locale
+    });
+  }
+
   render() {
-    const { props, state, setAfterLoginPath } = this;
+    const { props, state, setAfterLoginPath, updateLocale } = this;
     
     return (
       <Router>
         {!props.loading ? (
           <div className="App">
           <AnalyticsTracker />
-            <Navigation {...props} {...state}  />
+            <Navigation {...props} {...state} locale={this.state.locale} updateLocale={updateLocale}  />
               <Switch>
-                {/* Game */}
+                {/* Public */}
                 <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />
                 <Authenticated exact path="/profile" component={Profile}    setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
                 <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
@@ -62,10 +68,11 @@ class App extends React.Component {
                 <Route name="privacy" path="/privacy" component={Privacy} />        
                 
                 {/* Editor */}
-                {/* <AllowedRole allowedRoles={['admin', 'editor']} exact path="/editor/stories" component={EditorStoriesPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/> */}
+                <AllowedRole allowedRoles={['admin', 'editor']} exact path="/editor" component={EditorPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
                 
                 {/* User manager  */}
-                <AllowedRoleAdmin allowedRoles={['superadmin']} exact path="/editor/admin" component={AdminPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
+                <AllowedRoleAdmin allowedRoles={['admin']} exact path="/editor/admin" component={AdminPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
+                
                 <Route component={NotFound} />
               </Switch>
             <Footer />
