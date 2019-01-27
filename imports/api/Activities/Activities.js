@@ -274,7 +274,14 @@ Activities.schema = new SimpleSchema({
         type: Array,
     },
     'tags.$': {
+        type: Number,
+    },
+    languages: {
+        type: Array,
+    },
+    'languages.$': {
         type: String,
+        allowedValues: ['en', 'es', 'hu', 'ro', 'sk']
     },
 }, {requiredByDefault: false});
 
