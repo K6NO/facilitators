@@ -79,78 +79,78 @@ Activities.schema = new SimpleSchema({
     title: Object,
     'title.en': {
         type: String,
-        max: 200,
-        label: "Title of the activity. Max. 200 chars."
+        max: 120,
+        label: "Title of the activity. Max. 120 chars."
     },
     'title.es': {
         type: String,
-        max: 200,
-        label: "Title of the activity. Max. 200 chars."
+        max: 120,
+        label: "Title of the activity. Max. 120 chars."
     },
     'title.hu': {
         type: String,
-        max: 200,
-        label: "Title of the activity. Max. 200 chars."
+        max: 120,
+        label: "Title of the activity. Max. 120 chars."
     },
     'title.ro': {
         type: String,
-        max: 200,
-        label: "Title of the activity. Max. 200 chars."
+        max: 120,
+        label: "Title of the activity. Max. 120 chars."
     },
     'title.sk': {
         type: String,
-        max: 200,
-        label: "Title of the activity. Max. 200 chars."
+        max: 120,
+        label: "Title of the activity. Max. 120 chars."
     },
     description: Object,
     'description.en': {
         type: String,
-        max: 1200,
-        label: "Activity description. Max. 1200 chars."
+        max: 10000,
+        label: "Activity description. Max. 10000 chars."
     },
     'description.es': {
         type: String,
-        max: 1200,
-        label: "Activity description. Max. 1200 chars."
+        max: 10000,
+        label: "Activity description. Max. 10000 chars."
     },
     'description.hu': {
         type: String,
-        max: 1200,
-        label: "Activity description. Max. 1200 chars."
+        max: 10000,
+        label: "Activity description. Max. 10000 chars."
     },
     'description.ro': {
         type: String,
-        max: 1200,
-        label: "Activity description. Max. 1200 chars"
+        max: 10000,
+        label: "Activity description. Max. 10000 chars"
     },
     'description.sk': {
         type: String,
-        max: 1200,
-        label: "Activity description. Max. 1200 chars."
+        max: 10000,
+        label: "Activity description. Max. 10000 chars."
     },
     category: {
         type: String,
-        max: 40,
-        label: "Activity category. Max. 40 chars.",
+        max: 10,
+        label: "Activity category. Max. 10 chars.",
         allowedValues: ["footprint", "deepeco", "ecofem", "landart", "food", "community"],
     },
     age: {
         type: String,
         max: 10,
         label: "Activity age. Max. 10 chars.",
-        allowedValues: ["+5", "+8", "+12", "+15", "+18"],
+        allowedValues: ["agech", "agete", "ageya", "agead", "ageel" ],
     },
     time: {
         type: String,
         max: 10,
         label: "Activity time. Max. 10 chars.",
-        allowedValues: ["10-15", "15-20", "20-25", "25-30", "30-45", "45-60", "60-90", "90-120", "+120"],
+        allowedValues: ["timevs", "timesh", "timemd", "timeln", "timevl" ],
     },
-    participants: {
+    group: {
         type: String,
         max: 10,
-        label: "Activity time. Max. 10 chars.",
-        allowedValues: ["+2", "+3", "+5", "+8", "+10"],
+        label: "Activity group size. Max. 10 chars.",
+        allowedValues: ["groupvs", "groupsm", "groupmd", "grouplg","groupvl"],
     },
     preparations: Object,
     'preparations.en': {
