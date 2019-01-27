@@ -37,8 +37,9 @@ class Navigation extends React.Component {
   };
   render () { 
     const { props } = this;
-    const logoUrl = "https://via.placeholder.com/468x60?text=Place+Logo+Here"
-
+    const logoUrl = props.viewportIsMobile 
+      ? "img/ui/logo@0.15x.png" 
+      : "img/ui/logo@0.25x.png";
 
     return (
       <div>
