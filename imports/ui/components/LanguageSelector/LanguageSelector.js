@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Nav, NavItem  } from 'reactstrap';
 import ReactSelect from 'react-select';
 import i18n from 'meteor/universe:i18n';
-import getLocale from '../../../modules/get-locale';
-import setLocale from '../../../modules/set-locale';
+
 
 const T = i18n.createComponent();
 
@@ -24,17 +22,18 @@ class LanguageSelector extends React.Component {
     }
     
     render () {
+        const languageArray = [
+            { value: 'en', label: i18n.__(searchbox.en)},
+            { value: 'es', label: i18n.__(searchbox.es)},
+            { value: 'hu', label: i18n.__(searchbox.hu)},
+            { value: 'ro', label: i18n.__(searchbox.ro)},
+            { value: 'sk', label: i18n.__(searchbox.sk)},
+        ];
         
         return (
             <ReactSelect 
                 className="LanguageSelector"
-                options={[
-                    { value: 'en', label: 'English'},
-                    { value: 'es', label: 'Spanish'},
-                    { value: 'hu', label: 'Hungarian'},
-                    { value: 'ro', label: 'Romanian'},
-                    { value: 'sk', label: 'Slovakian'},
-                  ]}
+                options={languageArray}
                 value={this.state.locale}
                 name="languageSelect"
                 onChange={this.props.updateLocale}/>
