@@ -6,7 +6,6 @@ import {   Collapse,
   NavbarBrand, } from 'reactstrap';
 import PublicNavigation from '../PublicNavigation/PublicNavigation';
 import AuthenticatedNavigation from '../AuthenticatedNavigation/AuthenticatedNavigation';
-
 import onClickOutside from 'react-onclickoutside'
 
 import './Navigation.scss';
@@ -63,12 +62,11 @@ class Navigation extends React.Component {
 };
 
 Navigation.defaultProps = {
-  name: '',
 };
 
 Navigation.propTypes = {
   authenticated: PropTypes.bool.isRequired,
-  name: PropTypes.string,
+  updateLocaleCallback : PropTypes.func.isRequired,
 };
 
 export default onClickOutside(Navigation);

@@ -19,9 +19,6 @@ class LandingPage extends React.Component {
       <div className="container LandingPage">
         <Row>
           <Col xs={12} id="stories" className="stories">
-                <ActivityComponentFooter
-                  category={'Land art'}
-                />
                 <h5>Site Content</h5>
                 {!userId && viewportIsMobile &&
                 <Row>

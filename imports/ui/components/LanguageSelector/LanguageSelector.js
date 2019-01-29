@@ -33,13 +33,13 @@ class LanguageSelector extends React.Component {
                 options={languageArray}
                 value={this.state.locale}
                 name="languageSelect"
-                onChange={this.props.updateLocale}/>
+                onChange={this.props.updateLocaleCallback}/>
         )
     }
 }
   
 LanguageSelector.propTypes = {
-    updateLocale : PropTypes.bool.isRequired,
+    updateLocaleCallback : PropTypes.func.isRequired,
 };
   
 export default LanguageSelector;

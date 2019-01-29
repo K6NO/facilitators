@@ -26,11 +26,11 @@ class CategorySelector extends React.Component {
         // locale file categories.deepeco . ecofem, etc.
         const categoryArray = [
             { value: 'footprint', label: 'English'},
-                    { value: 'deepeco', label: i18n.__('categories.deepeco')},
-                    { value: 'ecofem', label: i18n.__('categories.ecofem')},
-                    { value: 'landart', label: i18n.__('categories.landart')},
-                    { value: 'food', label: i18n.__('categories.food')},
-                    { value: 'community', label: i18n.__('categories.community')},
+            { value: 'deepeco', label: i18n.__('categories.deepeco')},
+            { value: 'ecofem', label: i18n.__('categories.ecofem')},
+            { value: 'landart', label: i18n.__('categories.landart')},
+            { value: 'food', label: i18n.__('categories.food')},
+            { value: 'community', label: i18n.__('categories.community')},
         ]
         return (
             <ReactSelect 
@@ -44,7 +44,6 @@ class CategorySelector extends React.Component {
 }
   
 CategorySelector.propTypes = {
-    locale: PropTypes.string.isRequired
 
 };
   

@@ -26,25 +26,19 @@ class AuthenticatedNavigation extends React.Component {
   }
 
   render() {
-    const { navbarCallback, props } = this.props;
+    const { navbarCallback, ...props } = this.props;
     const user = Meteor.user();
     
     return (
       <div className="AuthenticatedNavigation ">
         <Nav onClick={navbarCallback} navbar>
-          <NavItem 
-            // onClick={props.navbarCallback}
-            >
+          <NavItem >
             <LanguageSelector {...props} /> 
           </NavItem>
-          <NavItem 
-            // onClick={props.navbarCallback}
-            >
+          <NavItem>
             <CategorySelector {...props} />
           </NavItem>
-          <NavItem 
-            // onClick={props.navbarCallback}
-            >
+          <NavItem >
             About
           </NavItem>
           <NavItem onClick={()=> this.logoutUser()}>
@@ -66,10 +60,9 @@ class AuthenticatedNavigation extends React.Component {
 };
 
 AuthenticatedNavigation.propTypes = {
-  username: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
   viewportIsMobile: PropTypes.bool.isRequired,
+  updateLocaleCallback: PropTypes.func.isRequired
   
 };
 

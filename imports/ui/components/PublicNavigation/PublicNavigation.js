@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Nav, NavItem  } from 'reactstrap';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import CategorySelector from '../CategorySelector/CategorySelector';
@@ -28,3 +29,8 @@ const PublicNavigation = props => (
 );
 
 export default PublicNavigation;
+
+PublicNavigation.propTypes = {
+  navbarCallback: PropTypes.func.isRequired,
+  updateLocaleCallback : PropTypes.func.isRequired,
+};

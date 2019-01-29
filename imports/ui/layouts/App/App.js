@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/no-href */
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import autoBind from 'react-autobind';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -12,12 +10,9 @@ import Authenticated from '../../components/Authenticated/Authenticated';
 import AllowedRole from '../../components/AllowedRole/AllowedRole';
 import AllowedRoleAdmin from '../../components/AllowedRole/AllowedRoleAdmin';
 import Public from '../../components/Public/Public';
-import AnalyticsTracker from '../../components/Analytics/Analytics'
-
+import AnalyticsTracker from '../../components/Analytics/Analytics';
 import LandingPage from '../../pages/LandingPage/LandingPage';
-
 import AdminPage from '../../pages/AdminPage/AdminPage';
-
 import VerifyEmail from '../../pages/VerifyEmail/VerifyEmail';
 import RecoverPassword from '../../pages/RecoverPassword/RecoverPassword';
 import ResetPassword from '../../pages/ResetPassword/ResetPassword';
@@ -53,7 +48,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { props, state, setAfterLoginPath, updateLocale, selectCategoryCallback } = this;
+    const { props, state, setAfterLoginPath, selectCategoryCallback } = this;
     
     return (
       <Router>
@@ -64,13 +59,13 @@ class App extends React.Component {
               {...props} 
               {...state} 
               locale={this.state.locale} 
-              updateLocale={updateLocale}
+              updateLocaleCallback={this.updateLocale}
               selectCategoryCallback={selectCategoryCallback}  
             />
             <Switch>
               {/* Public */}
               <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />
-              <Authenticated exact path="/profile" component={Profile}    setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+              <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
               <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
               <Route name="recover-password" path="/recover-password" component={RecoverPassword}    />
               <Route name="reset-password" path="/reset-password/:token" component={ResetPassword}   />

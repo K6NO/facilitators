@@ -1,9 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
 import { Row, Col, Button } from 'reactstrap';
 import UserProfileComponent from './UserProfileComponent';
 import UserNewsGamesComponent from './UserNewsGamesComponent';
@@ -48,7 +46,7 @@ class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-  
   history: PropTypes.object.isRequired,
 };
 
+export default Profile;
