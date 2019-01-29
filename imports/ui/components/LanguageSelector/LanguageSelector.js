@@ -23,11 +23,11 @@ class LanguageSelector extends React.Component {
     
     render () {
         const languageArray = [
-            { value: 'en', label: i18n.__(searchbox.en)},
-            { value: 'es', label: i18n.__(searchbox.es)},
-            { value: 'hu', label: i18n.__(searchbox.hu)},
-            { value: 'ro', label: i18n.__(searchbox.ro)},
-            { value: 'sk', label: i18n.__(searchbox.sk)},
+            { value: 'en', label: i18n.__('searchbox.en')},
+            { value: 'es', label: i18n.__('searchbox.es')},
+            { value: 'hu', label: i18n.__('searchbox.hu')},
+            { value: 'ro', label: i18n.__('searchbox.ro')},
+            { value: 'sk', label: i18n.__('searchbox.sk')},
         ];
         
         return (
