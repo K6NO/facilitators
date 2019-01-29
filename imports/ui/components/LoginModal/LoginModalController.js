@@ -36,14 +36,6 @@ class LoginModalController extends React.Component {
     render() {
         const { isOpen } = this.state;
         const { className, viewportIsMobile } = this.props;
-        
-        const shortRedLines = (
-            <svg height="20" width="140">
-              <line x1="10" y1="15" x2="140" y2="15" style={{
-                  stroke:"#ff5458bb",
-                  strokeWidth:"1"}} />
-              </svg>
-          );
 
         return (
             <div className={`${className} LoginModalController`}
@@ -51,12 +43,10 @@ class LoginModalController extends React.Component {
                 onClick={e => e.stopPropagation()}
             >
                 <Button 
-                    className={`${className} 
-                    openButton redBorder`} 
                     onClick={this.openModal}>
                     Sign Up | Login
                 </Button>
-                {className === "menuModal" && viewportIsMobile && shortRedLines}
+                
                 <Modal
                     onRequestClose={this.closeModal}
                     isOpen={isOpen}

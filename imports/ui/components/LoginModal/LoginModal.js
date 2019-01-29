@@ -37,7 +37,7 @@ class LoginModal extends React.Component {
                         </Button>
                     </Col>
                     <Col xs="12">
-                        <img src="/img/ui/NewsGamer_logo_s.png" className="ngLogo" />
+                        <img src="/img/ui/logo@0.15x.png"/>
                     </Col>
                 </Row>
                 {this.state.which === 'login' &&
