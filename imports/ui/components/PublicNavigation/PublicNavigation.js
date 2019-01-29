@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, NavItem  } from 'reactstrap';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import CategorySelector from '../CategorySelector/CategorySelector';
 import LoginModalController from '../../components/LoginModal/LoginModalController';
 import './PublicNavigation.scss';
 
@@ -13,7 +14,7 @@ const PublicNavigation = props => (
       </NavItem>
       <NavItem 
         onClick={props.navbarCallback}>
-        Categories
+        <CategorySelector {...props} />
       </NavItem>
       <NavItem 
         onClick={props.navbarCallback}>

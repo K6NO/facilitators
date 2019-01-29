@@ -48,33 +48,43 @@ class App extends React.Component {
     });
   }
 
+  selectCategoryCallback = (category) => {
+    console.log('Check if this is needed here. Logs category: ', category);
+  }
+
   render() {
-    const { props, state, setAfterLoginPath, updateLocale } = this;
+    const { props, state, setAfterLoginPath, updateLocale, selectCategoryCallback } = this;
     
     return (
       <Router>
         {!props.loading ? (
           <div className="App">
           <AnalyticsTracker />
-            <Navigation {...props} {...state} locale={this.state.locale} updateLocale={updateLocale}  />
-              <Switch>
-                {/* Public */}
-                <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />
-                <Authenticated exact path="/profile" component={Profile}    setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-                <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
-                <Route name="recover-password" path="/recover-password" component={RecoverPassword}    />
-                <Route name="reset-password" path="/reset-password/:token" component={ResetPassword}   />
-                <Route name="terms" path="/terms" component={Terms} />
-                <Route name="privacy" path="/privacy" component={Privacy} />        
-                
-                {/* Editor */}
-                <AllowedRole allowedRoles={['admin', 'editor']} exact path="/editor" component={EditorPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
-                
-                {/* User manager  */}
-                <AllowedRoleAdmin allowedRoles={['admin']} exact path="/editor/admin" component={AdminPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
-                
-                <Route component={NotFound} />
-              </Switch>
+            <Navigation 
+              {...props} 
+              {...state} 
+              locale={this.state.locale} 
+              updateLocale={updateLocale}
+              selectCategoryCallback={selectCategoryCallback}  
+            />
+            <Switch>
+              {/* Public */}
+              <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />
+              <Authenticated exact path="/profile" component={Profile}    setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+              <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
+              <Route name="recover-password" path="/recover-password" component={RecoverPassword}    />
+              <Route name="reset-password" path="/reset-password/:token" component={ResetPassword}   />
+              <Route name="terms" path="/terms" component={Terms} />
+              <Route name="privacy" path="/privacy" component={Privacy} />        
+              
+              {/* Editor */}
+              {/* <AllowedRole allowedRoles={['admin', 'editor']} exact path="/editor" component={EditorPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/> */}
+              
+              {/* User manager  */}
+              <AllowedRoleAdmin allowedRoles={['admin']} exact path="/editor/admin" component={AdminPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
+              
+              <Route component={NotFound} />
+            </Switch>
             <Footer />
           </div>
         ) : ''}
