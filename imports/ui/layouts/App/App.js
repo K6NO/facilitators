@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
+import i18n from 'meteor/universe:i18n';
 import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import AllowedRole from '../../components/AllowedRole/AllowedRole';
@@ -22,6 +23,7 @@ import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
 import getUserName from '../../../modules/get-user-name';
+import setLocale from '../../../modules/set-locale';
 import './App.scss';
 
 class App extends React.Component {
@@ -33,6 +35,11 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount () {
+    //set default locale
+    setLocale('en');
+
+  }
   setAfterLoginPath = (afterLoginPath) => {
     this.setState({ afterLoginPath });
   }
