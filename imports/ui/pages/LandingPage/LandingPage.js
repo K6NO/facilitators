@@ -21,7 +21,6 @@ class LandingPage extends React.Component {
       <div className="container LandingPage">
         <Row>
           <Col xs={12} id="stories" className="stories">
-                <Welcome {...props}/>
                 <ActivityComponentFooter
                   category={'Land art'}
                 />
