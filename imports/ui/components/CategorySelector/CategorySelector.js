@@ -13,21 +13,24 @@ class CategorySelector extends React.Component {
       };
     }
     
-    changeCategory = (category) => {
+    changeCategory = (selection) => {
+        const { selectCategoryCallback } = this.props;
+        const category = selection.value;
         this.setState({
             selected: category
         });
+        selectCategoryCallback(category);
     }
     render () {
         // get the category names according to the locale
         // locale file categories.deepeco . ecofem, etc.
         const categoryArray = [
             { value: 'footprint', label: 'English'},
-                    { value: 'deepeco', label: 'Spanish'},
-                    { value: 'ecofem', label: 'Hungarian'},
-                    { value: 'landart', label: 'Romanian'},
-                    { value: 'food', label: 'Slovakian'},
-                    { value: 'community', label: 'Slovakian'},
+                    { value: 'deepeco', label: i18n.__('categories.deepeco')},
+                    { value: 'ecofem', label: i18n.__('categories.ecofem')},
+                    { value: 'landart', label: i18n.__('categories.landart')},
+                    { value: 'food', label: i18n.__('categories.food')},
+                    { value: 'community', label: i18n.__('categories.community')},
         ]
         return (
             <ReactSelect 
@@ -35,7 +38,7 @@ class CategorySelector extends React.Component {
                 options={categoryArray}
                 value={this.state.selected}
                 name="languageSelect"
-                onChange={this.updateLocale}/>
+                onChange={(selection) => this.changeCategory(selection)}/>
         )
     }
 }
