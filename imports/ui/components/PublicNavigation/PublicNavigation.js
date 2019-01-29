@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import i18n from 'meteor/universe:i18n';
 import { Nav, NavItem  } from 'reactstrap';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import CategorySelector from '../CategorySelector/CategorySelector';
@@ -18,7 +19,7 @@ const PublicNavigation = props => (
         <CategorySelector {...props} />
       </NavItem>
       <NavItem>
-        About
+        {i18n.__('menu.about')}
       </NavItem>
       <NavItem>
         <LoginModalController            

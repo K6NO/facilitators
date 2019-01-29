@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import PropTypes from 'prop-types';
+import i18n from 'meteor/universe:i18n';
 import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem } from 'reactstrap';
@@ -39,16 +40,16 @@ class AuthenticatedNavigation extends React.Component {
             <CategorySelector {...props} />
           </NavItem>
           <NavItem >
-            About
+            {i18n.__('menu.about')}
           </NavItem>
           <NavItem onClick={()=> this.logoutUser()}>
-            Logout
+            {i18n.__('menu.signout')}
           </NavItem>
           {(user && !!Roles.userIsInRole(user, ['admin', 'editor'])
             && 
           <LinkContainer to="/editor">
             <NavItem>
-            Editor
+            {i18n.__('menu.editor')}
             </NavItem>
           </LinkContainer>
           )}

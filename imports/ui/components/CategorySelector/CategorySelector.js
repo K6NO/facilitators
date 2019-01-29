@@ -9,7 +9,7 @@ class CategorySelector extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        selected: ''
+        selected: 'Categories'
       };
     }
     
@@ -25,7 +25,7 @@ class CategorySelector extends React.Component {
         // get the category names according to the locale
         // locale file categories.deepeco . ecofem, etc.
         const categoryArray = [
-            { value: 'footprint', label: 'English'},
+            { value: 'footprint', label: i18n.__('categories.footprint')},
             { value: 'deepeco', label: i18n.__('categories.deepeco')},
             { value: 'ecofem', label: i18n.__('categories.ecofem')},
             { value: 'landart', label: i18n.__('categories.landart')},
@@ -37,7 +37,7 @@ class CategorySelector extends React.Component {
                 className="CategorySelector"
                 options={categoryArray}
                 value={this.state.selected}
-                name="languageSelect"
+                name="categorySelect"
                 onChange={(selection) => this.changeCategory(selection)}/>
         )
     }
