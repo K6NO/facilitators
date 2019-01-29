@@ -17,8 +17,9 @@ class ActivityComponentFooter extends React.Component {
         }
     } 
     render() {
-        const { activity } = this.props;
-        const category = activity.category;
+        // const { activity } = this.props;
+        // const category = activity.category;
+        const category = 'deepeco';
         const color = getColorByCategory(category);
         return (
             <div className="ActivityComponentFooter"
