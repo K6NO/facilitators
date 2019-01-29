@@ -6,7 +6,8 @@
         "categories" : "Categories",
         "about" : "About",
         "signin" : "Sign In",
-        "signout" : "Sign out"
+        "signout" : "Sign out",
+        "editor" : "Edit Content"
     },
     "searchbox" : {
         "title" : "Welcome! Choose your activity.",
