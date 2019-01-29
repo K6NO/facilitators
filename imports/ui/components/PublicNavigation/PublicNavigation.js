@@ -7,21 +7,19 @@ import './PublicNavigation.scss';
 
 const PublicNavigation = props => (
   <div className="PublicNavigation">
-    <Nav navbar>
-      <NavItem 
-        onClick={props.navbarCallback}>
+    <Nav 
+      navbar
+      onClick={props.navbarCallback}>
+      <NavItem>
         <LanguageSelector {...props} /> 
       </NavItem>
-      <NavItem 
-        onClick={props.navbarCallback}>
+      <NavItem>
         <CategorySelector {...props} />
       </NavItem>
-      <NavItem 
-        onClick={props.navbarCallback}>
+      <NavItem>
         About
       </NavItem>
-      <NavItem
-        onClick={props.navbarCallback}>
+      <NavItem>
         <LoginModalController            
           {...props}/>
       </NavItem>
