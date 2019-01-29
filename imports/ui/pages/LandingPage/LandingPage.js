@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'reactstrap';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import Loading from '../../components/Loading/Loading';
 import LoginModalController from '../../components/LoginModal/LoginModalController';
-import Welcome from '../../components/Welcome/Welcome';
 import './LandingPage.scss';
 import ActivityComponentFooter from '../../components/ActivityComponent/ActivityComponentFooter';
 
