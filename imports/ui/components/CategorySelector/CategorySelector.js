@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactSelect from 'react-select';
+import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
@@ -9,7 +9,7 @@ class CategorySelector extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        selected: 'Categories'
+        selected: null
       };
     }
     
@@ -33,12 +33,16 @@ class CategorySelector extends React.Component {
             { value: 'community', label: i18n.__('categories.community')},
         ]
         return (
-            <ReactSelect 
-                className="CategorySelector"
+            <Select 
+                className="basic-single CategorySelector"
+                classNamePrefix="select"
                 options={categoryArray}
                 value={this.state.selected}
                 name="categorySelect"
-                onChange={(selection) => this.changeCategory(selection)}/>
+                defaultValue="Categories"
+                onChange={(selection) => this.changeCategory(selection)}
+                aria-label="Select Language"
+                />
         )
     }
 }

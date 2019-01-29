@@ -1,22 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactSelect from 'react-select';
+import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
+import getLocale from '../../../modules/get-locale';
+import './LanguageSelector.scss';
 
 class LanguageSelector extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        locale: this.props.locale,
-      };
-    }
-    componentWillReceiveProps (newProps) {
-        if(this.props.locale !== newProps.locale) {
-            this.setState({
-                locale: newProps.locale
-            });
-        }
-    }
+
     
     render () {
         const languageArray = [
@@ -26,14 +16,24 @@ class LanguageSelector extends React.Component {
             { value: 'ro', label: i18n.__('searchbox.ro')},
             { value: 'sk', label: i18n.__('searchbox.sk')},
         ];
+        const locale = getLocale();
+        const label = languageArray.find(e => e.value === locale).label;        
+        // const defaultText = languageArray[languageArray.indexOf(this.state.locale)].value;
+        // console.log(defaultText);
         
         return (
-            <ReactSelect 
-                className="LanguageSelector"
+            <Select 
+                className="basic-single LanguageSelector"
+                classNamePrefix="select"
+                isClearable={false}
+                isSearchable={false}
                 options={languageArray}
-                value={this.state.locale}
-                name="languageSelect"
-                onChange={this.props.updateLocaleCallback}/>
+                defaultValue={label}
+                // value={this.state.locale}
+                onChange={this.props.updateLocaleCallback}
+                aria-label="Select Language"
+                name="LanguageSelector"
+                />
         )
     }
 }
