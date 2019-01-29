@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import ReactSelect from 'react-select';
 import i18n from 'meteor/universe:i18n';
 
-
-const T = i18n.createComponent();
-
 class LanguageSelector extends React.Component {
     constructor(props){
       super(props);
@@ -40,13 +37,9 @@ class LanguageSelector extends React.Component {
         )
     }
 }
-
-LanguageSelector.defaultProps = {
-    
-};
   
 LanguageSelector.propTypes = {
-
+    updateLocale : PropTypes.bool.isRequired,
 };
   
 export default LanguageSelector;
