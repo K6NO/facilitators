@@ -42,7 +42,7 @@ class Navigation extends React.Component {
 
     return (
       <div>
-      <Navbar expand="md">  
+      <Navbar light expand="md">  
         <NavbarBrand className="mr-auto" href="/">
           <img className="img-responsive" src={logoUrl}/>
         </NavbarBrand>
@@ -66,7 +66,6 @@ Navigation.defaultProps = {
 
 Navigation.propTypes = {
   authenticated: PropTypes.bool.isRequired,
-  updateLocaleCallback : PropTypes.func.isRequired,
 };
 
 export default onClickOutside(Navigation);
