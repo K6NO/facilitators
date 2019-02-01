@@ -33,9 +33,7 @@ class AuthenticatedNavigation extends React.Component {
     return (
       <div className="AuthenticatedNavigation ">
         <Nav onClick={navbarCallback} navbar>
-          <NavItem >
-            <LanguageSelector {...props} /> 
-          </NavItem>
+          <LanguageSelector {...props} /> 
           <NavItem>
             <CategorySelector {...props} />
           </NavItem>
@@ -62,9 +60,7 @@ class AuthenticatedNavigation extends React.Component {
 
 AuthenticatedNavigation.propTypes = {
   history: PropTypes.object.isRequired,
-  viewportIsMobile: PropTypes.bool.isRequired,
-  updateLocaleCallback: PropTypes.func.isRequired
-  
+  viewportIsMobile: PropTypes.bool.isRequired,  
 };
 
 export default withRouter(AuthenticatedNavigation);

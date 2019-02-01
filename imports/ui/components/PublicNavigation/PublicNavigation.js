@@ -13,7 +13,7 @@ const PublicNavigation = props => (
       navbar
       onClick={props.navbarCallback}>
       <NavItem>
-        <LanguageSelector {...props} /> 
+        <LanguageSelector {...props} />
       </NavItem>
       <NavItem>
         <CategorySelector {...props} />
@@ -33,5 +33,4 @@ export default PublicNavigation;
 
 PublicNavigation.propTypes = {
   navbarCallback: PropTypes.func.isRequired,
-  updateLocaleCallback : PropTypes.func.isRequired,
 };

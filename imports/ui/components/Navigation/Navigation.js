@@ -42,7 +42,7 @@ class Navigation extends React.Component {
 
     return (
       <div>
-      <Navbar dark expand="md">  
+      <Navbar expand="md">  
         <NavbarBrand className="mr-auto" href="/">
           <img className="img-responsive" src={logoUrl}/>
         </NavbarBrand>

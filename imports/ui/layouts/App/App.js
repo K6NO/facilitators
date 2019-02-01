@@ -23,7 +23,6 @@ import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
 import getUserName from '../../../modules/get-user-name';
-import setLocale from '../../../modules/set-locale';
 import './App.scss';
 
 class App extends React.Component {
@@ -31,23 +30,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       afterLoginPath: null,
-      locale: 'en'
     };
   }
 
-  componentDidMount () {
-    //set default locale
-    setLocale('en');
-
-  }
   setAfterLoginPath = (afterLoginPath) => {
     this.setState({ afterLoginPath });
-  }
-
-  updateLocale = (locale) => {
-    this.setState({
-      locale: locale
-    });
   }
 
   selectCategoryCallback = (category) => {
@@ -66,7 +53,6 @@ class App extends React.Component {
               {...props} 
               {...state} 
               locale={this.state.locale} 
-              updateLocaleCallback={this.updateLocale}
               selectCategoryCallback={selectCategoryCallback}  
             />
             <Switch>
