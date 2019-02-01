@@ -1,5 +1,5 @@
 {
-    "_locale": "en",
+    "_locale": "en-US",
     "hello" : "Hello world!",
     "menu": {
         "language" : "Select language",
@@ -13,7 +13,7 @@
         "title" : "Welcome! Choose your activity.",
         "searchBtn" : "Search",
         "detailedBtn" : "Detailed search",
-        "en" : "English",
+        "en-US" : "English",
         "es" : "Spanish",
         "hu" : "Hungarian",
         "sk" : "Slovakian",

@@ -13,7 +13,7 @@
         "title" : "Welcome! Choose your activity.",
         "searchBtn" : "Search",
         "detailedBtn" : "Detailed search",
-        "en" : "English",
+        "en-US" : "English",
         "es" : "Spanish",
         "hu" : "Hungarian",
         "sk" : "Slovakian",
