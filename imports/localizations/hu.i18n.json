@@ -13,11 +13,11 @@
         "title" : "Welcome! Choose your activity.",
         "searchBtn" : "Search",
         "detailedBtn" : "Detailed search",
-        "en-US" : "Angol",
-        "es" : "Spanyol",
+        "en-US" : "English",
+        "es" : "Espanol",
         "hu" : "Magyar",
-        "sk" : "Szlovák",
-        "ro" : "Román",
+        "sk" : "Slovensko",
+        "ro" : "Romana",
         "matching" : "matching exercises"
     },
     "activity" : {
