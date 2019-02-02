@@ -4,28 +4,36 @@ import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
 import setLocale from '../../../modules/set-locale';
 import getLocale from '../../../modules/get-locale';
+import getLanguageArray from '../../../modules/get-language-array';
 import './LanguageSelector.scss';
 
+
+
 class LanguageSelector extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            locale : 'English',
+        }
+    }
 
     updateLocale = (localeObject) => {    
-        setLocale(localeObject.value);
+        const languageArray = getLanguageArray();
+        i18n.setLocale(localeObject.value)
+            .then(() => {
+                const locale = getLocale();
+                const label = languageArray.filter(e => e.value === locale)[0].label;
+                this.setState({
+                locale: label
+            });
+            console.log(this.state.locale)
+        });
       }
 
     
     render () {
-        const languageArray = [
-            { value: 'en-US', label: i18n.__('searchbox.en-US')},
-            { value: 'es', label: i18n.__('searchbox.es')},
-            { value: 'hu', label: i18n.__('searchbox.hu')},
-            { value: 'ro', label: i18n.__('searchbox.ro')},
-            { value: 'sk', label: i18n.__('searchbox.sk')},
-        ];
-        const locale = getLocale();
-        
-        const label = languageArray.filter(e => e.value === locale)[0].label;
-        
-        
+        const languageArray = getLanguageArray();  
         return (
             <Select 
                 className="basic-single LanguageSelector"
@@ -33,8 +41,9 @@ class LanguageSelector extends React.Component {
                 isClearable={false}
                 isSearchable={false}
                 options={languageArray}
-                defaultValue={label}
-                // value={this.state.locale}
+                // defaultValue={this.state.locale}
+                placeholder={this.state.locale}
+                value={this.state.locale}
                 onChange={this.updateLocale}
                 aria-label="Select Language"
                 name="LanguageSelector"
