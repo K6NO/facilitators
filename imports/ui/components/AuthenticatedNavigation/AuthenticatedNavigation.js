@@ -33,7 +33,9 @@ class AuthenticatedNavigation extends React.Component {
     return (
       <div className="AuthenticatedNavigation ">
         <Nav onClick={navbarCallback} navbar>
-          <LanguageSelector {...props} /> 
+          <NavItem>
+            <LanguageSelector {...props} /> 
+          </NavItem>
           <NavItem>
             <CategorySelector {...props} />
           </NavItem>
