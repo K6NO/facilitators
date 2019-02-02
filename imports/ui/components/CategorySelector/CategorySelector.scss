@@ -1,16 +1,13 @@
-.LanguageSelector {
-    width: 150px;
+.CategorySelector {
+    width: 230px;
     .css-vj8t7z {   
         border: 1px solid transparent;
         &:hover {
             border: 1px solid transparent;
-            outline: none;
-            box-shadow: none;
         }
         &:active {
             border: 1px solid transparent;
             outline: none;
-            box-shadow: none;
         }
     }
     .css-2o5izw {
@@ -21,15 +18,5 @@
             outline: none;
             box-shadow: none;
         }
-    }
-    .css-d8oujb {
-        // divider pipe line
-        display: none!important;
-        width: 0;
-    }
-    .css-1ep9fjw  {
-        // down arrow
-        display: none!important;
-        width: 0;
     }
 }

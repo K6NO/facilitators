@@ -30,6 +30,7 @@ class LanguageSelector extends React.Component {
 
     
     render () {
+        const { viewportIsMobile } = this.props;
         const languageArray = getLanguageArray();  
         return (
             <Select 
@@ -49,6 +50,7 @@ class LanguageSelector extends React.Component {
 }
   
 LanguageSelector.propTypes = {
+    viewportIsMobile: PropTypes.bool.isRequired,
 };
   
 export default LanguageSelector;

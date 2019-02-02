@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
+import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
+import './CategorySelector.scss';
 
 const T = i18n.createComponent();
 
@@ -9,7 +11,7 @@ class CategorySelector extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        selected: null
+        selected: 'Categories'
       };
     }
     
@@ -17,38 +19,33 @@ class CategorySelector extends React.Component {
         const { selectCategoryCallback } = this.props;
         const category = selection.value;
         this.setState({
-            selected: category
-        });
+            selected: getCategoryName(category)
+        })
         selectCategoryCallback(category);
     }
     render () {
-        // get the category names according to the locale
-        // locale file categories.deepeco . ecofem, etc.
-        const categoryArray = [
-            { value: 'footprint', label: i18n.__('categories.footprint')},
-            { value: 'deepeco', label: i18n.__('categories.deepeco')},
-            { value: 'ecofem', label: i18n.__('categories.ecofem')},
-            { value: 'landart', label: i18n.__('categories.landart')},
-            { value: 'food', label: i18n.__('categories.food')},
-            { value: 'community', label: i18n.__('categories.community')},
-        ]
+        
+        const { viewportIsMobile } = this.props;
+        const categoryArray = getCategoryArray();
         return (
             <Select 
                 className="basic-single CategorySelector"
                 classNamePrefix="select"
+                isSearchable={false}
+                isClearable={false}
                 options={categoryArray}
-                value={this.state.selected}
                 name="categorySelect"
-                defaultValue="Categories"
+                placeholder={this.state.selected}
+                value={this.state.selected}
                 onChange={(selection) => this.changeCategory(selection)}
-                aria-label="Select Language"
+                aria-label="Select Category"
                 />
         )
     }
 }
   
 CategorySelector.propTypes = {
-
+    viewportIsMobile: PropTypes.bool.isRequired,
 };
   
 export default CategorySelector;
