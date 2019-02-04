@@ -3,7 +3,7 @@
     "hello" : "Üdvözlünk!",
     "menu": {
         "language" : "Select language",
-        "categories" : "Categories",
+        "categories" : "Kategóriák",
         "about" : "About",
         "signin" : "Sign In",
         "signout" : "Sign out",
