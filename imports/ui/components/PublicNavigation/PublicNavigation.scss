@@ -1,8 +1,5 @@
 @import '../../stylesheets/colors';
 @import '../../stylesheets/mixins';
-.menuModal {
-    display: inline;
-}
 .PublicNavigation {
     width: 100%;
     padding-left: 15rem;
@@ -17,29 +14,18 @@
         height: 6rem;
         height: 8vh;               
         text-transform: uppercase;
-                font-weight: 100;
+        color: $ef-ecofem;
         cursor: pointer;
-        &:hover {
-          
-          font-weight: 400;
-        }
         &:active {
           background: transparent;
-         
         }
         &:hover:active {
           background: transparent;
-         
         }
         a {
-         
             text-decoration: none;
             &:hover{
-         
                 text-decoration: none;
-            }
-            &:active {
-         
             }
         }
         @include breakpoint(tablet) {
@@ -48,12 +34,5 @@
             align-items: center;
             padding: 0 1rem;
         }
-    }
-    .menuLogo {
-        max-width: 100px;
-    }
-    svg {
-        margin-right: -12rem;
-        margin-right: -43vw;
     }
 }

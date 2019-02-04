@@ -1,5 +1,7 @@
+@import '../../stylesheets/colors';
+@import '../../stylesheets/mixins';
 .CategorySelector {
-    width: 230px;
+    width: 200px;
     .css-vj8t7z {   
         border: 1px solid transparent;
         &:hover {
@@ -18,5 +20,17 @@
             outline: none;
             box-shadow: none;
         }
+    }
+    .select__placeholder {
+        color: $ef-ecofem;
+    }
+    .select__indicator-separator {
+        display: none;
+    }
+    .select__dropdown-indicator {
+        color: $ef-ecofem;
+    }
+    .select__menu {
+        color: $ef-ecofem;
     }
 }

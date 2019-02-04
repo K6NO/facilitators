@@ -29,26 +29,27 @@ class AuthenticatedNavigation extends React.Component {
   render() {
     const { navbarCallback, ...props } = this.props;
     const user = Meteor.user();
-    
+    console.log(props.history)
     return (
       <div className="AuthenticatedNavigation ">
-        <Nav onClick={navbarCallback} navbar>
+        <Nav navbar>
           <NavItem>
             <LanguageSelector {...props} /> 
           </NavItem>
           <NavItem>
             <CategorySelector {...props} />
           </NavItem>
-          <NavItem >
+          <NavItem className="pl-3">
             {i18n.__('menu.about')}
-          </NavItem>
-          <NavItem onClick={()=> this.logoutUser()}>
+          </NavItem >
+          <NavItem className="pl-3"
+            onClick={()=> this.logoutUser()}>
             {i18n.__('menu.signout')}
           </NavItem>
           {(user && !!Roles.userIsInRole(user, ['admin', 'editor'])
             && 
           <LinkContainer to="/editor">
-            <NavItem>
+            <NavItem className="pl-3">
             {i18n.__('menu.editor')}
             </NavItem>
           </LinkContainer>

@@ -5,8 +5,6 @@ import i18n from 'meteor/universe:i18n';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 import './CategorySelector.scss';
 
-const T = i18n.createComponent();
-
 class CategorySelector extends React.Component {
     constructor(props){
       super(props);
@@ -16,16 +14,16 @@ class CategorySelector extends React.Component {
     }
     
     changeCategory = (selection) => {
-        const { selectCategoryCallback } = this.props;
+        const { selectCategoryCallback, history } = this.props;
+        console.log(history);
         const category = selection.value;
         this.setState({
             selected: getCategoryName(category)
         })
-        selectCategoryCallback(category);
+        history.push('/category/' + category);
+        
     }
     render () {
-        
-        const { viewportIsMobile } = this.props;
         const categoryArray = getCategoryArray();
         return (
             <Select 

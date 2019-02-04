@@ -16,7 +16,6 @@
     }
     .navbar-nav > .active > a {
         background: transparent;
-        
     }
     li {
         height: 6rem;
@@ -25,36 +24,18 @@
         text-transform: uppercase;
         
         font-weight: 100;
-        &:hover {
-        
-        font-weight: 400;
-        }
         &:active {
-        background: transparent;
-        
+            background: transparent;
         }
         &:hover:active {
-        background: transparent;
-        
+            background: transparent;
         }
         a {
-        
             text-decoration: none;
             &:hover{
-        
                 text-decoration: none;
             }
-            &:active {
-        
-            }
         }
-    }
-    .menuLogo {
-        max-width: 100px;
-    }
-    svg{
-        margin-right: -12rem;
-        margin-right: -55vw;
     }
     
     button {
@@ -98,9 +79,5 @@
         flex-direction: row;
         align-items: center;
         padding: 0 1rem;
-    }
-    .redBorder {
-       
-        padding: .5rem 3.5rem;
     }
 }
