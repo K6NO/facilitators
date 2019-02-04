@@ -9,13 +9,12 @@ class CategorySelector extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        selected: 'Categories'
+        selected: i18n.__('menu.categories')
       };
     }
     
     changeCategory = (selection) => {
         const { history } = this.props;
-        console.log(history);
         const category = selection.value;
         this.setState({
             selected: getCategoryName(category)

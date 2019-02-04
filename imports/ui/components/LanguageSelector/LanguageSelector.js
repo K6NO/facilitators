@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
-import setLocale from '../../../modules/set-locale';
 import getLocale from '../../../modules/get-locale';
 import { getLanguageArray, getLanguageName } from '../../../modules/get-language-array';
 import './LanguageSelector.scss';
