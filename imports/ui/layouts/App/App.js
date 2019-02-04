@@ -37,10 +37,6 @@ class App extends React.Component {
     this.setState({ afterLoginPath });
   }
 
-  selectCategoryCallback = (category) => {
-    console.log('Check if this is needed here. Logs category: ', category);
-  }
-
   render() {
     const { props, state, setAfterLoginPath, selectCategoryCallback } = this;
     
@@ -58,6 +54,7 @@ class App extends React.Component {
             <Switch>
               {/* Public */}
               <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />
+              <Public exact name="index" path="/category/:cat" component={LandingPage}  {...props} {...state} />
               <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
               <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
               <Route name="recover-password" path="/recover-password" component={RecoverPassword}    />
