@@ -20,10 +20,10 @@ const PublicNavigation = props => (
       <NavItem>
         <CategorySelector {...props} />
       </NavItem>
-      <NavItem className="pl-3">
+      <NavItem className={`pl-3 ${props.viewportIsMobile && 'pt-2'}`}>
         {i18n.__('menu.about')}
       </NavItem>
-      <NavItem className="pl-3">
+      <NavItem className={`pl-3 ${props.viewportIsMobile && 'pt-2'}`}>
         <LoginModalController            
           {...props}/>
       </NavItem>
@@ -36,4 +36,5 @@ export default withRouter(PublicNavigation);
 PublicNavigation.propTypes = {
   navbarCallback: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
+  viewportIsMobile: PropTypes.bool.isRequired
 };

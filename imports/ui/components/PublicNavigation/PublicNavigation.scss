@@ -2,31 +2,26 @@
 @import '../../stylesheets/mixins';
 .PublicNavigation {
     width: 100%;
-    padding-left: 15rem;
-    font-size: 1.6rem;
     letter-spacing: 1px;
+    font-size: 1.4rem;
     @include breakpoint(tablet) { 
         display: flex;
         justify-content: flex-end;
-        font-size: 1.4rem;
+        
     }
-    li {
-        height: 6rem;
-        height: 8vh;               
+    li {       
         text-transform: uppercase;
         color: $ef-ecofem;
         cursor: pointer;
         &:active {
           background: transparent;
         }
+        &:hover{
+            text-decoration: none;
+            color: $ef-ecofem-dark;
+        }
         &:hover:active {
           background: transparent;
-        }
-        a {
-            text-decoration: none;
-            &:hover{
-                text-decoration: none;
-            }
         }
         @include breakpoint(tablet) {
             display: flex;
