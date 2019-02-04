@@ -14,7 +14,7 @@ class CategorySelector extends React.Component {
     }
     
     changeCategory = (selection) => {
-        const { selectCategoryCallback, history } = this.props;
+        const { history } = this.props;
         console.log(history);
         const category = selection.value;
         this.setState({
