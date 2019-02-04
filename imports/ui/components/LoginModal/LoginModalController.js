@@ -35,17 +35,18 @@ class LoginModalController extends React.Component {
 
     render() {
         const { isOpen } = this.state;
-        const { className, viewportIsMobile } = this.props;
+        
 
         return (
-            <div className={`${className} LoginModalController`}
+            <div className={`LoginModalController`}
                 onSubmit={e => e.stopPropagation()}
                 onClick={e => e.stopPropagation()}
             >
-                <Button 
+                <button 
+                    className="openButton"
                     onClick={this.openModal}>
                     Sign Up | Login
-                </Button>
+                </button>
                 
                 <Modal
                     onRequestClose={this.closeModal}
