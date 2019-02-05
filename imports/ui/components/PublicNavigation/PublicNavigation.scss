@@ -3,7 +3,7 @@
 .PublicNavigation {
     width: 100%;
     letter-spacing: 1px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     @include breakpoint(tablet) { 
         display: flex;
         justify-content: flex-end;
@@ -23,11 +23,11 @@
         &:hover:active {
           background: transparent;
         }
-        @include breakpoint(tablet) {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0 1rem;
-        }
+        // @include breakpoint(tablet) {
+        //     display: flex;
+        //     flex-direction: row;
+        //     align-items: center;
+        //     padding: 0 1rem;
+        // }
     }
 }

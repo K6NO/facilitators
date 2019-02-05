@@ -3,10 +3,7 @@
 .AuthenticatedNavigation {
     width: 100%;
     letter-spacing: 1px;
-    font-size: 1.4rem;
-    // @include breakpoint(tablet){
-    //     padding-left: 0;
-    // }
+    font-size: 1.2rem;
     .navbar-nav {
         margin: 0;
     }
@@ -28,42 +25,12 @@
             background: transparent;
         }
     }
-    
-    // button {
-    //     background: transparent;
-    //     border: none;
-    //     font-size: 1.8rem;
-        
-    //     margin-right: 1rem;
-    //     cursor: pointer;
-    //     &:hover {
-    //         background: transparent;
-        
-    //     }
-    //     &:active{
-    //         background: transparent;
-        
-    //     }
-    //     &:focus{
-    //         background: transparent;
-        
-    //     }
-    //     &:active:focus {
-    //         background: transparent;
-        
-    //     }
-    //     &:active:hover {
-    //         background: transparent;
-        
-    //     }
-    // }
 }
 
 @include breakpoint(tablet) {
     .AuthenticatedNavigation {
         display: flex;
         justify-content: flex-end;
-        font-size: 1.4rem;
     }
     li {
         display: flex;

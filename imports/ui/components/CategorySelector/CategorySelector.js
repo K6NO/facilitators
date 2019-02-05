@@ -42,7 +42,6 @@ class CategorySelector extends React.Component {
 }
   
 CategorySelector.propTypes = {
-    viewportIsMobile: PropTypes.bool.isRequired,
 };
   
 export default CategorySelector;

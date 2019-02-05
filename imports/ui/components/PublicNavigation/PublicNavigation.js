@@ -20,7 +20,7 @@ const PublicNavigation = props => (
       <NavItem>
         <CategorySelector {...props} />
       </NavItem>
-      <NavItem className={`pl-3 ${props.viewportIsMobile && 'pt-2'}`}>
+      <NavItem className={`pl-3 pl-md-4 pr-md-4 ${props.viewportIsMobile && 'pt-2'}`}>
         {i18n.__('menu.about')}
       </NavItem>
       <NavItem className={`pl-3 ${props.viewportIsMobile && 'pt-2'}`}>

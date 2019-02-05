@@ -12,7 +12,8 @@ class LanguageSelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            locale : getLanguageName(getLocale()),
+            locale: i18n.__('menu.language')
+            // locale : getLanguageName(getLocale()),
         }
     }
 
@@ -29,7 +30,6 @@ class LanguageSelector extends React.Component {
 
     
     render () {
-        const { viewportIsMobile } = this.props;
         const languageArray = getLanguageArray();  
         return (
             <Select 
@@ -49,7 +49,6 @@ class LanguageSelector extends React.Component {
 }
   
 LanguageSelector.propTypes = {
-    viewportIsMobile: PropTypes.bool.isRequired,
 };
   
 export default LanguageSelector;

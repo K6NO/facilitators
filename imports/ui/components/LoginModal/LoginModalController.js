@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 import LoginModal from './LoginModal';
-import { Button } from 'reactstrap';
+import i18n from 'meteor/universe:i18n';
 import './LoginModalController.scss';
 
 class LoginModalController extends React.Component {
@@ -45,7 +45,7 @@ class LoginModalController extends React.Component {
                 <button 
                     className="openButton"
                     onClick={this.openModal}>
-                    Sign Up | Login
+                    {i18n.__('menu.signin')}
                 </button>
                 
                 <Modal
