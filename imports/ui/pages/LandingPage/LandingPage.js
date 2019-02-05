@@ -4,6 +4,7 @@ import { Row, Col, Button } from 'reactstrap';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import Loading from '../../components/Loading/Loading';
+import ActivityComponent from '../../components/ActivityComponent/ActivityComponent';
 
 
 import './LandingPage.scss';
@@ -24,9 +25,9 @@ class LandingPage extends React.Component {
                 <h5>Site Content</h5>
                 
                 <Row>
-                    <Col xs={12}>
-                    hello!!!
-                </Col>
+                  <Col xs={12}>
+                    <ActivityComponent />    
+                  </Col>
                 </Row>
                 
           

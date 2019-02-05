@@ -24,6 +24,7 @@ class ActivityComponentBody extends React.Component {
     } 
     render() {
         const { activity } = this.props;
+        console.log('body', {activity})
         const category = activity.category;
         const color = getColorByCategory(category);
         const locale = getLocale();

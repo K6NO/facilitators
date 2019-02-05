@@ -4,6 +4,7 @@ import { Row, Col, Table, FormGroup } from 'reactstrap';
 import ActivityComponentHeader from './ActivityComponentHeader';
 import ActivityComponentBody from './ActivityComponentBody';
 import ActivityComponentFooter from './ActivityComponentFooter';
+import activity from './mockActivity.json';
 
 import './ActivityComponent.scss';
 
@@ -15,11 +16,12 @@ class ActivityComponent extends React.Component {
     }
 
     render() {
-        const { activity } = this.props;
+        // const { activity } = this.props;
+        console.log(activity);
         return (
             <div className="ActivityComponent">
-                <ActivityComponentHeader />
-                <ActivityComponentBody />
+                <ActivityComponentHeader activity={activity}/>
+                <ActivityComponentBody activity={activity}/>
                 <ActivityComponentFooter
                     activity={activity} />
             </div>
@@ -29,10 +31,10 @@ class ActivityComponent extends React.Component {
 
 ActivityComponent.defaultProps = {
     
-  };
+};
   
 ActivityComponent.propTypes = {
-    activity: PropTypes.object.isRequired,
+    activity: PropTypes.object,
 };
 
 
