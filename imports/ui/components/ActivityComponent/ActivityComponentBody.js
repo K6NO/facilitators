@@ -4,7 +4,7 @@ import i18n from 'meteor/universe:i18n';
 import getLocale from '../../../modules/get-locale';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col, Table, FormGroup } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import './ActivityComponentBody.scss';
 
@@ -13,7 +13,6 @@ const T = i18n.createComponent();
 class ActivityComponentBody extends React.Component {
     constructor(props){
       super(props);
-      
     }
 
     setBackground = (color) => {
