@@ -23,58 +23,10 @@
         }
     }
     .feedbackCol {
-        
         padding: 3rem;
         @include breakpoint(desktop-large){
             max-width: 31%;
             background: transparent;
         }
-    }
-}
-
-
-.StoriesLogin {
-    text-align: center;
-    .openButton {
-    margin: 0 0 1.5rem;
-    display: inline-block;
-    @include breakpoint(phablet){
-        font-size: 1.4rem;
-        font-size: 4vw;
-    }
-    @include breakpoint(tablet) {  
-        padding: .5rem 3.5rem;
-        font-size: 1.4rem;
-     }
-    }
-}
-.stories {
-    h5 {
-        font-size: 2.4rem;
-        font-size: 6.7vw;
-        font-weight: 100;
-        padding: 2rem 3rem;
-        text-align: left;
-        margin: 0 auto;
-        text-transform: uppercase;
-        font-weight: 100;
-        @include breakpoint(phablet) {
-            font-size: 2.4rem;
-            padding: 2rem 0;
-        
-        }
-    };
-}
-
-.switchShortlist {
-    color: #fff;
-    margin: 0 auto;
-    padding: 2rem;
-    text-decoration: none;
-    &.switchShortlist:link, .switchShortlist:visited, .switchShortlist:hover, .switchShortlist:active, .switchShortlist:focus {
-        color: #fff;
-        margin: 0 auto;
-        padding: 2rem;
-        text-decoration: none;
     }
 }
