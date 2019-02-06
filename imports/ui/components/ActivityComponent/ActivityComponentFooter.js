@@ -4,7 +4,7 @@ import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col, Table, FormGroup } from 'reactstrap';
 
-import './ActivityComponent.scss';
+import './ActivityComponentFooter.scss';
 
 class ActivityComponentFooter extends React.Component {
     constructor(props){
@@ -24,8 +24,12 @@ class ActivityComponentFooter extends React.Component {
             <div className="ActivityComponentFooter"
                 style={this.setBackground(color)}>
                 <Row>
-                    <Col style={this.setBackground(color)}>
-                        <Icon icon={'back'} size={'lg'}/>Back to search results 
+                    <Col className="text-right pt-3 pb-5"
+                    style={this.setBackground(color)}>
+                        <a href="#" className="backLink">
+                            <Icon icon={'angle-double-left'} size={'lg'}/>
+                            Back to search results
+                        </a>
                     </Col>
                 </Row>
             </div>
