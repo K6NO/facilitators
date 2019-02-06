@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import EditorNewActivityButton from '../EditorNewActivityButton/EditorNewActivityButton';
 import './EditorListActivitiesComponent.scss';
