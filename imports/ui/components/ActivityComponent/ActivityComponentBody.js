@@ -43,7 +43,7 @@ class ActivityComponentBody extends React.Component {
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col xs="6">
-                                {this.renderActivityField('user-circle', 'activity.age')}
+                                {this.renderActivityField('address-card', 'activity.age')}
                             </Col>
                             <Col xs="6">
                                 {activity.age} <T _locale={locale}>activity.years</T>
@@ -120,10 +120,7 @@ class ActivityComponentBody extends React.Component {
                 </Row>
                 <Row>
                     <Col>
-                        <h5>
-                            <Icon icon={'book-reader'} size={'lg'} />
-                            <T _locale={locale}>activity.resources</T>
-                        </h5>
+                    {this.renderActivityField('book-open', 'activity.resources')}
                         <p>
                             {activity.resources[`resources.${locale}`]}
                         </p>
