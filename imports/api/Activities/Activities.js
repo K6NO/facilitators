@@ -77,7 +77,7 @@ Activities.schema = new SimpleSchema({
         defaultValue: false,
     },
     title: Object,
-    'title.en': {
+    'title.en-US': {
         type: String,
         max: 120,
         label: "Title of the activity. Max. 120 chars."
@@ -103,7 +103,7 @@ Activities.schema = new SimpleSchema({
         label: "Title of the activity. Max. 120 chars."
     },
     description: Object,
-    'description.en': {
+    'description.en-US': {
         type: String,
         max: 10000,
         label: "Activity description. Max. 10000 chars."
@@ -153,7 +153,7 @@ Activities.schema = new SimpleSchema({
         allowedValues: ["groupvs", "groupsm", "groupmd", "grouplg","groupvl"],
     },
     preparations: Object,
-    'preparations.en': {
+    'preparations.en-US': {
         type: String,
         max: 400,
         label: "Activity prep. Max. 400 chars.",
@@ -179,7 +179,7 @@ Activities.schema = new SimpleSchema({
         label: "Activity prep. Max. 400 chars.",
     },
     objectives: Object, 
-    'objectives.en': {
+    'objectives.en-US': {
         type: String,
         max: 400,
         label: "Activity objectives. Max. 400 chars.",
@@ -205,7 +205,7 @@ Activities.schema = new SimpleSchema({
         label: "Activity objectives. Max. 400 chars.",
     },
     tools: Object,
-    'tools.en': {
+    'tools.en-US': {
         type: String,
         max: 400,
         label: "Activity tools. Max. 400 chars.",
@@ -231,7 +231,7 @@ Activities.schema = new SimpleSchema({
         label: "Activity tools. Max. 400 chars.",
     },
     resources: Object,
-    'resources.en': {
+    'resources.en-US': {
         type: String,
         max: 400,
         label: "Activity tools. Max. 400 chars.",
@@ -281,7 +281,7 @@ Activities.schema = new SimpleSchema({
     },
     'languages.$': {
         type: String,
-        allowedValues: ['en', 'es', 'hu', 'ro', 'sk']
+        allowedValues: ['en-US', 'es', 'hu', 'ro', 'sk']
     },
 }, {requiredByDefault: false});
 
