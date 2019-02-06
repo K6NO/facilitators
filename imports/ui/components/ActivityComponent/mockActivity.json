@@ -5,11 +5,11 @@
     "organisationId" : "orgId12345678",
     "public" : "true",
     "title": {
-        "title.en-US" : "Angol cim",
-        "title.es" : "Spanyol cim",
-        "title.hu" : "Magyar cim",
-        "title.ro" : "Roman cim",
-        "title.sk" : "Szlovak cim"
+        "title.en-US" : "Angol cím",
+        "title.es" : "Spanyol cím",
+        "title.hu" : "Magyar cím",
+        "title.ro" : "Roman cím",
+        "title.sk" : "Szlovak cím"
     },
     "description" : {
         "description.en-US" : "Angol leiras",

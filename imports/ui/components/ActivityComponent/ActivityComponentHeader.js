@@ -18,12 +18,14 @@ class ActivityComponentHeader extends React.Component {
         }
     }
 
-    renderTags = ({activity, locale}) => {
+    renderTags = ({activity, locale, color}) => {
         return activity.tags.map((tagIndex) =>   
             <Badge 
                 color="light" 
                 pill
                 key={tagIndex}
+                className="tagPills"
+                style={{color: color}}
                 >
                 {i18n.__(`tags.${tagIndex}`)}
             </Badge>
@@ -43,15 +45,13 @@ class ActivityComponentHeader extends React.Component {
                         <a className="activityCategory">{categoryName}</a>
                         <br/>
                         {/* for each number in the tags array find the corresponding tag in the i18 file and render */}
-                        {this.renderTags({activity, locale})}
-                        
-                        {/* <Badge color="light" pill>Light</Badge>
-                        <Badge color="light" pill>Light</Badge>
-                        <Badge color="light" pill>Light</Badge> */}
+                        {this.renderTags({activity, locale, color})}
                     </Col>
-                    <Col sm="6">
-                    
-                        <Icon icon={'back'} size={'lg'}/>Back to search results 
+                    <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
+                        <span className="backLink">
+                            <Icon icon={'angle-double-left'} size={'lg'}/>
+                            Back to search results 
+                        </span>
                     </Col>
                 </Row>
             </div>
