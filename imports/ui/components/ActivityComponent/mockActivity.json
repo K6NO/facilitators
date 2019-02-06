@@ -1,76 +1,76 @@
 {
-    "activity" : {
-        "createdAt" : "1234567",
-        "updatedAt" : "1234567",
-        "owner" : "Ya8muEAWnmsN34Akd",
-        "organisationId" : "orgId12345678",
-        "public" : "true",
-        "title": {
-            "title.en-US" : "Angol cim",
-            "title.es" : "Spanyol cim",
-            "title.hu" : "Magyar cim",
-            "title.ro" : "Roman cim",
-            "title.sk" : "Szlovak cim"
-        },
-        "description" : {
-            "description.en-US" : "Angol leiras",
-            "description.es" : "Spanyol leiras",
-            "description.hu" : "Magyar leiras",
-            "description.ro" : "Roman leiras",
-            "description.sk" : "Szlovak leiras"
-        },
-        "category" : "footprint",
-        "age" : "agech",
-        "time" : "timevs",
-        "group" : "groupvs",
-        "preparations" : {
-            "preparations.en-US" : "Angol prep",
-            "preparations.es" : "Spanyol prep",
-            "preparations.hu" : "Magyar prep",
-            "preparations.ro" : "Roman prep",
-            "preparations.sk" : "Szlovak prep"
-        },
-        "objectives" : {
-            "objectives.en-US" : "Angol obi",
-            "objectives.es" : "Spanyol obi",
-            "objectives.hu" : "Magyar obi",
-            "objectives.ro" : "Roman obi",
-            "objectives.sk" : "Szlovak obi"
-        },
-        "tools": {
-            "tools.en-US" : "Angol tools",
-            "tools.es" : "Spanyol tools",
-            "tools.hu" : "Magyar tools",
-            "tools.ro" : "Roman tools",
-            "tools.sk" : "Szlovak tools"
-        },
-        "resources" : {
-            "resources.en-US" : "Angol resource",
-            "resources.es" : "Spanyol resource",
-            "resources.hu" : "Magyar resource",
-            "resources.ro" : "Roman resource",
-            "resources.sk" : "Szlovak resource"
-        },
-        "images" : [
-            "https://via.placeholder.com/400x300.jpg",
-            "https://via.placeholder.com/400x300.jpg",
-            "https://via.placeholder.com/400x300.jpg",
-            "https://via.placeholder.com/400x300.jpg" 
-        ],
-        "comments" : [
-            {
-            "createdAt": "1234567890",
-            "updatedAt": "1234567890",
-            "userId" : "Ya8muEAWnmsN34Akd",
-            "username": "keno",
-            "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-            "authorized" : "true"
-        }],
-        "languages" : [
-            "en-US",
-            "es",
-            "hu"
-        ]
-
-    }
+    "createdAt" : "1234567",
+    "updatedAt" : "1234567",
+    "owner" : "Ya8muEAWnmsN34Akd",
+    "organisationId" : "orgId12345678",
+    "public" : "true",
+    "title": {
+        "title.en-US" : "Angol cim",
+        "title.es" : "Spanyol cim",
+        "title.hu" : "Magyar cim",
+        "title.ro" : "Roman cim",
+        "title.sk" : "Szlovak cim"
+    },
+    "description" : {
+        "description.en-US" : "Angol leiras",
+        "description.es" : "Spanyol leiras",
+        "description.hu" : "Magyar leiras",
+        "description.ro" : "Roman leiras",
+        "description.sk" : "Szlovak leiras"
+    },
+    "category" : "ecofem",
+    "age" : "agech",
+    "time" : "timevs",
+    "group" : "groupvs",
+    "preparations" : {
+        "preparations.en-US" : "Angol prep",
+        "preparations.es" : "Spanyol prep",
+        "preparations.hu" : "Magyar prep",
+        "preparations.ro" : "Roman prep",
+        "preparations.sk" : "Szlovak prep"
+    },
+    "objectives" : {
+        "objectives.en-US" : "Angol obi",
+        "objectives.es" : "Spanyol obi",
+        "objectives.hu" : "Magyar obi",
+        "objectives.ro" : "Roman obi",
+        "objectives.sk" : "Szlovak obi"
+    },
+    "tools": {
+        "tools.en-US" : "Angol tools",
+        "tools.es" : "Spanyol tools",
+        "tools.hu" : "Magyar tools",
+        "tools.ro" : "Roman tools",
+        "tools.sk" : "Szlovak tools"
+    },
+    "resources" : {
+        "resources.en-US" : "Angol resource",
+        "resources.es" : "Spanyol resource",
+        "resources.hu" : "Magyar resource",
+        "resources.ro" : "Roman resource",
+        "resources.sk" : "Szlovak resource"
+    },
+    "images" : [
+        "https://via.placeholder.com/400x300.jpg",
+        "https://via.placeholder.com/400x300.jpg",
+        "https://via.placeholder.com/400x300.jpg",
+        "https://via.placeholder.com/400x300.jpg" 
+    ],
+    "tags" : [
+        1,2,3,4
+    ],
+    "comments" : [
+        {
+        "createdAt": "1234567890",
+        "updatedAt": "1234567890",
+        "userId" : "Ya8muEAWnmsN34Akd",
+        "username": "keno",
+        "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
+        "authorized" : "true"
+    }],
+    "languages" : [
+        "en-US",
+        "es",
+        "hu"
+    ]
 }
