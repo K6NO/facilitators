@@ -21,7 +21,18 @@ class ActivityComponentBody extends React.Component {
         return {
             background : opaqueColor
         }
-    } 
+    }
+
+    renderActivityField = (icon, activityField) => {
+        return (
+            <h5 className="activityHeader">
+                <Icon 
+                    icon={icon} 
+                    size={'lg'} />
+                <span className="ml-3">{i18n.__(activityField)}</span>
+            </h5>
+        )
+    }
     render() {
         const { activity, locale } = this.props;
         const category = activity.category;
@@ -32,10 +43,7 @@ class ActivityComponentBody extends React.Component {
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col xs="6">
-                                <h5>
-                                    <Icon icon={'user-circle'} size={'lg'} />
-                                    <T _locale={locale}>activity.age</T>
-                                </h5>
+                                {this.renderActivityField('user-circle', 'activity.age')}
                             </Col>
                             <Col xs="6">
                                 {activity.age} <T _locale={locale}>activity.years</T>
@@ -43,10 +51,7 @@ class ActivityComponentBody extends React.Component {
                         </Row>
                         <Row>
                             <Col xs="6">
-                                <h5>
-                                    <Icon icon={'clock'} size={'lg'} />
-                                    <T _locale={locale}>activity.time</T>
-                                </h5>
+                                {this.renderActivityField('clock', 'activity.time')}
                             </Col>
                             <Col xs="6">
                                 {activity.time} <T _locale={locale}>activity.minutes</T>
@@ -54,10 +59,7 @@ class ActivityComponentBody extends React.Component {
                         </Row>
                         <Row>
                             <Col xs="6">
-                                <h5>
-                                    <Icon icon={'users'} size={'lg'} />
-                                    <T _locale={locale}>activity.group</T>
-                                </h5>
+                                {this.renderActivityField('users', 'activity.group')}
                             </Col>
                             <Col xs="6">
                                 <T _locale={locale}>{activity.group}</T>
@@ -65,10 +67,7 @@ class ActivityComponentBody extends React.Component {
                         </Row>
                         <Row>
                             <Col>
-                                <h5>
-                                    <Icon icon={'pause-circle'} size={'lg'} />
-                                    <T _locale={locale}>activity.preparations</T>
-                                </h5>
+                                {this.renderActivityField('pause-circle', 'activity.preparations')}
                                 <p>
                                     {activity.preparations[`preparations.${locale}`]}
                                 </p>
@@ -78,10 +77,7 @@ class ActivityComponentBody extends React.Component {
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col>
-                                <h5>
-                                    <Icon icon={'bullseye'} size={'lg'} />
-                                    <T _locale={locale}>activity.objectives</T>
-                                </h5>
+                                {this.renderActivityField('bullseye', 'activity.objectives')}
                                 <p>
                                     {activity.objectives[`objectives.${locale}`]}
                                 </p>
@@ -89,10 +85,7 @@ class ActivityComponentBody extends React.Component {
                         </Row>
                         <Row>
                             <Col>
-                                <h5>
-                                    <Icon icon={'wrench'} size={'lg'} />
-                                    <T _locale={locale}>activity.tools</T>
-                                </h5>
+                            {this.renderActivityField('wrench', 'activity.tools')}
                                 <p>
                                     {activity.tools[`tools.${locale}`]}
                                 </p>
@@ -102,10 +95,7 @@ class ActivityComponentBody extends React.Component {
                 </Row>
                 <Row>
                     <Col sm="6">
-                        <h5>
-                            <Icon icon={'align-left'} size={'lg'} />
-                            <T _locale={locale}>activity.description</T>
-                        </h5>
+                    {this.renderActivityField('align-left', 'activity.description')}
                         <p>
                             {activity.description[`description.${locale}`]}
                         </p>
@@ -113,16 +103,9 @@ class ActivityComponentBody extends React.Component {
                     <Col sm="6">
                         <Row>
                             <Col>
-                                <h5>
-                                    <Icon icon={'comments'} size={'lg'} />
-                                    <T _locale={locale}>activity.comments</T>
-                                </h5>
+                            {this.renderActivityField('comments', 'activity.comments')}
                                 Here comes the comments box
-                                <h5>
-                                    <Icon icon={'comment-dots'} size={'lg'} />
-                                    <T _locale={locale}>activity.writecomment</T>
-                                </h5>
-                                
+                            {this.renderActivityField('comment-dots', 'activity.writecomment')}                                
                                 Here comes the write comment field.
                                 With text counter and send button
                             </Col>
