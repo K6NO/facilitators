@@ -44,14 +44,13 @@ class ActivityComponentHeader extends React.Component {
                         <h2 className="activityTitle">{activity.title[`title.${locale}`]}</h2>
                         <a className="activityCategory">{categoryName}</a>
                         <br/>
-                        {/* for each number in the tags array find the corresponding tag in the i18 file and render */}
                         {this.renderTags({activity, locale, color})}
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
-                        <span className="backLink">
+                        <a href="#" className="backLink">
                             <Icon icon={'angle-double-left'} size={'lg'}/>
                             Back to search results 
-                        </span>
+                        </a>
                     </Col>
                 </Row>
             </div>

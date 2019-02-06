@@ -44,7 +44,7 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col xs="6">
                                 <h5>
-                                    <Icon icon={'time'} size={'lg'} />
+                                    <Icon icon={'clock'} size={'lg'} />
                                     <T _locale={locale}>activity.time</T>
                                 </h5>
                             </Col>
@@ -55,8 +55,7 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col xs="6">
                                 <h5>
-                                    <Icon icon={'child'} size={'lg'} />
-                                    <Icon icon={'child'} size={'lg'} />
+                                    <Icon icon={'users'} size={'lg'} />
                                     <T _locale={locale}>activity.group</T>
                                 </h5>
                             </Col>
@@ -67,7 +66,7 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 <h5>
-                                    <Icon icon={'pause'} size={'lg'} />
+                                    <Icon icon={'pause-circle'} size={'lg'} />
                                     <T _locale={locale}>activity.preparations</T>
                                 </h5>
                                 <p>
@@ -80,7 +79,7 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 <h5>
-                                    <Icon icon={'target'} size={'lg'} />
+                                    <Icon icon={'bullseye'} size={'lg'} />
                                     <T _locale={locale}>activity.objectives</T>
                                 </h5>
                                 <p>
@@ -104,7 +103,7 @@ class ActivityComponentBody extends React.Component {
                 <Row>
                     <Col sm="6">
                         <h5>
-                            <Icon icon={'play'} size={'lg'} />
+                            <Icon icon={'align-left'} size={'lg'} />
                             <T _locale={locale}>activity.description</T>
                         </h5>
                         <p>
@@ -120,7 +119,7 @@ class ActivityComponentBody extends React.Component {
                                 </h5>
                                 Here comes the comments box
                                 <h5>
-                                    <Icon icon={'commenting'} size={'lg'} />
+                                    <Icon icon={'comment-dots'} size={'lg'} />
                                     <T _locale={locale}>activity.writecomment</T>
                                 </h5>
                                 
@@ -139,7 +138,7 @@ class ActivityComponentBody extends React.Component {
                 <Row>
                     <Col>
                         <h5>
-                            <Icon icon={'images'} size={'lg'} />
+                            <Icon icon={'book-reader'} size={'lg'} />
                             <T _locale={locale}>activity.resources</T>
                         </h5>
                         <p>
