@@ -14,6 +14,7 @@ import Public from '../../components/Public/Public';
 import AnalyticsTracker from '../../components/Analytics/Analytics';
 import LandingPage from '../../pages/LandingPage/LandingPage';
 import AdminPage from '../../pages/AdminPage/AdminPage';
+import EditorPage from '../../pages/EditorPage/EditorPage';
 import VerifyEmail from '../../pages/VerifyEmail/VerifyEmail';
 import RecoverPassword from '../../pages/RecoverPassword/RecoverPassword';
 import ResetPassword from '../../pages/ResetPassword/ResetPassword';
@@ -63,7 +64,7 @@ class App extends React.Component {
               <Route name="privacy" path="/privacy" component={Privacy} />        
               
               {/* Editor */}
-              {/* <AllowedRole allowedRoles={['admin', 'editor']} exact path="/editor" component={EditorPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/> */}
+              <AllowedRole allowedRoles={['admin', 'editor']} exact path="/editor" component={EditorPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
               
               {/* User manager  */}
               <AllowedRoleAdmin allowedRoles={['admin']} exact path="/editor/admin" component={AdminPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
