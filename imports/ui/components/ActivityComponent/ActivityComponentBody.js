@@ -23,16 +23,13 @@ class ActivityComponentBody extends React.Component {
         }
     } 
     render() {
-        const { activity } = this.props;
-        console.log('body', {activity})
+        const { activity, locale } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
-        const locale = getLocale();
         return (
             <div className="ActivityComponentBody">
-                <Row
-                    style={this.setBackground(color)}>
-                    <Col sm="6">
+                <Row>
+                    <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col xs="6">
                                 <h5>
@@ -74,12 +71,12 @@ class ActivityComponentBody extends React.Component {
                                     <T _locale={locale}>activity.preparations</T>
                                 </h5>
                                 <p>
-                                    {activity.preparations[locale]}
+                                    {activity.preparations[`preparations.${locale}`]}
                                 </p>
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm="6">
+                    <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col>
                                 <h5>
@@ -87,7 +84,7 @@ class ActivityComponentBody extends React.Component {
                                     <T _locale={locale}>activity.objectives</T>
                                 </h5>
                                 <p>
-                                    {activity.objectives[locale]}
+                                    {activity.objectives[`objectives.${locale}`]}
                                 </p>
                             </Col>
                         </Row>
@@ -98,7 +95,7 @@ class ActivityComponentBody extends React.Component {
                                     <T _locale={locale}>activity.tools</T>
                                 </h5>
                                 <p>
-                                    {activity.tools[locale]}
+                                    {activity.tools[`tools.${locale}`]}
                                 </p>
                             </Col>
                         </Row>
@@ -111,7 +108,7 @@ class ActivityComponentBody extends React.Component {
                             <T _locale={locale}>activity.description</T>
                         </h5>
                         <p>
-                            {activity.description[locale]}
+                            {activity.description[`description.${locale}`]}
                         </p>
                     </Col>
                     <Col sm="6">
@@ -146,7 +143,7 @@ class ActivityComponentBody extends React.Component {
                             <T _locale={locale}>activity.resources</T>
                         </h5>
                         <p>
-                            {activity.resources[locale]}
+                            {activity.resources[`resources.${locale}`]}
                         </p>
                     </Col>
                 </Row>
@@ -161,6 +158,7 @@ ActivityComponentBody.defaultProps = {
   
   ActivityComponentBody.propTypes = {
     activity: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
 };
 
 

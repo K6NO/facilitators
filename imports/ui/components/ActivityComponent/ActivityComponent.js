@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Table, FormGroup } from 'reactstrap';
 import ActivityComponentHeader from './ActivityComponentHeader';
 import ActivityComponentBody from './ActivityComponentBody';
 import ActivityComponentFooter from './ActivityComponentFooter';
 import activity from './mockActivity.json';
 
 import './ActivityComponent.scss';
+import getLocale from '../../../modules/get-locale';
 
 
 class ActivityComponent extends React.Component {
@@ -17,13 +17,21 @@ class ActivityComponent extends React.Component {
 
     render() {
         // const { activity } = this.props;
-        console.log(activity);
+        const locale = getLocale();
         return (
             <div className="ActivityComponent">
-                <ActivityComponentHeader activity={activity}/>
-                <ActivityComponentBody activity={activity}/>
+                <ActivityComponentHeader 
+                    activity={activity}
+                    locale={locale}
+                />
+                <ActivityComponentBody 
+                    activity={activity}
+                    locale={locale}
+                />
                 <ActivityComponentFooter
-                    activity={activity} />
+                    activity={activity}
+                    locale={locale}
+                />
             </div>
         )
     }

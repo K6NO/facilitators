@@ -17,15 +17,17 @@ class ActivityComponentFooter extends React.Component {
         }
     } 
     render() {
-        // const { activity } = this.props;
-        // const category = activity.category;
-        const category = 'deepeco';
+        const { activity, locale } = this.props;
+        const category = activity.category;
         const color = getColorByCategory(category);
         return (
             <div className="ActivityComponentFooter"
                 style={this.setBackground(color)}>
-                
-                <Icon icon={'back'} size={'lg'}/>Back to search results 
+                <Row>
+                    <Col style={this.setBackground(color)}>
+                        <Icon icon={'back'} size={'lg'}/>Back to search results 
+                    </Col>
+                </Row>
             </div>
         )
     }
@@ -33,10 +35,11 @@ class ActivityComponentFooter extends React.Component {
 
 ActivityComponentFooter.defaultProps = {
     
-  };
+};
   
-  ActivityComponentFooter.propTypes = {
+ActivityComponentFooter.propTypes = {
     activity: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
 };
 
 
