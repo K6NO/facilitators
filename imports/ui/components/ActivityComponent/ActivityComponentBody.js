@@ -45,24 +45,24 @@ class ActivityComponentBody extends React.Component {
                             <Col xs="6">
                                 {this.renderActivityField('address-card', 'activity.age')}
                             </Col>
-                            <Col xs="6">
-                                {activity.age} <T _locale={locale}>activity.years</T>
+                            <Col xs="6" className="pt-2">
+                                <span>{i18n.__(`activity.${activity.age}`)}</span>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs="6">
                                 {this.renderActivityField('clock', 'activity.time')}
                             </Col>
-                            <Col xs="6">
-                                {activity.time} <T _locale={locale}>activity.minutes</T>
+                            <Col xs="6" className="pt-2">
+                                <span>{i18n.__(`activity.${activity.time}`)}</span>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs="6">
                                 {this.renderActivityField('users', 'activity.group')}
                             </Col>
-                            <Col xs="6">
-                                <T _locale={locale}>{activity.group}</T>
+                            <Col xs="6" className="pt-2">
+                                <span>{i18n.__(`activity.${activity.group}`)}</span>
                             </Col>
                         </Row>
                         <Row>
