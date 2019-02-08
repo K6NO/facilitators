@@ -19,7 +19,7 @@ Meteor.methods({
         category: Match.Optional(String),
         age: Match.Optional(String),
         time: Match.Optional(String),
-        participants: Match.Optional(String),
+        group: Match.Optional(String),
         preparations: Match.Optional(Object),
         objectives: Match.Optional(Object),
         tools: Match.Optional(Object),
@@ -55,7 +55,7 @@ Meteor.methods({
             category: Match.Optional(String),
             age: Match.Optional(String),
             time: Match.Optional(String),
-            participants: Match.Optional(String),
+            group: Match.Optional(String),
             preparations: Match.Optional(Object),
             objectives: Match.Optional(Object),
             tools: Match.Optional(Object),
@@ -89,43 +89,79 @@ Meteor.methods({
           handleMethodException(exception);
         }
       },
-    //   'activities.updateLangAttributes' : function activitiesUpdateLangAttributes (activityId, attributeName, locale, value) {
-    //     check(activityId, String);
-    //     check(attributeName, String);
-    //     check(locale, String);
-    //     check(value, String);
+      'activities.updateLangAttributes' : function activitiesUpdateLangAttributes (activityId, attributeName, locale, value) {
+        check(activityId, String);
+        check(attributeName, String);
+        check(locale, String);
+        check(value, String);
         
-    //     try {
-    //         const user = Meteor.user();
-    //         if(user._id) {
-    //             if(Roles.userIsInRole(user._id, ['admin'])) {
-    //                 // admins can overwrite any activities
-    //                 return Activities.update(activityId, {
-    //                     $set: {
-    //                         [attributeName] : {
-    //                             [locale] : value
-    //                         }
-    //                     }
-    //                 });
-    //             } 
-    //             return Activities.update({
-    //                 _id: activityId,
-    //                 owner: user._id
-    //                 }, {
-    //                 $set: {
-    //                     [attributeName] : {
-    //                         [locale] : value
-    //                     }
-    //                 }
-    //             });
-    //         }
-    //         throw new Meteor.Error('Update Activity by Field', 'No userId.');
+        try {
+            const user = Meteor.user();
+            if(user._id) {
+                if(Roles.userIsInRole(user._id, ['admin'])) {
+                    // admins can overwrite any activities
+                    return Activities.update(activityId, {
+                        $set: {
+                            [attributeName] : {
+                                [locale] : value
+                            }
+                        }
+                    });
+                } 
+                return Activities.update({
+                    _id: activityId,
+                    owner: user._id
+                    }, {
+                    $set: {
+                        [attributeName] : {
+                            [locale] : value
+                        }
+                    }
+                });
+            }
+            throw new Meteor.Error('Update Activity by Field', 'No userId.');
             
-    //     } catch (exception) {
-    //         handleMethodException(exception);
-    //     }
+        } catch (exception) {
+            handleMethodException(exception);
+        }
 
-    // },
+    },
+    'activities.updateAttributes' : function activitiesUpdateAttributes (activityId, attributeName, value) {
+        check(activityId, String);
+        check(attributeName, String);
+        check(value, String);
+        
+        try {
+            const user = Meteor.user();
+            if(user._id) {
+                if(Roles.userIsInRole(user._id, ['admin'])) {
+                    // admins can overwrite any activities
+                    return Activities.update(activityId, {
+                        $set: {
+                            [attributeName] : {
+                                [locale] : value
+                            }
+                        }
+                    });
+                } 
+                return Activities.update({
+                    _id: activityId,
+                    owner: user._id
+                    }, {
+                    $set: {
+                        [attributeName] : {
+                            [locale] : value
+                        }
+                    }
+                });
+            }
+            throw new Meteor.Error('Update Activity by Field', 'No userId.');
+            
+        } catch (exception) {
+            handleMethodException(exception);
+        }
+
+    },
     'activities.remove' : function activitiesRemove (activity) {
         check(activity, Object);
         try {
@@ -150,9 +186,11 @@ Meteor.methods({
 
 rateLimit({
     methods: [
-        'activities.removeAdmin',
+        'activities.remove',
         'activities.insert',
         'activities.update',
+        'activities.updateAttributes',
+        'activities.updateLangAttributes'
       ],
       limit: 5,
       timeRange: 1000,
