@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col, Badge } from 'reactstrap';
 import './EditorActivityHeader.scss';
-import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 
-class EditorTitlePart extends React.Component {
+class EditorTitleComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
@@ -20,12 +17,22 @@ class EditorTitlePart extends React.Component {
         this.setState({title: e.value})
     }
     saveTitle = () => {
-        Meteor.methods('')
+        const { language } = this.props;
+        const activityId = this.props.activity._id;
+        Meteor.call('activities.updateLangAttributes', 
+        activityId, 'title', language, this.state.title,
+        (error) => {
+            if(error) {
+                Bert.alert(error.reason, 'danger');
+            } else { 
+                Bert.alert('Saved changes', 'success');
+            }
+        });
     }
 
     render() {
         return (
-            <div className="EditorTitlePart">
+            <div className="EditorTitleComponent">
                 {editing 
                 ? <input 
                     className="activityTitleEditing"
@@ -40,14 +47,14 @@ class EditorTitlePart extends React.Component {
     }
 }
 
-EditorTitlePart.defaultProps = {
-    title: ''
+EditorTitleComponent.defaultProps = {
 };
   
 EditorActivityHeader.propTypes = {
-    title: PropTypes.string,
+    activity: PropTypes.object.isRequired,
+    language: PropTypes.string.isRequired,
 };
 
 
-export default EditorTitlePart;
+export default EditorTitleComponent;
 

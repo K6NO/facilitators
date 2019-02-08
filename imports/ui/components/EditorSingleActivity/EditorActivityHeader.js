@@ -9,9 +9,6 @@ import { getCategoryName, getCategoryArray } from '../../../modules/get-category
 class EditorActivityHeader extends React.Component {
     constructor(props){
       super(props);
-      this.state = {
-          activity : this.props.activity,
-      }
     }
 
     // setBackground = (color) => {
@@ -35,8 +32,7 @@ class EditorActivityHeader extends React.Component {
 
     }
     render() {
-        const { activity } = this.props;
-        const language = 'en-US';
+        const { activity, language } = this.props;
         const category = activity.category;
         const color = category ? getColorByCategory(category) : '#cccccc';
         const categoryName = category ? getCategoryName(category) : 'No category set';
@@ -45,7 +41,7 @@ class EditorActivityHeader extends React.Component {
             <div className="EditorActivityHeader">
                 <Row>
                     <Col sm="6" style={this.setBackground(color)}>
-                        <h2 className="activityTitle">{activity.title[`title.${language}`] || 'Click here to add a title'}</h2>
+                        <EditorTitleComponent />
                         <span className="activityCategory">{categoryName}</span>
                         <br/>
                         {this.renderTags({activity, color})}
@@ -68,7 +64,7 @@ EditorActivityHeader.defaultProps = {
   
 EditorActivityHeader.propTypes = {
     activity: PropTypes.object.isRequired,
-    locale: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
 };
 
 
