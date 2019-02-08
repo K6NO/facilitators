@@ -41,8 +41,11 @@ class EditorActivityHeader extends React.Component {
             <div className="EditorActivityHeader">
                 <Row>
                     <Col sm="6" style={this.setBackground(color)}>
-                        <EditorTitleComponent />
-                        <span className="activityCategory">{categoryName}</span>
+                        <EditorTitleComponent
+                            activity={activity}
+                            language={language} />
+                        <EditorCategoriesComponent
+                            activity={activity} />
                         <br/>
                         {this.renderTags({activity, color})}
                     </Col>
