@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import Icon from '../Icon/Icon';
-import './EditorActivityHeader.scss';
 
 class EditorTitleComponent extends React.Component {
     constructor(props){
@@ -28,6 +27,7 @@ class EditorTitleComponent extends React.Component {
                 Bert.alert('Saved changes', 'success');
             }
         });
+        this.setState({editing: false})
     }
 
     render() {
