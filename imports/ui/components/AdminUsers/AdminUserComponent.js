@@ -172,7 +172,7 @@ class AdminUserComponent extends React.Component {
                 />
             </td>
             <td>
-                {userListed.roles.includes('superadmin') 
+                {Roles.userIsInRole(userListed._id, ['admin'])
                     ? '' 
                     :
                     <DeleteUserButton userId={this.props.userListed._id}/>

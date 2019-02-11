@@ -14,7 +14,6 @@ class AdminPage extends React.Component{
     super(props);
   }
  
-  // need to check lenghth of users, otherwise the logged in admin will
   // create the first AdminUserComponent, without organisation field
   render (){
     const {users, organisations, loading} = this.props;
@@ -28,12 +27,10 @@ class AdminPage extends React.Component{
         <AdminOrganisationsComponent 
           organisations={organisations}
         />
-        {users.length > 1 ? 
-          <AdminUsersComponent 
+        <AdminUsersComponent 
           organisations={organisations}
           users={users}
         />
-          : ''}
       </div>
     ) : '');
   }
