@@ -9,14 +9,11 @@ Meteor.methods({
     check(organisation, {
       name: String,
       active: Boolean,
-      billingAddress: Match.Optional(String),
-      billingCity: Match.Optional(String),
-      billingPostalCode: Match.Optional(String),
-      billingCountry: Match.Optional(String),
+      country: String,
     });
 
     try {
-      if(Roles.userIsInRole(this.userId, ['superadmin', 'admin'])) {
+      if(Roles.userIsInRole(this.userId, ['admin'])) {
         return Organisations.insert({ owner: this.userId, ...organisation });
       } else {
         throw new Meteor.Error('Create Organisation', 'Not authorised.');
@@ -30,14 +27,11 @@ Meteor.methods({
       _id: String,
       name: String,
       active: Boolean,
-      billingAddress: Match.Optional(String),
-      billingCity: Match.Optional(String),
-      billingPostalCode: Match.Optional(String),
-      billingCountry: Match.Optional(String),
+      country: String,
     });
 
     try {
-      if(Roles.userIsInRole(this.userId, ['superadmin', 'admin'])) {
+      if(Roles.userIsInRole(this.userId, ['admin'])) {
         const organisationId = organisation._id;
         Organisations.update(organisationId, { $set: organisation });
         return organisationId;
@@ -53,7 +47,7 @@ Meteor.methods({
     check(organisationId, String);
 
     try {
-      if(Roles.userIsInRole(this.userId, ['superadmin', 'admin'])) {
+      if(Roles.userIsInRole(this.userId, ['admin'])) {
         return Organisations.remove(organisationId);
       } else {
         throw new Meteor.Error('Remove Organisation', 'Not authorised.');

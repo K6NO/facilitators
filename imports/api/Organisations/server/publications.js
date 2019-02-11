@@ -5,8 +5,7 @@ import Organisations from '../Organisations';
 
 Meteor.publish('organisations', function organisations() {
     if (this.userId) {
-        const user = Meteor.users.findOne(this.userId);
-            if(Roles.userIsInRole(Meteor.userId(), ['admin', 'superadmin'])) {
+            if(Roles.userIsInRole(this.userId, ['admin'])) {
             return Organisations.find();
         }    
     }
@@ -15,7 +14,7 @@ Meteor.publish('organisations', function organisations() {
 Meteor.publish('organisations.view', function organisationsView(organisationId) {
     check(organisationId, String);
     if(this.userId) {
-        if(Roles.userIsInRole(this.userId, ['superadmin', 'admin'])) {
+        if(Roles.userIsInRole(this.userId, ['admin'])) {
             return Organisations.find({ _id: organisationId });
         }
         if (Roles.userIsInRole(this.userId, ['editor']) ) {
@@ -24,11 +23,11 @@ Meteor.publish('organisations.view', function organisationsView(organisationId) 
                 return Organisations.find({_id: organisationId});
             } else {
                 this.stop();
-                throw new Meteor.Error('Editor and requested organisation do not match.');
+                throw new Meteor.Error('Editor and requested organisation do not match. Only admins can access all organisations.');
             }  
         }
     } else {
         this.stop();
-        throw new Meteor.Error('User not logged in.', 'Org pub');
+        throw new Meteor.Error('User not logged in.', 'Organisations publication.');
     }
 });
