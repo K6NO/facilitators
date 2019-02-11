@@ -17,10 +17,7 @@ class AdminOrganisationComponent extends React.Component {
     this.state = {
         organisation : {
           name: this.props.organisation && this.props.organisation.name || '',
-          billingAddress: this.props.organisation && this.props.organisation.billingAddress || '',
-          billingCity: this.props.organisation && this.props.organisation.billingCity || '',
-          billingPostalCode: this.props.organisation && this.props.organisation.billingPostalCode || '',
-          billingCountry: this.props.organisation && this.props.organisation.billingCountry || '',
+          country: this.props.organisation && this.props.organisation.country || '',
           active: this.props.organisation && this.props.organisation.active || false,
         },
         orgActiveState: this.props.organisation.active || false,
