@@ -1,5 +1,4 @@
 {
-    "public" : "false",
     "title": {
         "title.en-US" : "No title",
         "title.es" : "No title",
@@ -12,7 +11,7 @@
         "description.es" : "No description",
         "description.hu" : "No description",
         "description.ro" : "No description",
-        "description.sk" : "No description",
+        "description.sk" : "No description"
     },
     "category" : "deepeco",
     "age" : "agech",
@@ -23,28 +22,28 @@
         "preparations.es" : "No preparations",
         "preparations.hu" : "No preparations",
         "preparations.ro" : "No preparations",
-        "preparations.sk" : "No preparations",
+        "preparations.sk" : "No preparations"
     },
     "objectives" : {
         "objectives.en-US" : "No objectives",
         "objectives.es" : "No objectives",
         "objectives.hu" : "No objectives",
         "objectives.ro" : "No objectives",
-        "objectives.sk" : "No objectives",
+        "objectives.sk" : "No objectives"
     },
     "tools": {
         "tools.en-US" : "No tools",
         "tools.es" : "No tools",
         "tools.hu" : "No tools",
         "tools.ro" : "No tools",
-        "tools.sk" : "No tools",
+        "tools.sk" : "No tools"
     },
     "resources" : {
         "resources.en-US" : "No resources",
         "resources.es" : "No resources",
         "resources.hu" : "No resources",
         "resources.ro" : "No resources",
-        "resources.sk" : "No resources",
+        "resources.sk" : "No resources"
     },
     "images" : [
     ],

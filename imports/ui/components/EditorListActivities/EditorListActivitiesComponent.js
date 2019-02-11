@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import EditorNewActivityButton from '../EditorNewActivityButton/EditorNewActivityButton';
 import './EditorListActivitiesComponent.scss';
 
 class EditorListActivitiesComponent extends React.Component{
@@ -22,11 +21,6 @@ class EditorListActivitiesComponent extends React.Component{
     const {activities} = this.props;
     return (
       <div className="EditorListActivitiesComponent">
-      <Row>
-          <Col>
-            <EditorNewActivityButton />
-          </Col>
-      </Row>
         {activities.map(activity => 
             <Row>
                 <Col sm="6">

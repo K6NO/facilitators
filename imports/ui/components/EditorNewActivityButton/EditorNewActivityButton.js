@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'reactstrap';
 import './EditorNewActivityButton.scss';
 import newActivity from './mockNewActivity.json';
 
@@ -8,12 +9,17 @@ class EditorNewActivityButton extends React.Component{
   }
  
   createActivity = () => {
+    const { language } = this.props;
     
   }
-  render (){
+  render () {
     return ( 
       <div className="EditorPage">
-        <button>Add new activity</button>
+          <Row>
+            <Col>
+              <button>Add new activity</button>
+            </Col>
+          </Row>
       </div>
     );
   }
