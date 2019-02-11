@@ -37,16 +37,15 @@ Organisations.schema = new SimpleSchema({
   },
   active: {
     type: Boolean,
-    label: 'Whether or not the organisation can access the editor.',
-    optional: true,
+    label: 'Active organisations can access the editor. Inactives cannot.',
   },
   name: {
     type: String,
-    label: 'The name of the Organisation.',
+    label: 'You need to set the name of the Organisation.',
   },
   country: {
     type: String,
-    label: 'The country of the Organisation.',
+    label: 'You need to set the country of the Organisation.',
   },
 });
 
