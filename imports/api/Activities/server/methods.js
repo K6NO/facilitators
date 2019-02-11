@@ -94,6 +94,7 @@ Meteor.methods({
         check(attributeName, String);
         check(locale, String);
         check(value, String);
+        const subAttribute = `${attributeName}.${locale}`;
         
         try {
             const user = Meteor.user();
@@ -114,7 +115,7 @@ Meteor.methods({
                     }, {
                     $set: {
                         [attributeName] : {
-                            [locale] : value
+                            [subAttribute] : value
                         }
                     }
                 });
@@ -149,9 +150,7 @@ Meteor.methods({
                     owner: user._id
                     }, {
                     $set: {
-                        [attributeName] : {
-                            [locale] : value
-                        }
+                        [attributeName] : value,
                     }
                 });
             }
