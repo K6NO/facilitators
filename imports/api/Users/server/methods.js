@@ -26,6 +26,58 @@ Meteor.methods({
     Roles.addUsersToRoles(newUserId, ['user']);
     return newUserId;
   },
+  'users.editProfile': function usersEditProfile(profile) {
+    check(profile, {
+      emailAddress: String,
+      organisation: Match.Maybe(String),
+      profile: {
+        name: {
+          first: Match.Maybe(String),
+          last: Match.Maybe(String),
+        },
+        username: Match.Maybe(String),
+        imageUrl: Match.Maybe(String),
+      },
+    });
+
+    return editProfile({ userId: Meteor.userId(), profile })
+      .then(response => response)
+      .catch((exception) => {
+        handleMethodException(exception);
+      });
+  },
+  'users.deleteAccount': function usersDeleteAccount() {
+    return deleteAccount({ userId: Meteor.userId() })
+      .then(response => response)
+      .catch((exception) => {
+        handleMethodException(exception);
+      });
+  },
+  /* 
+    Admin methods
+  */
+  'users.adminSignup' : function usersAdminSignup (user, roles) {
+    check(user, {
+      email: String,
+      password: String,
+      organisation: String,
+      profile: {
+        name: {
+          first: String,
+          last: String,
+        },
+        username: String,
+      },
+    });
+    check(roles, Array);
+    if(Roles.userIsInRole(this.userId, ['admin'])) {
+      const newUserId = Accounts.createUser(user);
+      Roles.addUsersToRoles(newUserId, roles);
+      return newUserId;
+    } else {
+      console.error('Non-admin tried to perform admin role: signup');
+    }
+  },
   'users.updateRole': function usersUpdateRole(_id, roles) {
     check(_id, String);
     check(roles, Array);
@@ -86,33 +138,6 @@ Meteor.methods({
     } else {
       console.error('Non-admin tried to perform admin role: reset password');
     }
-  },
-  'users.editProfile': function usersEditProfile(profile) {
-    check(profile, {
-      emailAddress: String,
-      organisation: Match.Maybe(String),
-      profile: {
-        name: {
-          first: Match.Maybe(String),
-          last: Match.Maybe(String),
-        },
-        username: Match.Maybe(String),
-        imageUrl: Match.Maybe(String),
-      },
-    });
-
-    return editProfile({ userId: Meteor.userId(), profile })
-      .then(response => response)
-      .catch((exception) => {
-        handleMethodException(exception);
-      });
-  },
-  'users.deleteAccount': function usersDeleteAccount() {
-    return deleteAccount({ userId: Meteor.userId() })
-      .then(response => response)
-      .catch((exception) => {
-        handleMethodException(exception);
-      });
   },
   'users.adminRemoveAccount' : function usersAdminRemoveAccount (_id) {
     check(_id, String);
