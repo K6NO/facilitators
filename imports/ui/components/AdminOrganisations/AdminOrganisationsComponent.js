@@ -24,9 +24,6 @@ class AdminOrganisationsComponent extends React.Component {
                         <tr>
                             <th>Name</th>
                             <th>Country</th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>Postal code</th>
                             <th></th>
                             <th></th>
                             <th></th>

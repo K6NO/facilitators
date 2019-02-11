@@ -2,7 +2,6 @@
 import React from 'react';
 import { Table, Button, ButtonGroup, Row, Col } from 'reactstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
-// import './NewOrganisationEditorComponent.scss';
 
 class NewOrganisationEditorComponent extends React.Component {
   constructor(props){
@@ -37,7 +36,7 @@ class NewOrganisationEditorComponent extends React.Component {
       const { closeCallback } = this.props;
       const organisation = {
           name: this.state.organisation.name,
-          country: this.state.organisation.billingCountry,
+          country: this.state.organisation.country,
           active: this.state.organisation.active,
       }
       Meteor.call('organisations.insert', organisation, (error) => {

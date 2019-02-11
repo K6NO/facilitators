@@ -10,7 +10,6 @@ import DeleteOrganisationButton from './DeleteOrganisationButton';
 
 import './AdminOrganisationComponent.scss';
 
-
 class AdminOrganisationComponent extends React.Component {
   constructor(props){
     super(props);
@@ -90,41 +89,11 @@ class AdminOrganisationComponent extends React.Component {
             <td>
                 {this.state.editing ? (
                 <input name="country" type="text" 
-                onBlur={(e) => this.saveOrganisation('billingCountry', e.target.value)}
-                onChange={(e) => this.updateOrganisationState('billingCountry', e)} 
-                value={this.state.organisation.billingCountry} />
+                onBlur={(e) => this.saveOrganisation('country', e.target.value)}
+                onChange={(e) => this.updateOrganisationState('country', e)} 
+                value={this.state.organisation.country} />
                 ) : (
-                    <span>{this.state.organisation.billingCountry}</span> 
-                )}
-            </td>
-            <td>
-                {this.state.editing ? (
-                    <input name="city" type="text" 
-                    onBlur={(e) => this.saveOrganisation('billingCity', e.target.value)}
-                    onChange={(e) => this.updateOrganisationState('billingCity', e)} 
-                    value={this.state.organisation.billingCity} />
-                ) : (
-                    <span>{this.state.organisation.billingCity}</span> 
-                )}
-            </td>
-            <td>
-                {this.state.editing ? (
-                    <input name="city" type="text" 
-                    onBlur={(e) => this.saveOrganisation('billingAddress', e.target.value)}
-                    onChange={(e) => this.updateOrganisationState('billingAddress', e)} 
-                    value={this.state.organisation.billingAddress} />
-                ) : (
-                    <span>{this.state.organisation.billingAddress}</span> 
-                )}
-            </td>
-            <td>
-                {this.state.editing ? (
-                    <input name="city" type="text" 
-                    onBlur={(e) => this.saveOrganisation('billingPostalCode', e.target.value)}
-                    onChange={(e) => this.updateOrganisationState('billingPostalCode', e)} 
-                    value={this.state.organisation.billingPostalCode} />
-                ) : (
-                    <span>{this.state.organisation.billingPostalCode}</span> 
+                    <span>{this.state.organisation.country}</span> 
                 )}
             </td>
             <td>
