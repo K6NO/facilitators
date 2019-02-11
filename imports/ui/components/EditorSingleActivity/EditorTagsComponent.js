@@ -19,13 +19,10 @@ class EditorTagsComponent extends React.Component {
     }
 
     addTag = () => {
+        // displays a dropdown with tag names
         this.setState({editing: true});
-        // create a dropdown with tag names
-        // selection adds tag
     }
-    updateTitle = (e) => {
-        this.setState({title: e.value})
-    }
+    
     saveTag = (selection) => {
         const { activity } = this.props;
         const oldTags = activity.tags;
@@ -42,9 +39,11 @@ class EditorTagsComponent extends React.Component {
                 Bert.alert('Saved changes', 'success');
             }
         });
+        this.setState({editing: false});
     }
 
     renderTags = ({activity, color}) => {
+        // TODO need to add a remove button for each badge (X)
         return activity.tags.map((tagIndex) =>   
             <Badge 
                 color="light" 
