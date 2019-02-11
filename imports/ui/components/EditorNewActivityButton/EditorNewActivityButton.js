@@ -17,7 +17,7 @@ class EditorNewActivityButton extends React.Component{
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else { 
-          Bert.alert(organisation.name + ' saved', 'success');
+          Bert.alert('New activity created', 'success');
         }
       }
     });
