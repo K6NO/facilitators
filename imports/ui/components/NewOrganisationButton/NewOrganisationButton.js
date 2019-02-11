@@ -1,7 +1,7 @@
 /* eslint-disable max-len, no-return-assign */
 import React from 'react';
 import { Table, Button, Row, Col } from 'reactstrap';
-import NewOrganisationEditorComponent from '../AdminOrganisations/NewOrganisationEditorComponent';
+import NewOrganisationEditorComponent from '../NewOrganisationEditorComponent/NewOrganisationEditorComponent';
 
 // import './NewOrganisationButton.scss';
 
@@ -41,7 +41,8 @@ class NewOrganisationButton extends React.Component {
             {this.state.isOpen ? (
                 <Row>
                     <Col>
-                        <NewOrganisationEditorComponent closeCallback={this.closeEditor} />
+                        <NewOrganisationEditorComponent 
+                            closeCallback={this.closeEditor} />
                     </Col>
                 </Row>
             ) : ''}

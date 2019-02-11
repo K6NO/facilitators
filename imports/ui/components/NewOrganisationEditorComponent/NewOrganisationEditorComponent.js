@@ -10,10 +10,7 @@ class NewOrganisationEditorComponent extends React.Component {
     this.state = {
         organisation : {
             name: '',
-            billingAddress: '',
-            billingCity: '',
-            billingPostalCode: '',
-            billingCountry: '',
+            country: '',
             active: false,
           },
           orgActiveState: false,
@@ -40,23 +37,18 @@ class NewOrganisationEditorComponent extends React.Component {
       const { closeCallback } = this.props;
       const organisation = {
           name: this.state.organisation.name,
-          billingAddress: this.state.organisation.billingAddress,
-          billingCity: this.state.organisation.billingCity,
-          billingPostalCode: this.state.organisation.billingPostalCode,
-          billingCountry: this.state.organisation.billingCountry,
+          country: this.state.organisation.billingCountry,
           active: this.state.organisation.active,
       }
       Meteor.call('organisations.insert', organisation, (error) => {
           if(error) {
               Bert.alert(error.reason, 'danger');
           } else {
+              //reset the state
               this.setState({
                 organisation : {
                     name: '',
-                    billingAddress: '',
-                    billingCity: '',
-                    billingPostalCode: '',
-                    billingCountry: '',
+                    country: '',
                     active: false,
                   },
               });
@@ -76,9 +68,6 @@ class NewOrganisationEditorComponent extends React.Component {
                         <tr>
                             <th>Name</th>
                             <th>Country</th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>Postal code</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -92,23 +81,8 @@ class NewOrganisationEditorComponent extends React.Component {
                                 </td>
                                 <td>
                                     <input name="country" type="text"                                         
-                                    onChange={(e) => this.updateOrganisationState('billingCountry', e)} 
-                                    value={this.state.organisation.billingCountry} />
-                                </td>
-                                <td>
-                                    <input name="city" type="text" 
-                                        onChange={(e) => this.updateOrganisationState('billingCity', e)} 
-                                        value={this.state.organisation.billingCity} />
-                                </td>
-                                <td>
-                                    <input name="city" type="text"                                         
-                                        onChange={(e) => this.updateOrganisationState('billingAddress', e)} 
-                                        value={this.state.organisation.billingAddress} />
-                                </td>
-                                <td>
-                                    <input name="city" type="text" 
-                                        onChange={(e) => this.updateOrganisationState('billingPostalCode', e)} 
-                                        value={this.state.organisation.billingPostalCode} />
+                                    onChange={(e) => this.updateOrganisationState('country', e)} 
+                                    value={this.state.organisation.country} />
                                 </td>
                                 <td>
                                     <ButtonGroup>
@@ -117,7 +91,7 @@ class NewOrganisationEditorComponent extends React.Component {
                                             active={this.state.orgActiveState === true}>Active</Button>
                                         <Button color="primary" 
                                             onClick={() => this.switchOrganisationState(false)} 
-                                            active={this.state.orgActiveState === false}>Paused</Button>
+                                            active={this.state.orgActiveState === false}>Inactive</Button>
                                     </ButtonGroup>
                                 </td>
                                 <td>
