@@ -2,41 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col, Badge } from 'reactstrap';
-import './EditorActivityHeader.scss';
+import { Row, Col } from 'reactstrap';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
+import EditorTitleComponent from './EditorTitleComponent';
+import EditorCategoriesComponent from './EditorCategoriesComponent';
+import EditorTagsComponent from './EditorTagsComponent';
+
+import './EditorActivityHeader.scss';
 
 class EditorActivityHeader extends React.Component {
     constructor(props){
       super(props);
     }
 
-    // setBackground = (color) => {
-    //     return {
-    //         background : color
-    //     }
-    // }
 
-    renderTags = ({activity, color}) => {
-        return activity.tags.map((tagIndex) =>   
-            <Badge 
-                color="light" 
-                pill
-                key={tagIndex}
-                className="tagPills"
-                style={{color: color}}
-                >
-                {i18n.__(`tags.${tagIndex}`)}
-            </Badge>
-        );
-
-    }
     render() {
         const { activity, language } = this.props;
         const category = activity.category;
         const color = category ? getColorByCategory(category) : '#cccccc';
-        const categoryName = category ? getCategoryName(category) : 'No category set';
-        const allCategoriesArray = getCategoryArray();
         return (
             <div className="EditorActivityHeader">
                 <Row>
@@ -47,7 +30,9 @@ class EditorActivityHeader extends React.Component {
                         <EditorCategoriesComponent
                             activity={activity} />
                         <br/>
-                        {this.renderTags({activity, color})}
+                        <EditorTagsComponent
+                            activity={activity}
+                            language={language} />
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
                         <a href="#" className="backLink">

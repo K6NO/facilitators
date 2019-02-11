@@ -13,6 +13,8 @@ class EditorTagsComponent extends React.Component {
     }
 
     getTags = () => {
+        const { language } = this.props;
+        // TODO find out how to retrieve the tags according to language prefs 
         const tagsObject = i18n.__('tags');
         const tagsArray = Object.values(tagsObject);
         return tagsArray;
