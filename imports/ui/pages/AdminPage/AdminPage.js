@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Table, Row, Col } from 'reactstrap';
 import AdminOrganisationsComponent from '../../components/AdminOrganisations/AdminOrganisationsComponent';
 import AdminUsersComponent from '../../components/AdminUsers/AdminUsersComponent';
+import NewOrganisationButton from '../../components/NewOrganisationButton/NewOrganisationButton';
 import Organisations from '../../../api/Organisations/Organisations';
 import './AdminPage.scss';
 
@@ -18,6 +20,11 @@ class AdminPage extends React.Component{
     const {users, organisations, loading} = this.props;
     return (! loading ? (
       <div className="AdminPage">
+        <Row>
+          <Col>
+            <NewOrganisationButton />
+          </Col>
+        </Row>
         <AdminOrganisationsComponent 
           organisations={organisations}
         />

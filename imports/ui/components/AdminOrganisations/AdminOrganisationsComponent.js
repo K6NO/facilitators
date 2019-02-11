@@ -4,7 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, Row, Col } from 'reactstrap';
 import AdminOrganisationComponent from './AdminOrganisationComponent';
-import NewOrganisationButton from './NewOrganisationButton';
 import './AdminOrganisationsComponent.scss';
 
 class AdminOrganisationsComponent extends React.Component {
@@ -16,11 +15,7 @@ class AdminOrganisationsComponent extends React.Component {
     const { organisations } = this.props;
     return (
         <div className="border AdminOrganisationsComponent container">
-        <Row>
-            <Col>
-                <NewOrganisationButton />
-            </Col>
-        </Row>
+       
         {organisations.length ? (
             <Row>
                 <Col>
