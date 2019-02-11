@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import './EditorNewActivityButton.scss';
 import newActivity from './mockNewActivity.json';
@@ -10,14 +11,25 @@ class EditorNewActivityButton extends React.Component{
  
   createActivity = () => {
     const { language } = this.props;
-    
+    newActivity['languages'] = [language];
+    Meteor.call('activities.insert', newActivity, (error) => {
+      if(error) {
+        if (error) {
+          Bert.alert(error.reason, 'danger');
+        } else { 
+          Bert.alert(organisation.name + ' saved', 'success');
+        }
+      }
+    });
+    //TODO - direct user to single activity editor component with a callback to EditorPage
   }
   render () {
     return ( 
       <div className="EditorPage">
           <Row>
             <Col>
-              <button>Add new activity</button>
+              <button
+                onClick={this.createActivity}>Add new activity</button>
             </Col>
           </Row>
       </div>

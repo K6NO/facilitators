@@ -11,22 +11,23 @@ import rateLimit from '../../../modules/rate-limit';
  * For registered users add default "Public" organisationId
  */
 Meteor.methods({
-    'activities.insert' : function activitiesCreate () {
+    'activities.insert' : function activitiesCreate (activity) {
       check(activity, {
         public: Boolean,
-        title: Match.Optional(Object),
-        description: Match.Optional(Object),
-        category: Match.Optional(String),
-        age: Match.Optional(String),
-        time: Match.Optional(String),
-        group: Match.Optional(String),
-        preparations: Match.Optional(Object),
-        objectives: Match.Optional(Object),
-        tools: Match.Optional(Object),
-        resources: Match.Optional(Object),
-        images: Match.Optional(Array),
-        comments: Match.Optional(Array),
-        tags: Match.Optional(Array),
+        title: Object,
+        description: Object,
+        category: String,
+        age: String,
+        time: String,
+        group: String,
+        preparations: Object,
+        objectives: Object,
+        tools: Object,
+        resources: Object,
+        images: Array,
+        comments: Array,
+        tags: Array,
+        languages: Array
       });
   
       try {
