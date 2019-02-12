@@ -23,6 +23,7 @@ class EditorListActivitiesComponent extends React.Component{
    */
   render (){
     const {activities, language, editCallback } = this.props;
+    const userId = Meteor.userId();
     return (
       <div className="EditorListActivitiesComponent">
       <Row>
@@ -52,18 +53,20 @@ class EditorListActivitiesComponent extends React.Component{
                       )}
                   </td>
                   <td>
-                      <Button 
+                      {(Roles.userIsInRole(userId, ['admin']) || activity.owner === userId) ?
+                        <Button 
                         color="primary"
                         onClick={() => editCallback(activity._id)}>
                         <Icon icon={'edit'} />
                         ` Edit`
-                      </Button>
+                      </Button> : ''}
                   </td>
                   <td>
+                    {(Roles.userIsInRole(userId, ['admin']) || activity.owner === userId) ?
                       <Button color="danger">
                         <Icon icon={'trash'} />
                         ` Delete`
-                      </Button>
+                      </Button> : ''}
                   </td>
               </tr>)
         }
