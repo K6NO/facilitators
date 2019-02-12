@@ -39,6 +39,7 @@ class AdminUserComponent extends React.Component {
       }
     });
   }
+
   selectOrganisationCallback = (_id) => {
     this.setState({
         user : {

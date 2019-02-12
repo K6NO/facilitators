@@ -19,6 +19,7 @@ const saveUserProfile = (user, userFromState, closeCallback, resetUserStateCallb
         // for existing user update the profile
         Meteor.call('users.adminEditProfile', user._id, profileUpdateObject, roles, (error) => {
             if(error) {
+                console.error(error.message)
                 Bert.alert(error.reason, 'danger');
             } else {
                 Bert.alert('User profile saved', 'success');

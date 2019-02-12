@@ -103,7 +103,7 @@ Meteor.methods({
       throw new Meteor.Error('Users updateRole', 'Non-admin tried to perform admin role: role change');
     }
   },
-  'users.adminEditProfile' : function usersAdminEditProfile(_id, profile, roles) {
+  'users.adminEditProfile' : function usersAdminEditProfile(userId, profile, roles) {
     check(profile, {
       email: String,
       organisation: Match.Maybe(String),
@@ -116,11 +116,11 @@ Meteor.methods({
         imageUrl: Match.Maybe(String),
       },
     });
-    check(_id, String);
+    check(userId, String);
     check(roles, Array);
     
     if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
-      return adminEditProfile({ _id, profile, roles })
+      return adminEditProfile({userId, profile, roles})
       .then(response => response)
       .catch((exception) => {
         handleMethodException(exception);

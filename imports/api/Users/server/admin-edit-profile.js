@@ -42,7 +42,7 @@ const updateUser = (userId, { email, organisation, profile }, roles) => {
       },
     });
   } catch (exception) {
-    throw new Error(`[editProfile.updateUser] ${exception.message}`);
+    throw new Error(`[adminEditProfile.updateUser] ${exception.message}`);
   }
 };
 
