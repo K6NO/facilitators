@@ -15,7 +15,12 @@ class EditorActivityHeader extends React.Component {
       super(props);
     }
 
-
+    setBackground = (color) => {
+        return {
+            background : color
+        }
+    }
+    
     render() {
         const { activity, language } = this.props;
         const category = activity.category;

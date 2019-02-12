@@ -50,7 +50,7 @@ class EditorCategoriesComponent extends React.Component {
 EditorCategoriesComponent.defaultProps = {
 };
   
-EditorActivityHeader.propTypes = {
+EditorCategoriesComponent.propTypes = {
     activity: PropTypes.object.isRequired,
 };
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
 import EditorActivityHeader from './EditorActivityHeader';
 import EditorActivityBody from './EditorActivityBody';
-import EditorActivityFooter from './EditorActivityFooter';
 import './EditorSingleActivityComponent.scss';
 
 class EditorSingleActivityComponent extends React.Component{
@@ -29,11 +27,6 @@ class EditorSingleActivityComponent extends React.Component{
           activity={activity}
           language={language}
         />
-        <EditorActivityFooter 
-          activity={activity}
-          language={language} 
-        />
-
       </div>
     );
   }

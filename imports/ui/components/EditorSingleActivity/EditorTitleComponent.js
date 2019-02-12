@@ -31,9 +31,10 @@ class EditorTitleComponent extends React.Component {
     }
 
     render() {
+        const { activity, language } = this.props;
         return (
             <div className="EditorTitleComponent">
-                {editing 
+                {this.state.editing 
                 ? <input 
                     className="activityTitleEditing"
                     value={this.state.title}
@@ -50,7 +51,7 @@ class EditorTitleComponent extends React.Component {
 EditorTitleComponent.defaultProps = {
 };
   
-EditorActivityHeader.propTypes = {
+EditorTitleComponent.propTypes = {
     activity: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
 };

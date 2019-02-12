@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
+import { Button, Badge } from 'reactstrap';
+import { getColorByCategory } from '../../../modules/get-colors';
+
 
 class EditorTagsComponent extends React.Component {
     constructor(props){
@@ -60,11 +63,14 @@ class EditorTagsComponent extends React.Component {
     }
 
     render() {
+        const { activity } = this.props;
+        const color = getColorByCategory(activity.category);
+
         return (
             <div className="EditorTagsComponent">
                 {this.renderTags({activity, color})}
-                {!editing 
-                ? <button>Add Tag</button>
+                {!this.state.editing 
+                ? <Button color="primary">Add Tag</Button>
                 : <Select 
                     className="basic-single CategorySelector"
                     classNamePrefix="tags-edit"
@@ -83,7 +89,7 @@ class EditorTagsComponent extends React.Component {
 EditorTagsComponent.defaultProps = {
 };
   
-EditorActivityHeader.propTypes = {
+EditorTagsComponent.propTypes = {
     activity: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
 };

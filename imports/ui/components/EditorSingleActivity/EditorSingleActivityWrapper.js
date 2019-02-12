@@ -37,7 +37,6 @@ export default withTracker(({activityId}) => {
   // NOTE: Use destructuring, as ...props is passed to this component
   const activitySub = Meteor.subscribe('activities.view', activityId);
   const activity = activitySub.ready() ? Activities.findOne(activityId) : {};
-  console.log('wtracker', activityId);
 
   return {
     loading: !activitySub.ready(),
