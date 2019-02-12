@@ -1,49 +1,49 @@
 {
     "title": {
-        "title.en-US" : "No title",
-        "title.es" : "No title",
-        "title.hu" : "No title",
-        "title.ro" : "No title",
-        "title.sk" : "No title"
+        "en-US" : "No title",
+        "es" : "No title",
+        "hu" : "No title",
+        "ro" : "No title",
+        "sk" : "No title"
     },
     "description" : {
-        "description.en-US" : "No description",
-        "description.es" : "No description",
-        "description.hu" : "No description",
-        "description.ro" : "No description",
-        "description.sk" : "No description"
+        "en-US" : "No description",
+        "es" : "No description",
+        "hu" : "No description",
+        "ro" : "No description",
+        "sk" : "No description"
     },
     "category" : "deepeco",
     "age" : "agech",
     "time" : "timevs",
     "group" : "groupvs",
     "preparations" : {
-        "preparations.en-US" : "No preparations",
-        "preparations.es" : "No preparations",
-        "preparations.hu" : "No preparations",
-        "preparations.ro" : "No preparations",
-        "preparations.sk" : "No preparations"
+        "en-US" : "No preparations",
+        "es" : "No preparations",
+        "hu" : "No preparations",
+        "ro" : "No preparations",
+        "sk" : "No preparations"
     },
     "objectives" : {
-        "objectives.en-US" : "No objectives",
-        "objectives.es" : "No objectives",
-        "objectives.hu" : "No objectives",
-        "objectives.ro" : "No objectives",
-        "objectives.sk" : "No objectives"
+        "en-US" : "No objectives",
+        "es" : "No objectives",
+        "hu" : "No objectives",
+        "ro" : "No objectives",
+        "sk" : "No objectives"
     },
     "tools": {
-        "tools.en-US" : "No tools",
-        "tools.es" : "No tools",
-        "tools.hu" : "No tools",
-        "tools.ro" : "No tools",
-        "tools.sk" : "No tools"
+        "en-US" : "No tools",
+        "es" : "No tools",
+        "hu" : "No tools",
+        "ro" : "No tools",
+        "sk" : "No tools"
     },
     "resources" : {
-        "resources.en-US" : "No resources",
-        "resources.es" : "No resources",
-        "resources.hu" : "No resources",
-        "resources.ro" : "No resources",
-        "resources.sk" : "No resources"
+        "en-US" : "No resources",
+        "es" : "No resources",
+        "hu" : "No resources",
+        "ro" : "No resources",
+        "sk" : "No resources"
     },
     "images" : [
     ],

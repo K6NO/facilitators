@@ -12,6 +12,7 @@ class EditorNewActivityButton extends React.Component{
   createActivity = () => {
     const { language } = this.props;
     newActivity['languages'] = [language];
+    console.log(newActivity);
     Meteor.call('activities.insert', newActivity, (error) => {
       if(error) {
         if (error) {
