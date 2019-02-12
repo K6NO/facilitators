@@ -1,8 +1,6 @@
 import React from 'react';
-import Select from 'react-select';
 import PropTypes from 'prop-types';
-import { Roles } from 'meteor/alanning:roles';
-import getOrgName from '../../../modules/get-org-name';
+
 
 // import './AdminSelectOrganisationComponent.scss';
 
