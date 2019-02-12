@@ -20,11 +20,12 @@ class EditorListActivitiesWrapper extends React.Component{
    * Body below
    */
   render (){
-    const {activities, loading} = this.props;
+    const {activities, loading, language} = this.props;
     return (! loading ? (
       <div className="EditorListActivitiesWrapper">
         <EditorListActivitiesComponent
             activities={activities}
+            language={language}
         />
       </div>
     ) : '');
@@ -37,6 +38,7 @@ EditorListActivitiesWrapper.defaultProps = {
 
 EditorListActivitiesWrapper.propTypes = {
   activities: PropTypes.arrayOf(PropTypes.object),
+  language: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 

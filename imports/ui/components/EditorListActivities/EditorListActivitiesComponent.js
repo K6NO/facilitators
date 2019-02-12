@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Table, Button } from 'reactstrap';
+import i18n from 'meteor/universe:i18n';
+import { getCategoryName } from '../../../modules/get-category-name';
+import { getLanguageName } from '../../../modules/get-language-array';
 import './EditorListActivitiesComponent.scss';
 
 class EditorListActivitiesComponent extends React.Component{
@@ -18,24 +21,44 @@ class EditorListActivitiesComponent extends React.Component{
    * Body below
    */
   render (){
-    const {activities} = this.props;
+    const {activities, language } = this.props;
     return (
       <div className="EditorListActivitiesComponent">
-        {activities.map(activity => 
-            <Row>
-                <Col sm="6">
-                    {activity.title[`title.en-US`]}
-                </Col>
-                <Col sm="4">
-                    {activity.languages.map(language => 
-                        <span>{language}</span>
-                    )}
-                </Col>
-                <Col sm="2">
-                    <button>Edit</button>
-                </Col>
-            </Row>)
+      <Row>
+        <Col>
+        <Table>
+            <thead>
+              <tr>
+                <th>{i18n.__('activity.titleLabel')}</th>
+                <th>{i18n.__('activity.category')}</th>
+                <th>{i18n.__('activity.languagesLabel')}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {activities.map(activity => 
+              <tr key={activity._id}>
+                  <td>
+                      {activity.title[language]}
+                  </td>
+                  <td>
+                      {getCategoryName(activity.category)}
+                  </td>
+                  <td>
+                      {activity.languages.map(language => 
+                          <span key={language}>{getLanguageName(language)}</span>
+                      )}
+                  </td>
+                  <td>
+                      <Button color="primary">Edit</Button>
+                  </td>
+              </tr>)
         }
+            </tbody>
+        </Table>
+        </Col>
+      </Row>
+       
       </div>
     );
   }
@@ -46,6 +69,8 @@ EditorListActivitiesComponent.defaultProps = {
 
 EditorListActivitiesComponent.propTypes = {
   activities: PropTypes.arrayOf(PropTypes.object).isRequired,
+  language: PropTypes.string.isRequired,
+
 };
 
 

@@ -23,9 +23,9 @@ class EditorPage extends React.Component{
         <EditorListActivitiesWrapper
           language={this.state.language}
         />
-        <EditorSingleActivityWrapper
+        {/* <EditorSingleActivityWrapper
           language={this.state.language}
-        />
+        /> */}
       </div>
     );
   }
