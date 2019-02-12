@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactSelect from 'react-select';
+import Select from 'react-select';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
+import getOrgName from '../../../modules/get-org-name';
 
 // import './AdminSelectOrganisationComponent.scss';
 
@@ -9,44 +10,42 @@ class AdminSelectOrganisationComponent extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedOrgId: this.props.selectOrganisation,
+            selected: this.props.selectedOrganisation
         }
     };
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.selectOrganisation !== this.props.selectOrganisation) {
+        if(nextProps.selectedOrganisation !== this.props.selectedOrganisation) {
             this.setState({
-                selectedOrgId : nextProps.selectOrganisation
+                selected : nextProps.selectedOrganisation
             });
         }
     }
     
     handleChange = (selection) => {
-        let { selectOrganisationCallback } = this.props;
+        const { selectOrganisationCallback } = this.props;
         this.setState({
-            selectedOrgId: selection ? selection._id : '',
+            selected: selection.target.value,
         });
-        selectOrganisationCallback(selection);
+        selectOrganisationCallback(selection.target.value);
     };
 
+
     render() {
-        const { organisations, editing, organisationId, user } = this.props;
-        const org = organisationId && organisationId.length > 5 
-            && organisations.find(org => org._id === organisationId);
-        const orgName = org ? org.name : '';
+        const { organisations, editing, selectedOrganisation, user } = this.props;
+        const orgName = organisations.length && organisations.find(org => org._id === selectedOrganisation).name;
 
         return (
             editing ? (
-                !!Roles.userIsInRole(user._id, ['superadmin']) ? 'Cannot change' :
-                <ReactSelect 
-                    className="AdminSelectOrganisationComponent"
-                    labelKey="name"
-                    valueKey="_id"
-                    options={organisations}
-                    value={this.state.selectedOrgId}
-                    resetValue=""
-                    name="organisationsSelect"
-                    onChange={this.handleChange}/>
+                <select onChange={this.handleChange}>
+                    {organisations.map(org => 
+                        <option 
+                            key={org._id}
+                            value={org._id}
+                        >
+                            {org.name}
+                        </option>)}
+                </select>
             ) : 
                 <span>
                     {orgName}
@@ -57,14 +56,14 @@ class AdminSelectOrganisationComponent extends React.Component {
 }
 
 AdminSelectOrganisationComponent.defaultProps = {
-    organisationId: '',
+    selectedOrganisation: '',
 };
 
 AdminSelectOrganisationComponent.propTypes = {
     user: PropTypes.object.isRequired,
     organisations: PropTypes.arrayOf(PropTypes.object).isRequired,
     editing: PropTypes.bool.isRequired,
-    organisationId: PropTypes.string
+    selectedOrganisation: PropTypes.string
 };
   
 export default AdminSelectOrganisationComponent;

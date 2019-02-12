@@ -39,11 +39,11 @@ class AdminUserComponent extends React.Component {
       }
     });
   }
-  selectOrganisationCallback = (selection) => {
+  selectOrganisationCallback = (_id) => {
     this.setState({
         user : {
           ...this.state.user,
-          organisation: selection._id,
+          organisation: _id,
         }
       });                       
   }
@@ -160,7 +160,6 @@ class AdminUserComponent extends React.Component {
                     organisations={organisations}
                     selectOrganisationCallback={this.selectOrganisationCallback}
                     selectedOrganisation={this.state.user.organisation}
-                    organisationId={this.state.user.organisation}
                     user={this.props.userListed}
                 />
             </td>
@@ -192,7 +191,6 @@ class AdminUserComponent extends React.Component {
 
 AdminUserComponent.defaultProps = {
   userListed : {},
-  organisations: [],
 };
 
 AdminUserComponent.propTypes = {
