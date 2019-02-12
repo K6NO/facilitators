@@ -7,7 +7,7 @@ import AdminUserRoleSelector from './AdminUserRoleSelector';
 import DeleteUserButton from './DeleteUserButton';
 import saveUserProfile from './saveUserProfile';
 import storePassword from './storePassword';
-// import './AdminUserComponent.scss';
+import './AdminUserComponent.scss';
 
 class AdminUserComponent extends React.Component {
   constructor(props){
@@ -108,10 +108,13 @@ class AdminUserComponent extends React.Component {
   render() {
     const { organisations, userListed } = this.props;
     return (
-        <tr>
+        <tr className="AdminUserComponent">
             <td>
                 {this.state.editing ? (
-                    <input name="name" type="text" 
+                    <input 
+                        name="name" 
+                        type="text"
+                        className="formControl"
                         onChange={(e) => this.updateUserState('name', e)} 
                         value={this.state.user.name} />
                 ) : (
@@ -120,7 +123,10 @@ class AdminUserComponent extends React.Component {
             </td>
             <td>
                 {this.state.editing ? (
-                <input name="email" type="text" 
+                <input 
+                    name="email" 
+                    type="text" 
+                    className="formControl"
                     onChange={(e) => this.updateUserState('email', e)} 
                     value={this.state.user.email} />
                 ) : (
@@ -131,7 +137,10 @@ class AdminUserComponent extends React.Component {
                 {this.state.editing ? (
                     this.state.passwordEditing ? (
                         <div>
-                            <input name="password" type="text" 
+                            <input 
+                                name="password" 
+                                type="text" 
+                                className="formControl"
                                 onChange={(e) => this.updateUserState('password', e)} 
                                 value={this.state.user.password}
                                 placeholder="New password" />
@@ -148,7 +157,10 @@ class AdminUserComponent extends React.Component {
             </td>
             <td>
                 {this.state.editing ? (
-                    <input name="username" type="text" 
+                    <input 
+                        name="username" 
+                        type="text" 
+                        className="formControl"
                         onChange={(e) => this.updateUserState('username', e)} 
                         value={this.state.user.username} />
                 ) : (

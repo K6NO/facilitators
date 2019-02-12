@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-
-// import './AdminSelectOrganisationComponent.scss';
+import './AdminSelectOrganisationComponent.scss';
 
 class AdminSelectOrganisationComponent extends React.Component {
     constructor(props){
@@ -35,7 +33,9 @@ class AdminSelectOrganisationComponent extends React.Component {
 
         return (
             editing ? (
-                <select onChange={this.handleChange}>
+                <select 
+                    onChange={this.handleChange}
+                    className="AdminSelectOrganisationComponent">
                     {organisations.map(org => 
                         <option 
                             key={org._id}
