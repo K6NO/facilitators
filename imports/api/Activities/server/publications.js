@@ -70,12 +70,15 @@ Meteor.publish('activities.allFilter', (filterObject) => {
 Meteor.publish('activities.view', (activityId) => {
     check(activityId, String);
     const userId = Meteor.userId();
+    console.log({activityId})
     if(userId) {
+        console.log('admin');
         if(Roles.userIsInRole(userId, ['admin'])) {
             return Activities.find({
                 _id : activityId,
             });
         }
+        console.log('registered user');
         return Activities.find({
             _id: activityId,
             $or: [
@@ -84,6 +87,7 @@ Meteor.publish('activities.view', (activityId) => {
             ]
         });
     }
+    console.log('not registered user');
     return Activities.find({
         _id: activityId,
         public: true
