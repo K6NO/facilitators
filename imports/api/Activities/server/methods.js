@@ -139,9 +139,7 @@ Meteor.methods({
                     // admins can overwrite any activities
                     return Activities.update(activityId, {
                         $set: {
-                            [attributeName] : {
-                                [locale] : value
-                            }
+                            [attributeName] : value
                         }
                     });
                 } 

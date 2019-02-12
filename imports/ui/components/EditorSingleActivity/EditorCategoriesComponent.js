@@ -14,8 +14,9 @@ class EditorCategoriesComponent extends React.Component {
     }
 
     saveCategory = (selection) => {
-        this.setState({category: selection.value})
+        this.setState({category: selection.label})
         const activityId = this.props.activity._id;
+        console.log(selection);
         Meteor.call('activities.updateAttributes', 
         activityId, 'category', selection.value,
         (error) => {

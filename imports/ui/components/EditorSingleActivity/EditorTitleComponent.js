@@ -18,7 +18,6 @@ class EditorTitleComponent extends React.Component {
     saveTitle = () => {
         const { language } = this.props;
         const activityId = this.props.activity._id;
-        console.log('saving', activityId, language)
         Meteor.call('activities.updateLangAttributes', 
         activityId, 'title', language, this.state.title,
         (error) => {
