@@ -21,6 +21,8 @@
         "matching" : "matching exercises"
     },
     "activity" : {
+        "titleLabel" : "Title",
+        "languagesLabel" : "Languages",
         "category" : "Kategória",
         "group" : "Csoport méret",
         "groupvs" : "nagyon kicsi (1-4)",

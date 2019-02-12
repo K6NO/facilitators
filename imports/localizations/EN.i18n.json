@@ -21,6 +21,8 @@
         "matching" : "matching exercises"
     },
     "activity" : {
+        "titleLabel" : "Title",
+        "languagesLabel" : "Languages",
         "category" : "Category",
         "group" : "Group size",
         "groupvs" : "very small (1-4)",
