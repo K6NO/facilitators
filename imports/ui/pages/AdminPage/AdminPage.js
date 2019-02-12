@@ -6,6 +6,7 @@ import { Table, Row, Col } from 'reactstrap';
 import AdminOrganisationsComponent from '../../components/AdminOrganisations/AdminOrganisationsComponent';
 import AdminUsersComponent from '../../components/AdminUsers/AdminUsersComponent';
 import NewOrganisationButton from '../../components/NewOrganisationButton/NewOrganisationButton';
+import Loading from '../../components/Loading/Loading';
 import Organisations from '../../../api/Organisations/Organisations';
 import './AdminPage.scss';
 
@@ -17,7 +18,7 @@ class AdminPage extends React.Component{
   // create the first AdminUserComponent, without organisation field
   render (){
     const {users, organisations, loading} = this.props;
-    return (! loading ? (
+    return (!loading ? (
       <div className="AdminPage">
         <Row>
           <Col>
@@ -32,7 +33,7 @@ class AdminPage extends React.Component{
           users={users}
         />
       </div>
-    ) : '');
+    ) : <Loading />);
   }
 }
 
@@ -44,7 +45,7 @@ AdminPage.defaultProps = {
 AdminPage.propTypes = {
   organisations: PropTypes.arrayOf(PropTypes.object),
   users: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
 };
 
 
@@ -55,7 +56,7 @@ export default withTracker(() => {
   const organisations = organisationsSub.ready() ? Organisations.find().fetch() : [];
 
   return {
-    loading: ! usersSub.ready() && organisationsSub.ready(),
+    loading: !(usersSub.ready() && organisationsSub.ready()),
     users,
     organisations,
   };
