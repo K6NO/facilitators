@@ -15,7 +15,6 @@ class AdminOrganisationsComponent extends React.Component {
     const { organisations } = this.props;
     return (
         <div className="border AdminOrganisationsComponent container">
-       
         {organisations.length ? (
             <Row>
                 <Col>

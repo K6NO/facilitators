@@ -9,12 +9,6 @@ class EditorSingleActivityComponent extends React.Component{
     super(props);
   }
  
-  /**
-   *    
-   * Language selector tabs at top
-   * Header below
-   * Body below
-   */
   render (){
     const {activity, language} = this.props;
     return (

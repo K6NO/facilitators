@@ -1,7 +1,6 @@
 import React from 'react';
 import EditorListActivitiesWrapper from '../../components/EditorListActivities/EditorListActivitiesWrapper';
 import EditorSingleActivityWrapper from '../../components/EditorSingleActivity/EditorSingleActivityWrapper';
-import EditorNewActivityButton from '../../components/EditorNewActivityButton/EditorNewActivityButton';
 import './EditorPage.scss';
 
 class EditorPage extends React.Component{
@@ -32,10 +31,7 @@ class EditorPage extends React.Component{
   // maybe store language setting here in state
   render (){
     return ( 
-      <div className="EditorPage">
-        <EditorNewActivityButton
-          language={this.state.language}
-        />
+      <div className="EditorPage container">
         {this.state.single ?
         <EditorSingleActivityWrapper
           language={this.state.language}
