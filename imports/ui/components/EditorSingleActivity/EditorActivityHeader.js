@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 import EditorTitleComponent from './EditorTitleComponent';
 import EditorCategoriesComponent from './EditorCategoriesComponent';
@@ -20,9 +20,9 @@ class EditorActivityHeader extends React.Component {
             background : color
         }
     }
-    
+
     render() {
-        const { activity, language } = this.props;
+        const { activity, language, closeCallback } = this.props;
         const category = activity.category;
         const color = category ? getColorByCategory(category) : '#cccccc';
         return (
@@ -40,10 +40,14 @@ class EditorActivityHeader extends React.Component {
                             language={language} />
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
-                        <a href="#" className="backLink">
+                        <Button 
+                            color="link" 
+                            className="backLink"
+                            onClick={closeCallback}
+                            >
                             <Icon icon={'angle-double-left'} size={'lg'}/>
-                            Back to search results 
-                        </a>
+                            {`Finish & Back to list`}
+                        </Button>
                     </Col>
                 </Row>
             </div>
@@ -58,6 +62,7 @@ EditorActivityHeader.defaultProps = {
 EditorActivityHeader.propTypes = {
     activity: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
+    closeCallback: PropTypes.func.isRequired
 };
 
 

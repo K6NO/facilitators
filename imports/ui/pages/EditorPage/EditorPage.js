@@ -36,6 +36,7 @@ class EditorPage extends React.Component{
         <EditorSingleActivityWrapper
           language={this.state.language}
           activityId={this.state.activityId}
+          closeCallback={this.closeSingleActivity}
         /> 
         :
         <EditorListActivitiesWrapper

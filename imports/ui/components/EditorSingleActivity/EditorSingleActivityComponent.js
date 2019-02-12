@@ -10,16 +10,14 @@ class EditorSingleActivityComponent extends React.Component{
   }
  
   render (){
-    const {activity, language} = this.props;
+    const {...props} = this.props;
     return (
       <div className="EditorSingleActivityComponent">
         <EditorActivityHeader 
-          activity={activity}
-          language={language} 
+          {...props}
         />
         <EditorActivityBody 
-          activity={activity}
-          language={language}
+          {...props}
         />
       </div>
     );
@@ -32,6 +30,7 @@ EditorSingleActivityComponent.defaultProps = {
 EditorSingleActivityComponent.propTypes = {
   activity: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
+  closeCallback: PropTypes.func.isRequired
 };
 
 
