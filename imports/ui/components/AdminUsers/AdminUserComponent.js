@@ -168,13 +168,15 @@ class AdminUserComponent extends React.Component {
                 )}
             </td>
             <td>
-                 <AdminSelectOrganisationComponent 
+                 {organisations.length > 0 ? 
+                    <AdminSelectOrganisationComponent 
                     editing={this.state.editing}
                     organisations={organisations}
                     selectOrganisationCallback={this.selectOrganisationCallback}
                     selectedOrganisation={this.state.user.organisation}
                     user={this.props.userListed}
-                />
+                /> 
+                : 'No organisations.'}
             </td>
             <td>
                 <AdminUserRoleSelector 

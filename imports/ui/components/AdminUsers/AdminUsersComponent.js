@@ -19,6 +19,7 @@ class AdminUsersComponent extends React.Component{
     }
            
     return (
+      organisations.length > 0 ? 
       <div className="border AdminUsersComponent container">
         <Row>
             <Col>
@@ -57,6 +58,7 @@ class AdminUsersComponent extends React.Component{
           </Row>
         ) : <div> There are no users</div>}
         </div>
+        : 'No organisations yet.'
     );
   }
 }
