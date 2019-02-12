@@ -22,7 +22,7 @@ class EditorListActivitiesComponent extends React.Component{
    * Body below
    */
   render (){
-    const {activities, language } = this.props;
+    const {activities, language, editCallback } = this.props;
     return (
       <div className="EditorListActivitiesComponent">
       <Row>
@@ -52,13 +52,18 @@ class EditorListActivitiesComponent extends React.Component{
                       )}
                   </td>
                   <td>
-                      <Button color="primary">Edit</Button>
+                      <Button 
+                        color="primary"
+                        onClick={() => editCallback(activity._id)}>
+                        <Icon icon={'edit'} />
+                        ` Edit`
+                      </Button>
                   </td>
                   <td>
                       <Button color="danger">
                         <Icon icon={'trash'} />
-
-                      Delete</Button>
+                        ` Delete`
+                      </Button>
                   </td>
               </tr>)
         }
@@ -78,7 +83,7 @@ EditorListActivitiesComponent.defaultProps = {
 EditorListActivitiesComponent.propTypes = {
   activities: PropTypes.arrayOf(PropTypes.object).isRequired,
   language: PropTypes.string.isRequired,
-
+  editCallback: PropTypes.func.isRequired
 };
 
 

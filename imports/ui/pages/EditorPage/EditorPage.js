@@ -8,8 +8,24 @@ class EditorPage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      language: 'en-US'
+      language: 'en-US',
+      single: false,
+      activityId: null
     }
+  }
+
+  editSingleActivity = (activityId) => {
+    this.setState({
+      single: true,
+      activityId: activityId
+    });
+  }
+
+  closeSingleActivity = () => {
+    this.setState({
+      single: false,
+      activityId: ''
+    })
   }
  
   // TODO need to set the language somewhere here with a component.
@@ -19,13 +35,19 @@ class EditorPage extends React.Component{
       <div className="EditorPage">
         <EditorNewActivityButton
           language={this.state.language}
-        />  
+        />
+        {this.state.single ?
+        <EditorSingleActivityWrapper
+          language={this.state.language}
+          activityId={this.state.activityId}
+        /> 
+        :
         <EditorListActivitiesWrapper
           language={this.state.language}
+          editCallback={this.editSingleActivity}
         />
-        {/* <EditorSingleActivityWrapper
-          language={this.state.language}
-        /> */}
+        }
+
       </div>
     );
   }
