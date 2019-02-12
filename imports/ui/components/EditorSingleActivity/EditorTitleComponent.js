@@ -7,17 +7,18 @@ class EditorTitleComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          title : this.props.title,
+          title : this.props.activity.title[this.props.language],
           editing: false
       }
     }
 
     updateTitle = (e) => {
-        this.setState({title: e.value})
+        this.setState({title: e.target.value})
     }
     saveTitle = () => {
         const { language } = this.props;
         const activityId = this.props.activity._id;
+        console.log('saving', activityId, language)
         Meteor.call('activities.updateLangAttributes', 
         activityId, 'title', language, this.state.title,
         (error) => {
@@ -42,7 +43,7 @@ class EditorTitleComponent extends React.Component {
                     onBlur={this.saveTitle} />
                 : <h2 
                     className="activityTitle"
-                    onClick={()=> this.setState({editing: true})}>{activity.title[`title.${language}`] || 'Click here to add a title'}</h2>}
+                    onClick={()=> this.setState({editing: true})}>{activity.title[language] || 'Click here to add a title'}</h2>}
             </div>
         )
     }
