@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import Select from 'react-select';
-import Icon from '../Icon/Icon';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 
 class EditorCategoriesComponent extends React.Component {
@@ -16,7 +15,6 @@ class EditorCategoriesComponent extends React.Component {
     saveCategory = (selection) => {
         this.setState({category: selection.label})
         const activityId = this.props.activity._id;
-        console.log(selection);
         Meteor.call('activities.updateAttributes', 
         activityId, 'category', selection.value,
         (error) => {
@@ -47,14 +45,9 @@ class EditorCategoriesComponent extends React.Component {
         )
     }
 }
-
-EditorCategoriesComponent.defaultProps = {
-};
   
 EditorCategoriesComponent.propTypes = {
     activity: PropTypes.object.isRequired,
 };
-
-
 export default EditorCategoriesComponent;
 
