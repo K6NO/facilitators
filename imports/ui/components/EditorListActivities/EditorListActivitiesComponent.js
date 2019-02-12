@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Table, Button } from 'reactstrap';
 import i18n from 'meteor/universe:i18n';
+import Icon from '../Icon/Icon';
 import { getCategoryName } from '../../../modules/get-category-name';
 import { getLanguageName } from '../../../modules/get-language-array';
 import './EditorListActivitiesComponent.scss';
@@ -33,6 +34,7 @@ class EditorListActivitiesComponent extends React.Component{
                 <th>{i18n.__('activity.category')}</th>
                 <th>{i18n.__('activity.languagesLabel')}</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -51,6 +53,12 @@ class EditorListActivitiesComponent extends React.Component{
                   </td>
                   <td>
                       <Button color="primary">Edit</Button>
+                  </td>
+                  <td>
+                      <Button color="danger">
+                        <Icon icon={'trash'} />
+
+                      Delete</Button>
                   </td>
               </tr>)
         }
