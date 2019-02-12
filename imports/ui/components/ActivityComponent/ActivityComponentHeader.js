@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col, Badge } from 'reactstrap';
 import './ActivityComponentHeader.scss';
-import getLocale from '../../../modules/get-locale';
+import { getColorByCategory } from '../../../modules/get-colors';
 import { getCategoryName } from '../../../modules/get-category-name';
 
 class ActivityComponentHeader extends React.Component {
