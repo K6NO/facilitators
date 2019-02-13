@@ -1,6 +1,5 @@
 {
     "_locale": "en-US",
-    "hello" : "Hello world!",
     "menu": {
         "language" : "Select language",
         "categories" : "Categories",

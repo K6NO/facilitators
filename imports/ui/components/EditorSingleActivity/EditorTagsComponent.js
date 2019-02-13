@@ -5,6 +5,7 @@ import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
 import { Button, Badge } from 'reactstrap';
 import { getColorByCategory } from '../../../modules/get-colors';
+import Icon from '../Icon/Icon';
 
 
 class EditorTagsComponent extends React.Component {
@@ -16,10 +17,11 @@ class EditorTagsComponent extends React.Component {
     }
 
     getTags = () => {
-        const { language } = this.props;
-        // TODO find out how to retrieve the tags according to language prefs 
-        const tagsObject = i18n.__('tags');
-        const tagsArray = Object.values(tagsObject);
+        const { language } = this.props;        
+        const tagsArray = [];
+        for (let i=0; i<20; i++) {
+            tagsArray.push({value: i, label: i18n.__(`tags.${i}`)});
+        }
         return tagsArray;
     }
 
@@ -31,10 +33,8 @@ class EditorTagsComponent extends React.Component {
     saveTag = (selection) => {
         const { activity } = this.props;
         const oldTags = activity.tags;
-        // find the index of the newly selected tag in the list of tags 
-        const newTagIndex = getTags().indexOf(selection.value);
-        // push the new selection's index in the array of tags
-        oldTags.push(newTagIndex);
+        // push the new selection's index (value) in the array of tags
+        oldTags.push(selection.value);
         // save
         Meteor.call('activities.updateAttributes', activity._id, 'tags', oldTags, 
         (error) => {
@@ -47,6 +47,11 @@ class EditorTagsComponent extends React.Component {
         this.setState({editing: false});
     }
 
+    deleteTag = () => {
+        console.log('delete tag');
+        
+    }
+
     renderTags = ({activity, color}) => {
         // TODO need to add a remove button for each badge (X)
         return activity.tags.map((tagIndex) =>   
@@ -57,7 +62,10 @@ class EditorTagsComponent extends React.Component {
                 className="tagPills"
                 style={{color: color}}
                 >
-                {i18n.__(`tags.${tagIndex}`)}
+                `{i18n.__(`tags.${tagIndex}`)} `
+                <Icon 
+                    icon={'delete'}
+                    onClick={() => this.deleteTag(tagIndex)} />
             </Badge>
         );
     }
@@ -70,7 +78,12 @@ class EditorTagsComponent extends React.Component {
             <div className="EditorTagsComponent">
                 {this.renderTags({activity, color})}
                 {!this.state.editing 
-                ? <Button color="primary">Add Tag</Button>
+                ? <Button 
+                    color="primary"
+                    onClick={this.addTag}>
+                    <Icon icon={'plus'} />
+                    ` Add Tag`
+                </Button>
                 : <Select 
                     className="basic-single CategorySelector"
                     classNamePrefix="tags-edit"
