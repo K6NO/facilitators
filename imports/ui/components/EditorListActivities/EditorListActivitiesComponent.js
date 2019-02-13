@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Table, Button } from 'reactstrap';
 import i18n from 'meteor/universe:i18n';
 import Icon from '../Icon/Icon';
+import EditorDeleteActivityButton from '../EditorDeleteActivityButton/EditorDeleteActivityButton';
 import { getCategoryName } from '../../../modules/get-category-name';
 import { getLanguageName } from '../../../modules/get-language-array';
 import './EditorListActivitiesComponent.scss';
@@ -62,11 +63,10 @@ class EditorListActivitiesComponent extends React.Component{
                         </Button> : ''}
                     </td>
                     <td>
-                      {(Roles.userIsInRole(userId, ['admin']) || activity.owner === userId) ?
-                        <Button color="danger">
-                          <Icon icon={'trash'} />
-                          ` Delete`
-                        </Button> : ''}
+                      <EditorDeleteActivityButton
+                        activity={activity}
+                        userId={userId} />
+                      
                     </td>
                 </tr>)
               }

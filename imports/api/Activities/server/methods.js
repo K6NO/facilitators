@@ -165,7 +165,7 @@ Meteor.methods({
             const user = Meteor.user();
             if(user._id) {
                 // Admins can remove anything
-                if(Roles.userIsInRole(user_id, ['admin'])) {
+                if(Roles.userIsInRole(user._id, ['admin'])) {
                     return Activities.remove(activity._id);
                 } else if(user._id === activity.owner) {
                     // Users can remove own content
