@@ -5,25 +5,25 @@ import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 
 
-class EditorToolsComponent extends React.Component {
+class EditorResourcesComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          tools : this.props.activity.tools[this.props.language],
+          resources : this.props.activity.resources[this.props.language],
           editing: false
       }
     }
 
-    updateTools = (e) => {
-        this.setState({tools: e.target.value})
+    updateResources = (e) => {
+        this.setState({resources: e.target.value})
     }
 
-    saveTools = () => {        
+    saveResources = () => {        
         const activityId = this.props.activity._id;
         const { language } = this.props;
 
         Meteor.call('activities.updateLangAttributes', 
-        activityId, 'tools', language, this.state.tools,
+        activityId, 'resources', language, this.state.resources,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -40,23 +40,23 @@ class EditorToolsComponent extends React.Component {
         const { activity, language } = this.props;
         return (
                 !this.state.editing ? 
-                <Row className="EditorToolsComponent">
+                <Row className="EditorResourcesComponent">
                     <Col
                         onClick={()=> this.setState({editing: true})}>
-                        {renderActivityBodyField('wrench', 'activity.tools')}
+                        {renderActivityBodyField('book-open', 'activity.resources')}
                         <p>
-                            {activity.tools[`${language}`]}
+                            {activity.resources[`${language}`]}
                         </p>
                     </Col>
                 </Row>
-                : <Row className="EditorToolsComponent">
+                : <Row className="EditorResourcesComponent">
                     <Col>
-                        {renderActivityBodyField('wrench', 'activity.tools')}
+                        {renderActivityBodyField('book-open', 'activity.resources')}
                         <textarea
-                            className="activityToolsEditing"
-                            value={this.state.tools}
-                            onChange={this.updateTools}
-                            onBlur={this.saveTools} />
+                            className="activityResourcesEditing"
+                            value={this.state.resources}
+                            onChange={this.updateResources}
+                            onBlur={this.saveResources} />
 
                     </Col>
                 </Row>
@@ -64,9 +64,9 @@ class EditorToolsComponent extends React.Component {
     }
 }
   
-EditorToolsComponent.propTypes = {
+EditorResourcesComponent.propTypes = {
     activity: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
 };
-export default EditorToolsComponent;
+export default EditorResourcesComponent;
 

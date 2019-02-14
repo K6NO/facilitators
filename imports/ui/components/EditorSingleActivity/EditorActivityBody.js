@@ -10,7 +10,9 @@ import EditorGroupComponent from '../EditorGroupComponent/EditorGroupComponent';
 import EditorPreparationsComponent from '../EditorPreparationsComponent/EditorPreparationsComponent';
 import EditorObjectivesComponent from '../EditorObjectivesComponent/EditorObjectivesComponent';
 import EditorToolsComponent from '../EditorToolsComponent/EditorToolsComponent';
-import renderActivityBodyField from './renderActivityBodyField';
+import EditorDescriptionComponent from '../EditorDescriptionComponent/EditorDescriptionComponent';
+import EditorResourcesComponent from '../EditorResourcesComponent/EditorResourcesComponent';
+import EditorImagesComponent from '../EditorImagesComponent/EditorImagesComponent';
 import './EditorActivityBody.scss';
 
 
@@ -47,35 +49,16 @@ class EditorActivityBody extends React.Component {
                 </Row>
                 <Row>
                     <Col sm="6">
-                    {renderActivityBodyField('align-left', 'activity.description')}
-                        <p>
-                            {activity.description[`description.${language}`]}
-                        </p>
+                    <EditorDescriptionComponent activity={activity} language={language} />
+                    
                     </Col>
                     <Col sm="6">
-                        <Row>
-                            <Col>
-                            {renderActivityBodyField('comments', 'activity.comments')}
-                                Here comes the comments box
-                            {renderActivityBodyField('comment-dots', 'activity.writecomment')}                                
-                                Here comes the write comment field.
-                                With text counter and send button
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Icon icon={'images'} size={'lg'} />
-                                Here comes the images box
-                            </Col>
-                        </Row>    
+                        < EditorImagesComponent activity={activity} language={language} />
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                    {renderActivityBodyField('book-open', 'activity.resources')}
-                        <p>
-                            {activity.resources[`resources.${language}`]}
-                        </p>
+                        <EditorResourcesComponent activity={activity} language={language} />
                     </Col>
                 </Row>
             </div>

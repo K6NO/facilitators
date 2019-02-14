@@ -5,25 +5,25 @@ import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 
 
-class EditorToolsComponent extends React.Component {
+class EditorDescriptionComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          tools : this.props.activity.tools[this.props.language],
+          description : this.props.activity.description[this.props.language],
           editing: false
       }
     }
 
-    updateTools = (e) => {
-        this.setState({tools: e.target.value})
+    updateDescription = (e) => {
+        this.setState({description: e.target.value})
     }
 
-    saveTools = () => {        
+    saveDescription = () => {        
         const activityId = this.props.activity._id;
         const { language } = this.props;
 
         Meteor.call('activities.updateLangAttributes', 
-        activityId, 'tools', language, this.state.tools,
+        activityId, 'description', language, this.state.description,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -40,23 +40,23 @@ class EditorToolsComponent extends React.Component {
         const { activity, language } = this.props;
         return (
                 !this.state.editing ? 
-                <Row className="EditorToolsComponent">
+                <Row className="EditorDescriptionComponent">
                     <Col
                         onClick={()=> this.setState({editing: true})}>
-                        {renderActivityBodyField('wrench', 'activity.tools')}
+                        {renderActivityBodyField('align-left', 'activity.description')}
                         <p>
-                            {activity.tools[`${language}`]}
+                            {activity.description[`${language}`]}
                         </p>
                     </Col>
                 </Row>
-                : <Row className="EditorToolsComponent">
+                : <Row className="EditorDescriptionComponent">
                     <Col>
-                        {renderActivityBodyField('wrench', 'activity.tools')}
+                        {renderActivityBodyField('align-left', 'activity.description')}
                         <textarea
-                            className="activityToolsEditing"
-                            value={this.state.tools}
-                            onChange={this.updateTools}
-                            onBlur={this.saveTools} />
+                            className="activitydescriptionEditing"
+                            value={this.state.description}
+                            onChange={this.updateDescription}
+                            onBlur={this.saveDescription} />
 
                     </Col>
                 </Row>
@@ -64,9 +64,9 @@ class EditorToolsComponent extends React.Component {
     }
 }
   
-EditorToolsComponent.propTypes = {
+EditorDescriptionComponent.propTypes = {
     activity: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
 };
-export default EditorToolsComponent;
+export default EditorDescriptionComponent;
 
