@@ -26,7 +26,6 @@ class EditorActivityBody extends React.Component {
 
     render() {
         const { activity, language } = this.props;
-        console.log({language})
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
