@@ -7,19 +7,19 @@ import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 
 
-class EditorAgeComponent extends React.Component {
+class EditorTimeComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          selected : this.props.activity.age,
+          selected : this.props.activity.time,
           editing: false
       }
     }
 
-    saveAge = (selection) => {        
+    saveTime = (selection) => {        
         const activityId = this.props.activity._id;
         Meteor.call('activities.updateAttributes', 
-        activityId, 'age', selection.value,
+        activityId, 'time', selection.value,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -32,14 +32,14 @@ class EditorAgeComponent extends React.Component {
             }
         });
     }
-
-    getAgeOptions = () => {
+    
+    getTimeOptions = () => {
         return [ 
-            { value: "agech", label: i18n.__('activity.agech') }, 
-            { value: "agete", label: i18n.__('activity.agete') }, 
-            { value: "ageya", label : i18n.__('activity.ageya') },
-            { value: "agead", label:  i18n.__('activity.agead') }, 
-            { value: "ageel", label : i18n.__('activity.ageel') }
+            { value: "timevs", label: i18n.__('activity.timevs') }, 
+            { value: "timesh", label: i18n.__('activity.timesh') }, 
+            { value: "timemd", label : i18n.__('activity.timemd') },
+            { value: "timeln", label:  i18n.__('activity.timeln') }, 
+            { value: "timevl", label : i18n.__('activity.timevl') }
         ];
     }
 
@@ -48,32 +48,32 @@ class EditorAgeComponent extends React.Component {
         
         return (
                 !this.state.editing ? 
-                <Row className="EditorAgeComponent">
+                <Row className="EditorTimeComponent">
                     <Col xs="6">
-                        {renderActivityBodyField('address-card', 'activity.age')}
+                        {renderActivityBodyField('clock', 'activity.time')}
                         
                     </Col>
                     <Col xs="6" 
                         className="pt-2"
                         onClick={()=> this.setState({editing: true})} >
-                        <span>{i18n.__(`activity.${activity.age}`)}</span>
+                        <span>{i18n.__(`activity.${activity.time}`)}</span>
                     </Col>
                 </Row>
-                : <Row className="EditorAgeComponent">
+                : <Row className="EditorTimeComponent">
                     <Col xs="6">
-                        {renderActivityBodyField('address-card', 'activity.age')}
+                        {renderActivityBodyField('clock', 'activity.time')}
                     </Col>
                     <Col xs="6">
                         <Select 
                             className="basic-single AgeSelector"
-                            classNamePrefix="age-edit"
+                            classNamePrefix="time-edit"
                             isSearchable={false}
                             isClearable={false}
-                            options={this.getAgeOptions()}
+                            options={this.getTimeOptions()}
                             name="ageSelect"
                             value={this.state.selected}
-                            onChange={(selection) => this.saveAge(selection)}
-                            aria-label="Edit Age"
+                            onChange={(selection) => this.saveTime(selection)}
+                            aria-label="Edit Time"
                         />
                     </Col>
                 </Row>
@@ -81,8 +81,8 @@ class EditorAgeComponent extends React.Component {
     }
 }
   
-EditorAgeComponent.propTypes = {
+EditorTimeComponent.propTypes = {
     activity: PropTypes.object.isRequired,
 };
-export default EditorAgeComponent;
+export default EditorTimeComponent;
 

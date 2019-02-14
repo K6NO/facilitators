@@ -5,6 +5,7 @@ import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import EditorAgeComponent from '../EditorAgeComponent/EditorAgeComponent';
+import EditorTimeComponent from '../EditorTimeComponent/EditorTimeComponent';
 import renderActivityBodyField from './renderActivityBodyField';
 
 import './EditorActivityBody.scss';
@@ -32,14 +33,7 @@ class EditorActivityBody extends React.Component {
                 <Row>
                     <Col sm="6" style={this.setBackground(color)}>
                         <EditorAgeComponent activity={activity} />
-                        <Row>
-                            <Col xs="6">
-                                {renderActivityBodyField('clock', 'activity.time')}
-                            </Col>
-                            <Col xs="6" className="pt-2">
-                                <span>{i18n.__(`activity.${activity.time}`)}</span>
-                            </Col>
-                        </Row>
+                        <EditorTimeComponent activity={activity} />
                         <Row>
                             <Col xs="6">
                                 {renderActivityBodyField('users', 'activity.group')}
