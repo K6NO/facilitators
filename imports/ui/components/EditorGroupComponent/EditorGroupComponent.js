@@ -7,19 +7,19 @@ import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 
 
-class EditorTimeComponent extends React.Component {
+class EditorGroupComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          selected : this.props.activity.time,
+          selected : this.props.activity.group,
           editing: false
       }
     }
 
-    saveTime = (selection) => {        
+    saveGroup = (selection) => {        
         const activityId = this.props.activity._id;
         Meteor.call('activities.updateAttributes', 
-        activityId, 'time', selection.value,
+        activityId, 'group', selection.value,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -33,13 +33,13 @@ class EditorTimeComponent extends React.Component {
         });
     }
     
-    getTimeOptions = () => {
+    getGroupOptions = () => {
         return [ 
-            { value: "timevs", label: i18n.__('activity.timevs') }, 
-            { value: "timesh", label: i18n.__('activity.timesh') }, 
-            { value: "timemd", label : i18n.__('activity.timemd') },
-            { value: "timeln", label:  i18n.__('activity.timeln') }, 
-            { value: "timevl", label : i18n.__('activity.timevl') }
+            { value: "groupvs", label: i18n.__('activity.groupvs') }, 
+            { value: "groupsm", label: i18n.__('activity.groupsm') }, 
+            { value: "groupmd", label : i18n.__('activity.groupmd') },
+            { value: "grouplg", label:  i18n.__('activity.grouplg') }, 
+            { value: "groupvl", label : i18n.__('activity.groupvl') }
         ];
     }
 
@@ -48,32 +48,32 @@ class EditorTimeComponent extends React.Component {
         
         return (
                 !this.state.editing ? 
-                <Row className="EditorTimeComponent">
+                <Row className="EditorGroupComponent">
                     <Col xs="6">
-                        {renderActivityBodyField('clock', 'activity.time')}
+                        {renderActivityBodyField('users', 'activity.group')}
                         
                     </Col>
                     <Col xs="6" 
                         className="pt-2"
                         onClick={()=> this.setState({editing: true})} >
-                        <span>{i18n.__(`activity.${activity.time}`)}</span>
+                        <span>{i18n.__(`activity.${activity.group}`)}</span>
                     </Col>
                 </Row>
-                : <Row className="EditorTimeComponent">
+                : <Row className="EditorGroupComponent">
                     <Col xs="6">
-                        {renderActivityBodyField('clock', 'activity.time')}
+                        {renderActivityBodyField('users', 'activity.group')}
                     </Col>
                     <Col xs="6">
                         <Select 
-                            className="basic-single TimeSelector"
-                            classNamePrefix="time-edit"
+                            className="basic-single GroupSelector"
+                            classNamePrefix="group-edit"
                             isSearchable={false}
                             isClearable={false}
-                            options={this.getTimeOptions()}
-                            name="timeSelect"
+                            options={this.getGroupOptions()}
+                            name="groupSelect"
                             value={this.state.selected}
-                            onChange={(selection) => this.saveTime(selection)}
-                            aria-label="Edit Time"
+                            onChange={(selection) => this.saveGroup(selection)}
+                            aria-label="Edit Group"
                         />
                     </Col>
                 </Row>
@@ -81,8 +81,8 @@ class EditorTimeComponent extends React.Component {
     }
 }
   
-EditorTimeComponent.propTypes = {
+EditorGroupComponent.propTypes = {
     activity: PropTypes.object.isRequired,
 };
-export default EditorTimeComponent;
+export default EditorGroupComponent;
 

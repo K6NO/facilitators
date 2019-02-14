@@ -6,11 +6,10 @@ import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import EditorAgeComponent from '../EditorAgeComponent/EditorAgeComponent';
 import EditorTimeComponent from '../EditorTimeComponent/EditorTimeComponent';
+import EditorGroupComponent from '../EditorGroupComponent/EditorGroupComponent';
 import renderActivityBodyField from './renderActivityBodyField';
-
 import './EditorActivityBody.scss';
 
-const T = i18n.createComponent();
 
 class EditorActivityBody extends React.Component {
     constructor(props){
@@ -34,14 +33,7 @@ class EditorActivityBody extends React.Component {
                     <Col sm="6" style={this.setBackground(color)}>
                         <EditorAgeComponent activity={activity} />
                         <EditorTimeComponent activity={activity} />
-                        <Row>
-                            <Col xs="6">
-                                {renderActivityBodyField('users', 'activity.group')}
-                            </Col>
-                            <Col xs="6" className="pt-2">
-                                <span>{i18n.__(`activity.${activity.group}`)}</span>
-                            </Col>
-                        </Row>
+                        <EditorGroupComponent activity={activity} />
                         <Row>
                             <Col>
                                 {renderActivityBodyField('pause-circle', 'activity.preparations')}
