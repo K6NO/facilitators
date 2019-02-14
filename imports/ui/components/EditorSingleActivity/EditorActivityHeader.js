@@ -4,9 +4,9 @@ import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col, Button } from 'reactstrap';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
-import EditorTitleComponent from './EditorTitleComponent';
-import EditorCategoriesComponent from './EditorCategoriesComponent';
-import EditorTagsComponent from './EditorTagsComponent';
+import EditorTitleComponent from '../EditorTitleComponent/EditorTitleComponent';
+import EditorCategoriesComponent from '../EditorCategoriesComponent/EditorCategoriesComponent';
+import EditorTagsComponent from '../EditorTagsComponent/EditorTagsComponent';
 
 import './EditorActivityHeader.scss';
 
