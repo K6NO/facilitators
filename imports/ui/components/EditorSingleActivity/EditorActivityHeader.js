@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col, Button } from 'reactstrap';
-import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 import EditorTitleComponent from '../EditorTitleComponent/EditorTitleComponent';
 import EditorCategoriesComponent from '../EditorCategoriesComponent/EditorCategoriesComponent';
 import EditorTagsComponent from '../EditorTagsComponent/EditorTagsComponent';

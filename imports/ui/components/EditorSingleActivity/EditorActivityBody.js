@@ -4,6 +4,8 @@ import i18n from 'meteor/universe:i18n';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
+import EditorAgeComponent from '../EditorAgeComponent/EditorAgeComponent';
+import renderActivityBodyField from './renderActivityBodyField';
 
 import './EditorActivityBody.scss';
 
@@ -21,16 +23,6 @@ class EditorActivityBody extends React.Component {
         }
     }
 
-    renderActivityField = (icon, activityField) => {
-        return (
-            <h5 className="activityHeader">
-                <Icon 
-                    icon={icon} 
-                    size={'lg'} />
-                <span className="ml-3">{i18n.__(activityField)}</span>
-            </h5>
-        )
-    }
     render() {
         const { activity, language } = this.props;
         const category = activity.category;
@@ -39,17 +31,10 @@ class EditorActivityBody extends React.Component {
             <div className="EditorActivityBody">
                 <Row>
                     <Col sm="6" style={this.setBackground(color)}>
+                        <EditorAgeComponent activity={activity} />
                         <Row>
                             <Col xs="6">
-                                {this.renderActivityField('address-card', 'activity.age')}
-                            </Col>
-                            <Col xs="6" className="pt-2">
-                                <span>{i18n.__(`activity.${activity.age}`)}</span>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs="6">
-                                {this.renderActivityField('clock', 'activity.time')}
+                                {renderActivityBodyField('clock', 'activity.time')}
                             </Col>
                             <Col xs="6" className="pt-2">
                                 <span>{i18n.__(`activity.${activity.time}`)}</span>
@@ -57,7 +42,7 @@ class EditorActivityBody extends React.Component {
                         </Row>
                         <Row>
                             <Col xs="6">
-                                {this.renderActivityField('users', 'activity.group')}
+                                {renderActivityBodyField('users', 'activity.group')}
                             </Col>
                             <Col xs="6" className="pt-2">
                                 <span>{i18n.__(`activity.${activity.group}`)}</span>
@@ -65,7 +50,7 @@ class EditorActivityBody extends React.Component {
                         </Row>
                         <Row>
                             <Col>
-                                {this.renderActivityField('pause-circle', 'activity.preparations')}
+                                {renderActivityBodyField('pause-circle', 'activity.preparations')}
                                 <p>
                                     {activity.preparations[`preparations.${language}`]}
                                 </p>
@@ -75,7 +60,7 @@ class EditorActivityBody extends React.Component {
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col>
-                                {this.renderActivityField('bullseye', 'activity.objectives')}
+                                {renderActivityBodyField('bullseye', 'activity.objectives')}
                                 <p>
                                     {activity.objectives[`objectives.${language}`]}
                                 </p>
@@ -83,7 +68,7 @@ class EditorActivityBody extends React.Component {
                         </Row>
                         <Row>
                             <Col>
-                            {this.renderActivityField('wrench', 'activity.tools')}
+                            {renderActivityBodyField('wrench', 'activity.tools')}
                                 <p>
                                     {activity.tools[`tools.${language}`]}
                                 </p>
@@ -93,7 +78,7 @@ class EditorActivityBody extends React.Component {
                 </Row>
                 <Row>
                     <Col sm="6">
-                    {this.renderActivityField('align-left', 'activity.description')}
+                    {renderActivityBodyField('align-left', 'activity.description')}
                         <p>
                             {activity.description[`description.${language}`]}
                         </p>
@@ -101,9 +86,9 @@ class EditorActivityBody extends React.Component {
                     <Col sm="6">
                         <Row>
                             <Col>
-                            {this.renderActivityField('comments', 'activity.comments')}
+                            {renderActivityBodyField('comments', 'activity.comments')}
                                 Here comes the comments box
-                            {this.renderActivityField('comment-dots', 'activity.writecomment')}                                
+                            {renderActivityBodyField('comment-dots', 'activity.writecomment')}                                
                                 Here comes the write comment field.
                                 With text counter and send button
                             </Col>
@@ -118,7 +103,7 @@ class EditorActivityBody extends React.Component {
                 </Row>
                 <Row>
                     <Col>
-                    {this.renderActivityField('book-open', 'activity.resources')}
+                    {renderActivityBodyField('book-open', 'activity.resources')}
                         <p>
                             {activity.resources[`resources.${language}`]}
                         </p>
