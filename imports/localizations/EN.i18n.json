@@ -53,7 +53,8 @@
         "send" : "Send",
         "resources" : "Resources",
         "back" : "Back",
-        "backsearch" : "Back to search results"
+        "backsearch" : "Back to search results",
+        "images" : "Images"
     },
     "tags" : {
         "0" : "tag 1---" , 
