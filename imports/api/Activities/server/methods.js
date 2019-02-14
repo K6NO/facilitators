@@ -103,29 +103,24 @@ Meteor.methods({
                     // admins can overwrite any activities
                     return Activities.update(activityId, {
                         $set: {
-                            [attributeName] : {
-                                [locale] : value
+                            [`${attributeName}.${locale}`] : value
                             }
                         }
-                    });
-                } 
+                    );
+                }
                 return Activities.update({
                     _id: activityId,
                     owner: user._id
                     }, {
                     $set: {
-                        [attributeName] : {
-                            [locale] : value
-                        }
+                        [`${attributeName}.${locale}`] : value
                     }
                 });
             }
             throw new Meteor.Error('Update Activity by Field', 'No userId.');
-            
         } catch (exception) {
             handleMethodException(exception);
         }
-
     },
     'activities.updateAttributes' : function activitiesUpdateAttributes (activityId, attributeName, value) {
         check(activityId, String);
