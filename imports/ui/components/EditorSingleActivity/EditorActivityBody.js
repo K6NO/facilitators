@@ -8,6 +8,8 @@ import EditorAgeComponent from '../EditorAgeComponent/EditorAgeComponent';
 import EditorTimeComponent from '../EditorTimeComponent/EditorTimeComponent';
 import EditorGroupComponent from '../EditorGroupComponent/EditorGroupComponent';
 import EditorPreparationsComponent from '../EditorPreparationsComponent/EditorPreparationsComponent';
+import EditorObjectivesComponent from '../EditorObjectivesComponent/EditorObjectivesComponent';
+import EditorToolsComponent from '../EditorToolsComponent/EditorToolsComponent';
 import renderActivityBodyField from './renderActivityBodyField';
 import './EditorActivityBody.scss';
 
@@ -36,24 +38,11 @@ class EditorActivityBody extends React.Component {
                         <EditorTimeComponent activity={activity} language={language} />
                         <EditorGroupComponent activity={activity} language={language} />
                         <EditorPreparationsComponent activity={activity} language={language} />
+                        
                     </Col>
                     <Col sm="6" style={this.setBackground(color)}>
-                        <Row>
-                            <Col>
-                                {renderActivityBodyField('bullseye', 'activity.objectives')}
-                                <p>
-                                    {activity.objectives[`objectives.${language}`]}
-                                </p>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                            {renderActivityBodyField('wrench', 'activity.tools')}
-                                <p>
-                                    {activity.tools[`tools.${language}`]}
-                                </p>
-                            </Col>
-                        </Row>
+                        <EditorObjectivesComponent activity={activity} language={language} />
+                        <EditorToolsComponent activity={activity} language={language} />
                     </Col>
                 </Row>
                 <Row>
