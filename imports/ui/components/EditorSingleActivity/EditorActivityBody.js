@@ -7,6 +7,7 @@ import { Row, Col } from 'reactstrap';
 import EditorAgeComponent from '../EditorAgeComponent/EditorAgeComponent';
 import EditorTimeComponent from '../EditorTimeComponent/EditorTimeComponent';
 import EditorGroupComponent from '../EditorGroupComponent/EditorGroupComponent';
+import EditorPreparationsComponent from '../EditorPreparationsComponent/EditorPreparationsComponent';
 import renderActivityBodyField from './renderActivityBodyField';
 import './EditorActivityBody.scss';
 
@@ -25,23 +26,17 @@ class EditorActivityBody extends React.Component {
 
     render() {
         const { activity, language } = this.props;
+        console.log({language})
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
             <div className="EditorActivityBody">
                 <Row>
                     <Col sm="6" style={this.setBackground(color)}>
-                        <EditorAgeComponent activity={activity} />
-                        <EditorTimeComponent activity={activity} />
-                        <EditorGroupComponent activity={activity} />
-                        <Row>
-                            <Col>
-                                {renderActivityBodyField('pause-circle', 'activity.preparations')}
-                                <p>
-                                    {activity.preparations[`preparations.${language}`]}
-                                </p>
-                            </Col>
-                        </Row>
+                        <EditorAgeComponent activity={activity} language={language} />
+                        <EditorTimeComponent activity={activity} language={language} />
+                        <EditorGroupComponent activity={activity} language={language} />
+                        <EditorPreparationsComponent activity={activity} language={language} />
                     </Col>
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
