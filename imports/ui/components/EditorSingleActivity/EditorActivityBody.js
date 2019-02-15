@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import i18n from 'meteor/universe:i18n';
 import { getColorByCategory } from '../../../modules/get-colors';
-import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import EditorAgeComponent from '../EditorAgeComponent/EditorAgeComponent';
 import EditorTimeComponent from '../EditorTimeComponent/EditorTimeComponent';
@@ -49,11 +47,10 @@ class EditorActivityBody extends React.Component {
                 </Row>
                 <Row>
                     <Col sm="6">
-                    <EditorDescriptionComponent activity={activity} language={language} />
-                    
+                        <EditorDescriptionComponent activity={activity} language={language} />
                     </Col>
                     <Col sm="6">
-                        < EditorImagesComponent activity={activity} language={language} />
+                        <EditorImagesComponent activity={activity} language={language} />
                     </Col>
                 </Row>
                 <Row>
@@ -68,7 +65,7 @@ class EditorActivityBody extends React.Component {
 
 EditorActivityBody.defaultProps = {
     
-  };
+};
   
   EditorActivityBody.propTypes = {
     activity: PropTypes.object.isRequired,

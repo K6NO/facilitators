@@ -57,17 +57,16 @@ class ImageSelector extends React.Component {
   }
 
   selectImage = (url) => {
-    const { callback } = this.props;
+    // TODO save image url to activity maybe here
     this.setState({
       isOpen: false,
       url,
     });
-    callback('imageUrl', url);
+    
   }
 
   render() {
     const {isOpen, url} = this.state;
-    const { nameFlag } = this.props;
     return (
       <div className="ImageSelector">
         <Row>
@@ -116,12 +115,11 @@ class ImageSelector extends React.Component {
           </Row>
           <ImageGrid 
             selectImage={this.selectImage} 
-            nameFlag={nameFlag}
+            
             imageFilter={this.state.imageFilter} />
         </Modal>
         <input
           className="form-control"
-          name={nameFlag}
           type="hidden"
           value={url}
         />

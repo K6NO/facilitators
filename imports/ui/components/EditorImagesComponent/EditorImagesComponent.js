@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
+import ImageSelector from '../ImageSelector/ImageSelector';
 
 
 class EditorImagesComponent extends React.Component {
@@ -13,15 +14,33 @@ class EditorImagesComponent extends React.Component {
       }
     }
 
-
     render() {
         const { activity, language } = this.props;
         return (
             <Row className="EditorImagesComponent">
-                <Col
-                    onClick={()=> this.setState({editing: true})}>
+                <Col sm="12">
                     {renderActivityBodyField('images', 'activity.images')}
-                    Here comes the images box
+                </Col>
+                <Col sm="12">
+                    <Row>
+                        <Col sm="6">
+                            <ImageSelector />
+                        </Col>
+                        {activity.images.map(image => 
+                            <Col 
+                                sm="6"
+                                key={image}
+                                style={{
+                                    backgroundImage: `url("${image}")`,
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundPosition: 'center',
+                                    minHeight: '140px'
+                                }}
+                            >
+                            </Col>
+                            )}
+                    </Row>
                 </Col>
             </Row>
         )
