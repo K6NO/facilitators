@@ -12,6 +12,14 @@ class EditorTitleComponent extends React.Component {
       }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.language !== this.props.language) {
+            this.setState({
+                title: nextProps.activity.title[nextProps.language]
+            });
+        }
+    }
+
     updateTitle = (e) => {
         this.setState({title: e.target.value})
     }
