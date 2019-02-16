@@ -15,7 +15,6 @@ class EditorPage extends React.Component{
   }
 
   editSingleActivity = (activityId) => {
-    console.log('callback', {activityId});
     this.setState({
       single: true,
       activityId: activityId
@@ -30,8 +29,7 @@ class EditorPage extends React.Component{
   }
 
   selectLanguage = (language) => {
-    console.log('setting lang', {language});
-    this.setState({language: language}, () => console.log(this.state.language));
+    this.setState({language: language});
   }
  
   // TODO need to set the language somewhere here with a component.
