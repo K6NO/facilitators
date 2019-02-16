@@ -30,7 +30,7 @@ class EditorDeleteActivityButton extends React.Component{
                 color="danger"
                 onClick={this.deleteActivity}>
             <Icon icon={'trash'} />
-            ` Delete`
+            {` Delete`}
             </Button> : ''
         )
     }
