@@ -6,7 +6,6 @@ import Chapters from '../../api/Chapters/Chapters';
 import Choices from '../../api/Choices/Choices';
 import Sides from '../../api/Sides/Sides';
 import Stories from '../../api/Stories/Stories';
-import Files from '../../api/Files/Files';
 
 const wipe = false;
 
