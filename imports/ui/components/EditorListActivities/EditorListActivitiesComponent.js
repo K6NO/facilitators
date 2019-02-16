@@ -59,7 +59,7 @@ class EditorListActivitiesComponent extends React.Component{
                           color="primary"
                           onClick={() => editCallback(activity._id)}>
                           <Icon icon={'edit'} />
-                          ` Edit`
+                          {` Edit`}
                         </Button> : ''}
                     </td>
                     <td>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import Activities from '../../../api/Activities/Activities';
-import EditorNewActivityButton from '../../components/EditorNewActivityButton/EditorNewActivityButton';
 import EditorListActivitiesComponent from './EditorListActivitiesComponent';
 
 class EditorListActivitiesWrapper extends React.Component{
@@ -15,9 +14,7 @@ class EditorListActivitiesWrapper extends React.Component{
     const { loading, ...props } = this.props;
     return (! loading ? (
       <div className="EditorListActivitiesWrapper">
-      <EditorNewActivityButton
-          language={this.props.language}
-        />
+      
         <EditorListActivitiesComponent
             {...props}
         />
