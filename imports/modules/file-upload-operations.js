@@ -22,7 +22,7 @@ export const checkFileDimensions = (file, maxWidth, maxHeight, whenReady) => {
   };
 
   export const renameFile = (file) => {
-    // add '-'
+    // replace ':' with '-'
     const date = (new Date()).toISOString().replace(/:/g, '-').replace(/\./g, '-');
     // create random name with date and random id
     const name = `${date}-${Random.id()}`;
@@ -32,30 +32,34 @@ export const checkFileDimensions = (file, maxWidth, maxHeight, whenReady) => {
   }
 
   // receives file and metacontext object with name and type
-  export const uploadStoryImageToAmazon = (file, metacontext, callback) => {
-    const isMobile = metacontext.mobile;
-    const isDesktop = metacontext.desktop;
-    const uploader = new Slingshot.Upload( "uploadStoryImage", metacontext );
+  export const uploadImageToAmazon = (file, metacontext, callback) => {
+    // UPLOAD - metacontext.mobile decides file path in aws.js --> uploadToAmazonS3
+    const uploader = new Slingshot.Upload( "uploadToAmazonS3", metacontext );
     uploader.send( file, ( error, url ) => {
-      if ( error ) {
+      if (error) {
         console.error('error', error.message);
-        Bert.alert( error.message, "warning" );
+        Bert.alert( error.message, "danger" );
       } else {
-        Meteor.call( "images.storeUrlInDatabase", url, file.name, isMobile, isDesktop, ( error, imageId ) => {
-          if ( error ) {
-            Bert.alert( error.reason, "warning" );
-            // delete uploaded file if DB insert fails for any reason
-            Meteor.call('aws.deleteFileFromAmazon', url, (error) => {
-              if (error) {
-                console.error('error when Meteor.call ws.deleteFileFromAmazon');
-              }
-              Bert.alert('File deleted from S3', 'success');
-            });
-          } else {
-            Bert.alert( "File uploaded to Amazon S3!", "success" );
-            callback();
-          }
-        });
+        // STORE image url for full-sized version in /original folder
+        if (!metacontext.mobile) {
+          Meteor.call( "activities.storeImageUrl", url, metacontext.activityId, ( error, imageId ) => {
+            if (error) {
+              Bert.alert( error.reason, "danger" );
+              // DELETE uploaded file if DB insert fails for any reason
+              Meteor.call('aws.deleteFileFromAmazon', url, (error) => {
+                if (error) {
+                  console.error('error when Meteor.call ws.deleteFileFromAmazon');
+                }
+                Bert.alert('File deleted from S3', 'success');
+              });
+            } else {
+              callback();
+            }
+          });
+        // If the mobile version is uploaded, do not store image url, just show positive alert in callback
+        } else {
+          callback();
+        }
       }
     });
   }

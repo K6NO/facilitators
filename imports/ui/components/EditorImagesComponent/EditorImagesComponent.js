@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-import ImageSelector from '../ImageSelector/ImageSelector';
+import ImageUploader from '../ImageSelector/ImageUploader';
 
 
 class EditorImagesComponent extends React.Component {
@@ -24,7 +24,7 @@ class EditorImagesComponent extends React.Component {
                 <Col sm="12">
                     <Row>
                         <Col sm="6">
-                            <ImageSelector />
+                            <ImageUploader activity={activity} />
                         </Col>
                         {activity.images.map(image => 
                             <Col 

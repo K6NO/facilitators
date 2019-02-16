@@ -154,6 +154,28 @@ Meteor.methods({
         }
 
     },
+    'activities.storeImageUrl' : function activitiesStoreImageUrl (url, activityId) {
+        check(url, String);
+        check(activityId, String);
+        const userId = Meteor.userId();
+        if(userId) {
+            if(Roles.userIsInRole(userId, ['admin', 'editor'])) {
+                try {
+                    Activities.update(activityId, {
+                        $push : {
+                            images : url
+                        }
+                    });
+                } catch (exception) {
+                    handleMethodException(exception);
+                }
+            } else {
+                throw new Meteor.Error('Store File Url in Database', 'User is not editor or admin.');
+            }
+        } else {
+            throw new Meteor.Error('Store File Url in Database', 'Not a registered user.');
+        }
+    },
     'activities.remove' : function activitiesRemove (activity) {
         check(activity, Object);
         try {
