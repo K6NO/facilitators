@@ -9,7 +9,6 @@ import _ from 'lodash';
 import { Bert } from 'meteor/themeteorchef:bert';
 import InputHint from '../../components/InputHint/InputHint';
 import validate from '../../../modules/validate';
-import ProfileImageUploader from '../../components/ImageSelector/ProfileImageUploader';
 
 import './UserProfileComponent.scss';
 
@@ -220,8 +219,7 @@ class UserProfileComponent extends React.Component {
                             > X </Button>
                         </div>
                           )
-                      : (<div><Label>Profile Image</Label>
-                          <ProfileImageUploader callback={this.handleImageSelection}/></div>)}
+                      : <Label>Profile Image</Label>}
                   <input
                     type="url"
                     name="imageUrl"
