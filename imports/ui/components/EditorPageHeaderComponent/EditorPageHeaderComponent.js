@@ -26,6 +26,7 @@ class EditorPageHeaderComponent extends React.Component{
             <Col sm="6">
                 <EditorNewActivityButton
                     language={this.props.language}
+                    editCallback={this.props.editCallback}
                 />
             </Col>
         </Row>
@@ -36,6 +37,7 @@ class EditorPageHeaderComponent extends React.Component{
 EditorPageHeaderComponent.propTypes = {
     language: PropTypes.string.isRequired,
     selectLanguageCallback: PropTypes.func.isRequired,
+    editCallback: PropTypes.func.isRequired,
 };
 
 export default EditorPageHeaderComponent;

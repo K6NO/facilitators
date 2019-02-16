@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import Icon from '../Icon/Icon';
 
 class EditorTitleComponent extends React.Component {
     constructor(props){

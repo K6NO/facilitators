@@ -15,6 +15,7 @@ class EditorPage extends React.Component{
   }
 
   editSingleActivity = (activityId) => {
+    console.log('callback', {activityId});
     this.setState({
       single: true,
       activityId: activityId
@@ -40,7 +41,9 @@ class EditorPage extends React.Component{
       <div className="EditorPage container">
         <EditorPageHeaderComponent 
           language={this.state.language}
-          selectLanguageCallback={this.selectLanguage} />
+          selectLanguageCallback={this.selectLanguage}
+          editCallback={this.editSingleActivity}
+        />
         {this.state.single ?
         <EditorSingleActivityWrapper
           language={this.state.language}
