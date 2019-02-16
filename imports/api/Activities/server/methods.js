@@ -125,7 +125,7 @@ Meteor.methods({
     'activities.updateAttributes' : function activitiesUpdateAttributes (activityId, attributeName, value) {
         check(activityId, String);
         check(attributeName, String);
-        check(value, Match.OneOf(String, Array));
+        check(value, Match.OneOf(String, Array, Boolean));
         
         try {
             const user = Meteor.user();
