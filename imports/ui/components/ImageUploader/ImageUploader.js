@@ -67,6 +67,6 @@ class ImageUploader extends React.Component {
 
 export default ImageUploader;
 
-EditorImagesComponent.propTypes = {
+ImageUploader.propTypes = {
   activity: PropTypes.object.isRequired,
 };

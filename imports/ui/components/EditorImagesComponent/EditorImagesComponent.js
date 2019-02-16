@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-import ImageUploader from '../ImageSelector/ImageUploader';
+import ImageUploader from '../ImageUploader/ImageUploader';
 
 
 class EditorImagesComponent extends React.Component {
