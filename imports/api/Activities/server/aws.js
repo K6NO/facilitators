@@ -6,7 +6,7 @@ import { check } from 'meteor/check';
 const amazonS3Bucket = "facilitators-images-dev"; 
 
 Slingshot.fileRestrictions( "uploadToAmazonS3", {
-  allowedFileTypes: [ "image/png", "image/jpeg", "image/gif" ],
+  allowedFileTypes: [ "image/png", "image/jpeg", "image/gif", "image/jpg" ],
   maxSize: 10 * 1024 * 1024
 });
 
