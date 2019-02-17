@@ -31,7 +31,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       afterLoginPath: null,
+      locale: i18n.getLocale(),
     };
+  }
+
+  componentDidMount () {
+    i18n.onChangeLocale ((newLocale) => {
+      this.setState({
+        locale: newLocale,
+      });
+    });
   }
 
   setAfterLoginPath = (afterLoginPath) => {

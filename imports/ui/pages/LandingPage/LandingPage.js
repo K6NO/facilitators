@@ -43,6 +43,9 @@ class LandingPage extends React.Component {
     });
   }
 
+  resetTranslations = () => {
+    
+  }
 
   render () {
     const { loading, match, history, userId, viewportIsMobile, ...props } = this.props;

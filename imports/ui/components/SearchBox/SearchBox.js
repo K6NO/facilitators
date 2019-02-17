@@ -26,12 +26,14 @@ class SearchBox extends React.Component{
   }
 
   render (){
-    const language = this.props;
+    const t = i18n.createTranslator('');
+    console.log(i18n.getLocale())
+    const searchTitle = t('searchbox.title')
     return ( 
       <div className="SearchBox">
         <Row>
             <Col>
-                <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
+                <h1 className="searchTitle">{searchTitle}</h1>
             </Col>
         </Row>
         <Row>
