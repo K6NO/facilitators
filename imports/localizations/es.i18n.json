@@ -3,10 +3,10 @@
     "hello" : "Hola!",
     "menu": {
         "language" : "Select language",
-        "categories" : "Categories",
-        "about" : "About",
-        "signin" : "Sign In",
-        "signout" : "Sign out",
+        "categories" : "Categoria",
+        "about" : "Spanyolab",
+        "signin" : "ESSignin",
+        "signout" : "ESsignout",
         "editor" : "Edit Content"
     },
     "searchbox" : {

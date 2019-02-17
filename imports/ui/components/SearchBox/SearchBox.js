@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import createTranslation from '../../../modules/create-translation';
 
 class SearchBox extends React.Component{
   constructor(props){
     super(props);
     this.state = {
         detailed: false,
-        searchObject: {}
+        searchObject: {},
+        title: ''
     }
   }
 
@@ -27,12 +27,11 @@ class SearchBox extends React.Component{
 
   render () {
     
-    const searchTitle = createTranslation('searchbox.title');
     return ( 
       <div className="SearchBox">
         <Row>
             <Col>
-                <h1 className="searchTitle">{searchTitle}</h1>
+                <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
             </Col>
         </Row>
         <Row>

@@ -48,7 +48,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { props, state, setAfterLoginPath, selectCategoryCallback } = this;
+    const { props, state, setAfterLoginPath } = this;
     
     return (
       <Router>
@@ -57,9 +57,7 @@ class App extends React.Component {
           <AnalyticsTracker />
             <Navigation 
               {...props} 
-              {...state} 
-              locale={this.state.locale} 
-              selectCategoryCallback={selectCategoryCallback}  
+              {...state}
             />
             <Switch>
               {/* Public */}
