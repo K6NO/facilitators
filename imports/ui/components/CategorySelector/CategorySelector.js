@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
@@ -45,5 +46,5 @@ class CategorySelector extends React.Component {
 CategorySelector.propTypes = {
 };
   
-export default CategorySelector;
+export default withRouter(CategorySelector);
   
