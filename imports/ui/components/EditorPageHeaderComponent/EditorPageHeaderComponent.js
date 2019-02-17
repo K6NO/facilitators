@@ -11,8 +11,6 @@ class EditorPageHeaderComponent extends React.Component{
 
   }
  
-  // TODO need to set the language somewhere here with a component.
-  // maybe store language setting here in state
   render (){
     return ( 
       <div className="EditorPageHeaderComponent">

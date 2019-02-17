@@ -26,8 +26,8 @@ class Navigation extends React.Component {
   }
   handleClickOutside = () => {
     const navbar = document.getElementById('navbarCollapse');
-    const opened = $('#navbarCollapse').hasClass('show');
-    if(opened) {
+    const open = $('#navbarCollapse').hasClass('show');
+    if(open) {
       navbar.classList.add('hide');
       this.setState({
         isOpen: !this.state.isOpen,

@@ -30,7 +30,7 @@ class LanguageSelector extends React.Component {
 
     
     render () {
-        const languageArray = getLanguageArray();  
+        const languageArray = getLanguageArray();
         return (
             <Select 
                 className="basic-single LanguageSelector"

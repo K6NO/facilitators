@@ -10,8 +10,8 @@
         "editor" : "Edit Content"
     },
     "searchbox" : {
-        "title" : "Welcome! Choose your activity.",
-        "searchBtn" : "Search",
+        "title" : "!Bienvenidos! Encuentra una practica",
+        "searchBtn" : "Cargar",
         "detailedBtn" : "Detailed search",
         "en-US" : "English",
         "es" : "Espanol",

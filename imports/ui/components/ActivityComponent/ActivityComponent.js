@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import ActivityComponentHeader from './ActivityComponentHeader';
 import ActivityComponentBody from './ActivityComponentBody';
 import ActivityComponentFooter from './ActivityComponentFooter';
-import activity from './mockActivity.json';
-
 import './ActivityComponent.scss';
 import getLocale from '../../../modules/get-locale';
 
@@ -42,7 +40,7 @@ ActivityComponent.defaultProps = {
 };
   
 ActivityComponent.propTypes = {
-    activity: PropTypes.object,
+    activity: PropTypes.object.isRequired,
 };
 
 
