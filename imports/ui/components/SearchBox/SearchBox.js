@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import i18n from 'meteor/universe:i18n';
 import { Row, Col } from 'reactstrap';
+import createTranslation from '../../../modules/create-translation';
 
 class SearchBox extends React.Component{
   constructor(props){
@@ -25,10 +25,9 @@ class SearchBox extends React.Component{
     // subscribe to results in ActivitiesGridContainer with searchObject filter
   }
 
-  render (){
-    const t = i18n.createTranslator('');
-    console.log(i18n.getLocale())
-    const searchTitle = t('searchbox.title')
+  render () {
+    
+    const searchTitle = createTranslation('searchbox.title');
     return ( 
       <div className="SearchBox">
         <Row>
