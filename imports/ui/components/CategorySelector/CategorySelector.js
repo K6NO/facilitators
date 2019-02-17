@@ -5,11 +5,12 @@ import i18n from 'meteor/universe:i18n';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 import './CategorySelector.scss';
 
+
 class CategorySelector extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        selected: i18n.__('menu.categories')
+        selected: ''
       };
     }
     
@@ -32,7 +33,7 @@ class CategorySelector extends React.Component {
                 isClearable={false}
                 options={categoryArray}
                 name="categorySelect"
-                placeholder={this.state.selected}
+                placeholder={i18n.__('menu.categories')}
                 value={this.state.selected}
                 onChange={(selection) => this.changeCategory(selection)}
                 aria-label="Select Category"

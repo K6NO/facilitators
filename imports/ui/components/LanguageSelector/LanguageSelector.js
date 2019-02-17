@@ -12,8 +12,7 @@ class LanguageSelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            locale: i18n.__('menu.language')
-            // locale : getLanguageName(getLocale()),
+            locale : getLanguageName(getLocale()),
         }
     }
 
