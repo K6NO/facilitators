@@ -41,8 +41,8 @@ Meteor.publish('activities.allFilter', (filterObject) => {
      */
 
     const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
-        { key : {$in : values} }
-    ))
+        { [key] : {$in : values} }
+    ));
     
     const userId = Meteor.userId();
     if(userId) {
