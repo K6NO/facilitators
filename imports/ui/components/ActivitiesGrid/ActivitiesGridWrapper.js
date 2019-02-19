@@ -15,12 +15,15 @@ class ActivitiesGridWrapper extends React.Component {
       super(props);
     }
 
+    handlePageClick = (data) => {
+        const { pageNumberCallback } = this.props;
+        const selected = data.selected;
+        pageNumberCallback(selected);
+    }
     render() {
         const { activities, totalCount, pageSize, loading} = this.props;
-        const pageCount = totalCount / pageSize;
-        console.log({totalCount, pageCount})
+        const pageCount = Math.ceil(totalCount / pageSize);
 
-        console.log('wrapper', {activities})
         return (!loading ? 
             <div className="ActivitiesGridWrapper">
                 <ActivitiesGrid
@@ -63,23 +66,39 @@ ActivitiesGridWrapper.propTypes = {
 export default withTracker(({filterObject, pageSize, pageNum}) => {
     let activitySub, activityCountSub, totalCount;
     let activities = [];
-    // remove the keys with empty values --> []
+    /** Remove the keys with empty values --> []
+     * Otherwise mongoFilterArray is badly formatted for the query
+    */
     Object.keys(filterObject).map(key => filterObject[key].length < 1 && delete filterObject[key]);
-        
+    const skips = pageSize * pageNum;
+
+    /**
+     * Need to explicitly provide search query and parameters, otherwise
+     * the find and the count subscriptions override each other
+     * 
+     * sadpanda :(
+     */
     if(!_.isEmpty(filterObject)) {
+        const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
+            { [key] : {$in : values } }
+        ));
         // if there are filter values qquery with those, use pagination
         activitySub = Meteor.subscribe('activities.allFilter', filterObject, pageNum, pageSize);
+        activities = Activities.find({$and: mongoFilterArray}, {
+            skip: skips,
+            limit: pageSize
+          }).fetch();
         activityCountSub = Meteor.subscribe('activities.filterCount', filterObject);
-        activities = Activities.find().fetch();
         totalCount = Activities.find().count();
     } else {
         // filter is empty, use pagination
         activitySub = Meteor.subscribe('activities.all', pageNum, pageSize);
+        activities = Activities.find({}, {skip: skips,
+            limit: pageSize
+        }).fetch();
         activityCountSub = Meteor.subscribe('activities.allCount');
-        activities = Activities.find().fetch();
         totalCount = Activities.find().count();
     }
-    console.log({totalCount})
     return {
         loading: !activitySub.ready() && !activityCountSub.ready(),
         activities,

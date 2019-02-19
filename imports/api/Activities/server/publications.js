@@ -13,7 +13,6 @@ Meteor.publish('activities.all', (pageNum, pageSize) => {
     check(pageSize, Number);
     const userId = Meteor.userId();
     const skips = pageSize * pageNum;
-
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
             return Activities.find({}, {
@@ -65,7 +64,6 @@ Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
     ));
     const userId = Meteor.userId();
     const skips = pageSize * pageNum;
-    console.log('pagenum ', pageNum, ' skips: ', skips, ' pagesize ', pageSize)
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
             return Activities.find({
