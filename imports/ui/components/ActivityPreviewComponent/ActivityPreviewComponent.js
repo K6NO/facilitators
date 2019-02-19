@@ -12,7 +12,7 @@ class ActivityPreviewComponent extends React.Component {
     }
 
     render() {
-        const { activity } = this.props;
+        const { activity, selectActivityCallback } = this.props;
         return (
             <div className="ActivityPreviewComponent">
                 <ActivityPreviewComponentHeader 
@@ -20,6 +20,7 @@ class ActivityPreviewComponent extends React.Component {
                 />
                 <ActivityPreviewComponentBody 
                     activity={activity}
+                    selectActivityCallback={selectActivityCallback}
                 />
             </div>
         )

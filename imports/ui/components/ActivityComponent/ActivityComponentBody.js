@@ -5,10 +5,7 @@ import getLocale from '../../../modules/get-locale';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
-
 import './ActivityComponentBody.scss';
-
-const T = i18n.createComponent();
 
 class ActivityComponentBody extends React.Component {
     constructor(props){

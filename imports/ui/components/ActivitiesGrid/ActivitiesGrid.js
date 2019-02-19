@@ -10,11 +10,13 @@ class ActivitiesGrid extends React.Component {
       
     }
 
-    renderActivities = (activities, language) => activities.map(activity => (
+    renderActivities = (activities, language, selectActivityCallback) => activities.map(activity => (
         <Col xs={12} sm={6} md={4}
             key={activity._id}
             className="p-0">
-            <ActivityPreviewComponent activity={activity} />
+            <ActivityPreviewComponent 
+                activity={activity}
+                selectActivityCallback={selectActivityCallback} />
         </Col>
 
     ))
@@ -24,7 +26,7 @@ class ActivitiesGrid extends React.Component {
         return (
             <div className="ActivitiesGrid">
                 <Row>
-                    {this.renderActivities(this.props.activities, language)}
+                    {this.renderActivities(this.props.activities, language, this.props.selectActivityCallback)}
                 </Row>
             </div>
         )
@@ -37,6 +39,8 @@ ActivitiesGrid.defaultProps = {
   
 ActivitiesGrid.propTypes = {
     activities: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectActivityCallback: PropTypes.func.isRequired
+
 };
 
 

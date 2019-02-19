@@ -33,7 +33,7 @@ class ActivityPreviewComponentBody extends React.Component {
 
     }
     render() {
-        const { activity } = this.props;
+        const { activity, selectActivityCallback } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
@@ -72,7 +72,7 @@ class ActivityPreviewComponentBody extends React.Component {
                 <Row>
                     <Col xs="12">
                         <Button outline color="info"
-                            onClick={()=> console.log(activity._id)}>Description</Button>
+                            onClick={()=> selectActivityCallback(activity._id)}>Description</Button>
                     </Col>
                 </Row>
 

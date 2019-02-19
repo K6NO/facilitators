@@ -14,7 +14,7 @@ class ActivityComponent extends React.Component {
     }
 
     render() {
-        // const { activity } = this.props;
+        const { activity } = this.props;
         const locale = getLocale();
         return (
             <div className="ActivityComponent">

@@ -14,7 +14,7 @@ class ActivityComponentWrapper extends React.Component {
 
     render() {
         const { activity, loading } = this.props;
-        return (loading ? 
+        return (!loading ? 
             <ActivityComponent
                 activity={activity} />
             : <Loading/>
@@ -33,9 +33,10 @@ ActivityComponentWrapper.propTypes = {
 
 
 export default withTracker((activityId) => {
-    const activitySub = Meteor.subscribe('activities.view', activityId);
+    const activitySub = Meteor.subscribe('activities.view', activityId.activityId);
+    console.log(activityId.activityId)
     return {
         loading: !activitySub.ready(),
-        activity: Activities.findOne(activityId),
+        activity: Activities.findOne(activityId.activityId),
     };
 })(ActivityComponentWrapper);

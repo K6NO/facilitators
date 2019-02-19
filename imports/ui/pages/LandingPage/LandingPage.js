@@ -24,7 +24,9 @@ class LandingPage extends React.Component {
   };
 
   setActivityId = (activityId) => {
+    console.log(activityId)
     this.setState({
+      ...this.state,
       activityId: activityId,
       singleActivity: true,
     });
@@ -82,7 +84,8 @@ class LandingPage extends React.Component {
                         filterObject={this.state.filterObject}
                         pageSize={this.state.pageSize}
                         pageNum={this.state.pageNum}
-                        pageNumberCallback={this.handlePageNumber} />
+                        pageNumberCallback={this.handlePageNumber}
+                        selectActivityCallback={this.setActivityId} />
                     </Col>
                   </Row>
                   : <Row>

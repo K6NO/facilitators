@@ -21,13 +21,14 @@ class ActivitiesGridWrapper extends React.Component {
         pageNumberCallback(selected);
     }
     render() {
-        const { activities, totalCount, pageSize, loading} = this.props;
+        const { activities, totalCount, pageSize, loading, selectActivityCallback} = this.props;
         const pageCount = Math.ceil(totalCount / pageSize);
 
         return (!loading ? 
             <div className="ActivitiesGridWrapper">
                 <ActivitiesGrid
-                    activities={activities} />
+                    activities={activities}
+                    selectActivityCallback={selectActivityCallback} />
                 <Row>
                     <Col>
                         <ReactPaginate 
@@ -59,7 +60,8 @@ ActivitiesGridWrapper.propTypes = {
     filterObject: PropTypes.object.isRequired,
     pageSize : PropTypes.number.isRequired,
     pageNum : PropTypes.number.isRequired,
-    pageNumberCallback: PropTypes.func.isRequired
+    pageNumberCallback: PropTypes.func.isRequired,
+    selectActivityCallback: PropTypes.func.isRequired
 };
 
 
