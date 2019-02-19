@@ -38,6 +38,7 @@ Meteor.publish('activities.allFilter', (filterObject) => {
      * 5. Make sure that only public or own content is returned for non admins
      * 
      * Inspired by https://stackoverflow.com/questions/49628432/how-to-convert-an-object-to-array-of-objects#
+     * and https://stackoverflow.com/questions/21417711/search-multiple-fields-for-multiple-values-in-mongodb
      */
 
     const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
