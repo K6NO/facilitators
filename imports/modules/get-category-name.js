@@ -55,6 +55,16 @@ export const getMultiAgeArray = () => {
   ]
 };
 
+export const getMultiTimeArray = () => {
+  return [
+      { value: 'timevs', text: i18n.__('activity.timevs'), markup: multiSelectOptionMarkup(i18n.__('activity.timevs'))},
+      { value: 'timesh', text: i18n.__('activity.timesh'), markup: multiSelectOptionMarkup(i18n.__('activity.timesh'))},
+      { value: 'timemd', text: i18n.__('activity.timemd'), markup: multiSelectOptionMarkup(i18n.__('activity.timemd'))},
+      { value: 'timeln', text: i18n.__('activity.timeln'), markup: multiSelectOptionMarkup(i18n.__('activity.timeln'))},
+      { value: 'timevl', text: i18n.__('activity.timevl'), markup: multiSelectOptionMarkup(i18n.__('activity.timevl'))},
+  ]
+};
+
 const multiSelectOptionMarkup = (text) => (
     <div>
       <span className="checkbox">

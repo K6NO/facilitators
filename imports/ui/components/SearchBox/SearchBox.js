@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MultiSelector from '../MultiSelector/MultiSelector';
 import { Row, Col } from 'reactstrap';
-import { getMultiCategoryArray, getMultiGroupArray, getMultiAgeArray } from '../../../modules/get-category-name';
+import { getMultiCategoryArray, getMultiTimeArray, getMultiGroupArray, getMultiAgeArray } from '../../../modules/get-category-name';
 
 
 class SearchBox extends React.Component{
@@ -54,6 +54,15 @@ class SearchBox extends React.Component{
                     noSelectionLabel={i18n.__('searchbox.ageDefault')}
                     ariaLabel={"Search by age. Use up and down arrows to navigate age groups. Hit enter to select."}                  
                     options={getMultiAgeArray()} />
+            </Col>
+            <Col xs="12" sm="6">
+                <MultiSelector 
+                    updateSearchCallback={updateSearchCallback}
+                    className={"AgeMultiSelector"}
+                    name={"age"}
+                    noSelectionLabel={i18n.__('searchbox.ageDefault')}
+                    ariaLabel={"Search by age. Use up and down arrows to navigate age groups. Hit enter to select."}                  
+                    options={getMultiTimeArray()} />
             </Col>
         </Row>
         {this.state.detailed 
