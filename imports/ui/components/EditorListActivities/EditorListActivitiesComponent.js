@@ -4,8 +4,7 @@ import { Row, Col, Table, Button } from 'reactstrap';
 import i18n from 'meteor/universe:i18n';
 import Icon from '../Icon/Icon';
 import EditorDeleteActivityButton from '../EditorDeleteActivityButton/EditorDeleteActivityButton';
-import { getCategoryName } from '../../../modules/get-category-name';
-import { getLanguageName } from '../../../modules/get-language-array';
+import { getCategoryName, getLanguageName} from '../../../modules/get-select-translations';
 import './EditorListActivitiesComponent.scss';
 
 class EditorListActivitiesComponent extends React.Component{

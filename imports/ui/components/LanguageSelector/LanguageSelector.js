@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
 import getLocale from '../../../modules/get-locale';
-import { getLanguageArray, getLanguageName } from '../../../modules/get-language-array';
+import { getLanguageArray, getLanguageName } from '../../../modules/get-select-translations';
 import './LanguageSelector.scss';
 
 

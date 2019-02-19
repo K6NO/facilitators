@@ -15,8 +15,10 @@
         "groupDefault" : "Select group size",
         "ageDefault" : "Select age",
         "timeDefault" : "Select duration",
+        "tagsDefault" : "Select tags",
         "searchBtn" : "Search",
         "detailedBtn" : "Detailed search",
+        
         "en-US" : "English",
         "es" : "Espanol",
         "hu" : "Magyar",

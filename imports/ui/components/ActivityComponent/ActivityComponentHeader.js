@@ -4,7 +4,7 @@ import Icon from '../Icon/Icon';
 import { Row, Col, Badge } from 'reactstrap';
 import './ActivityComponentHeader.scss';
 import { getColorByCategory } from '../../../modules/get-colors';
-import { getCategoryName } from '../../../modules/get-category-name';
+import { getCategoryName } from '../../../modules/get-select-translations';
 
 class ActivityComponentHeader extends React.Component {
     constructor(props){

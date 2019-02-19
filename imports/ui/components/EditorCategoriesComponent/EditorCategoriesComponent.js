@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import Select from 'react-select';
-import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
+import { getCategoryName, getCategoryArray } from '../../../modules/get-select-translations';
 
 class EditorCategoriesComponent extends React.Component {
     constructor(props){

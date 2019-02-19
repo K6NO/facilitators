@@ -15,6 +15,7 @@
         "groupDefault" : "Select group size",
         "ageDefault" : "Select age",
         "timeDefault" : "Select duration",
+        "tagsDefault" : "Select tags",
         "searchBtn" : "Kereső",
         "detailedBtn" : "Részletes kereső",
         "en-US" : "English",
