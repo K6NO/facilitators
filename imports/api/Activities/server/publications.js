@@ -42,13 +42,11 @@ Meteor.publish('activities.allFilter', (filterObject) => {
      */
 
 
-    const mongoFilterArray = Object.entries(clearedFilterObject).map(([key, [values]]) => {
-        if(values.length > 0 ) 
-         return { [key] : {$in : [values]} }
-    });
-    
+    const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
+        { [key] : {$in : values } }
+    ));
    
-    console.log(mongoFilterArray)
+    console.log('mongoarray', mongoFilterArray)
     
     const userId = Meteor.userId();
     if(userId) {

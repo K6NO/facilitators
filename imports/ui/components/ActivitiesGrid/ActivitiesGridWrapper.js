@@ -37,10 +37,10 @@ export default withTracker(({filterObject}) => {
     console.log('is filter object empty? ', _.isEmpty(filterObject), {filterObject});
     let activitySub;
     let activities = [];
-    const clearedFilterObject = Object.values(filterObject).filter(value => value.length > 0);
-    console.log(clearedFilterObject);
+    Object.keys(filterObject).map(key => filterObject[key].length < 1 && delete filterObject[key]);
+    console.log({filterObject});
     
-    if(!_.isEmpty(clearedFilterObject)) {
+    if(!_.isEmpty(filterObject)) {
         // const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
         //     { [key] : {$in : values} }
         // ));
