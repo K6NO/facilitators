@@ -28,14 +28,14 @@ class LandingPage extends React.Component {
   }
 
   updateSearchObject = (key, value) => {
-    console.log({key, value});
     this.setState({
         searchObject : {
             ...this.state.searchObject,
             [key]: value
         },
         singleActivity : false,
-    });
+    }, () => console.log(this.state.searchObject)
+    );
   }
 
   backToActivitiesGrid = () => {

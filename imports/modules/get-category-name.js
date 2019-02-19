@@ -35,6 +35,16 @@ export const getMultiCategoryArray = () => {
     ]
 };
 
+export const getMultiGroupArray = () => {
+  return [
+      { value: 'groupvs', text: i18n.__('activity.groupvs'), markup: multiSelectOptionMarkup(i18n.__('activity.groupvs'))},
+      { value: 'groupsm', text: i18n.__('activity.groupsm'), markup: multiSelectOptionMarkup(i18n.__('activity.groupsm'))},
+      { value: 'groupmd', text: i18n.__('activity.groupmd'), markup: multiSelectOptionMarkup(i18n.__('activity.groupmd'))},
+      { value: 'grouplg', text: i18n.__('activity.grouplg'), markup: multiSelectOptionMarkup(i18n.__('activity.grouplg'))},
+      { value: 'groupvl', text: i18n.__('activity.groupvl'), markup: multiSelectOptionMarkup(i18n.__('activity.groupvl'))},
+  ]
+};
+
 const multiSelectOptionMarkup = (text) => (
     <div>
       <span className="checkbox">

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import ReactResponsiveSelect from 'react-responsive-select';
-import { getMultiCategoryArray } from '../../../modules/get-category-name';
 import './MultiSelector.scss';
 
 const caretIcon = (
@@ -20,7 +19,7 @@ class MultiSelector extends React.Component {
     }
   
     handleChange = (newValue) => {
-      const { updateSearchCallback } = this.props;
+      const { updateSearchCallback, name } = this.props;
       const selected = newValue.options.map(v => v.value).filter(v => v !== 'null');
 
       // Without this check the component repeatedly updates
@@ -30,7 +29,7 @@ class MultiSelector extends React.Component {
         this.setState({
           ...this.state,
           selectedValues: selected,
-        }, () => updateSearchCallback('category', this.state.selectedValues));
+        }, () => updateSearchCallback(name, this.state.selectedValues));
       }
     }
   
