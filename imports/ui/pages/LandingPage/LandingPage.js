@@ -28,6 +28,7 @@ class LandingPage extends React.Component {
   }
 
   updateSearchObject = (key, value) => {
+    console.log({key, value});
     this.setState({
         searchObject : {
             ...this.state.searchObject,
@@ -43,8 +44,8 @@ class LandingPage extends React.Component {
     });
   }
 
-  resetTranslations = () => {
-    
+  searchActivities = () => {
+    // subscribe to results in ActivitiesGridContainer with searchObject filter
   }
 
   render () {
@@ -57,8 +58,7 @@ class LandingPage extends React.Component {
                 <Row>
                   <Col xs={12}>
                     <SearchBox
-                      searchObject = {this.state.searchObject}
-                      updateCallback = {this.updateSearchObject} /> 
+                      updateSearchCallback = {this.updateSearchObject} /> 
                   </Col>
                 </Row>
                 
