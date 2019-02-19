@@ -35,7 +35,7 @@ class EditorTagsComponent extends React.Component {
         const { activity } = this.props;
         const oldTags = activity.tags;
         // push the new selection's index (value) in the array of tags
-        oldTags.push(`'${selection.value}'`);
+        oldTags.push(`${selection.value}`);
         // save
         Meteor.call('activities.updateAttributes', activity._id, 'tags', oldTags, 
         (error) => {
