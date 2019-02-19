@@ -18,6 +18,7 @@
         "languagesDefault" : "Select languages",
         "searchBtn" : "Search",
         "detailedBtn" : "Detailed search",
+        "simpleBtn" : "Simple search",
         "en-US" : "English",
         "es" : "Espanol",
         "hu" : "Magyar",

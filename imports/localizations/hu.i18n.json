@@ -19,6 +19,7 @@
         "languagesDefault" : "Select languages",
         "searchBtn" : "Kereső",
         "detailedBtn" : "Részletes kereső",
+        "simpleBtn" : "Egyszerű kereső",
         "en-US" : "English",
         "es" : "Espanol",
         "hu" : "Magyar",

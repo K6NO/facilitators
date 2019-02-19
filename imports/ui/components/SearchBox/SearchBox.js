@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MultiSelector from '../MultiSelector/MultiSelector';
 import { Row, Col, Button } from 'reactstrap';
+import MultiSelector from '../MultiSelector/MultiSelector';
+import SearchButton from './SearchButton';
 import { getSearchBoxValues, getDetailedSearchBoxValues } from './getSearchBoxValues';
+import DetailedSearchButton from './DetailedSearchButton';
 
 class SearchBox extends React.Component{
   constructor(props){
@@ -45,7 +47,7 @@ class SearchBox extends React.Component{
     }
     
     render () {
-        const { updateSearchCallback } = this.props;
+        const { updateSearchCallback, searchCallback } = this.props;
     
    
     return (
@@ -66,12 +68,11 @@ class SearchBox extends React.Component{
             
             <Row>
                 <Col>
-                    <Button color="primary">{i18n.__('searchbox.searchBtn')}</Button>
-                    <Button 
-                        color="link"
-                        onClick={this.switchDetailedSearch}>
-                        {i18n.__('searchbox.detailedBtn')}
-                    </Button>
+                    <SearchButton
+                        searchCallback={searchCallback} />
+                    <DetailedSearchButton 
+                        detailed={this.state.detailed}
+                        callback={this.switchDetailedSearch} />
                 </Col>
             </Row>
         </div>
