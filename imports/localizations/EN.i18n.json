@@ -15,6 +15,7 @@
         "ageDefault" : "Select age",
         "timeDefault" : "Select duration",
         "tagsDefault" : "Select tags",
+        "languagesDefault" : "Select languages",
         "searchBtn" : "Search",
         "detailedBtn" : "Detailed search",
         "en-US" : "English",

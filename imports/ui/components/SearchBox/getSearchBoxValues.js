@@ -2,7 +2,8 @@ import { getMultiCategoryArray,
     getMultiTimeArray, 
     getMultiGroupArray, 
     getMultiAgeArray,
-    getMultiTagsArray } from '../../../modules/get-select-translations';
+    getMultiTagsArray,
+    getMultiLanguagesArray } from '../../../modules/get-select-translations';
 
 export const getSearchBoxValues = () => [
     {
@@ -42,5 +43,12 @@ export const getDetailedSearchBoxValues = () => [
         noSelectionLabel: 'searchbox.tagsDefault',
         ariaLabel: "Search by tags. Use up and down arrows to navigate tags. Hit enter to select.",
         options: getMultiTagsArray()
+    },
+    {
+        className: "LanguagesMultiSelector",
+        name: "languages",
+        noSelectionLabel: 'searchbox.languagesDefault',
+        ariaLabel: "Search by languages. Use up and down arrows to navigate languages. Hit enter to select.",
+        options: getMultiLanguagesArray()
     },
 ]

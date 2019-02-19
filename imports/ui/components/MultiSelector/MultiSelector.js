@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Badge } from 'reactstrap';
 import _ from 'lodash';
 import ReactResponsiveSelect from 'react-responsive-select';
 import './MultiSelector.scss';
@@ -21,7 +22,6 @@ class MultiSelector extends React.Component {
     handleChange = (newValue) => {
       const { updateSearchCallback, name } = this.props;
       const selected = newValue.options.map(v => v.value).filter(v => v !== 'null');
-      console.log({selected})
 
       // Without this check the component repeatedly updates
       const shouldUpdate = !_.isEqual(this.state.selectedValues, selected);
@@ -33,10 +33,14 @@ class MultiSelector extends React.Component {
         }, () => updateSearchCallback(name, this.state.selectedValues));
       }
     }
+
+    customLabelRenderer = (multiOptions) => {
+      return multiOptions.options.map(option => <Badge key={option.value} color="light" pill>{option.text}</Badge>);
+    }
   
 
     render () {
-        const { options, name, className, noSelectionLabel, ariaLabel} = this.props;
+        const { options, name, className, noSelectionLabel, ariaLabel, custom} = this.props;
         return (
             <ReactResponsiveSelect
                 multiselect
@@ -45,6 +49,7 @@ class MultiSelector extends React.Component {
                 onChange={this.handleChange}
                 selectedValues={this.state.selectedValues}
                 noSelectionLabel={noSelectionLabel}
+                customLabelRenderer={custom ? multiSelectSelectedOptions => this.customLabelRenderer(multiSelectSelectedOptions) : ''}
                 caretIcon={caretIcon}
                 className={className}
                 aria-label={ariaLabel}

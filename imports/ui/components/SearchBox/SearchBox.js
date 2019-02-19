@@ -8,7 +8,7 @@ class SearchBox extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-        detailed: true,
+        detailed: false,
     }
   }
 
@@ -20,9 +20,10 @@ class SearchBox extends React.Component{
                 name={boxValue.name}
                 noSelectionLabel={i18n.__(boxValue.noSelectionLabel)}
                 ariaLabel={boxValue.ariaLabel}
-                options={boxValue.options} />
+                options={boxValue.options}
+                custom={false} />
         </Col>
-        )
+    )
 
     renderDetailedSearchBoxValues = (updateSearchCallback) => getDetailedSearchBoxValues().map(boxValue => 
         <Col xs={12} key={boxValue.name}>
@@ -32,37 +33,48 @@ class SearchBox extends React.Component{
                 name={boxValue.name}
                 noSelectionLabel={i18n.__(boxValue.noSelectionLabel)}
                 ariaLabel={boxValue.ariaLabel}
-                options={boxValue.options} />
+                options={boxValue.options}
+                custom={true} />
         </Col>
-        )
+    )
     
-  render () {
-    const { updateSearchCallback } = this.props;
+    switchDetailedSearch = () => {
+        this.setState({
+            detailed: !this.state.detailed
+        });
+    }
+    
+    render () {
+        const { updateSearchCallback } = this.props;
     
    
-    return ( 
-      <div className="SearchBox">
-        <Row>
-            <Col>
-                <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
-            </Col>
-        </Row>
-        <Row>
-            {this.renderSearchBoxValues(updateSearchCallback)}
-        </Row>
-        {this.state.detailed 
-            ? <Row>
-                {this.renderDetailedSearchBoxValues(updateSearchCallback)}
+    return (
+        <div className="SearchBox">
+            <Row>
+                <Col>
+                    <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
+                </Col>
             </Row>
-        : ''}
-        
-        <Row>
-            <Col>
-                <Button color="primary">{i18n.__('searchbox.searchBtn')}</Button>
-                <Button color="link">{i18n.__('searchbox.detailedBtn')}</Button>
-            </Col>
-        </Row>
-      </div>
+            <Row>
+                {this.renderSearchBoxValues(updateSearchCallback)}
+            </Row>
+            {this.state.detailed 
+                ? <Row>
+                    {this.renderDetailedSearchBoxValues(updateSearchCallback)}
+                </Row>
+            : ''}
+            
+            <Row>
+                <Col>
+                    <Button color="primary">{i18n.__('searchbox.searchBtn')}</Button>
+                    <Button 
+                        color="link"
+                        onClick={this.switchDetailedSearch}>
+                        {i18n.__('searchbox.detailedBtn')}
+                    </Button>
+                </Col>
+            </Row>
+        </div>
     );
   }
 }

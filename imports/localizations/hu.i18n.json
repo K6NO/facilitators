@@ -16,6 +16,7 @@
         "ageDefault" : "Select age",
         "timeDefault" : "Select duration",
         "tagsDefault" : "Select tags",
+        "languagesDefault" : "Select languages",
         "searchBtn" : "Kereső",
         "detailedBtn" : "Részletes kereső",
         "en-US" : "English",
