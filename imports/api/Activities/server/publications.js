@@ -41,17 +41,24 @@ Meteor.publish('activities.allFilter', (filterObject) => {
      * and https://stackoverflow.com/questions/21417711/search-multiple-fields-for-multiple-values-in-mongodb
      */
 
-    const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
-        { [key] : {$in : values} }
-    ));
+
+    const mongoFilterArray = Object.entries(clearedFilterObject).map(([key, [values]]) => {
+        if(values.length > 0 ) 
+         return { [key] : {$in : [values]} }
+    });
+    
+   
+    console.log(mongoFilterArray)
     
     const userId = Meteor.userId();
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
+            console.log('admin')
             return Activities.find({
                 $and: mongoFilterArray
             });
         }
+        console.log('user')
         return Activities.find({
             $or:[
                 { public: true },

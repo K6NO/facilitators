@@ -80,7 +80,8 @@ class SearchBox extends React.Component{
   }
 }
 SearchBox.propTypes = {
-    updateSearchCallback : PropTypes.func.isRequired
+    updateSearchCallback : PropTypes.func.isRequired,
+    searchCallback : PropTypes.func.isRequired
 };
 
 export default SearchBox;

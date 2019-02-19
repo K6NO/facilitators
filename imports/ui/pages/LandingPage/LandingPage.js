@@ -4,8 +4,8 @@ import { Row, Col } from 'reactstrap';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import Loading from '../../components/Loading/Loading';
-import ActivityComponent from '../../components/ActivityComponent/ActivityComponent';
 import ActivityComponentWrapper from '../../components/ActivityComponent/ActivityComponentWrapper';
+import ActivitiesGridWrapper from '../../components/ActivitiesGrid/ActivitiesGridWrapper';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import i18n from 'meteor/universe:i18n';
 import './LandingPage.scss';
@@ -16,7 +16,8 @@ class LandingPage extends React.Component {
     this.state = {
       activityId: '',
       singleActivity: false,
-      searchObject: {}
+      searchObject: {},
+      filterObject: {},
     };
   };
 
@@ -38,6 +39,12 @@ class LandingPage extends React.Component {
     );
   }
 
+  updateFilterObject = () => {
+    this.setState({
+      filterObject : this.state.searchObject
+    });
+  }
+
   backToActivitiesGrid = () => {
     this.setState({
       singleActivity: false,
@@ -45,6 +52,8 @@ class LandingPage extends React.Component {
   }
 
   searchActivities = () => {
+    console.log('szörcs!', this.state.searchObject);
+    this.updateFilterObject();
     // subscribe to results in ActivitiesGridContainer with searchObject filter
   }
 
@@ -58,14 +67,16 @@ class LandingPage extends React.Component {
                 <Row>
                   <Col xs={12}>
                     <SearchBox
+                      searchCallback = {this.searchActivities}
                       updateSearchCallback = {this.updateSearchObject} /> 
                   </Col>
                 </Row>
                 
-                {/* {!this.state.singleActivity
+                {!this.state.singleActivity
                   ? <Row>
                     <Col xs={12}>
-                      <ActivitiesGridWrapper />
+                      <ActivitiesGridWrapper
+                        filterObject={this.state.filterObject} />
                     </Col>
                   </Row>
                   : <Row>
@@ -73,7 +84,7 @@ class LandingPage extends React.Component {
                         <ActivityComponentWrapper
                           activityId={this.state.activityId} />    
                       </Col>
-                    </Row>} */}
+                    </Row>}
                 
           
           </Col>

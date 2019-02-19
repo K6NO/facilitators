@@ -270,7 +270,7 @@ Activities.schema = new SimpleSchema({
         type: Array,
     },
     'tags.$': {
-        type: Number,
+        type: String,
     },
     languages: {
         type: Array,
