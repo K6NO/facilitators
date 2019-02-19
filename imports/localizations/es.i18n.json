@@ -11,6 +11,10 @@
     },
     "searchbox" : {
         "title" : "!Bienvenidos! Encuentra una practica",
+        "categoryDefault" : "Select categories",
+        "groupDefault" : "Select group size",
+        "ageDefault" : "Select age",
+        "timeDefault" : "Select duration",
         "searchBtn" : "Cargar",
         "detailedBtn" : "Detailed search",
         "en-US" : "English",

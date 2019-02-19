@@ -11,6 +11,10 @@
     },
     "searchbox" : {
         "title" : "Üdvözöljük! Válasszon gyakorlatot!",
+        "categoryDefault" : "Select categories",
+        "groupDefault" : "Select group size",
+        "ageDefault" : "Select age",
+        "timeDefault" : "Select duration",
         "searchBtn" : "Kereső",
         "detailedBtn" : "Részletes kereső",
         "en-US" : "English",
