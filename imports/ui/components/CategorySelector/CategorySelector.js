@@ -6,7 +6,6 @@ import i18n from 'meteor/universe:i18n';
 import { getCategoryName, getCategoryArray } from '../../../modules/get-category-name';
 import './CategorySelector.scss';
 
-
 class CategorySelector extends React.Component {
     constructor(props){
       super(props);
@@ -15,15 +14,18 @@ class CategorySelector extends React.Component {
       };
     }
     
-    changeCategory = (selection) => {
+    changeCategoryPage = (category) => {
         const { history } = this.props;
+        history.push('/category/' + category);
+    }
+
+    changeCategory = (selection) => {
         const category = selection.value;
         this.setState({
             selected: getCategoryName(category)
-        })
-        history.push('/category/' + category);
-        
+        }, () => this.changeCategoryPage(category));
     }
+
     render () {
         const categoryArray = getCategoryArray();
         return (
@@ -43,7 +45,9 @@ class CategorySelector extends React.Component {
     }
 }
   
+
 CategorySelector.propTypes = {
+    callback: PropTypes.func,
 };
   
 export default withRouter(CategorySelector);
