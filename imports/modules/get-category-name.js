@@ -45,6 +45,16 @@ export const getMultiGroupArray = () => {
   ]
 };
 
+export const getMultiAgeArray = () => {
+  return [
+      { value: 'agech', text: i18n.__('activity.agech'), markup: multiSelectOptionMarkup(i18n.__('activity.agech'))},
+      { value: 'agete', text: i18n.__('activity.agete'), markup: multiSelectOptionMarkup(i18n.__('activity.agete'))},
+      { value: 'ageya', text: i18n.__('activity.ageya'), markup: multiSelectOptionMarkup(i18n.__('activity.ageya'))},
+      { value: 'agead', text: i18n.__('activity.agead'), markup: multiSelectOptionMarkup(i18n.__('activity.agead'))},
+      { value: 'ageel', text: i18n.__('activity.ageel'), markup: multiSelectOptionMarkup(i18n.__('activity.ageel'))},
+  ]
+};
+
 const multiSelectOptionMarkup = (text) => (
     <div>
       <span className="checkbox">
