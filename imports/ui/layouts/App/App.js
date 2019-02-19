@@ -37,9 +37,11 @@ class App extends React.Component {
 
   componentDidMount () {
     i18n.onChangeLocale ((newLocale) => {
-      this.setState({
-        locale: newLocale,
-      });
+      if(this.state.locale !== newLocale) {
+        this.setState({
+          locale: newLocale,
+        });
+      }
     });
   }
 
