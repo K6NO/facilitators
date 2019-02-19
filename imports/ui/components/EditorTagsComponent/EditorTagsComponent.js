@@ -18,7 +18,6 @@ class EditorTagsComponent extends React.Component {
     }
 
     getTags = () => {
-        const { language } = this.props;        
         const tagsArray = [];
         for (let i=0; i<20; i++) {
             tagsArray.push({value: i, label: i18n.__(`tags.${i}`)});

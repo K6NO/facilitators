@@ -18,6 +18,8 @@ class LandingPage extends React.Component {
       singleActivity: false,
       searchObject: {},
       filterObject: {},
+      pageSize: 9,
+      pageNum: 0,
     };
   };
 
@@ -35,13 +37,14 @@ class LandingPage extends React.Component {
             [key]: value
         },
         singleActivity : false,
-    }, () => console.log(this.state.searchObject)
-    );
+    });
   }
 
   updateFilterObject = () => {
+    // search Activities by resetting the state of sub-component
     this.setState({
-      filterObject : this.state.searchObject
+      filterObject : this.state.searchObject,
+      pageNum: 0
     });
   }
 
@@ -51,10 +54,10 @@ class LandingPage extends React.Component {
     });
   }
 
-  searchActivities = () => {
-    console.log('szörcs!', this.state.searchObject);
-    this.updateFilterObject();
-    // subscribe to results in ActivitiesGridContainer with searchObject filter
+  handlePageNumber = (pageNumber) => {
+    this.setState({
+      pageNum: pageNumber
+    });
   }
 
   render () {
@@ -67,7 +70,7 @@ class LandingPage extends React.Component {
                 <Row>
                   <Col xs={12}>
                     <SearchBox
-                      searchCallback = {this.searchActivities}
+                      searchCallback = {this.updateFilterObject}
                       updateSearchCallback = {this.updateSearchObject} /> 
                   </Col>
                 </Row>
@@ -76,7 +79,10 @@ class LandingPage extends React.Component {
                   ? <Row>
                     <Col xs={12}>
                       <ActivitiesGridWrapper
-                        filterObject={this.state.filterObject} />
+                        filterObject={this.state.filterObject}
+                        pageSize={this.state.pageSize}
+                        pageNum={this.state.pageNum}
+                        pageNumberCallback={this.handlePageNumber} />
                     </Col>
                   </Row>
                   : <Row>

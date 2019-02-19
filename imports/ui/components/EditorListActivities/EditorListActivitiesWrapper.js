@@ -36,7 +36,9 @@ EditorListActivitiesWrapper.propTypes = {
 
 
 export default withTracker(() => {
-  const activitiesSub = Meteor.subscribe('activities.all');
+  const pageNum = 0;
+  const pageSize = 200;
+  const activitiesSub = Meteor.subscribe('activities.all', pageNum, pageSize);
   const activities = activitiesSub.ready() ? Activities.find().fetch() : [];
 
   return {

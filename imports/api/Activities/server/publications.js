@@ -8,26 +8,44 @@ import Activities from '../Activities';
  * Registered users can view and edit public and own Activities
  * Non-registered users can view public activities
 **/
-Meteor.publish('activities.all', () => {
+Meteor.publish('activities.all', (pageNum, pageSize) => {
+    check(pageNum, Number);
+    check(pageSize, Number);
     const userId = Meteor.userId();
+    const skips = pageSize * pageNum;
+
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
-            return Activities.find();
+            return Activities.find({}, {
+                skip: skips,
+                limit: pageSize,
+                sort: { categories : -1 }
+            });
         }
         return Activities.find({
             $or: [
                 { owner : userId },
                 { public: true }
             ]
+        }, {
+            skip: skips,
+            limit: pageSize,
+            sort: { categories : -1 }
         });
     }
     return Activities.find({
         public: true
+    }, {
+        skip: skips,
+        limit: pageSize,
+        sort: { categories : -1 }
     });
 });
 
-Meteor.publish('activities.allFilter', (filterObject) => {
+Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
     check(filterObject, Object);
+    check(pageNum, Number);
+    check(pageSize, Number);
     /**
      * Querying the db with multiple, non-exclusive criteria.
      * 1. Examine the filterObject, check for existing key-value pairs
@@ -45,31 +63,38 @@ Meteor.publish('activities.allFilter', (filterObject) => {
     const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
         { [key] : {$in : values } }
     ));
-   
-    console.log('mongoarray', mongoFilterArray)
-    
     const userId = Meteor.userId();
+    const skips = pageSize * pageNum;
+    console.log('pagenum ', pageNum, ' skips: ', skips, ' pagesize ', pageSize)
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
-            console.log('admin')
             return Activities.find({
-                $and: mongoFilterArray
-            });
+                $and: mongoFilterArray,
+                    }, {
+                    skip: skips,
+                    limit: pageSize,
+                    sort: { categories : -1 }
+                });
         }
-        console.log('user')
         return Activities.find({
             $or:[
                 { public: true },
                 { owner: userId }                
             ],
             $and: mongoFilterArray
+        }, {
+            skip: skips,
+            limit: pageSize,
+            sort: { categories : -1 }
         });
     }
-    // TODO - see if this works. If not, then use push
-    // mongoFilterArray.push({public: true}) 
     return Activities.find({
         public: true,
         $and: mongoFilterArray
+    }, {
+        skip: skips,
+        limit: pageSize,
+        sort: { categories : -1 }
     });
 });
 

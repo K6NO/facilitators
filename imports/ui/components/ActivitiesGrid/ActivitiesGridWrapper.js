@@ -15,6 +15,7 @@ class ActivitiesGridWrapper extends React.Component {
 
     render() {
         const { activities, loading } = this.props;
+        console.log('wrapper', {activities})
         return (!loading ? 
             <ActivitiesGrid
                 activities={activities} />
@@ -30,27 +31,27 @@ ActivitiesGridWrapper.propTypes = {
     activities: PropTypes.arrayOf(PropTypes.object).isRequired,
     loading: PropTypes.bool.isRequired,
     filterObject: PropTypes.object.isRequired,
+    pageSize : PropTypes.number.isRequired,
+    pageNum : PropTypes.number.isRequired,
+    pageNumberCallback: PropTypes.func.isRequired
 };
 
 
-export default withTracker(({filterObject}) => {
-    console.log('is filter object empty? ', _.isEmpty(filterObject), {filterObject});
+export default withTracker(({filterObject, pageSize, pageNum}) => {
     let activitySub;
     let activities = [];
+    // remove the keys with empty values --> []
     Object.keys(filterObject).map(key => filterObject[key].length < 1 && delete filterObject[key]);
-    console.log({filterObject});
-    
+        
     if(!_.isEmpty(filterObject)) {
-        // const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
-        //     { [key] : {$in : values} }
-        // ));
-        activitySub = Meteor.subscribe('activities.allFilter', filterObject);
+        // if there are filter values qquery with those, use pagination
+        activitySub = Meteor.subscribe('activities.allFilter', filterObject, pageNum, pageSize);
         activities = Activities.find().fetch();
     } else {
-        activitySub = Meteor.subscribe('activities.all');
+        // filter is empty, use pagination
+        activitySub = Meteor.subscribe('activities.all', pageNum, pageSize);
         activities = Activities.find().fetch();
     }
-    console.log('is activity sub ready? ', activitySub.ready(), {activities})
     return {
         loading: !activitySub.ready(),
         activities
