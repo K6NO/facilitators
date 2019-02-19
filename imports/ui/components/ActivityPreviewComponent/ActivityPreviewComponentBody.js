@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col, Badge } from 'reactstrap';
+import { Row, Col, Badge, Button } from 'reactstrap';
 
 class ActivityPreviewComponentBody extends React.Component {
     constructor(props){
@@ -16,18 +16,16 @@ class ActivityPreviewComponentBody extends React.Component {
                 <Icon 
                     icon={icon} 
                     size={'lg'} />
-                <span className="ml-3">{i18n.__(activityField)}</span>
             </h5>
         )
     }
     renderTags = (activity, color) => {
         return activity.tags.map((tagIndex) =>   
             <Badge 
-                color="light" 
                 pill
                 key={tagIndex}
                 className="tagPills"
-                style={{color: color}}
+                style={{background: color}}
                 >
                 {i18n.__(`tags.${tagIndex}`)}
             </Badge>
@@ -43,36 +41,39 @@ class ActivityPreviewComponentBody extends React.Component {
                 <Row>
                     <Col xs="12">
                         <Row>
-                            <Col xs="6">
+                            <Col xs="2" className="pt-2">
                                 {this.renderActivityField('address-card', 'activity.age')}
                             </Col>
-                            <Col xs="6" className="pt-2">
+                            <Col xs="10" >
                                 <span>{i18n.__(`activity.${activity.age}`)}</span>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="6">
+                            <Col xs="2" className="pt-2">
                                 {this.renderActivityField('clock', 'activity.time')}
                             </Col>
-                            <Col xs="6" className="pt-2">
+                            <Col xs="10" >
                                 <span>{i18n.__(`activity.${activity.time}`)}</span>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="6">
+                            <Col xs="2" className="pt-2">
                                 {this.renderActivityField('users', 'activity.group')}
                             </Col>
-                            <Col xs="6" className="pt-2">
+                            <Col xs="10" >
                                 <span>{i18n.__(`activity.${activity.group}`)}</span>
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs="12">
+                    <Col xs="11">
                         {this.renderTags(activity, color)}
                     </Col>
                 </Row>
                 <Row>
-                    
+                    <Col xs="12">
+                        <Button outline color="info"
+                            onClick={()=> console.log(activity._id)}>Description</Button>
+                    </Col>
                 </Row>
 
             </div>

@@ -12,7 +12,8 @@ class ActivitiesGrid extends React.Component {
 
     renderActivities = (activities, language) => activities.map(activity => (
         <Col xs={12} sm={6} md={4}
-            key={activity._id}>
+            key={activity._id}
+            className="p-0">
             <ActivityPreviewComponent activity={activity} />
         </Col>
 
