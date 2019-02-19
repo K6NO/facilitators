@@ -66,7 +66,7 @@ class LandingPage extends React.Component {
     return (!loading ? (
       <div className="container LandingPage">
         <Row>
-          <Col xs={12} id="stories" className="stories">
+          <Col xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
                 <Row>
                   <Col xs={12}>
                     <SearchBox
