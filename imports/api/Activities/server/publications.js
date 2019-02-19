@@ -98,6 +98,51 @@ Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
     });
 });
 
+Meteor.publish('activities.filterCount', (filterObject) => {
+    check(filterObject, Object);
+    
+    const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
+        { [key] : {$in : values } }
+    ));
+    const userId = Meteor.userId();
+    if(userId) {
+        if(Roles.userIsInRole(userId, ['admin'])) {
+            return Activities.find({
+                $and: mongoFilterArray,
+                    }).count();
+        }
+        return Activities.find({
+            $or:[
+                { public: true },
+                { owner: userId }                
+            ],
+            $and: mongoFilterArray
+        }).count();
+    }
+    return Activities.find({
+        public: true,
+        $and: mongoFilterArray
+    }).count();
+});
+
+Meteor.publish('activities.allCount', () => {
+    const userId = Meteor.userId();
+    if(userId) {
+        if(Roles.userIsInRole(userId, ['admin'])) {
+            return Activities.find({}).count();
+        }
+        return Activities.find({
+            $or:[
+                { public: true },
+                { owner: userId }                
+            ]
+        }).count();
+    }
+    return Activities.find({
+        public: true
+    }).count();
+});
+
 Meteor.publish('activities.view', (activityId) => {
     check(activityId, String);
     const userId = Meteor.userId();

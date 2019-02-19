@@ -18,6 +18,7 @@ class EditorListActivitiesWrapper extends React.Component{
         <EditorListActivitiesComponent
             {...props}
         />
+ 
       </div>
     ) : '');
   }
