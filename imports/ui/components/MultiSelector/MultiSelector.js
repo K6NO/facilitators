@@ -21,6 +21,7 @@ class MultiSelector extends React.Component {
     handleChange = (newValue) => {
       const { updateSearchCallback, name } = this.props;
       const selected = newValue.options.map(v => v.value).filter(v => v !== 'null');
+      console.log({selected})
 
       // Without this check the component repeatedly updates
       const shouldUpdate = !_.isEqual(this.state.selectedValues, selected);

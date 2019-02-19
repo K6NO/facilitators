@@ -1,6 +1,8 @@
-import i18n from 'meteor/universe:i18n';
-import React from 'react';
-import { getMultiCategoryArray, getMultiTimeArray, getMultiGroupArray, getMultiAgeArray } from '../../../modules/get-select-translations';
+import { getMultiCategoryArray, 
+    getMultiTimeArray, 
+    getMultiGroupArray, 
+    getMultiAgeArray,
+    getMultiTagsArray } from '../../../modules/get-select-translations';
 
 export const getSearchBoxValues = () => [
     {
@@ -32,3 +34,13 @@ export const getSearchBoxValues = () => [
         options: getMultiTimeArray()
     },
 ];
+
+export const getDetailedSearchBoxValues = () => [
+    {
+        className: "TagsMultiSelector",
+        name: "tags",
+        noSelectionLabel: 'searchbox.tagsDefault',
+        ariaLabel: "Search by tags. Use up and down arrows to navigate tags. Hit enter to select.",
+        options: getMultiTagsArray()
+    },
+]

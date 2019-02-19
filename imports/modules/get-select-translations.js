@@ -84,6 +84,31 @@ export const getMultiTimeArray = () => {
   ]
 };
 
+export const getMultiTagsArray = () => {
+  return [
+      { value: '0', text: i18n.__('tags.0'), markup: multiSelectOptionMarkup(i18n.__('tags.0'))},
+      { value: '0', text: i18n.__('tags.1'), markup: multiSelectOptionMarkup(i18n.__('tags.1'))},
+      { value: '0', text: i18n.__('tags.2'), markup: multiSelectOptionMarkup(i18n.__('tags.2'))},
+      { value: '0', text: i18n.__('tags.3'), markup: multiSelectOptionMarkup(i18n.__('tags.3'))},
+      { value: '0', text: i18n.__('tags.4'), markup: multiSelectOptionMarkup(i18n.__('tags.4'))},
+      { value: '0', text: i18n.__('tags.5'), markup: multiSelectOptionMarkup(i18n.__('tags.5'))},
+      { value: '0', text: i18n.__('tags.6'), markup: multiSelectOptionMarkup(i18n.__('tags.6'))},
+      { value: '0', text: i18n.__('tags.7'), markup: multiSelectOptionMarkup(i18n.__('tags.7'))},
+      { value: '0', text: i18n.__('tags.8'), markup: multiSelectOptionMarkup(i18n.__('tags.8'))},
+      { value: '0', text: i18n.__('tags.9'), markup: multiSelectOptionMarkup(i18n.__('tags.9'))},
+      { value: '0', text: i18n.__('tags.10'), markup: multiSelectOptionMarkup(i18n.__('tags.10'))},
+      { value: '0', text: i18n.__('tags.11'), markup: multiSelectOptionMarkup(i18n.__('tags.11'))},
+      { value: '0', text: i18n.__('tags.12'), markup: multiSelectOptionMarkup(i18n.__('tags.12'))},
+      { value: '0', text: i18n.__('tags.13'), markup: multiSelectOptionMarkup(i18n.__('tags.13'))},
+      { value: '0', text: i18n.__('tags.14'), markup: multiSelectOptionMarkup(i18n.__('tags.14'))},
+      { value: '0', text: i18n.__('tags.15'), markup: multiSelectOptionMarkup(i18n.__('tags.15'))},
+      { value: '0', text: i18n.__('tags.16'), markup: multiSelectOptionMarkup(i18n.__('tags.16'))},
+      { value: '0', text: i18n.__('tags.17'), markup: multiSelectOptionMarkup(i18n.__('tags.17'))},
+      { value: '0', text: i18n.__('tags.18'), markup: multiSelectOptionMarkup(i18n.__('tags.18'))},
+      { value: '0', text: i18n.__('tags.19'), markup: multiSelectOptionMarkup(i18n.__('tags.19'))},
+  ]
+};
+
 const multiSelectOptionMarkup = (text) => (
     <div>
       <span className="checkbox">

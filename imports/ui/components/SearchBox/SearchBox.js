@@ -2,28 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MultiSelector from '../MultiSelector/MultiSelector';
 import { Row, Col, Button } from 'reactstrap';
-import { getSearchBoxValues } from './getSearchBoxValues'; 
+import { getSearchBoxValues, getDetailedSearchBoxValues } from './getSearchBoxValues';
 
 class SearchBox extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-        detailed: false,
+        detailed: true,
     }
   }
 
-  renderSearchBoxValues = (updateSearchCallback) => getSearchBoxValues().map(boxValue => 
-    <Col xs={12} sm={6} key={boxValue.name}>
-        <MultiSelector
-            updateSearchCallback={updateSearchCallback}
-            className={boxValue.className}
-            name={boxValue.name}
-            noSelectionLabel={i18n.__(boxValue.noSelectionLabel)}
-            ariaLabel={boxValue.ariaLabel}
-            options={boxValue.options} />
-    </Col>
-    )
+    renderSearchBoxValues = (updateSearchCallback) => getSearchBoxValues().map(boxValue => 
+        <Col xs={12} sm={6} key={boxValue.name}>
+            <MultiSelector
+                updateSearchCallback={updateSearchCallback}
+                className={boxValue.className}
+                name={boxValue.name}
+                noSelectionLabel={i18n.__(boxValue.noSelectionLabel)}
+                ariaLabel={boxValue.ariaLabel}
+                options={boxValue.options} />
+        </Col>
+        )
 
+    renderDetailedSearchBoxValues = (updateSearchCallback) => getDetailedSearchBoxValues().map(boxValue => 
+        <Col xs={12} key={boxValue.name}>
+            <MultiSelector
+                updateSearchCallback={updateSearchCallback}
+                className={boxValue.className}
+                name={boxValue.name}
+                noSelectionLabel={i18n.__(boxValue.noSelectionLabel)}
+                ariaLabel={boxValue.ariaLabel}
+                options={boxValue.options} />
+        </Col>
+        )
+    
   render () {
     const { updateSearchCallback } = this.props;
     
@@ -36,14 +48,11 @@ class SearchBox extends React.Component{
             </Col>
         </Row>
         <Row>
-            
             {this.renderSearchBoxValues(updateSearchCallback)}
         </Row>
         {this.state.detailed 
             ? <Row>
-                <Col>
-                    Detailed search row    
-                </Col>
+                {this.renderDetailedSearchBoxValues(updateSearchCallback)}
             </Row>
         : ''}
         
