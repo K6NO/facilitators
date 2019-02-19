@@ -13,10 +13,11 @@ class ActivityComponentWrapper extends React.Component {
     }
 
     render() {
-        const { activity, loading } = this.props;
+        const { activity, loading, backCallback } = this.props;
         return (!loading ? 
             <ActivityComponent
-                activity={activity} />
+                activity={activity}
+                backCallback={backCallback} />
             : <Loading/>
         )
     }

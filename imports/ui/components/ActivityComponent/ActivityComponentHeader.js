@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon/Icon';
-import { Row, Col, Badge } from 'reactstrap';
+import { Row, Col, Badge, Button } from 'reactstrap';
 import './ActivityComponentHeader.scss';
 import { getColorByCategory } from '../../../modules/get-colors';
 import { getCategoryName } from '../../../modules/get-select-translations';
@@ -32,7 +32,7 @@ class ActivityComponentHeader extends React.Component {
 
     }
     render() {
-        const { activity, locale } = this.props;
+        const { activity, locale, backCallback} = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
@@ -46,10 +46,10 @@ class ActivityComponentHeader extends React.Component {
                         {this.renderTags({activity, locale, color})}
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
-                        <a href="#" className="backLink">
+                        <Button color='link' onClick={backCallback} className="backLink">
                             <Icon icon={'angle-double-left'} size={'lg'}/>
                             Back to search results 
-                        </a>
+                        </Button>
                     </Col>
                 </Row>
             </div>

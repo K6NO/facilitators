@@ -14,13 +14,14 @@ class ActivityComponent extends React.Component {
     }
 
     render() {
-        const { activity } = this.props;
+        const { activity, backCallback } = this.props;
         const locale = getLocale();
         return (
             <div className="ActivityComponent">
                 <ActivityComponentHeader 
                     activity={activity}
                     locale={locale}
+                    backCallback={backCallback}
                 />
                 <ActivityComponentBody 
                     activity={activity}

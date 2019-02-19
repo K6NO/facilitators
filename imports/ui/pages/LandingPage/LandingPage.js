@@ -91,6 +91,7 @@ class LandingPage extends React.Component {
                   : <Row>
                       <Col xs={12}>
                         <ActivityComponentWrapper
+                          backCallback={this.backToActivitiesGrid}
                           activityId={this.state.activityId} />    
                       </Col>
                     </Row>}
