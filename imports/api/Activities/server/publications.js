@@ -109,7 +109,7 @@ Meteor.publish('activities.filterCount', (filterObject) => {
         if(Roles.userIsInRole(userId, ['admin'])) {
             return Activities.find({
                 $and: mongoFilterArray,
-                    }).count();
+                    });
         }
         return Activities.find({
             $or:[
@@ -117,26 +117,26 @@ Meteor.publish('activities.filterCount', (filterObject) => {
                 { owner: userId }                
             ],
             $and: mongoFilterArray
-        }).count();
+        });
     }
     return Activities.find({
         public: true,
         $and: mongoFilterArray
-    }).count();
+    });
 });
 
 Meteor.publish('activities.allCount', () => {
     const userId = Meteor.userId();
     if(userId) {
         if(Roles.userIsInRole(userId, ['admin'])) {
-            return Activities.find({}).count();
+            return Activities.find();
         }
         return Activities.find({
             $or:[
                 { public: true },
                 { owner: userId }                
             ]
-        }).count();
+        });
     }
     return Activities.find({
         public: true

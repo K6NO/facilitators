@@ -69,7 +69,7 @@ export default withTracker(({filterObject, pageSize, pageNum}) => {
     if(!_.isEmpty(filterObject)) {
         // if there are filter values qquery with those, use pagination
         activitySub = Meteor.subscribe('activities.allFilter', filterObject, pageNum, pageSize);
-        activityCountSub = Meteor.subscribe('activities.countFilter', filterObject);
+        activityCountSub = Meteor.subscribe('activities.filterCount', filterObject);
         activities = Activities.find().fetch();
         totalCount = Activities.find().count();
     } else {
@@ -79,6 +79,7 @@ export default withTracker(({filterObject, pageSize, pageNum}) => {
         activities = Activities.find().fetch();
         totalCount = Activities.find().count();
     }
+    console.log({totalCount})
     return {
         loading: !activitySub.ready() && !activityCountSub.ready(),
         activities,
