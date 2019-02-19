@@ -64,6 +64,7 @@ ActivityComponentHeader.defaultProps = {
 ActivityComponentHeader.propTypes = {
     activity: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
+    backCallback: PropTypes.func.isRequired
 };
 
 

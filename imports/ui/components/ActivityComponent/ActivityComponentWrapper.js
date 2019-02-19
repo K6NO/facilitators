@@ -30,6 +30,7 @@ ActivityComponentWrapper.propTypes = {
     activityId: PropTypes.string.isRequired,
     activity: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    backCallback: PropTypes.func.isRequired
 };
 
 

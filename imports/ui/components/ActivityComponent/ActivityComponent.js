@@ -42,6 +42,7 @@ ActivityComponent.defaultProps = {
   
 ActivityComponent.propTypes = {
     activity: PropTypes.object.isRequired,
+    backCallback: PropTypes.func.isRequired
 };
 
 
