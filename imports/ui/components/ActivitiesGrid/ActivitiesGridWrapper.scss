@@ -1,0 +1,19 @@
+.ActivitiesGridWrapper {
+    .pagination {
+        text-transform: uppercase;
+        li > a {
+            border-radius: 15px;
+            border: 1px solid transparent;
+            &:focus {
+                outline: 0;
+                border: 1px solid transparent;
+            }
+            &:hover {
+                border: 1px solid transparent;
+            }
+        }
+        .pages {
+
+        }
+    }
+}

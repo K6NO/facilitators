@@ -73,7 +73,7 @@ class LandingPage extends React.Component {
       <div className="container LandingPage">
         <Row>
           <Col xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
-                <Row className="searchBoxHeight">
+                <Row className="searchBoxHeight my-5">
                   <Col xs={{size: 12, order: 2} } sm={{size: 9, order: 1}} md={8} className="p-md-0">
                     <SearchBox
                       searchCallback = {this.updateFilterObject}

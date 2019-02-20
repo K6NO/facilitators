@@ -4,10 +4,13 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Row, Col } from 'reactstrap';
 import ReactPaginate from 'react-paginate';
+import styled from 'styled-components';
 import Activities from '../../../api/Activities/Activities';
 import ActivitiesGrid from './ActivitiesGrid';
 import Loading from '../Loading/Loading';
+import Icon from '../Icon/Icon';
 import _ from 'lodash';
+import './ActivitiesGridWrapper.scss';
 
 
 class ActivitiesGridWrapper extends React.Component {
@@ -29,8 +32,8 @@ class ActivitiesGridWrapper extends React.Component {
                 <Row>
                     <Col>
                         <ReactPaginate 
-                        previousLabel={"previous"}
-                        nextLabel={"next"}
+                        previousLabel={<Icon icon={'chevron-left'} />}
+                        nextLabel={<Icon icon={'chevron-right'} />}
                         breakLabel={"..."}
                         breakClassName={"break-me"}
                         pageCount={pageCount}
@@ -53,8 +56,8 @@ class ActivitiesGridWrapper extends React.Component {
                 <Row>
                     <Col>
                         <ReactPaginate 
-                        previousLabel={"previous"}
-                        nextLabel={"next"}
+                        previousLabel={<Icon icon={'chevron-left'} />}
+                        nextLabel={<Icon icon={'chevron-right'} />}
                         breakLabel={"..."}
                         breakClassName={"break-me"}
                         pageCount={pageCount}
