@@ -9,6 +9,7 @@ import ActivitiesGridWrapper from '../../components/ActivitiesGrid/ActivitiesGri
 import SearchBox from '../../components/SearchBox/SearchBox';
 import i18n from 'meteor/universe:i18n';
 import './LandingPage.scss';
+import CategoriesGrid from '../../components/CategoriesGrid/CategoriesGrid';
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class LandingPage extends React.Component {
     this.state = {
       activityId: '',
       singleActivity: false,
+      showCategories: true,
       searchObject: {},
       filterObject: {},
       pageSize: 9,
@@ -24,7 +26,6 @@ class LandingPage extends React.Component {
   };
 
   setActivityId = (activityId) => {
-    console.log(activityId)
     this.setState({
       ...this.state,
       activityId: activityId,
@@ -46,13 +47,15 @@ class LandingPage extends React.Component {
     // search Activities by resetting the state of sub-component
     this.setState({
       filterObject : this.state.searchObject,
-      pageNum: 0
+      pageNum: 0,
+      showCategories: false,
     });
   }
 
   backToActivitiesGrid = () => {
     this.setState({
       singleActivity: false,
+      showCategories: false,
     });
   }
 
@@ -75,12 +78,12 @@ class LandingPage extends React.Component {
                       searchCallback = {this.updateFilterObject}
                       updateSearchCallback = {this.updateSearchObject} /> 
                   </Col>
-                  <Col xs={{size: 6, offset: 3, order: 1}} sm={{size: 3, offset: 0, order: 2}} md={4} className="p-md-0">
+                  <Col xs={{size: 4, offset: 6, order: 1}} sm={{size: 3, offset: 0, order: 2}} md={4} className="p-md-0">
                     <img className="lightBulb" src="/img/ui/lightbulb.png" /> 
                   </Col>
                 </Row>
-                
-                {!this.state.singleActivity
+                {this.state.showCategories ? <CategoriesGrid /> : ''}
+                {!this.state.showCategories && !this.state.singleActivity
                   ? <Row>
                     <Col xs={12}>
                       <ActivitiesGridWrapper
@@ -91,13 +94,16 @@ class LandingPage extends React.Component {
                         selectActivityCallback={this.setActivityId} />
                     </Col>
                   </Row>
-                  : <Row>
+                  : ''}
+                  {!this.state.showCategories && this.state.singleActivity ? 
+                    <Row>
                       <Col xs={12}>
                         <ActivityComponentWrapper
                           backCallback={this.backToActivitiesGrid}
                           activityId={this.state.activityId} />    
                       </Col>
-                    </Row>}
+                    </Row>
+                  : ''}}
                 
           
           </Col>

@@ -24,7 +24,9 @@ class ActivityPreviewComponentHeader extends React.Component {
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
         return (
-            <div className="ActivityPreviewComponentHeader">
+            <div 
+                className="ActivityPreviewComponentHeader"
+                style={{background: color}}>
                 <h2 className="activityTitle">{activity.title[locale]}</h2>
                 <a className="activityCategory">{categoryName}</a>
             </div>
