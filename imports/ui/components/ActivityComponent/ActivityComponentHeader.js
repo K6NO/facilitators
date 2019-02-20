@@ -1,11 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Icon from '../Icon/Icon';
 import { Row, Col, Badge, Button } from 'reactstrap';
 import './ActivityComponentHeader.scss';
 import { getColorByCategory } from '../../../modules/get-colors';
 import { getCategoryName } from '../../../modules/get-select-translations';
 
+const ActivityTitle = styled.h2`
+    margin: 0;
+    padding: 1rem 0 0;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 100;
+`;
+const CategoryLink = styled.a`
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    font-weight: 100;
+    color: white;
+    &:hover {
+        text-decoration: none;
+        color: #ededed;
+    }
+`;
 class ActivityComponentHeader extends React.Component {
     constructor(props){
       super(props);
@@ -36,19 +56,20 @@ class ActivityComponentHeader extends React.Component {
         const category = activity.category;
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
+        const isMobile = window.innerWidth < 500;
         return (
             <div className="ActivityComponentHeader">
                 <Row>
-                    <Col sm="6" style={this.setBackground(color)}>
-                        <h2 className="activityTitle">{activity.title[`title.${locale}`]}</h2>
-                        <a className="activityCategory">{categoryName}</a>
+                    <Col xs="9" sm="8" style={this.setBackground(color)}>
+                        <ActivityTitle>{activity.title[locale]}</ActivityTitle>
+                        <CategoryLink href={"/category/" + category}>{categoryName}</CategoryLink>
                         <br/>
                         {this.renderTags({activity, locale, color})}
                     </Col>
-                    <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
+                    <Col xs="3" sm="4" className="text-right pt-3" style={this.setBackground(color)}>
                         <Button color='link' onClick={backCallback} className="backLink">
                             <Icon icon={'angle-double-left'} size={'lg'}/>
-                            Back to search results 
+                            {` Back${!isMobile ? 'to search results' : ''}`}
                         </Button>
                     </Col>
                 </Row>

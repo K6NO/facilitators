@@ -1,13 +1,7 @@
 @import '../../stylesheets/colors';
 @import '../../stylesheets/mixins';
 .ActivityComponentHeader {
-    .activityTitle {
-        margin: 0;
-        padding: 1rem 0 0;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+
     .activityCategory {
         color: white!important;
         text-transform: uppercase;
