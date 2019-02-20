@@ -1,7 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import ActivityPreviewComponentHeader from './ActivityPreviewComponentHeader';
 import ActivityPreviewComponentBody from './ActivityPreviewComponentBody';
+
+const StyledPreviewComponent = styled.div`
+    padding: .5rem 1rem;
+    box-shadow: 1px 1px 1px 1px #ededed;
+    &:hover {
+        background: #efefef55;
+    }
+`;
+
+
 
 class ActivityPreviewComponent extends React.Component {
     constructor(props){
@@ -12,7 +23,7 @@ class ActivityPreviewComponent extends React.Component {
     render() {
         const { activity, selectActivityCallback } = this.props;
         return (
-            <div className="ActivityPreviewComponent">
+            <StyledPreviewComponent>
                 <ActivityPreviewComponentHeader 
                     activity={activity}
                 />
@@ -20,7 +31,7 @@ class ActivityPreviewComponent extends React.Component {
                     activity={activity}
                     selectActivityCallback={selectActivityCallback}
                 />
-            </div>
+            </StyledPreviewComponent>
         )
     }
 }

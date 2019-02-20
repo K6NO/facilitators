@@ -26,9 +26,11 @@ class ActivitiesGridWrapper extends React.Component {
     render() {
         const { activities, totalCount, pageSize, loading, selectActivityCallback} = this.props;
         const pageCount = Math.ceil(totalCount / pageSize);
+        const isMobile = window.innerWidth < 500;
 
         return (!loading ? 
             <div className="ActivitiesGridWrapper">
+                {!isMobile ? 
                 <Row>
                     <Col>
                         <ReactPaginate 
@@ -44,7 +46,7 @@ class ActivitiesGridWrapper extends React.Component {
                         subContainerClassName={"pages pagination"}
                         activeClassName={"active"} />
                     </Col>
-                </Row>
+                </Row> : ''}
                 <Row>
                     <Col>
                         <span>{totalCount} {i18n.__('searchbox.matching')}</span>

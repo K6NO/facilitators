@@ -24,7 +24,8 @@
         "hu" : "Magyar",
         "sk" : "Slovensko",
         "ro" : "Romana",
-        "matching" : "matching exercises"
+        "matching" : "matching exercises",
+        "moreinfo" : "Learn more"
     },
     "activity" : {
         "titleLabel" : "Title",
