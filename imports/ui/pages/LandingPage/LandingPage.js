@@ -6,10 +6,11 @@ import { withTracker } from 'meteor/react-meteor-data';
 import Loading from '../../components/Loading/Loading';
 import ActivityComponentWrapper from '../../components/ActivityComponent/ActivityComponentWrapper';
 import ActivitiesGridWrapper from '../../components/ActivitiesGrid/ActivitiesGridWrapper';
+import AboutComponent from '../../components/AboutComponent/AboutComponent';
+import ContactComponent from '../../components/ContactComponent/ContactComponent';
 import SearchBox from '../../components/SearchBox/SearchBox';
-import i18n from 'meteor/universe:i18n';
-import './LandingPage.scss';
 import CategoriesGrid from '../../components/CategoriesGrid/CategoriesGrid';
+import './LandingPage.scss';
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -103,7 +104,17 @@ class LandingPage extends React.Component {
                           activityId={this.state.activityId} />    
                       </Col>
                     </Row>
-                  : ''}}
+                  : ''}
+                  <Row>
+                    <Col>
+                      <AboutComponent />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <ContactComponent />
+                    </Col>
+                  </Row>
                 
           
           </Col>

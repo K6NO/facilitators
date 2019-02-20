@@ -106,7 +106,8 @@
         "email" : "Your email address",
         "name" : "Your name",
         "message" : "Your message",
-        "send" : "Send"
+        "send" : "Send",
+        "notification": "We will never share your email or name with anyone else unless you give us permission."
     },
     "footer" : {
         "privacy" : "Privacy notice",

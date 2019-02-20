@@ -106,7 +106,8 @@
         "email" : "Az Ön email címe",
         "name" : "Az Ön neve",
         "message" : "Az Ön üzenete",
-        "send" : "Küldés"
+        "send" : "Küldés",
+        "notification": "We will never share your email or name with anyone else unless you give us permission."
     },
     "footer" : {
         "privacy" : "Adatkezelési tájékoztató",
