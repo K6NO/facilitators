@@ -130,6 +130,21 @@ export const getCategoriesGrid = () => {
   ]
 };
 
+export const getOrganisations = () => {
+  return [
+    {name: "TANDEM,  n.o.", url: "https://tandemno.sk", logo: "/img/ui/logo_tandem.png"},
+    {name: "Medra Asociacion", url: "https://asociacionmedra.wordpress.com", logo: "/img/ui/logo_medra.jpg"},
+    {name: "Asociația de Tineri din Ardeal,  n.o.", url: "http://ata-ro.eu/hu/", logo: "/img/ui/logo_ata.png"},
+    {name: "Szatyor Egyesület,  n.o.", url: "http://szatyoregyesulet.hu", logo: "/img/ui/logo_szatyor.jpg"},
+  ]
+}
+
+export const getSponsors = () => {
+  return [
+    {name: "Tempus Public Foundation", url: "https://www.tka.hu/", logo: "/img/ui/logo_erasmus.png"},
+  ]
+}
+
 const multiSelectOptionMarkup = (text) => (
     <div>
       <span className="checkbox">
