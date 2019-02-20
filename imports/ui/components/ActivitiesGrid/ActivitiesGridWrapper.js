@@ -26,6 +26,27 @@ class ActivitiesGridWrapper extends React.Component {
 
         return (!loading ? 
             <div className="ActivitiesGridWrapper">
+                <Row>
+                    <Col>
+                        <ReactPaginate 
+                        previousLabel={"previous"}
+                        nextLabel={"next"}
+                        breakLabel={"..."}
+                        breakClassName={"break-me"}
+                        pageCount={pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={this.handlePageClick}
+                        containerClassName={"pagination justify-content-center"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <span>{totalCount} {i18n.__('searchbox.matching')}</span>
+                    </Col>
+                </Row>
                 <ActivitiesGrid
                     activities={activities}
                     selectActivityCallback={selectActivityCallback} />
