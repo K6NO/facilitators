@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from 'reactstrap';
+import styled from 'styled-components';
 import _ from 'lodash';
 import ReactResponsiveSelect from 'react-responsive-select';
 import './MultiSelector.scss';
@@ -11,6 +12,16 @@ const caretIcon = (
     </svg>
   );
 
+  const SyledBadge = styled(Badge)`
+      color: #777!important;
+      font-size: 1.3rem!important;
+      font-weight: 100!important;
+      padding-left: .5rem!important;
+      background-color: #efefef;
+      padding: .5rem .8rem!important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+  `
 
 class MultiSelector extends React.Component {
     constructor(props){
@@ -36,13 +47,13 @@ class MultiSelector extends React.Component {
     }
 
     customLabelRenderer = (multiOptions) => {
-      return multiOptions.options.map(option => <Badge key={option.value} color="light" pill>{option.text}</Badge>);
+      return multiOptions.options.map(option => <SyledBadge key={option.value} color="light" pill>{option.text}</SyledBadge>);
     }
   
 
     render () {
         const { options, name, className, noSelectionLabel, ariaLabel, custom} = this.props;
-        console.log({className})
+        
         return (
             <ReactResponsiveSelect
                 multiselect
