@@ -52,29 +52,29 @@ class SearchBox extends React.Component{
    
     return (
         <div className="SearchBox">
-            <Row>
-                <Col>
-                    <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
-                </Col>
-            </Row>
-            <Row>
-                {this.renderSearchBoxValues(updateSearchCallback)}
-            </Row>
-            {this.state.detailed 
-                ? <Row>
-                    {this.renderDetailedSearchBoxValues(updateSearchCallback)}
+                <Row>
+                    <Col>
+                        <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
+                    </Col>
                 </Row>
-            : ''}
-            
-            <Row>
-                <Col>
-                    <SearchButton
-                        searchCallback={searchCallback} />
-                    <DetailedSearchButton 
-                        detailed={this.state.detailed}
-                        callback={this.switchDetailedSearch} />
-                </Col>
-            </Row>
+                <Row>
+                    {this.renderSearchBoxValues(updateSearchCallback)}
+                </Row>
+                {this.state.detailed 
+                    ? <Row>
+                        {this.renderDetailedSearchBoxValues(updateSearchCallback)}
+                    </Row>
+                : ''}
+                
+                <Row>
+                    <Col>
+                        <SearchButton
+                            searchCallback={searchCallback} />
+                        <DetailedSearchButton 
+                            detailed={this.state.detailed}
+                            callback={this.switchDetailedSearch} />
+                    </Col>
+                </Row>
         </div>
     );
   }

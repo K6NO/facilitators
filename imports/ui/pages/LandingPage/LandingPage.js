@@ -69,11 +69,14 @@ class LandingPage extends React.Component {
       <div className="container LandingPage">
         <Row>
           <Col xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
-                <Row>
-                  <Col xs={12}>
+                <Row className="searchBoxHeight">
+                  <Col xs={{size: 12, order: 2} } sm={{size: 9, order: 1}} md={8} className="p-md-0">
                     <SearchBox
                       searchCallback = {this.updateFilterObject}
                       updateSearchCallback = {this.updateSearchObject} /> 
+                  </Col>
+                  <Col xs={{size: 6, offset: 3, order: 1}} sm={{size: 3, offset: 0, order: 2}} md={4} className="p-md-0">
+                    <img className="lightBulb" src="/img/ui/lightbulb.png" /> 
                   </Col>
                 </Row>
                 

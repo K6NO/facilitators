@@ -14,19 +14,12 @@
     .row:before, .row:after{
         display:none;
     }
-    .feedbackRow {
-        @include breakpoint(tablet) {
-            
-        }
-        @include breakpoint(desktop-large) {
-            background: transparent;
-        }
+    .searchBoxHeight {
+        min-height: 300px;
+        align-items: center;
     }
-    .feedbackCol {
-        padding: 3rem;
-        @include breakpoint(desktop-large){
-            max-width: 31%;
-            background: transparent;
-        }
+    .lightBulb {
+        max-height: 280px;
+        max-width: 100%;
     }
 }

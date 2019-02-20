@@ -36,7 +36,6 @@ ActivityComponentWrapper.propTypes = {
 
 export default withTracker((activityId) => {
     const activitySub = Meteor.subscribe('activities.view', activityId.activityId);
-    console.log(activityId.activityId)
     return {
         loading: !activitySub.ready(),
         activity: Activities.findOne(activityId.activityId),

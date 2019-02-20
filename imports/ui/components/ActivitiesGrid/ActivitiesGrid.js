@@ -13,7 +13,7 @@ class ActivitiesGrid extends React.Component {
     renderActivities = (activities, language, selectActivityCallback) => activities.map(activity => (
         <Col xs={12} sm={6} md={4}
             key={activity._id}
-            className="p-0">
+            className="p-md-0">
             <ActivityPreviewComponent 
                 activity={activity}
                 selectActivityCallback={selectActivityCallback} />
