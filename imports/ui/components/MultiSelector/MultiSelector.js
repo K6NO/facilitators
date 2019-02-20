@@ -11,6 +11,7 @@ const caretIcon = (
     </svg>
   );
 
+
 class MultiSelector extends React.Component {
     constructor(props){
       super(props);
@@ -41,6 +42,7 @@ class MultiSelector extends React.Component {
 
     render () {
         const { options, name, className, noSelectionLabel, ariaLabel, custom} = this.props;
+        console.log({className})
         return (
             <ReactResponsiveSelect
                 multiselect

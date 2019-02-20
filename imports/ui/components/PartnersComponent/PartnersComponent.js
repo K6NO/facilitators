@@ -15,7 +15,7 @@ class PartnersComponent extends React.Component {
                     <img src="/img/ui/dandelion.png" />
                 </div>
                 <div>
-                    <h1>{i18n.__('about.contributos')}</h1>
+                    <h1>{i18n.__('about.contributors')}</h1>
                     <h1>{i18n.__('about.organisations')}</h1>
                     <h1>{i18n.__('about.sponsors')}</h1>
                     

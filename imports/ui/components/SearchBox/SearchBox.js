@@ -6,6 +6,14 @@ import SearchButton from './SearchButton';
 import { getSearchBoxValues, getDetailedSearchBoxValues } from './getSearchBoxValues';
 import DetailedSearchButton from './DetailedSearchButton';
 
+import styled from 'styled-components';
+
+const SearchTitle = styled.h1`
+        color: #0e8ed5;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+`;
+
 class SearchBox extends React.Component{
   constructor(props){
     super(props);
@@ -54,10 +62,10 @@ class SearchBox extends React.Component{
         <div className="SearchBox">
                 <Row>
                     <Col>
-                        <h1 className="searchTitle">{i18n.__('searchbox.title')}</h1>
+                        <SearchTitle>{i18n.__('searchbox.title')}</SearchTitle>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mt-2">
                     {this.renderSearchBoxValues(updateSearchCallback)}
                 </Row>
                 {this.state.detailed 
@@ -66,7 +74,7 @@ class SearchBox extends React.Component{
                     </Row>
                 : ''}
                 
-                <Row>
+                <Row className="mt-2">
                     <Col>
                         <SearchButton
                             searchCallback={searchCallback} />
