@@ -67,7 +67,8 @@ class LandingPage extends React.Component {
   }
 
   render () {
-    const { loading, match, history, userId, viewportIsMobile, ...props } = this.props;
+    const { loading, match, history, userId, ...props } = this.props;
+    const isMobile = window.innerWidth < 500;
   
     return (!loading ? (
       <div className="container LandingPage">
@@ -100,15 +101,15 @@ class LandingPage extends React.Component {
                     <Row>
                       <Col xs={12} className="px-sm-0">
                         <ActivityComponentWrapper
+                          isMobile={isMobile}
                           backCallback={this.backToActivitiesGrid}
-                          // activityId={"qPQzJA7yd2qvzuHw5"} />
                           activityId={this.state.activityId} />    
                       </Col>
                     </Row>
                   : ''}
                   <Row>
                     <Col>
-                      <AboutComponent />
+                      <AboutComponent isMobile={isMobile} />
                     </Col>
                   </Row>
                   <Row>

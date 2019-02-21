@@ -18,9 +18,8 @@ class ActivityComponent extends React.Component {
     }
 
     render() {
-        const { activity, backCallback } = this.props;
+        const { activity, backCallback, isMobile } = this.props;
         const locale = getLocale();
-        const isMobile = window.innerWidth < 500;
         return (
             <StyledComponent
                 isMobile={isMobile}
@@ -52,7 +51,8 @@ ActivityComponent.defaultProps = {
   
 ActivityComponent.propTypes = {
     activity: PropTypes.object.isRequired,
-    backCallback: PropTypes.func.isRequired
+    backCallback: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired
 };
 
 

@@ -13,11 +13,12 @@ class ActivityComponentWrapper extends React.Component {
     }
 
     render() {
-        const { activity, loading, backCallback } = this.props;
+        const { activity, loading, backCallback, isMobile } = this.props;
         return (!loading ? 
             <ActivityComponent
                 activity={activity}
-                backCallback={backCallback} />
+                backCallback={backCallback}
+                isMobile={isMobile} />
             : <Loading/>
         )
     }
@@ -30,7 +31,8 @@ ActivityComponentWrapper.propTypes = {
     activityId: PropTypes.string.isRequired,
     activity: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
-    backCallback: PropTypes.func.isRequired
+    backCallback: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired
 };
 
 
