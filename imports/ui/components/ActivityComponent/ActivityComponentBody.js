@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
+import styled from 'styled-components';
 import getLocale from '../../../modules/get-locale';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import './ActivityComponentBody.scss';
+import ActivityImagesComponent from './ActivityImagesComponent';
+const ActivityText = styled.p`
+    letter-spacing: .4px;
 
+`;
 class ActivityComponentBody extends React.Component {
     constructor(props){
       super(props);
@@ -30,7 +35,7 @@ class ActivityComponentBody extends React.Component {
         )
     }
     render() {
-        const { activity, locale } = this.props;
+        const { activity, locale, isMobile } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
@@ -64,9 +69,9 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 {this.renderActivityField('pause-circle', 'activity.preparations')}
-                                <p>
-                                    {activity.preparations[`preparations.${locale}`]}
-                                </p>
+                                <ActivityText>
+                                    {activity.preparations[locale]}
+                                </ActivityText>
                             </Col>
                         </Row>
                     </Col>
@@ -74,17 +79,17 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 {this.renderActivityField('bullseye', 'activity.objectives')}
-                                <p>
-                                    {activity.objectives[`objectives.${locale}`]}
-                                </p>
+                                <ActivityText>
+                                    {activity.objectives[locale]}
+                                </ActivityText>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                             {this.renderActivityField('wrench', 'activity.tools')}
-                                <p>
-                                    {activity.tools[`tools.${locale}`]}
-                                </p>
+                                <ActivityText>
+                                    {activity.tools[locale]}
+                                </ActivityText>
                             </Col>
                         </Row>
                     </Col>
@@ -92,9 +97,9 @@ class ActivityComponentBody extends React.Component {
                 <Row>
                     <Col sm="6">
                     {this.renderActivityField('align-left', 'activity.description')}
-                        <p>
-                            {activity.description[`description.${locale}`]}
-                        </p>
+                        <ActivityText>
+                            {activity.description[locale]}
+                        </ActivityText>
                     </Col>
                     <Col sm="6">
                         <Row>
@@ -107,19 +112,24 @@ class ActivityComponentBody extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
+                            <Col sm={12}>
                                 <Icon icon={'images'} size={'lg'} />
-                                Here comes the images box
                             </Col>
+                            {activity.images.map(image => 
+                                <ActivityImagesComponent 
+                                key={image}    
+                                url={image} 
+                                isMobile={isMobile}/>
+                            )}
                         </Row>    
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                     {this.renderActivityField('book-open', 'activity.resources')}
-                        <p>
-                            {activity.resources[`resources.${locale}`]}
-                        </p>
+                        <ActivityText>
+                            {activity.resources[locale]}
+                        </ActivityText>
                     </Col>
                 </Row>
             </div>
@@ -134,6 +144,7 @@ ActivityComponentBody.defaultProps = {
   ActivityComponentBody.propTypes = {
     activity: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
+    isMobile: PropTypes.bool.isRequired,
 };
 
 

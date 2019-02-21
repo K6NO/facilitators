@@ -14,18 +14,44 @@ const ActivityTitle = styled.h2`
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 100;
+    min-height: 65px;
 `;
 const CategoryLink = styled.a`
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 100;
     color: white;
+    padding: 0 0 1rem 0;
+
     &:hover {
         text-decoration: none;
-        color: #ededed;
+        color: #cccccc;
     }
 `;
+
+const StyledContainer = styled.div`
+    background: ${props => props.backColor || "#777777"};
+`;
+const StyledTagContainer = styled(Col)`
+    padding-bottom: 1rem!important;
+    background: ${props => props.backColor || "#777777"};
+`
+const StyledPill = styled.span`
+        background-color: #f8f9fa;
+        margin: 1rem 1rem 1rem 0;
+        padding: .5rem 1rem;
+        min-width: 10px;
+        border-radius: 0rem;
+        white-space: nowrap;
+        vertical-align: baseline;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1rem;
+        border-radius: 10rem;
+        font-family: Open, sans-serif;
+        color: ${props => props.inputColor || "darkslategray"};
+        `;
 class ActivityComponentHeader extends React.Component {
     constructor(props){
       super(props);
@@ -37,43 +63,45 @@ class ActivityComponentHeader extends React.Component {
         }
     }
 
-    renderTags = ({activity, locale, color}) => {
+    renderTags = ({activity, color}) => {
+        console.log({color})
         return activity.tags.map((tagIndex) =>   
-            <Badge 
+            <StyledPill 
                 color="light" 
                 pill
                 key={tagIndex}
-                className="tagPills"
-                style={{color: color}}
-                >
+                inputColor={color}>
                 {i18n.__(`tags.${tagIndex}`)}
-            </Badge>
+            </StyledPill>
         );
 
     }
     render() {
-        const { activity, locale, backCallback} = this.props;
+        const { activity, locale, backCallback, isMobile } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
-        const isMobile = window.innerWidth < 500;
+        
         return (
-            <div className="ActivityComponentHeader">
+            <StyledContainer className="ActivityComponentHeader">
                 <Row>
-                    <Col xs="9" sm="8" style={this.setBackground(color)}>
+                    <Col className="pb-3" xs={{size: 12, order: 2}} sm={{size: 8, order: 1}} style={this.setBackground(color)}>
                         <ActivityTitle>{activity.title[locale]}</ActivityTitle>
                         <CategoryLink href={"/category/" + category}>{categoryName}</CategoryLink>
-                        <br/>
-                        {this.renderTags({activity, locale, color})}
                     </Col>
-                    <Col xs="3" sm="4" className="text-right pt-3" style={this.setBackground(color)}>
+                    <Col xs={{size: 12, order: 1}} sm={{size: 4, order: 2}} className="text-right pt-3 pl-0 pl-md-5" style={this.setBackground(color)}>
                         <Button color='link' onClick={backCallback} className="backLink">
                             <Icon icon={'angle-double-left'} size={'lg'}/>
-                            {` Back${!isMobile ? 'to search results' : ''}`}
+                            {` Back${!isMobile ? ' to search results' : ''}`}
                         </Button>
                     </Col>
+                    <StyledTagContainer
+                        xs={{size: 12, order: 3}}
+                        backColor={color}>
+                        {this.renderTags({activity, locale, color})}
+                    </StyledTagContainer>
                 </Row>
-            </div>
+            </StyledContainer>
         )
     }
 }
@@ -85,7 +113,8 @@ ActivityComponentHeader.defaultProps = {
 ActivityComponentHeader.propTypes = {
     activity: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
-    backCallback: PropTypes.func.isRequired
+    backCallback: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired,
 };
 
 

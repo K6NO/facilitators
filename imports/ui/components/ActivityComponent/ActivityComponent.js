@@ -29,14 +29,17 @@ class ActivityComponent extends React.Component {
                     activity={activity}
                     locale={locale}
                     backCallback={backCallback}
+                    isMobile={isMobile}
                 />
                 <ActivityComponentBody 
                     activity={activity}
                     locale={locale}
+                    isMobile={isMobile}
                 />
                 <ActivityComponentFooter
                     activity={activity}
                     locale={locale}
+                    isMobile={isMobile}
                 />
             </StyledComponent>
         )

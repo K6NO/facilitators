@@ -98,9 +98,10 @@ class LandingPage extends React.Component {
                   : ''}
                   {!this.state.showCategories && this.state.singleActivity ? 
                     <Row>
-                      <Col xs={12}>
+                      <Col xs={12} className="px-sm-0">
                         <ActivityComponentWrapper
                           backCallback={this.backToActivitiesGrid}
+                          // activityId={"qPQzJA7yd2qvzuHw5"} />
                           activityId={this.state.activityId} />    
                       </Col>
                     </Row>

@@ -17,7 +17,7 @@ class ActivityComponentFooter extends React.Component {
         }
     } 
     render() {
-        const { activity, locale } = this.props;
+        const { activity, locale, isMobile } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
@@ -28,7 +28,7 @@ class ActivityComponentFooter extends React.Component {
                     style={this.setBackground(color)}>
                         <a href="#" className="backLink">
                             <Icon icon={'angle-double-left'} size={'lg'}/>
-                            Back to search results
+                            {` Back${!isMobile ? ' to search results' : ''}`}
                         </a>
                     </Col>
                 </Row>
@@ -44,6 +44,7 @@ ActivityComponentFooter.defaultProps = {
 ActivityComponentFooter.propTypes = {
     activity: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
+    isMobile: PropTypes.bool.isRequired
 };
 
 
