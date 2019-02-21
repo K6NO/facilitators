@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from '../Icon/Icon';
 import { Row, Col, Badge, Button } from 'reactstrap';
-import './ActivityComponentHeader.scss';
 import { getColorByCategory } from '../../../modules/get-colors';
 import { getCategoryName } from '../../../modules/get-select-translations';
 
@@ -31,18 +30,29 @@ const CategoryLink = styled.a`
 `;
 
 const StyledContainer = styled.div`
-    background: ${props => props.backColor || "#777777"};
+    background: ${props => props.backcolor || "#777777"};
+    border-radius: 10px 10px 0 0;
+`;
+const StyledHeaderContainer = styled(Col)`
+    background: ${props => props.backcolor || "#777777"};
+border-radius: ${props => props.isMobile ? "0" : "10px 10px 0 0"};
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+    padding-left: 1.5rem!important;
+`;
+const RightStyledContainer = styled(StyledHeaderContainer)`
+    text-align: right;
 `;
 const StyledTagContainer = styled(Col)`
     padding-bottom: 1rem!important;
-    background: ${props => props.backColor || "#777777"};
-`
+    background: ${props => props.backcolor || "#777777"};
+    box-shadow: #333 0 3px 1px -2px;
+`;
 const StyledPill = styled.span`
         background-color: #f8f9fa;
         margin: 1rem 1rem 1rem 0;
         padding: .5rem 1rem;
         min-width: 10px;
-        border-radius: 0rem;
         white-space: nowrap;
         vertical-align: baseline;
         text-align: center;
@@ -51,7 +61,13 @@ const StyledPill = styled.span`
         border-radius: 10rem;
         font-family: Open, sans-serif;
         color: ${props => props.inputColor || "darkslategray"};
-        `;
+`;
+const StyledBackLink = styled(Button)`
+    color: white!important;
+    font-size: 1.4rem!important;
+    letter-spacing: 1.5px!important;
+    font-weight: 100!important;
+`;
 class ActivityComponentHeader extends React.Component {
     constructor(props){
       super(props);
@@ -64,7 +80,6 @@ class ActivityComponentHeader extends React.Component {
     }
 
     renderTags = ({activity, color}) => {
-        console.log({color})
         return activity.tags.map((tagIndex) =>   
             <StyledPill 
                 color="light" 
@@ -83,21 +98,29 @@ class ActivityComponentHeader extends React.Component {
         const categoryName = getCategoryName(category);
         
         return (
-            <StyledContainer className="ActivityComponentHeader">
+            <StyledContainer backcolor={color}>
                 <Row>
-                    <Col className="pb-3" xs={{size: 12, order: 2}} sm={{size: 8, order: 1}} style={this.setBackground(color)}>
+                    <StyledHeaderContainer
+                        backcolor={color}
+                        isMobile={isMobile}
+                        xs={{size: 12, order: 2}} sm={{size: 8, order: 1}}>
                         <ActivityTitle>{activity.title[locale]}</ActivityTitle>
                         <CategoryLink href={"/category/" + category}>{categoryName}</CategoryLink>
-                    </Col>
-                    <Col xs={{size: 12, order: 1}} sm={{size: 4, order: 2}} className="text-right pt-3 pl-0 pl-md-5" style={this.setBackground(color)}>
-                        <Button color='link' onClick={backCallback} className="backLink">
+                    </StyledHeaderContainer>
+                    <RightStyledContainer 
+                        xs={{size: 12, order: 1}} sm={{size: 4, order: 2}}
+                        backcolor={color}
+                        >
+                        <StyledBackLink 
+                            color='link' 
+                            onClick={backCallback}>
                             <Icon icon={'angle-double-left'} size={'lg'}/>
                             {` Back${!isMobile ? ' to search results' : ''}`}
-                        </Button>
-                    </Col>
+                        </StyledBackLink>
+                    </RightStyledContainer>
                     <StyledTagContainer
                         xs={{size: 12, order: 3}}
-                        backColor={color}>
+                        backcolor={color}>
                         {this.renderTags({activity, locale, color})}
                     </StyledTagContainer>
                 </Row>

@@ -8,6 +8,10 @@ import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import './ActivityComponentBody.scss';
 import ActivityImagesComponent from './ActivityImagesComponent';
+
+const StyledRow = styled(Row)`
+    box-shadow: 0 3px 1px -2px #ddd;
+`;
 const ActivityText = styled.p`
     letter-spacing: .4px;
 
@@ -40,7 +44,7 @@ class ActivityComponentBody extends React.Component {
         const color = getColorByCategory(category);
         return (
             <div className="ActivityComponentBody">
-                <Row>
+                <StyledRow>
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
                             <Col xs="6">
@@ -93,15 +97,15 @@ class ActivityComponentBody extends React.Component {
                             </Col>
                         </Row>
                     </Col>
-                </Row>
-                <Row>
-                    <Col sm="6">
+                </StyledRow>
+                <StyledRow>
+                    <Col sm="6" className="pt-3">
                     {this.renderActivityField('align-left', 'activity.description')}
                         <ActivityText>
                             {activity.description[locale]}
                         </ActivityText>
                     </Col>
-                    <Col sm="6">
+                    <Col sm="6" className="pt-3">
                         <Row>
                             <Col>
                             {this.renderActivityField('comments', 'activity.comments')}
@@ -112,7 +116,7 @@ class ActivityComponentBody extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm={12}>
+                            <Col sm={12} className="pt-3">
                                 <Icon icon={'images'} size={'lg'} />
                             </Col>
                             {activity.images.map(image => 
@@ -123,15 +127,15 @@ class ActivityComponentBody extends React.Component {
                             )}
                         </Row>    
                     </Col>
-                </Row>
-                <Row>
-                    <Col>
+                </StyledRow>
+                <StyledRow>
+                    <Col className="pt-3">
                     {this.renderActivityField('book-open', 'activity.resources')}
                         <ActivityText>
                             {activity.resources[locale]}
                         </ActivityText>
                     </Col>
-                </Row>
+                </StyledRow>
             </div>
         )
     }

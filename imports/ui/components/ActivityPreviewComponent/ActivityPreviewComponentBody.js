@@ -17,12 +17,17 @@ const Text = styled.span`
 `
 const StyledBadge = styled(Badge)`
     padding: .6rem 1rem!important;
-    background: ${props => props.backcolor || '#777777'}!important;
+    color: ${props => props.backcolor || '#777777'}!important;
     text-transform: uppercase;
+    border: ${props => '1px ' + props.backcolor + ' solid' || '1px solid #777777'}!important;
     font-size: 1.2rem;
     letter-spacing: .8px;
     margin: 1px;
-    color: white;
+    background-color: white!important;
+    white-space: nowrap;
+    vertical-align: baseline;
+    text-align: center;
+    border-radius: 10rem!important;
 `;
 
 const StyledSelectButton = styled.button`
@@ -39,6 +44,7 @@ const StyledSelectButton = styled.button`
     font-size: 1.3rem;
     letter-spacing: 1.5px;
     font-weight: 100;
+    
     &:hover {
         background: #ededed!important;
     }
@@ -69,10 +75,8 @@ class ActivityPreviewComponentBody extends React.Component {
         )
     }
     renderTags = (activity, color) => {
-        console.log(color)
         return activity.tags.map((tagIndex) =>   
             <StyledBadge 
-                pill
                 backcolor={color}
                 key={tagIndex}
                 
