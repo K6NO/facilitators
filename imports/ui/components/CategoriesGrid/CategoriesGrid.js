@@ -49,7 +49,7 @@ class CategoriesGrid extends React.Component {
                     {this.renderCategories()}
                 </Row>
             </div>
-        )
+        )   
     }
 }
 

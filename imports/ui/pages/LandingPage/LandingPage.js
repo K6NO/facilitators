@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Row, Col } from 'reactstrap';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -11,6 +12,27 @@ import ContactComponent from '../../components/ContactComponent/ContactComponent
 import SearchBox from '../../components/SearchBox/SearchBox';
 import CategoriesGrid from '../../components/CategoriesGrid/CategoriesGrid';
 import './LandingPage.scss';
+
+const ColorRow = styled(Row)`
+  background : ${props => props.backcolor || "#777"};
+  z-index: -1;
+`;
+const SearchBoxRow = styled(Row)`
+  margin: 5rem 0!important;
+  min-height: 300px;
+  align-items: center;
+`;
+const StyledImageDiv = styled.div`
+    position: absolute;
+    top: ${props => props.isMobile ? "40px" : "50px"};
+    left: ${props => props.isMobile ? "27%" : "75%"};
+    opacity: ${props => props.isMobile ? "0.7" : "1"};
+    z-index: -1;
+`;
+const StyledImage = styled.img`
+  max-width: 100%;
+  max-height: ${props => props.isMobile ? "200px" : "280px"};
+`;
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -71,56 +93,56 @@ class LandingPage extends React.Component {
     const isMobile = window.innerWidth < 500;
   
     return (!loading ? (
-      <div className="container LandingPage">
-        <Row>
-          <Col xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
-                <Row className="searchBoxHeight my-5">
-                  <Col xs={{size: 12, order: 2} } sm={{size: 9, order: 1}} md={8} className="p-md-0">
-                    <SearchBox
-                      searchCallback = {this.updateFilterObject}
-                      updateSearchCallback = {this.updateSearchObject} /> 
-                  </Col>
-                  <Col xs={{size: 4, offset: 6, order: 1}} sm={{size: 3, offset: 0, order: 2}} md={4} className="p-md-0">
-                    <img className="lightBulb" src="/img/ui/lightbulb.png" /> 
+      <div className="LandingPage">
+        <div className="container">
+          <Row>
+            <Col className="px-5 px-md-0" xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
+              <SearchBoxRow>
+                <Col className="pl-0" xs={{size: 12, order: 2} } sm={{size: 9, order: 1}} md={8}>
+                  <SearchBox
+                    searchCallback = {this.updateFilterObject}
+                    updateSearchCallback = {this.updateSearchObject} /> 
+                </Col>
+                <StyledImageDiv isMobile={isMobile}>
+                  <StyledImage isMobile={isMobile} src="/img/ui/lightbulb.png" /> 
+                </StyledImageDiv>
+              </SearchBoxRow>
+              {this.state.showCategories ? <CategoriesGrid /> : ''}
+              {!this.state.showCategories && !this.state.singleActivity
+                ? <Row>
+                  <Col xs={12}>
+                    <ActivitiesGridWrapper
+                      filterObject={this.state.filterObject}
+                      pageSize={this.state.pageSize}
+                      pageNum={this.state.pageNum}
+                      pageNumberCallback={this.handlePageNumber}
+                      selectActivityCallback={this.setActivityId} />
                   </Col>
                 </Row>
-                {this.state.showCategories ? <CategoriesGrid /> : ''}
-                {!this.state.showCategories && !this.state.singleActivity
-                  ? <Row>
+                : ''}
+                {!this.state.showCategories && this.state.singleActivity ? 
+                  <Row>
                     <Col xs={12}>
-                      <ActivitiesGridWrapper
-                        filterObject={this.state.filterObject}
-                        pageSize={this.state.pageSize}
-                        pageNum={this.state.pageNum}
-                        pageNumberCallback={this.handlePageNumber}
-                        selectActivityCallback={this.setActivityId} />
+                      <ActivityComponentWrapper
+                        isMobile={isMobile}
+                        backCallback={this.backToActivitiesGrid}
+                        activityId={this.state.activityId} />    
                     </Col>
                   </Row>
-                  : ''}
-                  {!this.state.showCategories && this.state.singleActivity ? 
-                    <Row>
-                      <Col xs={12} className="px-sm-0">
-                        <ActivityComponentWrapper
-                          isMobile={isMobile}
-                          backCallback={this.backToActivitiesGrid}
-                          activityId={this.state.activityId} />    
-                      </Col>
-                    </Row>
-                  : ''}
-                  <Row>
-                    <Col>
-                      <AboutComponent isMobile={isMobile} />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <ContactComponent />
-                    </Col>
-                  </Row>
-                
-          
-          </Col>
-        </Row>
+                : ''}
+              </Col>
+              <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
+                <AboutComponent isMobile={isMobile} />
+              </Col>
+            </Row>
+        </div>
+        <div className="container-fluid">
+          <ColorRow backcolor={"#D2FF9D"}>
+            <Col className="px-4 px-sm-0" xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
+                <ContactComponent isMobile={isMobile} />
+            </Col>
+          </ColorRow>
+        </div>
       </div>
     ) : <Loading />
   )

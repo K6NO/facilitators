@@ -23,7 +23,7 @@ class SearchBox extends React.Component{
   }
 
     renderSearchBoxValues = (updateSearchCallback) => getSearchBoxValues().map(boxValue => 
-        <Col xs={12} sm={6} key={boxValue.name} className="px-sm-0 py-2">
+        <Col xs={12} sm={6} key={boxValue.name} className="py-2 pr-0">
             <MultiSelector
                 updateSearchCallback={updateSearchCallback}
                 className={boxValue.className}
@@ -36,7 +36,7 @@ class SearchBox extends React.Component{
     )
 
     renderDetailedSearchBoxValues = (updateSearchCallback) => getDetailedSearchBoxValues().map(boxValue => 
-        <Col xs={12} key={boxValue.name} className="px-sm-0 py-2">
+        <Col xs={12} key={boxValue.name} className="py-2 pr-0">
             <MultiSelector
                 updateSearchCallback={updateSearchCallback}
                 className={boxValue.className}
@@ -61,7 +61,7 @@ class SearchBox extends React.Component{
     return (
         <div className="SearchBox">
                 <Row>
-                    <Col className="px-sm-0">
+                    <Col>
                         <SearchTitle>{i18n.__('searchbox.title')}</SearchTitle>
                     </Col>
                 </Row>
@@ -75,7 +75,7 @@ class SearchBox extends React.Component{
                 : ''}
                 
                 <Row >
-                    <Col className="mt-2 px-sm-0">
+                    <Col className="mt-2 ">
                         <SearchButton
                             searchCallback={searchCallback} />
                         <DetailedSearchButton 
