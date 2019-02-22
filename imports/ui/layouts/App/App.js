@@ -43,6 +43,19 @@ class App extends React.Component {
         });
       }
     });
+
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({
+      isMobile : window.innerWidth < 500
+    });
   }
 
   setAfterLoginPath = (afterLoginPath) => {
@@ -51,19 +64,21 @@ class App extends React.Component {
 
   render() {
     const { props, state, setAfterLoginPath } = this;
-    
+    const isMobile = this.state.isMobile;
+        
     return (
       <Router>
         {!props.loading ? (
           <div className="App">
           <AnalyticsTracker />
             <Navigation 
+              isMobile={isMobile}
               {...props} 
               {...state}
             />
             <Switch>
               {/* Public */}
-              <Public exact name="index" path="/" component={LandingPage}  {...props} {...state} />
+              <Public exact name="index" path="/" component={LandingPage} isMobile={isMobile} {...props} {...state} />
               <Public exact name="index" path="/category/:cat" component={LandingPage}  {...props} {...state} />
               <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
               <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
@@ -101,7 +116,6 @@ App.propTypes = {
   emailVerified: PropTypes.bool.isRequired,
   username: PropTypes.string,
   authenticated: PropTypes.bool.isRequired,
-  viewportIsMobile: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
@@ -112,7 +126,7 @@ export default withTracker(() => {
   const name = user && user.profile && user.profile.name && getUserName(user.profile.name);
   const emailAddress = user && user.emails && user.emails[0].address;
   const username = user && user.profile && user.profile.username;
-  const viewportIsMobile = window.innerWidth < 768;
+  
   return {
     loading,
     loggingIn,
@@ -122,6 +136,5 @@ export default withTracker(() => {
     userId,
     emailAddress,
     emailVerified: user && user.emails ? user && user.emails && user.emails[0].verified : true,
-    viewportIsMobile,
   };
 })(App);
