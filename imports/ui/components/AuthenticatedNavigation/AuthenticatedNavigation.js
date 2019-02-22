@@ -27,7 +27,7 @@ class AuthenticatedNavigation extends React.Component {
   }
 
   render() {
-    const { navbarCallback, viewportIsMobile, ...props } = this.props;
+    const { navbarCallback, isMobile, ...props } = this.props;
     const user = Meteor.user();
     return (
       <div className="AuthenticatedNavigation ">
@@ -38,17 +38,17 @@ class AuthenticatedNavigation extends React.Component {
           <NavItem>
             <CategorySelector {...props} />
           </NavItem>
-          <NavItem className={`pl-3 pl-md-4 pr-md-4 ${viewportIsMobile && 'pt-2'}`}>
+          <NavItem className={`pl-3 pl-md-4 pr-md-4 ${isMobile && 'pt-2'}`}>
             {i18n.__('menu.about')}
           </NavItem >
-          <NavItem className={`pl-3 pl-md-4 pr-md-4 ${viewportIsMobile && 'pt-4'}`}
+          <NavItem className={`pl-3 pl-md-4 pr-md-4 ${isMobile && 'pt-4'}`}
             onClick={()=> this.logoutUser()}>
             {i18n.__('menu.signout')}
           </NavItem>
           {(user && !!Roles.userIsInRole(user, ['admin', 'editor'])
             && 
           <LinkContainer to="/editor">
-            <NavItem className={`pl-3 ${viewportIsMobile && 'pt-4'}`}>
+            <NavItem className={`pl-3 ${isMobile && 'pt-4'}`}>
             {i18n.__('menu.editor')}
             </NavItem>
           </LinkContainer>
@@ -62,7 +62,7 @@ class AuthenticatedNavigation extends React.Component {
 
 AuthenticatedNavigation.propTypes = {
   history: PropTypes.object.isRequired,
-  viewportIsMobile: PropTypes.bool.isRequired,  
+  isMobile: PropTypes.bool.isRequired,  
 };
 
 export default withRouter(AuthenticatedNavigation);

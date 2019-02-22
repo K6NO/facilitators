@@ -89,8 +89,8 @@ class LandingPage extends React.Component {
   }
 
   render () {
-    const { loading, match, history, userId, ...props } = this.props;
-    const isMobile = window.innerWidth < 500;
+    const { loading, match, history, isMobile, ...props } = this.props;
+    console.log({history, match})
   
     return (!loading ? (
       <div className="LandingPage">
@@ -154,6 +154,7 @@ LandingPage.propTypes = {
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   userId: PropTypes.string,
+  isMobile: PropTypes.bool.isRequired
 };
 
 export default withTracker(() => {
