@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
-import { Nav, NavItem  } from 'reactstrap';
+import { Nav, NavItem, NavLink  } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import CategorySelector from '../CategorySelector/CategorySelector';
@@ -20,10 +20,10 @@ const PublicNavigation = props => (
       <NavItem>
         <CategorySelector {...props} />
       </NavItem>
-      <NavItem className={`pl-3 pl-md-4 pr-md-4 ${props.viewportIsMobile && 'pt-2'}`}>
-        {i18n.__('menu.about')}
+      <NavItem className={`pl-3 pl-md-4 pr-md-4 ${props.isMobile && 'pt-2'}`}>
+        <NavLink href="/about">{i18n.__('menu.about')}</NavLink>
       </NavItem>
-      <NavItem className={`pl-3 ${props.viewportIsMobile && 'pt-2'}`}>
+      <NavItem className={`pl-3 ${props.isMobile && 'pt-2'}`}>
         <LoginModalController            
           {...props}/>
       </NavItem>
@@ -36,5 +36,5 @@ export default withRouter(PublicNavigation);
 PublicNavigation.propTypes = {
   navbarCallback: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  viewportIsMobile: PropTypes.bool.isRequired
+  isMobile: PropTypes.bool.isRequired
 };

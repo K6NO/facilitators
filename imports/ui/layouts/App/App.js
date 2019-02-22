@@ -13,6 +13,7 @@ import AllowedRoleAdmin from '../../components/AllowedRole/AllowedRoleAdmin';
 import Public from '../../components/Public/Public';
 import AnalyticsTracker from '../../components/Analytics/Analytics';
 import LandingPage from '../../pages/LandingPage/LandingPage';
+import AboutPage from '../../pages/AboutPage/AboutPage';
 import AdminPage from '../../pages/AdminPage/AdminPage';
 import EditorPage from '../../pages/EditorPage/EditorPage';
 import VerifyEmail from '../../pages/VerifyEmail/VerifyEmail';
@@ -79,8 +80,11 @@ class App extends React.Component {
             <Switch>
               {/* Public */}
               <Public exact name="index" path="/" component={LandingPage} isMobile={isMobile} {...props} {...state} />
-              <Public exact name="index" path="/category/:cat" component={LandingPage}  {...props} {...state} />
+              <Public exact name="category" path="/category/:cat" component={LandingPage}  {...props} {...state} />
+              <Public exact name="about" path="/about" component={AboutPage} isMobile={isMobile} {...props} {...state} />
+
               <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+
               <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail}    />
               <Route name="recover-password" path="/recover-password" component={RecoverPassword}    />
               <Route name="reset-password" path="/reset-password/:token" component={ResetPassword}   />

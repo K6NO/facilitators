@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=BenchNine:400,700&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin-ext');
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC&amp;subset=latin-ext");
+
 @import './colors';
 @import './mixins';
 html {
@@ -22,7 +24,7 @@ body {
   margin: 0auto;
 }
 title, h1, h2, h3, h4, h5, h6 {
-  font-family: BenchNine, sans-serif;
+  font-family: 'Amatic SC', cursive;
 }
 
 h1 {

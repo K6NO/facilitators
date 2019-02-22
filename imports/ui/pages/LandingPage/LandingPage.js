@@ -89,8 +89,7 @@ class LandingPage extends React.Component {
   }
 
   render () {
-    const { loading, match, history, isMobile, ...props } = this.props;
-    console.log({history, match})
+    const { loading, isMobile, ...props } = this.props;
   
     return (!loading ? (
       <div className="LandingPage">
@@ -130,10 +129,10 @@ class LandingPage extends React.Component {
                     </Col>
                   </Row>
                 : ''}
-              </Col>
-              <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
-                <AboutComponent isMobile={isMobile} />
-              </Col>
+            </Col>
+            <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
+              <AboutComponent isMobile={isMobile} />
+            </Col>
             </Row>
         </div>
         <div className="container-fluid">

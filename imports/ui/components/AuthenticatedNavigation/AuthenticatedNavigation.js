@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import CategorySelector from '../CategorySelector/CategorySelector';
 import * as eventAnalytics from '../../components/Analytics/analyticsUtil';
@@ -39,7 +39,7 @@ class AuthenticatedNavigation extends React.Component {
             <CategorySelector {...props} />
           </NavItem>
           <NavItem className={`pl-3 pl-md-4 pr-md-4 ${isMobile && 'pt-2'}`}>
-            {i18n.__('menu.about')}
+            <NavLink href="/about">{i18n.__('menu.about')}</NavLink>
           </NavItem >
           <NavItem className={`pl-3 pl-md-4 pr-md-4 ${isMobile && 'pt-4'}`}
             onClick={()=> this.logoutUser()}>
