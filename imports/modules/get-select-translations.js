@@ -1,5 +1,7 @@
 import i18n from 'meteor/universe:i18n';
 import React from 'react';
+import contributors from './contributors.json';
+import organisations from './organisations.json';
 
 export const getLanguageName = (locale) => {
   return [
@@ -131,18 +133,17 @@ export const getCategoriesGrid = () => {
 };
 
 export const getOrganisations = () => {
-  return [
-    {name: "TANDEM,  n.o.", url: "https://tandemno.sk", logo: "/img/ui/logo_tandem.png", text: ""},
-    {name: "Medra Asociacion", url: "https://asociacionmedra.wordpress.com", logo: "/img/ui/logo_medra.jpg", text: ""},
-    {name: "Asociația de Tineri din Ardeal,  n.o.", url: "http://ata-ro.eu/hu/", logo: "/img/ui/logo_ata.png", text: ""},
-    {name: "Szatyor Egyesület,  n.o.", url: "http://szatyoregyesulet.hu", logo: "/img/ui/logo_szatyor.jpg", text: ""},
-  ]
+  return organisations;
 }
 
 export const getSponsors = () => {
   return [
     {name: "Tempus Public Foundation", url: "https://www.tka.hu/", logo: "/img/ui/logo_erasmus.jpg"},
   ]
+}
+
+export const getContributors = () => {
+  return contributors;
 }
 
 const multiSelectOptionMarkup = (text) => (

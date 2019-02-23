@@ -8,6 +8,7 @@ import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import './ActivityComponentBody.scss';
 import ActivityImagesComponent from './ActivityImagesComponent';
+import CommentsComponent from '../CommentsComponent/CommentsComponent';
 
 const StyledRow = styled(Row)`
     box-shadow: 0 3px 1px -2px #ddd;
@@ -30,7 +31,7 @@ class ActivityComponentBody extends React.Component {
 
     renderActivityField = (icon, activityField) => {
         return (
-            <h5 className="activityHeader">
+            <h5 className="activityHeader font-weight-bold">
                 <Icon 
                     icon={icon} 
                     size={'lg'} />
@@ -106,15 +107,7 @@ class ActivityComponentBody extends React.Component {
                         </ActivityText>
                     </Col>
                     <Col sm="6" className="pt-3">
-                        <Row>
-                            <Col>
-                            {this.renderActivityField('comments', 'activity.comments')}
-                                Here comes the comments box
-                            {this.renderActivityField('comment-dots', 'activity.writecomment')}                                
-                                Here comes the write comment field.
-                                With text counter and send button
-                            </Col>
-                        </Row>
+                        <CommentsComponent activity={activity} isMobile={isMobile}/>
                         <Row>
                             <Col sm={12} className="pt-3">
                                 <Icon icon={'images'} size={'lg'} />

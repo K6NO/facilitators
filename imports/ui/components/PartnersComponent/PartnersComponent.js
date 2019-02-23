@@ -8,8 +8,8 @@ import { Col, Row } from 'reactstrap';
 import { getOrganisations, getSponsors } from '../../../modules/get-select-translations';
 
 const StyledPartnersComponent = styled(Row)`
-    margin-top: ${props => props.isMobile ? "5rem" : "5rem"};
-    margin-bottom: ${props => props.isMobile ? "5rem" : "5rem"};
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 `;
 const StyledTitle = styled.h1`
     margin-top: 10rem;
@@ -46,7 +46,7 @@ class PartnersComponent extends React.Component {
         const partners = getOrganisations();
         const sponsors = getSponsors();
         return (
-            <StyledPartnersComponent isMobile={isMobile}>
+            <StyledPartnersComponent>
                 <Col className="align-self-end">
                     <StyledTitle>{i18n.__('about.organisations')}</StyledTitle>
                 </Col>

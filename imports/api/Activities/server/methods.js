@@ -176,6 +176,36 @@ Meteor.methods({
             throw new Meteor.Error('Store File Url in Database', 'Not a registered user.');
         }
     },
+    'activities.addComment' : function activitiesStoreImageUrl (activityId, commentMessage) {
+        check(commentMessage, String);
+        check(activityId, String);
+        const user = Meteor.user();
+        const userId = user._id;
+        const username = user.profile.username;
+        if(userId) {
+            const comment = {
+                userId : userId,
+                username: username,
+                message: commentMessage,
+                authorized: true
+            }
+            if(Roles.userIsInRole(userId, ['admin', 'editor', 'user'])) {
+                try {
+                    Activities.update(activityId, {
+                        $push : {
+                            comments : comment
+                        }
+                    });
+                } catch (exception) {
+                    handleMethodException(exception);
+                }
+            } else {
+                throw new Meteor.Error('Add Comment', 'User is not user, editor or admin.');
+            }
+        } else {
+            throw new Meteor.Error('Add Comment', 'Not a registered user.');
+        }
+    },
     'activities.remove' : function activitiesRemove (activity) {
         check(activity, Object);
         try {

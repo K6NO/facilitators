@@ -35,7 +35,7 @@ const StyledContainer = styled.div`
 `;
 const StyledHeaderContainer = styled(Col)`
     background: ${props => props.backcolor || "#777777"};
-border-radius: ${props => props.isMobile ? "0" : "10px 10px 0 0"};
+    border-radius: ${props => props.ismobile ? "0" : "10px 10px 0 0"};
     padding-top: 1rem!important;
     padding-bottom: 1rem!important;
     padding-left: 1.5rem!important;
@@ -102,7 +102,7 @@ class ActivityComponentHeader extends React.Component {
                 <Row>
                     <StyledHeaderContainer
                         backcolor={color}
-                        isMobile={isMobile}
+                        ismobile={isMobile}
                         xs={{size: 12, order: 2}} sm={{size: 8, order: 1}}>
                         <ActivityTitle>{activity.title[locale]}</ActivityTitle>
                         <CategoryLink href={"/category/" + category}>{categoryName}</CategoryLink>

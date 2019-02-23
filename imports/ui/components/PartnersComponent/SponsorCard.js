@@ -52,7 +52,7 @@ class SponsorCard extends React.Component {
 }
 
 SponsorCard.propTypes = {
-    p: PropTypes.object.isRequired,
+    s: PropTypes.object.isRequired,
     isMobile: PropTypes.bool.isRequired
   };
 export default SponsorCard;

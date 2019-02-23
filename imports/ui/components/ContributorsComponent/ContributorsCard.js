@@ -14,7 +14,7 @@ const StyledOverlayDiv = styled.div`
     background: #ffffffaa;
     color: #777;
     padding: .5rem;
-    height: 140px;
+    height: 150px;
     font-size: 1.3rem;
 `;
 const StyledImage = styled.img`

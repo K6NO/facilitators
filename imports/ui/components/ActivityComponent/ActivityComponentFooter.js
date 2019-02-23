@@ -1,10 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col, Table, FormGroup } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import './ActivityComponentFooter.scss';
+
+const StyledTagContainer = styled(Col)`
+    padding-bottom: 1rem!important;
+    background: ${props => props.backcolor || "#777777"};
+    box-shadow: #333 0 3px 1px -2px;
+`;
+const StyledBackLink = styled.a`
+    color: white!important;
+    font-size: 1.4rem!important;
+    letter-spacing: 1.5px!important;
+    font-weight: 100!important;
+`;
 
 class ActivityComponentFooter extends React.Component {
     constructor(props){
@@ -17,22 +30,24 @@ class ActivityComponentFooter extends React.Component {
         }
     } 
     render() {
-        const { activity, locale, isMobile } = this.props;
+        const { activity, isMobile } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
-            <div className="ActivityComponentFooter"
-                style={this.setBackground(color)}>
-                <Row>
-                    <Col className="text-right pt-3 pb-5"
-                    style={this.setBackground(color)}>
-                        <a href="#" className="backLink">
-                            <Icon icon={'angle-double-left'} size={'lg'}/>
-                            {` Back${!isMobile ? ' to search results' : ''}`}
-                        </a>
-                    </Col>
-                </Row>
-            </div>
+            <Row>
+                <StyledTagContainer 
+                    backcolor={color}>
+                    <Row>
+                        <Col className="text-right pt-3 pb-5"
+                        style={this.setBackground(color)}>
+                            <StyledBackLink href="#">
+                                <Icon icon={'angle-double-left'} size={'lg'}/>
+                                {` Back${!isMobile ? ' to search results' : ''}`}
+                            </StyledBackLink>
+                        </Col>
+                    </Row>
+                </StyledTagContainer>
+            </Row>
         )
     }
 }

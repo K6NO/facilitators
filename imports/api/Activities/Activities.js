@@ -4,15 +4,15 @@ import SimpleSchema from 'simpl-schema';
 const commentSchema = new SimpleSchema({
     createdAt: {
         type: String,
-        label: 'The date this document was created.',
+        label: 'The date this comment was created.',
         autoValue() {
-            if (this.isInsert) return (new Date()).toISOString();
+            if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
         },
         required: true,
     },
     updatedAt: {
         type: String,
-        label: 'The date this document was last updated.',
+        label: 'The date this comment was last updated.',
         autoValue() {
             if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
         },
