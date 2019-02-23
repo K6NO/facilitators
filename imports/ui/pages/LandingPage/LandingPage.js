@@ -125,7 +125,8 @@ class LandingPage extends React.Component {
                       <ActivityComponentWrapper
                         isMobile={isMobile}
                         backCallback={this.backToActivitiesGrid}
-                        activityId={this.state.activityId} />    
+                        activityId={this.state.activityId}
+                        userId={this.props.userId} />    
                     </Col>
                   </Row>
                 : ''}
@@ -158,7 +159,7 @@ LandingPage.propTypes = {
 
 export default withTracker(() => {
   const userId = Meteor.userId();
-
+  console.log('Landing, userId: ', userId);
   return {
     loading: false,
     userId,

@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import styled from 'styled-components';
+import { withTracker } from 'meteor/react-meteor-data';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
 import CommentComponent from './CommentComponent';
+import LoginModalController from '../LoginModal/LoginModalController';
 import WriteCommentComponent from './WriteCommentComponent';
 import { getColorByCategory } from '../../../modules/get-colors';
 
@@ -32,7 +34,7 @@ class CommentsComponent extends React.Component {
         )
     }
     render () {
-        const { activity, isMobile } = this.props;
+        const { activity, isMobile, userId } = this.props;
         const color = getColorByCategory(activity.category)
         return (
             <Row>
@@ -52,19 +54,30 @@ class CommentsComponent extends React.Component {
                     {this.renderActivityField('comment-dots', 'activity.writecomment')}
                 </Col>
                 <Col xs={12}>
-                    <WriteCommentComponent 
+                    {userId ? 
+                        <WriteCommentComponent 
                         activity={activity}
                         color={color}    
                         isMobile={isMobile}
                         />
+                    : <div className="text-center">
+                        <p>You need to sign in to write a comment.</p>
+                        <LoginModalController />
+                    </div>
+                    }
+                    
                 </Col>
             </Row>
         )
     }
 }
+CommentsComponent.defaultProps = {
+    userId: '',
+};
 CommentsComponent.propTypes = {
   activity: PropTypes.object.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  userId: PropTypes.string
 };
 
-export default CommentsComponent;
+export default CommentsComponent; 

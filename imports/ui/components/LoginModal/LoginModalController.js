@@ -67,7 +67,7 @@ LoginModalController.defaultProps = {
   };
   
   LoginModalController.propTypes = {
-    history: PropTypes.object.isRequired,
+    history: PropTypes.object,
   };
 
 export default withRouter(LoginModalController);

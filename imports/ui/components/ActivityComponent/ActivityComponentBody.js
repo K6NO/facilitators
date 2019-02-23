@@ -40,7 +40,7 @@ class ActivityComponentBody extends React.Component {
         )
     }
     render() {
-        const { activity, locale, isMobile } = this.props;
+        const { activity, locale, isMobile, userId } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
@@ -107,7 +107,10 @@ class ActivityComponentBody extends React.Component {
                         </ActivityText>
                     </Col>
                     <Col sm="6" className="pt-3">
-                        <CommentsComponent activity={activity} isMobile={isMobile}/>
+                        <CommentsComponent 
+                            activity={activity} 
+                            isMobile={isMobile}
+                            userId={userId}/>
                         <Row>
                             <Col sm={12} className="pt-3">
                                 <Icon icon={'images'} size={'lg'} />
@@ -140,6 +143,7 @@ ActivityComponentBody.defaultProps = {
   
   ActivityComponentBody.propTypes = {
     activity: PropTypes.object.isRequired,
+    userId: PropTypes.string,
     locale: PropTypes.string.isRequired,
     isMobile: PropTypes.bool.isRequired,
 };
