@@ -159,7 +159,6 @@ LandingPage.propTypes = {
 
 export default withTracker(() => {
   const userId = Meteor.userId();
-  console.log('Landing, userId: ', userId);
   return {
     loading: false,
     userId,
