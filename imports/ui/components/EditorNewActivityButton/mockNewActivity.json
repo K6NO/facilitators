@@ -1,16 +1,16 @@
 {
     "title": {
-        "en-US" : "No title",
-        "es" : "No title",
-        "hu" : "No title",
-        "ro" : "No title",
-        "sk" : "No title"
+        "en-US" : "No EN translation - title",
+        "es" : "No ES translation - title",
+        "hu" : "No HU translation - title",
+        "ro" : "No RO translation - title",
+        "sk" : "No SK translation - title"
     },
     "description" : {
-        "en-US" : "No description",
-        "es" : "No description",
-        "hu" : "No description",
-        "ro" : "No description",
+        "en-US" : "No EN translation -  description",
+        "es" : "No ES translation -  description",
+        "hu" : "No HU translation -  description",
+        "ro" : "No RO translation -  description",
         "sk" : "No description"
     },
     "category" : "deepeco",
@@ -18,32 +18,32 @@
     "time" : "timevs",
     "group" : "groupvs",
     "preparations" : {
-        "en-US" : "No preparations",
-        "es" : "No preparations",
-        "hu" : "No preparations",
-        "ro" : "No preparations",
-        "sk" : "No preparations"
+        "en-US" : "No EN translation -  preparations",
+        "es" : "No ES translation -  preparations",
+        "hu" : "No HU translation -  preparations",
+        "ro" : "No RO translation -  preparations",
+        "sk" : "No SK translation -  preparations"
     },
     "objectives" : {
-        "en-US" : "No objectives",
-        "es" : "No objectives",
-        "hu" : "No objectives",
-        "ro" : "No objectives",
-        "sk" : "No objectives"
+        "en-US" : "No EN translation -  objectives",
+        "es" : "No ES translation -  objectives",
+        "hu" : "No HU translation -  objectives",
+        "ro" : "No RO translation -  objectives",
+        "sk" : "No SK translation -  objectives"
     },
     "tools": {
-        "en-US" : "No tools",
-        "es" : "No tools",
-        "hu" : "No tools",
-        "ro" : "No tools",
-        "sk" : "No tools"
+        "en-US" : "No EN translation -  tools",
+        "es" : "No ES translation -  tools",
+        "hu" : "No HU translation -  tools",
+        "ro" : "No RO translation -  tools",
+        "sk" : "No SK translation -  tools"
     },
     "resources" : {
-        "en-US" : "No resources",
-        "es" : "No resources",
-        "hu" : "No resources",
-        "ro" : "No resources",
-        "sk" : "No resources"
+        "en-US" : "No EN translation -  resources",
+        "es" : "No ES translation -  resources",
+        "hu" : "No HU translation -  resources",
+        "ro" : "No RO translation -  resources",
+        "sk" : "No SK translation -  resources"
     },
     "images" : [
     ],
