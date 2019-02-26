@@ -53,7 +53,7 @@ const Footer = () => (
           <StyledLink href="/terms">{i18n.__('footer.terms')}</StyledLink>
         </StyledListItem>
         <StyledListItem>
-          <StyledLink href="https://app.termly.io/document/privacy-policy/939e7c91-b05f-40ba-8f01-e7464acde377">{i18n.__('footer.privacy')}</StyledLink>
+          <StyledLink href="/privacy">{i18n.__('footer.privacy')}</StyledLink>
         </StyledListItem>
       </StyledList>
     </div>

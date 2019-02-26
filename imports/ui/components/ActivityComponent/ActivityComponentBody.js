@@ -50,18 +50,18 @@ class ActivityComponentBody extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="6">
+                            <Col xs="6" lg="5">
                                 {this.renderActivityField('clock', 'activity.time')}
                             </Col>
-                            <Col xs="6" className="pt-2">
+                            <Col xs="6" lg="7" className="pt-2">
                                 <p>{i18n.__(`activity.${activity.time}`)}</p>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="6">
+                            <Col xs="6" lg="5">
                                 {this.renderActivityField('users', 'activity.group')}
                             </Col>
-                            <Col xs="6" className="pt-2">
+                            <Col xs="6" lg="7" className="pt-2">
                                 <p>{i18n.__(`activity.${activity.group}`)}</p>
                             </Col>
                         </Row>
