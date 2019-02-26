@@ -138,7 +138,7 @@ Meteor.publish('activities.allCount', () => {
     }
     return Activities.find({
         public: true
-    }).count();
+    });
 });
 
 Meteor.publish('activities.view', (activityId) => {
