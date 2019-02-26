@@ -3,27 +3,16 @@ import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from '../Icon/Icon';
+import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 
 
-const StyledButton = styled.button`
+const StyledButton = styled(BasicStyledButton)`
     float: right;
-    height: 40px;
     min-width: 110px;
-    padding: .8rem 1.5rem;
-    background: #0e8ed5;
-    color: white;
     text-transform: uppercase;
-    font-size: 1.6rem;
-    letter-spacing: 1.5px;
-    font-weight: 100;
     margin-top: 1rem;
-    border: 1px solid #0e8ed5;
     &:hover {
-        background: #0e8ed5bb;
-    }
-    &:focus {
-        outline: 1px dotted;
-        background: #0e8ed5dd;
+        text-decoration: underline;
     }
 `
 class EditorBackButton extends React.Component{
@@ -35,9 +24,11 @@ class EditorBackButton extends React.Component{
     return ( 
         <StyledButton 
             onClick={this.props.closeCallback}
+            backcolor={'transparent'}
+            color={'#0e8ed5'}
         >
         <Icon icon={'angle-double-left'} size={'lg'}/>
-        {`Finish & Back to list`}
+        {`Finish Editing & Back to list`}
     </StyledButton>
     );
   }

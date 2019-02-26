@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Icon from '../Icon/Icon';
+import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 
 const TopFlexContainer = styled.div`
     box-shadow: 0 3px 1px -2px #ddd;
@@ -34,25 +36,6 @@ const StyledTextArea = styled.textarea`
         background: ${props => props.color ? `${props.color}33` : "#33333333"};
     }
 `;
-const StyledButton = styled.button`
-    height: 40px;
-    min-width: 110px;
-    padding: .8rem 1.5rem!important;
-    background: ${props => props.color ? props.color : "#777"};
-    color: white;
-    text-transform: uppercase;
-    font-size: 1.3rem;
-    letter-spacing: 1.5px;
-    font-weight: 100;
-    border-radius: 10px;
-    &:hover {
-        background: ${props => props.color ? `${props.color}77` : "#77777777"};
-    }
-    &:focus {
-        outline: 1px dotted;
-        ${props => props.color ? `${props.color}cc` : "#777777cc"};
-    }
-`
 class WriteCommentComponent extends React.Component {
     constructor(props){
         super(props);
@@ -99,10 +82,13 @@ class WriteCommentComponent extends React.Component {
                     </StyledTextArea>
                 </StyledFlexContainer>
                 <StyledFlexContainer>
-                    <StyledButton 
-                        color={this.props.color}
-                        onClick={this.submitComment}>Send Comment
-                    </StyledButton>
+                    <BasicStyledButton 
+                        color={'#ffffff'}
+                        backcolor={this.props.color}
+                        onClick={this.submitComment}>
+                            <Icon icon={'paper-plane'} />
+                        {` Send Comment`}
+                    </BasicStyledButton>
                 </StyledFlexContainer>
             </TopFlexContainer>
         )

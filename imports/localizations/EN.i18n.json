@@ -10,7 +10,7 @@
     },
     "searchbox" : {
         "title" : "Welcome! Choose your activity.",
-        "categoryDefault" : "Select categories",
+        "categoryDefault" : "Select category",
         "groupDefault" : "Select group size",
         "ageDefault" : "Select age",
         "timeDefault" : "Select duration",

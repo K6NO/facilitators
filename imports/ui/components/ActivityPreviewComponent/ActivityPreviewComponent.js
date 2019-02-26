@@ -8,7 +8,8 @@ const StyledPreviewComponent = styled.div`
     padding: .5rem 1rem;
     box-shadow: 1px 1px 1px 1px #ededed;
     &:hover {
-        background: #efefef55;
+        background: #efefefaa;
+        box-shadow: 1px 1px 1px 1px #ccc;
     }
 `;
 

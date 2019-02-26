@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col, Badge, Button } from 'reactstrap';
+import { BasicStyledButton, BasicStyledBadge } from '../MainStyledComponents/MainStyledComponents';
 
 const ColorIconWrapper = styled.h5`
         color: darkslategrey;
@@ -15,43 +16,15 @@ const Text = styled.span`
     font-size: 1.3rem;
     color: darkslategrey;
 `
-const StyledBadge = styled(Badge)`
-    padding: .6rem 1rem!important;
-    color: ${props => props.backcolor || '#777777'}!important;
-    text-transform: uppercase;
-    border: ${props => '1px ' + props.backcolor + ' solid' || '1px solid #777777'}!important;
-    font-size: 1.2rem;
-    letter-spacing: .8px;
-    margin: 1px;
-    background-color: white!important;
-    white-space: nowrap;
-    vertical-align: baseline;
-    text-align: center;
-    border-radius: 10rem!important;
+const StyledBadge = styled(BasicStyledBadge)`
+      border: ${props => `1px solid ${props.color}`};
+      text-transform: uppercase;
 `;
 
-const StyledSelectButton = styled.button`
-    height: 40px;
-    min-width: 110px;
-    padding: .8rem 1.5rem;
-    background: white;
-    /* background: #0e8ed511; */
-    color: darkslategray;
-    border-radius: 5px;
-    border: 0;
+const StyledSelectButton = styled(BasicStyledButton)`
+    width: 100%;
+    display: block;
     box-shadow: 1px 1px 3px 1px #dddddd;
-    text-transform: uppercase;
-    font-size: 1.3rem;
-    letter-spacing: 1.5px;
-    font-weight: 100;
-    
-    &:hover {
-        background: #ededed!important;
-    }
-    &:focus {
-        outline: 1px dotted;
-        background: #0e8ed533!important;
-    }
 `
 
 const StyledTagsWrapper = styled(Col)`
@@ -77,7 +50,8 @@ class ActivityPreviewComponentBody extends React.Component {
     renderTags = (activity, color) => {
         return activity.tags.map((tagIndex) =>   
             <StyledBadge 
-                backcolor={color}
+                color={color}
+                backcolor={"#ffffff"}
                 key={tagIndex}
                 
                 >
@@ -126,6 +100,8 @@ class ActivityPreviewComponentBody extends React.Component {
                 <Row>
                     <Col xs="12" className="mt-2 mb-4">
                         <StyledSelectButton
+                            color={'white'}
+                            backcolor={color}
                             onClick={()=> selectActivityCallback(activity._id)}>
                                 {i18n.__('searchbox.moreinfo')}
                         </StyledSelectButton>

@@ -4,6 +4,7 @@ import { Badge } from 'reactstrap';
 import styled from 'styled-components';
 import _ from 'lodash';
 import ReactResponsiveSelect from 'react-responsive-select';
+import { BasicStyledBadge } from '../MainStyledComponents/MainStyledComponents';
 import './MultiSelector.scss';
 
 const caretIcon = (
@@ -11,17 +12,6 @@ const caretIcon = (
       <g><path d="M363.311,2118.414c-0.164-0.163-0.429-0.163-0.592,0l-5.205,5.216l-5.215-5.216c-0.163-0.163-0.429-0.163-0.592,0s-0.163,0.429,0,0.592l5.501,5.501c0.082,0.082,0.184,0.123,0.296,0.123c0.103,0,0.215-0.041,0.296-0.123l5.501-5.501C363.474,2118.843,363.474,2118.577,363.311,2118.414L363.311,2118.414z"/></g>
     </svg>
   );
-
-  const SyledBadge = styled(Badge)`
-      color: #777!important;
-      font-size: 1.3rem!important;
-      font-weight: 100!important;
-      padding-left: .5rem!important;
-      background-color: #efefef;
-      padding: .5rem .8rem!important;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-  `
 
 class MultiSelector extends React.Component {
     constructor(props){
@@ -47,7 +37,13 @@ class MultiSelector extends React.Component {
     }
 
     customLabelRenderer = (multiOptions) => {
-      return multiOptions.options.map(option => <SyledBadge key={option.value} color="light" pill>{option.text}</SyledBadge>);
+      return multiOptions.options.map(option => 
+        <BasicStyledBadge 
+          key={option.value} 
+          color={'#777777'} 
+          backcolor={'#ffffff'}>
+          {option.text}
+        </BasicStyledBadge>);
     }
   
 

@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Table, Button } from 'reactstrap';
+import { Row, Col, Table } from 'reactstrap';
 import i18n from 'meteor/universe:i18n';
+import styled from 'styled-components';
 import Icon from '../Icon/Icon';
 import EditorDeleteActivityButton from '../EditorDeleteActivityButton/EditorDeleteActivityButton';
+import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 import { getCategoryName, getLanguageName} from '../../../modules/get-select-translations';
 import './EditorListActivitiesComponent.scss';
 
+const StyledButton = styled(BasicStyledButton)`
+`;
 class EditorListActivitiesComponent extends React.Component{
   constructor(props){
     super(props);
@@ -54,12 +58,13 @@ class EditorListActivitiesComponent extends React.Component{
                     </td>
                     <td>
                         {(Roles.userIsInRole(userId, ['admin']) || activity.owner === userId) ?
-                          <Button 
-                          color="primary"
+                          <StyledButton 
+                          color={'white'}
+                          backcolor={'#0e8ed5'}
                           onClick={() => editCallback(activity._id)}>
                           <Icon icon={'edit'} />
                           {` Edit`}
-                        </Button> : ''}
+                        </StyledButton> : ''}
                     </td>
                     <td>
                       <EditorDeleteActivityButton

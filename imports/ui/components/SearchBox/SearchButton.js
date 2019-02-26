@@ -3,24 +3,10 @@ import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import Icon from '../Icon/Icon';
 import styled from 'styled-components';
+import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 
-const StyledButton = styled.button`
-    height: 40px;
-    min-width: 110px;
-    padding: .8rem 1.5rem!important;
-    background: #0e8ed5!important;
-    color: white;
-    text-transform: uppercase;
-    font-size: 1.6rem!important;
-    letter-spacing: 1.5px;
-    font-weight: 100!important;
-    &:hover {
-        background: #0e8ed5bb!important;
-    }
-    &:focus {
-        outline: 1px dotted;
-        background: #0e8ed5dd!important;
-    }
+const StyledButton = styled(BasicStyledButton)`
+    font-size: 1.6rem;
 `
 
 class SearchButton extends React.Component{
@@ -34,7 +20,8 @@ class SearchButton extends React.Component{
     
         return (
             <StyledButton 
-                color="primary"
+                color={'#ffffff'}
+                backcolor={'#0e8ed5'}
                 onClick={searchCallback}>
                 <Icon icon={'search'} />{i18n.__('searchbox.searchBtn')}
             </StyledButton>

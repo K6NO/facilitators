@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
 import Icon from '../Icon/Icon';
-
+import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 
 
 class EditorDeleteActivityButton extends React.Component{
@@ -25,13 +24,13 @@ class EditorDeleteActivityButton extends React.Component{
       
         return (
             (Roles.userIsInRole(userId, ['admin']) || activity.owner === userId) ?
-            <Button 
-                className="EditorDeleteActivityButton"
-                color="danger"
+            <BasicStyledButton 
+                color={'white'}
+                backcolor={'#dc3545'}
                 onClick={this.deleteActivity}>
             <Icon icon={'trash'} />
             {` Delete`}
-            </Button> : ''
+            </BasicStyledButton> : ''
         )
     }
 }

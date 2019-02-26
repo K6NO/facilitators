@@ -4,48 +4,32 @@ import styled from 'styled-components';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
-
-import './ActivityComponentFooter.scss';
+import { BasicStyledLink } from '../MainStyledComponents/MainStyledComponents';
 
 const StyledTagContainer = styled(Col)`
-    padding-bottom: 1rem!important;
-    background: ${props => props.backcolor || "#777777"};
-    box-shadow: #333 0 3px 1px -2px;
-`;
-const StyledBackLink = styled.a`
-    color: white!important;
-    font-size: 1.4rem!important;
-    letter-spacing: 1.5px!important;
-    font-weight: 100!important;
+    padding: 2rem 0;
+    text-align: center;
 `;
 
 class ActivityComponentFooter extends React.Component {
     constructor(props){
       super(props);
     }
-
-    setBackground = (color) => {
-        return {
-            background : color
-        }
-    } 
     render() {
-        const { activity, isMobile } = this.props;
+        const { activity, isMobile, backCallback } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         return (
             <Row>
-                <StyledTagContainer 
-                    backcolor={color}>
-                    <Row>
-                        <Col className="text-right pt-3 pb-5"
-                        style={this.setBackground(color)}>
-                            <StyledBackLink href="#">
-                                <Icon icon={'angle-double-left'} size={'lg'}/>
-                                {` Back${!isMobile ? ' to search results' : ''}`}
-                            </StyledBackLink>
-                        </Col>
-                    </Row>
+                <StyledTagContainer>
+                    <BasicStyledLink
+                        color={color}
+                        href="#"
+                        onClick={backCallback}
+                        >
+                        <Icon icon={'angle-double-left'} size={'lg'}/>
+                        {` Back${!isMobile ? ' to results' : ''}`}
+                    </BasicStyledLink>
                 </StyledTagContainer>
             </Row>
         )
@@ -59,7 +43,8 @@ ActivityComponentFooter.defaultProps = {
 ActivityComponentFooter.propTypes = {
     activity: PropTypes.object.isRequired,
     locale: PropTypes.string.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    backCallback: PropTypes.func.isRequired,
 };
 
 
