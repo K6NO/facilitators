@@ -69,6 +69,7 @@ class EditorTimeComponent extends React.Component {
                             classNamePrefix="time-edit"
                             isSearchable={false}
                             isClearable={false}
+                            placeholder={this.state.selected}
                             options={this.getTimeOptions()}
                             name="timeSelect"
                             value={this.state.selected}

@@ -131,6 +131,16 @@ export const getCategoriesGrid = () => {
       { value: 'community', text: i18n.__('categories.community'), imageUrl: '/img/ui/community.png'},
   ]
 };
+export const getCategory = (category) => {
+  return [
+      { value: 'footprint', text: i18n.__('categories.footprint'), imageUrl: '/img/ui/footprint.png'},
+      { value: 'deepeco', text: i18n.__('categories.deepeco'),imageUrl: '/img/ui/deepeco.png'},
+      { value: 'ecofem', text: i18n.__('categories.ecofem'), imageUrl: '/img/ui/ecofem.png'},
+      { value: 'landart', text: i18n.__('categories.landart'), imageUrl: '/img/ui/landart.png'},
+      { value: 'food', text: i18n.__('categories.food'), imageUrl: '/img/ui/food.png'},
+      { value: 'community', text: i18n.__('categories.community'), imageUrl: '/img/ui/community.png'},
+  ].filter(c => c.value === category)[0];
+};
 
 export const getOrganisations = () => {
   return organisations;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
+import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 
 
 class EditorResourcesComponent extends React.Component {
@@ -52,7 +53,7 @@ class EditorResourcesComponent extends React.Component {
                 : <Row className="EditorResourcesComponent">
                     <Col>
                         {renderActivityBodyField('book-open', 'activity.resources')}
-                        <textarea
+                        <StyledTextarea
                             className="activityResourcesEditing"
                             value={this.state.resources}
                             onChange={this.updateResources}

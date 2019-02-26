@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
+import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 
 
 class EditorToolsComponent extends React.Component {
@@ -52,7 +53,7 @@ class EditorToolsComponent extends React.Component {
                 : <Row className="EditorToolsComponent">
                     <Col>
                         {renderActivityBodyField('wrench', 'activity.tools')}
-                        <textarea
+                        <StyledTextarea
                             className="activityToolsEditing"
                             value={this.state.tools}
                             onChange={this.updateTools}

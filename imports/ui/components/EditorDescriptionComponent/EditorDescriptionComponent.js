@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-
+import { StyledTallTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 
 class EditorDescriptionComponent extends React.Component {
     constructor(props){
@@ -52,7 +52,7 @@ class EditorDescriptionComponent extends React.Component {
                 : <Row className="EditorDescriptionComponent">
                     <Col>
                         {renderActivityBodyField('align-left', 'activity.description')}
-                        <textarea
+                        <StyledTallTextarea
                             className="activitydescriptionEditing"
                             value={this.state.description}
                             onChange={this.updateDescription}

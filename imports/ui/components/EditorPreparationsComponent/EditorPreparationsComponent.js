@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import i18n from 'meteor/universe:i18n';
-import Select from 'react-select';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-
+import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 
 class EditorPreparationsComponent extends React.Component {
     constructor(props){
@@ -54,8 +52,7 @@ class EditorPreparationsComponent extends React.Component {
                 : <Row className="EditorPreparationsComponent">
                     <Col>
                         {renderActivityBodyField('pause-circle', 'activity.preparations')}
-                        <textarea
-                            className="activityPreparationsEditing"
+                        <StyledTextarea
                             value={this.state.preparations}
                             onChange={this.updatePreps}
                             onBlur={this.savePreps} />

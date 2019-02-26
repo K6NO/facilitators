@@ -17,18 +17,22 @@ class EditorLanguageSelector extends React.Component {
         const languageArray = getLanguageArray();
         const { selectLanguageCallback, language } = this.props;
         return (
-            <Select 
-                className="basic-single LanguageSelector"
-                classNamePrefix="select-language"
-                isClearable={false}
-                isSearchable={false}
-                options={languageArray}
-                placeholder={getLanguageName(language)}
-                value={this.state.locale}
-                onChange={(selection) => selectLanguageCallback(selection.value)}
-                aria-label="Select Language"
-                name="LanguageSelector"
-                />
+          <div>
+            <span>Editing the </span>
+              <Select 
+                  className="basic-single EditorLanguageSelector"
+                  classNamePrefix="select-editorlanguage"
+                  isClearable={false}
+                  isSearchable={false}
+                  options={languageArray}
+                  placeholder={getLanguageName(language)}
+                  value={this.state.locale}
+                  onChange={(selection) => selectLanguageCallback(selection.value)}
+                  aria-label="Select Language"
+                  name="LanguageSelector"
+                  />
+            <span> language version</span>
+          </div>
         )
     }
 }

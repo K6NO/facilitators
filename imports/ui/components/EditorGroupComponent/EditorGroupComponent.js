@@ -69,6 +69,7 @@ class EditorGroupComponent extends React.Component {
                             classNamePrefix="group-edit"
                             isSearchable={false}
                             isClearable={false}
+                            placeholder={this.state.selected}
                             options={this.getGroupOptions()}
                             name="groupSelect"
                             value={this.state.selected}

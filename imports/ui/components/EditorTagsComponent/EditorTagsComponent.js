@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
@@ -8,7 +9,48 @@ import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import './EditorTagsComponent.scss';
 
+const StyledButton = styled.button`
+    display: inline-block;
+    font-weight: 400;
+    background-color: ${props => props.color};
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid white;
+    padding: .375rem .75rem;
+    margin: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 15px;
+    &:hover {
+        background-color: white;
+        border: ${props => `1px solid ${props.color}`};
+        color: ${props => `${props.color}`};
+    }
+    &:focus {
+        background-color: white;
+        border: ${props => `1px solid ${props.color}`};
+        color: ${props => `${props.color}`};
+    }
+    /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+    `;
 
+const StyledTagBadge = styled(Badge)`
+    display: inline-block;
+    margin-right: 1rem;
+    padding: .25rem 1rem!important;
+    border-radius: .25rem;
+    border-radius: 10rem;   
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: ${props => props.backcolor};
+    color: ${props => props.textcolor}!important;
+`;
 class EditorTagsComponent extends React.Component {
     constructor(props){
       super(props);
@@ -33,17 +75,22 @@ class EditorTagsComponent extends React.Component {
     saveTag = (selection) => {
         const { activity } = this.props;
         const oldTags = activity.tags;
-        // push the new selection's index (value) in the array of tags
-        oldTags.push(`${selection.value}`);
-        // save
-        Meteor.call('activities.updateAttributes', activity._id, 'tags', oldTags, 
-        (error) => {
-            if(error) {
-                Bert.alert(error.reason, 'danger');
-            } else { 
-                Bert.alert('Saved changes', 'success');
-            }
-        });
+        // if the tag is not added yet (avoid duplicates)
+        // notice the `` --> index values need to be pushed and checked as string types
+        if(oldTags.indexOf(`${selection.value}`) === -1){
+            // push the new selection's index (value) in the array of tags
+            oldTags.push(`${selection.value}`);
+            // save
+            Meteor.call('activities.updateAttributes', activity._id, 'tags', oldTags, 
+            (error) => {
+                if(error) {
+                    Bert.alert(error.reason, 'danger');
+                } else { 
+                    Bert.alert('Saved changes', 'success');
+                }
+            });
+        }
+        
         this.setState({editing: false});
     }
 
@@ -69,12 +116,13 @@ class EditorTagsComponent extends React.Component {
 
     renderTags = ({activity, color}) => {
         return activity.tags.map((tagIndex) =>   
-            <Badge 
+            <StyledTagBadge 
                 color="light" 
                 pill
                 key={tagIndex}
                 className="tagPills"
-                style={{color: color}}
+                backcolor={"white"}
+                textcolor={color}
                 >
                 {`${i18n.__(`tags.${tagIndex}`)} `}
                 <Button
@@ -84,7 +132,7 @@ class EditorTagsComponent extends React.Component {
                     icon={'trash'}
                      />
                 </Button>
-            </Badge>
+            </StyledTagBadge>
         );
     }
 
@@ -96,12 +144,12 @@ class EditorTagsComponent extends React.Component {
             <div className="EditorTagsComponent">
                 {this.renderTags({activity, color})}
                 {!this.state.editing 
-                ? <Button 
-                    color="primary"
+                ? <StyledButton 
+                    color={color}
                     onClick={this.addTag}>
                     <Icon icon={'plus'} />
                     {` Add Tag`}
-                </Button>
+                </StyledButton>
                 : <Select 
                     className="basic-single CategorySelector"
                     classNamePrefix="tags-edit"

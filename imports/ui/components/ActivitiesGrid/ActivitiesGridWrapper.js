@@ -12,6 +12,15 @@ import Icon from '../Icon/Icon';
 import _ from 'lodash';
 import './ActivitiesGridWrapper.scss';
 
+const MatchingText = styled.span`
+    float: right;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: #aaa;
+    letter-spacing: 2px;
+    font-weight: 100;
+    margin-bottom: 2rem;
+`;
 
 class ActivitiesGridWrapper extends React.Component {
     constructor(props){
@@ -49,7 +58,9 @@ class ActivitiesGridWrapper extends React.Component {
                 </Row> : ''}
                 <Row>
                     <Col>
-                        <span>{totalCount} {i18n.__('searchbox.matching')}</span>
+                        <MatchingText>
+                            {totalCount} {i18n.__('searchbox.matching')}
+                        </MatchingText>
                     </Col>
                 </Row>
                 <ActivitiesGrid

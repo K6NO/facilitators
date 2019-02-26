@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-
+import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 
 class EditorObjectivesComponent extends React.Component {
     constructor(props){
@@ -52,7 +52,7 @@ class EditorObjectivesComponent extends React.Component {
                 : <Row className="EditorObjectivesComponent">
                     <Col>
                         {renderActivityBodyField('bullseye', 'activity.objectives')}
-                        <textarea
+                        <StyledTextarea
                             className="activityObjectivesEditing"
                             value={this.state.objectives}
                             onChange={this.updateObjectives}

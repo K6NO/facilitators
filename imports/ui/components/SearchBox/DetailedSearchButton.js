@@ -10,7 +10,7 @@ const StyledButton = styled.button`
     background: white;
     color: #0e8ed5;
     text-transform: uppercase;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     letter-spacing: 1.5px;
     font-weight: 100;
     border: 1px transparent solid;

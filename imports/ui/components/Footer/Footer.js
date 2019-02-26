@@ -38,7 +38,7 @@ const StyledLink = styled.a`
   };
 `;
 const StyledText = styled.p`
-  color: white;
+  color: #263810;
   font-size: 1.3rem;
   font-weight: 100;
   letter-spacing: 1px;

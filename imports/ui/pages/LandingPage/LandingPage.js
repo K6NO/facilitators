@@ -82,6 +82,14 @@ class LandingPage extends React.Component {
     });
   }
 
+  backToCategoriesGrid = (category) => {
+    this.setState({
+      singleActivity: false,
+      showCategories: true,
+      category: category
+    })
+  } 
+
   handlePageNumber = (pageNumber) => {
     this.setState({
       pageNum: pageNumber
@@ -90,6 +98,7 @@ class LandingPage extends React.Component {
 
   render () {
     const { loading, isMobile, ...props } = this.props;
+
   
     return (!loading ? (
       <div className="LandingPage">
@@ -106,7 +115,9 @@ class LandingPage extends React.Component {
                   <StyledImage isMobile={isMobile} src="/img/ui/lightbulb.png" /> 
                 </StyledImageDiv>
               </SearchBoxRow>
-              {this.state.showCategories ? <CategoriesGrid /> : ''}
+              {this.state.showCategories ? 
+              <CategoriesGrid {...props}/> 
+              : ''}
               {!this.state.showCategories && !this.state.singleActivity
                 ? <Row>
                   <Col xs={12}>

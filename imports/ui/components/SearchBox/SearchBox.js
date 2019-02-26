@@ -75,7 +75,7 @@ class SearchBox extends React.Component{
                 : ''}
                 
                 <Row >
-                    <Col className="mt-2 ">
+                    <Col className="mt-2 text-right">
                         <SearchButton
                             searchCallback={searchCallback} />
                         <DetailedSearchButton 

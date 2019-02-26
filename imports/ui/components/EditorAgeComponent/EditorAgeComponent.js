@@ -71,6 +71,7 @@ class EditorAgeComponent extends React.Component {
                             isClearable={false}
                             options={this.getAgeOptions()}
                             name="ageSelect"
+                            placeholder={this.state.selected}
                             value={this.state.selected}
                             onChange={(selection) => this.saveAge(selection)}
                             aria-label="Edit Age"

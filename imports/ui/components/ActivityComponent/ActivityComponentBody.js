@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import styled from 'styled-components';
-import getLocale from '../../../modules/get-locale';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
@@ -113,7 +112,8 @@ class ActivityComponentBody extends React.Component {
                             userId={userId}/>
                         <Row>
                             <Col sm={12} className="pt-3">
-                                <Icon icon={'images'} size={'lg'} />
+                                {this.renderActivityField('images', 'activity.images')}
+            
                             </Col>
                             {activity.images.map(image => 
                                 <ActivityImagesComponent 

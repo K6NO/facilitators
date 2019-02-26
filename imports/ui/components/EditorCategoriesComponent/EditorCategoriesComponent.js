@@ -13,7 +13,8 @@ class EditorCategoriesComponent extends React.Component {
     }
 
     saveCategory = (selection) => {
-        this.setState({category: selection.label})
+        this.setState({
+            category: getCategoryName(selection.value)})
         const activityId = this.props.activity._id;
         Meteor.call('activities.updateAttributes', 
         activityId, 'category', selection.value,
@@ -36,6 +37,7 @@ class EditorCategoriesComponent extends React.Component {
                     isSearchable={false}
                     isClearable={false}
                     options={categoryArray}
+                    placeholder={this.state.category}
                     name="categoryEditSelect"
                     value={this.state.category}
                     onChange={(selection) => this.saveCategory(selection)}

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Row, Col } from 'reactstrap';
 import Loading from '../Loading/Loading';
 import Activities from '../../../api/Activities/Activities';
 import EditorSingleActivityComponent from './EditorSingleActivityComponent';
@@ -15,9 +16,14 @@ class EditorSingleActivityWrapper extends React.Component{
     const { loading, ...props} = this.props;
     return (! loading ? (
       <div className="EditorSingleActivityWrapper">
-        <EditorSingleActivityComponent
-            {...props}
-        />
+        <Row>
+          <Col md={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
+            <EditorSingleActivityComponent
+                  {...props}
+              />
+          </Col>
+        </Row>
+        
       </div>
     ) : <Loading />);
   }

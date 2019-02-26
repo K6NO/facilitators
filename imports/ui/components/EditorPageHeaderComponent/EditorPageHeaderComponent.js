@@ -13,7 +13,7 @@ class EditorPageHeaderComponent extends React.Component{
  
   render (){
     return ( 
-      <div className="EditorPageHeaderComponent">
+      <div className="EditorPageHeaderComponent mb-5">
         <Row>
             <Col sm="6">
                 <EditorLanguageSelector
