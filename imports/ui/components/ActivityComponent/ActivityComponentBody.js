@@ -5,16 +5,11 @@ import styled from 'styled-components';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
-import './ActivityComponentBody.scss';
 import ActivityImagesComponent from './ActivityImagesComponent';
 import CommentsComponent from '../CommentsComponent/CommentsComponent';
 
 const StyledRow = styled(Row)`
     box-shadow: 0 3px 1px -2px #ddd;
-`;
-const ActivityText = styled.p`
-    letter-spacing: .4px;
-
 `;
 class ActivityComponentBody extends React.Component {
     constructor(props){
@@ -30,7 +25,7 @@ class ActivityComponentBody extends React.Component {
 
     renderActivityField = (icon, activityField) => {
         return (
-            <h5 className="activityHeader font-weight-bold">
+            <h5>
                 <Icon 
                     icon={icon} 
                     size={'lg'} />
@@ -47,11 +42,11 @@ class ActivityComponentBody extends React.Component {
                 <StyledRow>
                     <Col sm="6" style={this.setBackground(color)}>
                         <Row>
-                            <Col xs="6">
+                            <Col xs="6" lg="5">
                                 {this.renderActivityField('address-card', 'activity.age')}
                             </Col>
-                            <Col xs="6" className="pt-2">
-                                <span>{i18n.__(`activity.${activity.age}`)}</span>
+                            <Col xs="6" lg="7" className="pt-2">
+                                <p>{i18n.__(`activity.${activity.age}`)}</p>
                             </Col>
                         </Row>
                         <Row>
@@ -59,7 +54,7 @@ class ActivityComponentBody extends React.Component {
                                 {this.renderActivityField('clock', 'activity.time')}
                             </Col>
                             <Col xs="6" className="pt-2">
-                                <span>{i18n.__(`activity.${activity.time}`)}</span>
+                                <p>{i18n.__(`activity.${activity.time}`)}</p>
                             </Col>
                         </Row>
                         <Row>
@@ -67,15 +62,15 @@ class ActivityComponentBody extends React.Component {
                                 {this.renderActivityField('users', 'activity.group')}
                             </Col>
                             <Col xs="6" className="pt-2">
-                                <span>{i18n.__(`activity.${activity.group}`)}</span>
+                                <p>{i18n.__(`activity.${activity.group}`)}</p>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                                 {this.renderActivityField('pause-circle', 'activity.preparations')}
-                                <ActivityText>
+                                <p>
                                     {activity.preparations[locale]}
-                                </ActivityText>
+                                </p>
                             </Col>
                         </Row>
                     </Col>
@@ -83,17 +78,17 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 {this.renderActivityField('bullseye', 'activity.objectives')}
-                                <ActivityText>
+                                <p>
                                     {activity.objectives[locale]}
-                                </ActivityText>
+                                </p>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                             {this.renderActivityField('wrench', 'activity.tools')}
-                                <ActivityText>
+                                <p>
                                     {activity.tools[locale]}
-                                </ActivityText>
+                                </p>
                             </Col>
                         </Row>
                     </Col>
@@ -101,9 +96,9 @@ class ActivityComponentBody extends React.Component {
                 <StyledRow>
                     <Col sm="6" className="pt-3">
                     {this.renderActivityField('align-left', 'activity.description')}
-                        <ActivityText>
+                        <p>
                             {activity.description[locale]}
-                        </ActivityText>
+                        </p>
                     </Col>
                     <Col sm="6" className="pt-3">
                         <CommentsComponent 
@@ -127,9 +122,9 @@ class ActivityComponentBody extends React.Component {
                 <StyledRow>
                     <Col className="pt-3">
                     {this.renderActivityField('book-open', 'activity.resources')}
-                        <ActivityText>
+                        <p>
                             {activity.resources[locale]}
-                        </ActivityText>
+                        </p>
                     </Col>
                 </StyledRow>
             </div>

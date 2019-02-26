@@ -7,7 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import Loading from '../../components/Loading/Loading';
 import ContributorsComponent from '../../components/ContributorsComponent/ContributorsComponent';
 import PartnersComponent from '../../components/PartnersComponent/PartnersComponent';
-import AboutComponent from '../../components/AboutComponent/AboutComponent';
+import StyledTopAboutComponent from '../../components/AboutComponent/StyledTopAboutComponent';
 import ContactComponent from '../../components/ContactComponent/ContactComponent';
 
 const ColorRow = styled(Row)`
@@ -30,10 +30,10 @@ class AboutPage extends React.Component {
       <div className="AboutPage">
         <div className="container">
           <Row>
-            <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
-              <AboutComponent isMobile={isMobile} />
+            <Col className="px-5 px-sm-0" xs={12}>
+              <StyledTopAboutComponent isMobile={isMobile} />
             </Col>
-            <Col className="py-5 px-5 px-md-0" xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
+            <Col className="px-5 px-md-0" xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
               <ContributorsComponent isMobile={isMobile}/>
               <PartnersComponent isMobile={isMobile}/>
             </Col>

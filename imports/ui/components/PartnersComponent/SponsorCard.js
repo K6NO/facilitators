@@ -4,7 +4,6 @@ import { Col } from 'reactstrap';
 import styled from 'styled-components';
 
 const StyledCard = styled(Col)`
-    box-shadow: 0 1px 1px 0 #cccccc;
     height: 100px;
 `;
 const StyledTextDiv = styled.div`
@@ -14,8 +13,8 @@ const StyledTextDiv = styled.div`
     font-size: 1.3rem;
 `;
 const StyledImage = styled.img`
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100px;
     border-radius: 5px;
 `;
 
@@ -36,7 +35,7 @@ class SponsorCard extends React.Component {
         const { s } = this.props;
         return (
             <StyledCard 
-                xs={{size: 6, offset: 6}} sm={{size: 6, offset: 6}} md={{size: 4, offset: 8}} 
+                xs={12} 
                 className="px-0" 
                 >
                 <div>

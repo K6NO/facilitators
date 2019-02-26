@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
 
-const StyledCard = styled(Col)`
-    box-shadow: 0 1px 1px 0 #cccccc;
-    height: 150px;
-`;
+// const StyledCard = styled(Col)`
+//     box-shadow: 0 1px 1px 0 #cccccc;
+//     height: 150px;
+// `;
 const StyledOverlayDiv = styled.div`
     position: absolute;
     top: 0;
@@ -43,8 +43,8 @@ class PartnerCard extends React.Component {
     render () {
         const { p } = this.props;
         return (
-            <StyledCard 
-                xs={6} sm={6} md={3} 
+            <Col 
+                xs={6} sm={6} md={6} 
                 className="px-0 text-center" 
                 onMouseEnter={this.switchHover}
                 onMouseLeave={this.switchHover}>
@@ -53,7 +53,7 @@ class PartnerCard extends React.Component {
                 </div>
                 
                 {this.state.hover ? <StyledOverlayDiv>{p.text}</StyledOverlayDiv> : ''}
-            </StyledCard>
+            </Col>
         )
     }
 }

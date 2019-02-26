@@ -6,16 +6,13 @@ import i18n from 'meteor/universe:i18n';
 import ContributorsCard from './ContributorsCard';
 import { getContributors } from '../../../modules/get-select-translations';
 
-const StyledContributorsComponent = styled(Row)`
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-`;
+
 const StyledTitle = styled.h1`
     color: #0e8ed5;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-align: left;
-    padding: 3rem 0;
+    margin-bottom: 5rem;
 `;
 
 
@@ -29,7 +26,7 @@ class ContributorsComponent extends React.Component {
         const { isMobile } = this.props;
         
         return (
-            <StyledContributorsComponent>
+            <Row>
                  <Col xs={12}>
                     <StyledTitle>{i18n.__('about.contributors')}</StyledTitle>
                 </Col>
@@ -38,7 +35,7 @@ class ContributorsComponent extends React.Component {
                     <ContributorsCard key={c.name} c={c} isMobile={isMobile} />
                 )}
                 </Col>
-            </StyledContributorsComponent>
+            </Row>
             
         )
     }

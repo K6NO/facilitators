@@ -42,10 +42,16 @@ h2 {
 }
 h5 {
   padding: 0;
+  padding: 1rem 0 .5rem;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 a, p, span, td, .form-control {
   font-family: Open, sans-serif;
   font-size: 1.3rem;
+}
+p {
+  letter-spacing: .5px;
 }
 
   

@@ -10,28 +10,28 @@ import { getOrganisations, getSponsors } from '../../../modules/get-select-trans
 const StyledPartnersComponent = styled(Row)`
     margin-top: 5rem;
     margin-bottom: 5rem;
+    text-align: center;
 `;
 const StyledTitle = styled.h1`
-    margin-top: 10rem;
+    margin-bottom: 5rem;
+    text-align: center;
     color: #0e8ed5;
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-align: left;
-    padding: 3rem 0;
 `;
-const StyledTitleRight = styled(StyledTitle)`
-    text-align: right;
+const StyledTitleSponsor = styled(StyledTitle)`
+    margin-top: 5rem;
 `;
 const StyledImageDiv = styled.div`
     position: absolute;
-    bottom: ${props => props.isMobile ? "200px" : "32px"};
+    bottom: ${props => props.isMobile ? "200px" : "100px"};
     left: ${props => props.isMobile ? "100px" : "-120px"};
-    opacity: ${props => props.isMobile ? "0.7" : "0.7"};
+    opacity: ${props => props.isMobile ? "0.4" : "0.4"};
 `;
 const StyledImage = styled.img`
     max-width: 100%;
     height: auto;
-    max-height: 400px;
+    max-height: 250px;
 `;
 
 
@@ -56,7 +56,7 @@ class PartnersComponent extends React.Component {
                     )}
                 </Col>
                 <Col>
-                    <StyledTitleRight>{i18n.__('about.sponsor')}</StyledTitleRight>
+                    <StyledTitleSponsor>{i18n.__('about.sponsor')}</StyledTitleSponsor>
                 </Col>
                 <Col xs={12} >
                     {sponsors.map(s => 
