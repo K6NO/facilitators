@@ -13,6 +13,13 @@ class EditorPreparationsComponent extends React.Component {
           editing: false
       }
     }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.language !== nextProps.language) {
+            this.setState({
+                preparations : nextProps.activity.preparations[nextProps.language]
+            })
+        }
+    }
 
     updatePreps = (e) => {
         this.setState({preparations: e.target.value})
@@ -31,7 +38,7 @@ class EditorPreparationsComponent extends React.Component {
             }
         });
         this.setState({
-            editing: false
+            editing: false,
         });
     }
 

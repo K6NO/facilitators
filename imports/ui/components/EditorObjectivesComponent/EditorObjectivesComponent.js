@@ -14,6 +14,14 @@ class EditorObjectivesComponent extends React.Component {
       }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(this.props.language !== nextProps.language) {
+            this.setState({
+                objectives : nextProps.activity.objectives[nextProps.language]
+            })
+        }
+    }
+
     updateObjectives = (e) => {
         this.setState({objectives: e.target.value})
     }

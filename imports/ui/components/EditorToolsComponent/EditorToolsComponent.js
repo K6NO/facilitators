@@ -14,6 +14,13 @@ class EditorToolsComponent extends React.Component {
           editing: false
       }
     }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.language !== nextProps.language) {
+            this.setState({
+                tools : nextProps.activity.tools[nextProps.language]
+            })
+        }
+    }
 
     updateTools = (e) => {
         this.setState({tools: e.target.value})

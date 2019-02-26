@@ -38,7 +38,6 @@ class EditorActivityBody extends React.Component {
                         <EditorTimeComponent activity={activity} language={language} />
                         <EditorGroupComponent activity={activity} language={language} />
                         <EditorPreparationsComponent activity={activity} language={language} />
-                        
                     </Col>
                     <Col sm="6" style={this.setBackground(color)}>
                         <EditorObjectivesComponent activity={activity} language={language} />

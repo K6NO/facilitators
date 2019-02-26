@@ -13,6 +13,14 @@ class EditorDescriptionComponent extends React.Component {
           editing: false
       }
     }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.language !== nextProps.language) {
+            this.setState({
+                description : nextProps.activity.description[nextProps.language]
+            })
+        }
+    }
+    
 
     updateDescription = (e) => {
         this.setState({description: e.target.value})

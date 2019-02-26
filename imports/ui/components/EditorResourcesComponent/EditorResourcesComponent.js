@@ -14,6 +14,14 @@ class EditorResourcesComponent extends React.Component {
           editing: false
       }
     }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.language !== nextProps.language) {
+            this.setState({
+                resources : nextProps.activity.resources[nextProps.language]
+            })
+        }
+    }
+    
 
     updateResources = (e) => {
         this.setState({resources: e.target.value})
