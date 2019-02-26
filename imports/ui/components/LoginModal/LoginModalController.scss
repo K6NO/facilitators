@@ -25,9 +25,10 @@
   top: 4rem;
   left: 3rem;
   right: 3rem;
-  
+  background: white;
+  border-radius: 25px;
   margin-bottom: 1rem;
-  padding: 1rem 2rem 2rem;
+  padding: 2rem 2rem 5rem;
   outline: none;
   overflow: auto;
   --webkit-overflow-scrolling: touch;
@@ -43,8 +44,8 @@
    }
    @include breakpoint(desktop-large) {
     top: 15rem;
-    left: 45rem;
-    right: 45rem;
+    left: 40rem;
+    right: 40rem;
    }
 }
 
