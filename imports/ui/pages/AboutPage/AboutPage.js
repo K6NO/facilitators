@@ -30,12 +30,12 @@ class AboutPage extends React.Component {
       <div className="AboutPage">
         <div className="container">
           <Row>
+            <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
+              <AboutComponent isMobile={isMobile} />
+            </Col>
             <Col className="py-5 px-5 px-md-0" xs={12} lg={{size: 10, offset: 1}} xl={{size: 8, offset: 2}}>
               <ContributorsComponent isMobile={isMobile}/>
               <PartnersComponent isMobile={isMobile}/>
-            </Col>
-            <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
-              <AboutComponent isMobile={isMobile} />
             </Col>
             </Row>
         </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import i18n from 'meteor/universe:i18n';
 import { Row, Col } from 'reactstrap';
+import Icon from '../Icon/Icon';
+import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 
 const StyledContactComponent = styled.div`
     margin: 5rem 0;
@@ -38,25 +40,12 @@ const StyledInput = styled.input`
     padding: .5rem 1rem;
     margin-top: 1rem;
 `
-const StyledButton = styled.button`
-    height: 40px;
-    min-width: 110px;
-    padding: .8rem 1.5rem;
-    background: #263810ee;
-    color: white;
+const StyledContactButton = styled(BasicStyledButton)`
     text-transform: uppercase;
+    min-width: 110px;
     font-size: 1.6rem;
-    letter-spacing: 1.5px;
-    font-weight: 100;
+    letter-spacing: 4px;
     margin-top: 1rem;
-    border: 1px solid #263810bb;
-    &:hover {
-        background: #263810bb;
-    }
-    &:focus {
-        outline: 1px dotted;
-        background: #263810dd;
-    }
 `
 
 const StyledTextArea = styled(StyledInput)`
@@ -96,7 +85,11 @@ class ContactComponent extends React.Component {
                             <StyledNotification>{i18n.__('contact.notification')}</StyledNotification>
                             <StyledInput type="name" placeholder={i18n.__('contact.name')} name="name" />
                             <StyledTextArea type="textarea" placeholder={i18n.__('contact.message')} name="text" id="messageText" />
-                            <StyledButton type="submit">Send</StyledButton>
+                            <StyledContactButton
+                                backcolor={'#263810'}
+                                color={'white'}
+                                type="submit">
+                                <Icon icon={'paper-plane'} /> Send</StyledContactButton>
                         </StyledForm>
                     </Col>
                 </Row>
