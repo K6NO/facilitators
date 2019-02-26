@@ -27,7 +27,7 @@ export const BasicStyledButton = styled.button`
 `;
 
 export const BasicStyledLink = styled.a`
-    color: ${props => props.backcolor ? '#ffffff' : props.color || "#777777"};
+    color: ${props => props.color || "#777777"};
     background: ${props => props.backcolor ? props.backcolor : 'white'};
     font-size: 1.3rem;
     letter-spacing: 3px;
