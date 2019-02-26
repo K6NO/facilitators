@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import EditorNewActivityButton from '../../components/EditorNewActivityButton/EditorNewActivityButton';
 import EditorLanguageSelector from '../EditorLanguageSelector/EditorLanguageSelector';
+import EditorBackButton from '../EditorBackButton/EditorBackButton';
 import './EditorPageHeaderComponent.scss';
 
 class EditorPageHeaderComponent extends React.Component{
@@ -22,10 +23,15 @@ class EditorPageHeaderComponent extends React.Component{
                 />
             </Col>
             <Col sm="6">
-                <EditorNewActivityButton
-                    language={this.props.language}
-                    editCallback={this.props.editCallback}
-                />
+            {!this.props.single ? 
+              <EditorNewActivityButton 
+                language={this.props.language}
+                editCallback={this.props.editCallback}
+              />  : 
+              <EditorBackButton
+                closeCallback={this.props.closeCallback}
+              />
+              }
             </Col>
         </Row>
       </div>
@@ -36,6 +42,9 @@ EditorPageHeaderComponent.propTypes = {
     language: PropTypes.string.isRequired,
     selectLanguageCallback: PropTypes.func.isRequired,
     editCallback: PropTypes.func.isRequired,
+    single: PropTypes.bool.isRequired,
+    closeCallback: PropTypes.func.isRequired,
+
 };
 
 export default EditorPageHeaderComponent;

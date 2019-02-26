@@ -32,8 +32,6 @@ class EditorPage extends React.Component{
     this.setState({language: language});
   }
  
-  // TODO need to set the language somewhere here with a component.
-  // maybe store language setting here in state
   render (){
     return ( 
       <div className="EditorPage container">
@@ -41,12 +39,13 @@ class EditorPage extends React.Component{
           language={this.state.language}
           selectLanguageCallback={this.selectLanguage}
           editCallback={this.editSingleActivity}
+          single={this.state.single}
+          closeCallback={this.closeSingleActivity}
         />
         {this.state.single ?
         <EditorSingleActivityWrapper
           language={this.state.language}
           activityId={this.state.activityId}
-          closeCallback={this.closeSingleActivity}
         /> 
         :
         <EditorListActivitiesWrapper

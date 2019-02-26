@@ -8,6 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import CategorySelector from '../CategorySelector/CategorySelector';
+import { StyledAboutNavLink } from '../MainStyledComponents/MainStyledComponents';
 import * as eventAnalytics from '../../components/Analytics/analyticsUtil';
 import './AuthenticatedNavigation.scss';
 
@@ -22,9 +23,9 @@ class AuthenticatedNavigation extends React.Component {
     history.push('/');
   }
 
-  handleScoreboardClick = () => {
-    eventAnalytics.registerEvent('Users', 'Visit Profile page');
-  }
+  // handleScoreboardClick = () => {
+  //   eventAnalytics.registerEvent('Users', 'Visit Profile page');
+  // }
 
   render() {
     const { navbarCallback, isMobile, ...props } = this.props;
@@ -39,7 +40,7 @@ class AuthenticatedNavigation extends React.Component {
             <CategorySelector {...props} />
           </NavItem>
           <NavItem className={`pl-3 pl-md-4 pr-md-4 ${isMobile && 'pt-2'}`}>
-            <NavLink href="/about">{i18n.__('menu.about')}</NavLink>
+            <StyledAboutNavLink href="/about">{i18n.__('menu.about')}</StyledAboutNavLink>
           </NavItem >
           <NavItem className={`pl-3 pl-md-4 pr-md-4 ${isMobile && 'pt-4'}`}
             onClick={()=> this.logoutUser()}>

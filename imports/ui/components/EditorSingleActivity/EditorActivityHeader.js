@@ -22,7 +22,7 @@ class EditorActivityHeader extends React.Component {
     }
 
     render() {
-        const { activity, language, closeCallback } = this.props;
+        const { activity, language } = this.props;
         const category = activity.category;
         const color = category ? getColorByCategory(category) : '#cccccc';
         return (
@@ -40,15 +40,6 @@ class EditorActivityHeader extends React.Component {
                             language={language} />
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
-                        <Button 
-                            color="link" 
-                            className="backLink"
-                            block
-                            onClick={closeCallback}
-                            >
-                            <Icon icon={'angle-double-left'} size={'lg'}/>
-                            {`Finish & Back to list`}
-                        </Button>
                     <EditorPublicCBComponent activity={activity} />
                     </Col>
                 </Row>
@@ -64,7 +55,6 @@ EditorActivityHeader.defaultProps = {
 EditorActivityHeader.propTypes = {
     activity: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
-    closeCallback: PropTypes.func.isRequired
 };
 
 

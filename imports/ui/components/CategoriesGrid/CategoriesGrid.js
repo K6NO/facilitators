@@ -41,11 +41,17 @@ const StyledImage = styled.img`
 
 class CategoriesGrid extends React.Component {
     constructor(props){
-      super(props);     
-
+      super(props);
       this.state = {
-          single: props.match.params.cat ? true : false,
-        }
+          single: false
+      }   
+    }
+
+    componentDidMount() {
+        this.setState({
+            ...this.state,
+            single: this.props.category.value.length > 0 ? true : false
+        });
     }
 
     handleSetCategory = (category) => {
@@ -109,33 +115,28 @@ class CategoriesGrid extends React.Component {
     return (
             <div className="CategoriesGrid">
                 <Row>
-                    {this.state.single
-                        ? (this.state.category && this.state.category.value.length > 0
-                            ? this.renderCategory(category)
-                            : this.renderCategories()
-                            )
+                    {category && category.value.length > 0
+                        ? this.renderCategory(category)    
                         : this.renderCategories()}
                 </Row>
             </div>
         )   
     }
 }
-
-CategoriesGrid.defaultProps = {
-    
-};
   
 CategoriesGrid.propTypes = {
-
+    category: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
 };
 
 export default withTracker(({match}) => {
     const category = match.params.cat 
     ? getCategory(match.params.cat)
-    : {value: 0}
+    : {
+        value: ''
+    }
     return {
         category
     }
 })(CategoriesGrid);
-
-// export default CategoriesGrid;

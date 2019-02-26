@@ -30,7 +30,6 @@ EditorSingleActivityComponent.defaultProps = {
 EditorSingleActivityComponent.propTypes = {
   activity: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
-  closeCallback: PropTypes.func.isRequired
 };
 
 

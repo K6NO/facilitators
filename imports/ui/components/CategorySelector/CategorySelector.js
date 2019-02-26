@@ -16,7 +16,7 @@ class CategorySelector extends React.Component {
     
     changeCategoryPage = (category) => {
         const { history } = this.props;
-        history.push('/category/' + category);
+        history.push('/category/' + category); 
     }
 
     changeCategory = (selection) => {

@@ -116,7 +116,7 @@ class LandingPage extends React.Component {
                 </StyledImageDiv>
               </SearchBoxRow>
               {this.state.showCategories ? 
-              <CategoriesGrid {...props}/> 
+                <CategoriesGrid {...props}/> 
               : ''}
               {!this.state.showCategories && !this.state.singleActivity
                 ? <Row>
