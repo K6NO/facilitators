@@ -1,17 +1,29 @@
 import React from 'react';
-import { Row, Col, FormGroup, Button } from 'reactstrap';
+import { Row, Col, FormGroup, Button, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
+import styled from 'styled-components';
 import OAuthLoginButtons from '../../components/OAuthLoginButtons/OAuthLoginButtons';
 import InputHint from '../../components/InputHint/InputHint';
 import validate from '../../../modules/validate';
-import * as eventAnalytics from '../../components/Analytics/analyticsUtil';
 import './SignupComponent.scss';
+
+const StyledCheckboxLabel = styled.span`
+      white-space: normal;
+      padding-left: 1.5rem;
+      text-align: left;
+`;
 
 class SignupComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      emailAddress: '',
+      username: '',
+      firstName: '',
+      lastName: '',
+    }
   }
 
   componentDidMount() {
@@ -19,10 +31,7 @@ class SignupComponent extends React.Component {
 
     validate(component.form, {
       rules: {
-        firstName: {
-          required: true,
-        },
-        lastName: {
+        username: {
           required: true,
         },
         emailAddress: {
@@ -35,11 +44,8 @@ class SignupComponent extends React.Component {
         },
       },
       messages: {
-        firstName: {
-          required: 'What\'s your first name?',
-        },
-        lastName: {
-          required: 'What\'s your last name?',
+        username: {
+          required: 'Choose a username!',
         },
         emailAddress: {
           required: 'Need an email address here.',
@@ -55,13 +61,6 @@ class SignupComponent extends React.Component {
   }
 
   handleSubmit = (form) => {
-    const { history } = this.props;
-
-    // get the _id game running in local repo from the path
-    const path = window.location.pathname.replace('/', '');
-    
-    // register login attempt in GA
-    eventAnalytics.registerEvent('Users', 'Register', 'Email Register'); 
     
     // sign up user
     const newUser = {
@@ -75,22 +74,34 @@ class SignupComponent extends React.Component {
         username: form.username.value,
       },
     };
-    Meteor.call('users.signup', newUser, (error, userId) => {
-      if(error) {
-        Bert. alert(error.reason, 'danger');
-      } else {
-        Bert.alert('Welcome to NewsGamer!', 'success');
-        
-        // login the newly signed up user (server-side createUser does not auto signin)
-        Meteor.loginWithPassword(newUser.email, newUser.password, (error) => {
-          if (error) {
-            Bert.alert(error.reason, 'danger');
-          } else {
-            // Meteor.call('users.sendVerificationEmail', userId);
-          }
-        });
-      }
-    });
+    if(form.privacy.checked) {
+
+      Meteor.call('users.signup', newUser, (error, userId) => {
+        if(error) {
+          Bert. alert(error.reason, 'danger');
+        } else {
+          Bert.alert('Welcome to Ecofacilitators!', 'success');
+          
+          // login the newly signed up user (server-side createUser does not auto signin)
+          Meteor.loginWithPassword(newUser.email, newUser.password, (error) => {
+            if (error) {
+              Bert.alert(error.reason, 'danger');
+            } else {
+              if(form.newsletter.checked) {
+                console.log('Add to Mailchimp list');
+                
+                this.setState({emailAddress: '', username: ''});
+              }
+              // Meteor.call('users.sendVerificationEmail', userId);
+            }
+          });
+        }
+      });
+  
+    } else {
+      Bert. alert('To Sign Up, please accept the Privacy Policy ', 'warning');
+    }
+    
   }
 
   render() {
@@ -109,11 +120,23 @@ class SignupComponent extends React.Component {
                 />
               </Col>
             </Row>
-            <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
+            {/* Mailchimp submit field in form action. U and I values from mailchimp subscribe link */}
+            <form 
+              ref={form => (this.form = form)}
+              onSubmit={(event) => event.preventDefault() }
+              action="https://cool.us16.list-manage.com/subscribe/post"
+              method="POST"
+              >
+                <input type="hidden" name="u" value="####"/>
+                <input type="hidden" name="id" value="####"/>
               <FormGroup>
                 <input
                   type="email"
                   name="emailAddress"
+                  value={this.state.emailAddress}
+                  onChange={(e) => this.setState({
+                    emailAddress: e.target.value,
+                  })}
                   className="form-control"
                   placeholder="Your Email Address"
                 />
@@ -122,6 +145,9 @@ class SignupComponent extends React.Component {
                 <input
                   type="text"
                   name="username"
+                  value={this.state.username}
+                  onChange={(e) => this.setState({username: e.target.value,
+                  firstName: e.target.value, lastName: e.target.value})}
                   className="form-control"
                   placeholder="Choose a Username"
                 />
@@ -135,7 +161,49 @@ class SignupComponent extends React.Component {
                 />
                 <InputHint>Use at least six characters.</InputHint>
               </FormGroup>
+              <FormGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="append">
+                    <InputGroupText>
+                      <Input addon
+                        type="checkbox"
+                        name="privacy"
+                        aria-label="Checkbox for accepting the privacy policy." />
+                        <StyledCheckboxLabel>
+                          {`I read the`}<a href="/privacy">{` Privacy Policy `}</a>{` and authorize the use of my personal data.`}
+                        </StyledCheckboxLabel>
+                    </InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+              </FormGroup>
+              <FormGroup>
+              <InputGroup>
+                  <InputGroupAddon addonType="append">
+                    <InputGroupText>
+                      <Input addon
+                        type="checkbox"
+                        name="newsletter"
+                        aria-label="Checkbox for newsletter signup" />
+                        <StyledCheckboxLabel >
+                          I'd like to receive occasional and useful information on eco-facilitation
+                        </StyledCheckboxLabel>
+                    </InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+              </FormGroup>
               <Button type="submit" className="SubmitButton">Sign Up</Button>
+
+              {/* Mailchimp no-robot verification  */}
+                <div style={{position: 'absolute', left: '-5000px'}} aria-hidden='true' aria-label="Please leave the following three fields empty">
+                  <label htmlFor="b_name">Name: </label>
+                  <input type="text" name="b_name" tabIndex="-1" value="" placeholder="Freddie" id="b_name"/>
+
+                  <label htmlFor="b_email">Email: </label>
+                  <input type="email" name="b_email" tabIndex="-1" value="" placeholder="youremail@gmail.com" id="b_email"/>
+
+                  <label htmlFor="b_comment">Comment: </label>
+                  <textarea name="b_comment" tabIndex="-1" placeholder="Please comment" id="b_comment"></textarea>
+                </div>
             </form>
           </Col>
         </Row>
