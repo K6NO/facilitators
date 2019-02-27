@@ -9,7 +9,7 @@ const StyledLikesComponent = styled.div`
     background: ${props => props.backcolor || '#ffffff'};
     color: ${props => props.color || '#777777'};
     border-radius: 15rem;
-    max-width: 110px;
+    text-align: right;
     white-space: nowrap;
 `;
 const StyledCounter = styled.span`
@@ -20,10 +20,30 @@ const StyledCounter = styled.span`
     font-size: 1.8rem;
 `;
 const StyledLikeButton = styled(BasicStyledButton)`
-    height: 36px;
-    padding: 0.8rem .8rem .5rem;
+    height: 30px;
+    padding: .5rem .4rem .1rem;
     line-height: 1;
     vertical-align: baseline;
+    &:hover {
+      background: ${props => props.color || '#777777'};
+      color: ${props => props.backcolor || '#ffffff'};
+      border: ${props => `1px solid ${props.color || '#777777'}`};
+      box-shadow: none;
+    }
+    &:focus {
+        outline: none;
+        background: ${props => props.color || '#777777'};
+        color: ${props => props.backcolor || '#ffffff'};
+        border: ${props => `1px solid ${props.color || '#777777'}`};
+        box-shadow: none;
+    }
+    &:active {
+        outline: none;
+        background: ${props => props.color || '#777777'};
+        color: ${props => props.backcolor || '#ffffff'};
+        border: ${props => `1px solid ${props.color || '#777777'}`};
+        box-shadow: none;
+    }
     
 `;
 const userHasLiked = (props) => {
@@ -79,26 +99,26 @@ const userDislikeHandle = (props) => {
 const LikesComponent = (props) => (
     props.user ? 
     <StyledLikesComponent
-        color={props.color}
-        backcolor={props.backcolor}>
+        color={props.backcolor}
+        backcolor={props.color}>
         <StyledCounter
-            color={props.color}
-            backcolor={props.backcolor}>
+            color={props.backcolor}
+            backcolor={props.color}>
             {` ${props.activity.likes.length} `}
             <Icon icon={'heart'} /> {` `}
         </StyledCounter>
         {!userHasLiked(props) ? 
             <StyledLikeButton
-                color={props.backcolor}
-                backcolor={props.color}
-                onClick={() => userLikeHandle(props)}>
-                <Icon style={'far'} size={'lg'} icon={'heart'} />   
-            </StyledLikeButton>
-        : <StyledLikeButton
                 color={props.color}
                 backcolor={props.backcolor}
-                onClick={() => userDislikeHandle(props)}>
+                onClick={() => userLikeHandle(props)}>
                 <Icon size={'lg'} icon={'heart'} />
+            </StyledLikeButton>
+        : <StyledLikeButton
+                color={props.backcolor}
+                backcolor={props.color}
+                onClick={() => userDislikeHandle(props)}>
+                <Icon style={'far'} size={'lg'} icon={'heart'} />   
             </StyledLikeButton>}
         
     </StyledLikesComponent>
