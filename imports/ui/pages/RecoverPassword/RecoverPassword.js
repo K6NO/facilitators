@@ -39,6 +39,7 @@ class RecoverPassword extends React.Component {
     const email = form.emailAddress.value;
 
     Accounts.forgotPassword({ email }, (error) => {
+      console.log('recover')
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
@@ -50,7 +51,7 @@ class RecoverPassword extends React.Component {
 
   render() {
     return (
-      <div className="RecoverPassword">
+      <div className="RecoverPassword container">
         <Row>
           <Col xs={12} sm={6} md={5} lg={4}>
             <h4 className="page-header">Recover Password</h4>
