@@ -27,7 +27,8 @@ Meteor.methods({
         images: Array,
         comments: Array,
         tags: Array,
-        languages: Array
+        languages: Array,
+        likes: Match.Optional(Array)
       });
   
       try {
@@ -64,6 +65,7 @@ Meteor.methods({
             images: Match.Optional(Array),
             comments: Match.Optional(Array),
             tags: Match.Optional(Array),
+            likes: Match.Optional(Array)
         });
         try {
             const user = Meteor.user();

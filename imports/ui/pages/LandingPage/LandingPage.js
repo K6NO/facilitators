@@ -98,7 +98,6 @@ class LandingPage extends React.Component {
 
   render () {
     const { loading, isMobile, ...props } = this.props;
-
   
     return (!loading ? (
       <div className="LandingPage">
@@ -137,7 +136,7 @@ class LandingPage extends React.Component {
                         isMobile={isMobile}
                         backCallback={this.backToActivitiesGrid}
                         activityId={this.state.activityId}
-                        userId={this.props.userId} />    
+                        {...props} />    
                     </Col>
                   </Row>
                 : ''}

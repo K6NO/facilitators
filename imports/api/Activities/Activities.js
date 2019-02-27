@@ -279,6 +279,12 @@ Activities.schema = new SimpleSchema({
         type: String,
         allowedValues: ['en-US', 'es', 'hu', 'ro', 'sk']
     },
+    likes: {
+        type: Array,
+    },
+    'likes.$' : {
+        type: String,
+    }
 }, {requiredByDefault: false});
 
 Activities.attachSchema(Activities.schema);

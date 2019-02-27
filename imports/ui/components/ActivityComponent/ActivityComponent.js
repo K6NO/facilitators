@@ -74,6 +74,7 @@ ActivityComponent.defaultProps = {
 };
   
 ActivityComponent.propTypes = {
+    user: PropTypes.object,
     userId: PropTypes.string,
     activity: PropTypes.object.isRequired,
     backCallback: PropTypes.func.isRequired,

@@ -136,6 +136,7 @@ export default withTracker(() => {
     loggingIn,
     authenticated: !loggingIn && !!userId,
     name: name || emailAddress,
+    user,
     username,
     userId,
     emailAddress,

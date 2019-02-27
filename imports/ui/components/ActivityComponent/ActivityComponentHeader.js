@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from '../Icon/Icon';
-import { Row, Col, Badge, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
+import LikesComponent from '../LikesComponent/LikesComponent';
 import { BasicStyledLink, BasicStyledBadge } from '../MainStyledComponents/MainStyledComponents';
 import { getColorByCategory } from '../../../modules/get-colors';
 import { getCategoryName } from '../../../modules/get-select-translations';
@@ -71,7 +72,7 @@ class ActivityComponentHeader extends React.Component {
 
     }
     render() {
-        const { activity, locale, backCallback, isMobile } = this.props;
+        const { activity, locale, backCallback, isMobile, ...props } = this.props;
         const category = activity.category;
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
@@ -105,9 +106,19 @@ class ActivityComponentHeader extends React.Component {
                         </BasicStyledLink>
                     </RightStyledContainer>
                     <StyledTagContainer
-                        xs={{size: 12, order: 3}}
+                        xs={{size: 9, order: 3}}
                         backcolor={color}>
                         {this.renderTags({activity, locale, color})}
+                    </StyledTagContainer>
+                    <StyledTagContainer 
+                        xs={{size: 3, order: 4}}
+                        backcolor={color}>
+                        <LikesComponent
+                            color={color}
+                            backcolor={'#ffffff'}
+                            activity={activity}
+                            user={props.user}
+                            emailAddress={props.emailAddress} />
                     </StyledTagContainer>
                 </Row>
             </StyledContainer>
@@ -124,6 +135,7 @@ ActivityComponentHeader.propTypes = {
     locale: PropTypes.string.isRequired,
     backCallback: PropTypes.func.isRequired,
     isMobile: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
 };
 
 

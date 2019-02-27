@@ -28,16 +28,13 @@ Meteor.methods({
   },
   'users.editProfile': function usersEditProfile(profile) {
     check(profile, {
-      emailAddress: String,
-      organisation: Match.Maybe(String),
-      profile: {
         name: {
           first: Match.Maybe(String),
           last: Match.Maybe(String),
         },
         username: Match.Maybe(String),
         imageUrl: Match.Maybe(String),
-      },
+        likes: Match.Maybe(Array),
     });
 
     return editProfile({ userId: Meteor.userId(), profile })

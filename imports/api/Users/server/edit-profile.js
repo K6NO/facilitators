@@ -6,15 +6,15 @@ import { Accounts } from 'meteor/accounts-base';
 
 let action;
 
-const updateUser = (userId, { emailAddress, profile }) => {
+const updateUser = (userId, profile) => {
   try {
-    const currentProfile = Meteor.users.findOne({ _id: userId });
-    const currentEmail = _.get(currentProfile, 'emails.0.address', '');
+  //   const currentProfile = Meteor.users.findOne({ _id: userId });
+  //   const currentEmail = _.get(currentProfile, 'emails.0.address', '');
 
-    if (currentEmail.toLowerCase() !== emailAddress.toLowerCase()) {
-      Accounts.addEmail(userId, emailAddress);
-      Accounts.removeEmail(userId, currentEmail);
-    }
+  //   if (currentEmail.toLowerCase() !== emailAddress.toLowerCase()) {
+  //     Accounts.addEmail(userId, emailAddress);
+  //     Accounts.removeEmail(userId, currentEmail);
+  //   }
 
     Meteor.users.update(userId, {
       $set: {

@@ -145,7 +145,6 @@ class UserProfileComponent extends React.Component {
   
     handleSubmit = (form) => {
       const profile = {
-        emailAddress: form.emailAddress.value,
         profile: {
           name: {
             first: form.firstName.value,

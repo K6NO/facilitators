@@ -54,5 +54,6 @@
     "languages" : [
         "en-US"
     ],
-    "public": false
+    "public": false,
+    "likes" : []
 }

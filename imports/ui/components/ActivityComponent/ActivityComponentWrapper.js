@@ -29,6 +29,7 @@ ActivityComponentWrapper.defaultProps = {
   
 ActivityComponentWrapper.propTypes = {
     userId: PropTypes.string,
+    user: PropTypes.object,
     activityId: PropTypes.string.isRequired,
     activity: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
