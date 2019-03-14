@@ -61,6 +61,7 @@ class EditorDescriptionComponent extends React.Component {
                     <Col>
                         {renderActivityBodyField('align-left', 'activity.description')}
                         <StyledTallTextarea
+                            ref={descriptionTextarea => descriptionTextarea && descriptionTextarea.focus()}
                             className="activitydescriptionEditing"
                             value={this.state.description}
                             onChange={this.updateDescription}

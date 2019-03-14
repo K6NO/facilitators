@@ -61,6 +61,7 @@ class EditorToolsComponent extends React.Component {
                     <Col>
                         {renderActivityBodyField('wrench', 'activity.tools')}
                         <StyledTextarea
+                            ref={toolsTextarea => toolsTextarea && toolsTextarea.focus()}
                             className="activityToolsEditing"
                             value={this.state.tools}
                             onChange={this.updateTools}

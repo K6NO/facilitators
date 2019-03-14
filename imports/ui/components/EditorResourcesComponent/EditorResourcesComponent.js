@@ -4,13 +4,13 @@ import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
-
+import i18n from 'meteor/universe:i18n';
 
 class EditorResourcesComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          resources : this.props.activity.resources[this.props.language],
+          resources : this.props.activity.resources[i18n.getLocale()],
           editing: false
       }
     }
@@ -62,6 +62,7 @@ class EditorResourcesComponent extends React.Component {
                     <Col>
                         {renderActivityBodyField('book-open', 'activity.resources')}
                         <StyledTextarea
+                            ref={resourcesTextarea => resourcesTextarea && resourcesTextarea.focus()}
                             className="activityResourcesEditing"
                             value={this.state.resources}
                             onChange={this.updateResources}

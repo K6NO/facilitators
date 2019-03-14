@@ -60,6 +60,7 @@ class EditorPreparationsComponent extends React.Component {
                     <Col>
                         {renderActivityBodyField('pause-circle', 'activity.preparations')}
                         <StyledTextarea
+                            ref={textarea => textarea && textarea.focus()}
                             value={this.state.preparations}
                             onChange={this.updatePreps}
                             onBlur={this.savePreps} />

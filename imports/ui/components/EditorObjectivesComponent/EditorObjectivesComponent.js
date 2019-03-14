@@ -61,6 +61,7 @@ class EditorObjectivesComponent extends React.Component {
                     <Col>
                         {renderActivityBodyField('bullseye', 'activity.objectives')}
                         <StyledTextarea
+                            ref={objectivesTextarea => objectivesTextarea && objectivesTextarea.focus()}
                             className="activityObjectivesEditing"
                             value={this.state.objectives}
                             onChange={this.updateObjectives}
