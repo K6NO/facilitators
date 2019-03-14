@@ -1,6 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
+import styled from 'styled-components';
+import { Colors } from '../../../modules/colors';
+const StyledInput = styled.input`
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+    min-width: 300px;
+    color: ${Colors.textDark};
+    &:focus, &:hover {
+        background: #ffffffaa;
+        outline: none;
+        border: 1px solid white;
+    }
+`;
 
 class EditorTitleComponent extends React.Component {
     constructor(props){
@@ -22,6 +37,9 @@ class EditorTitleComponent extends React.Component {
     updateTitle = (e) => {
         this.setState({title: e.target.value})
     }
+    startEditHandler = () => {
+        this.setState({editing: true});
+    }
     saveTitle = () => {
         const { language } = this.props;
         const activityId = this.props.activity._id;
@@ -42,14 +60,16 @@ class EditorTitleComponent extends React.Component {
         return (
             <div className="EditorTitleComponent">
                 {this.state.editing 
-                ? <input 
+                ? <StyledInput
+                    autoFocus
                     className="activityTitleEditing"
                     value={this.state.title}
                     onChange={this.updateTitle}
-                    onBlur={this.saveTitle} />
+                    onBlur={this.saveTitle}
+                    category={activity.category} />
                 : <h2 
                     className="activityTitle"
-                    onClick={()=> this.setState({editing: true})}>{activity.title[language] || 'Click here to add a title'}</h2>}
+                    onClick={this.startEditHandler}>{activity.title[language] || 'Click here to add a title'}</h2>}
             </div>
         )
     }

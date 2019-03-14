@@ -17,7 +17,7 @@ class EditorSingleActivityComponent extends React.Component{
           {...props}
         />
         <EditorActivityBody 
-          {...props}
+          {...props}  
         />
       </div>
     );
