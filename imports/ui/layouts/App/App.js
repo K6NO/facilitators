@@ -41,14 +41,13 @@ class App extends React.Component {
       if(this.state.locale !== newLocale) {
         this.setState({
           locale: newLocale,
-        });
+        }, () => {console.log('App cdm, locale in state: ', this.state.locale)});
       }
     });
-
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
-  
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
@@ -66,6 +65,7 @@ class App extends React.Component {
   render() {
     const { props, state, setAfterLoginPath } = this;
     const isMobile = this.state.isMobile;
+    console.log('App render, locale in state: ', this.state.locale, ' locale from getLocale: ', i18n.getLocale());
         
     return (
       <Router>

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { LinkContainer } from 'react-router-bootstrap';
 import {   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand, } from 'reactstrap';
+  NavbarBrand } from 'reactstrap';
 import PublicNavigation from '../PublicNavigation/PublicNavigation';
 import AuthenticatedNavigation from '../AuthenticatedNavigation/AuthenticatedNavigation';
 import onClickOutside from 'react-onclickoutside'
@@ -42,10 +43,12 @@ class Navigation extends React.Component {
 
     return (
       <div>
-      <Navbar light expand="md">  
+      <Navbar light expand="md">
+      <LinkContainer to="/">
         <NavbarBrand className="mr-auto" href="/">
           <img className="img-responsive" src={logoUrl}/>
         </NavbarBrand>
+        </LinkContainer>
         <NavbarToggler onClick={this.toggleNavbar} className="mr-2"/>
         <Collapse 
           isOpen={this.state.isOpen} 
