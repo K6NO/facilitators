@@ -138,7 +138,6 @@ Meteor.methods({
   },
   'users.adminRemoveAccount' : function usersAdminRemoveAccount (_id) {
     check(_id, String);
-
     if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
       return deleteAccount(_id)
       .then(response => response)

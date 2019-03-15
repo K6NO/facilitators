@@ -9,7 +9,13 @@ class DeleteUserButton extends React.Component {
     deleteUser = () => {
       const { userId } = this.props;
       if (confirm('Delete user? This is permanent!')) {
-          Meteor.call('users.adminRemoveAccount', userId);
+          Meteor.call('users.adminRemoveAccount', userId, (error, result) => {
+            if(error) { 
+              Bert.alert(error.message, 'danger');
+            } else {
+              Bert.alert('User deleted', 'warning');
+            }
+          });
       }
     }
   
