@@ -60,7 +60,7 @@ class LoginComponent extends React.Component {
             <Row>
               <Col xs={12}>
                 <OAuthLoginButtons
-                  services={['facebook', 'twitter', 'google']}
+                  services={['facebook', 'google']}
                   emailMessage={{
                     text: 'Email Login',
                   }}

@@ -29,8 +29,10 @@ class AdminSelectOrganisationComponent extends React.Component {
 
     render() {
         const { organisations, editing, selectedOrganisation, user } = this.props;
+        console.log({selectedOrganisation, organisations})
         const orgName = selectedOrganisation 
-            ? organisations.find(org => org._id === selectedOrganisation).name
+            ? organisations.find(org => org._id === selectedOrganisation) &&
+                organisations.find(org => org._id === selectedOrganisation).name
             : 'No Organisation';
 
         return (
