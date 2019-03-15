@@ -5,6 +5,7 @@ import ActivityComponentHeader from './ActivityComponentHeader';
 import ActivityComponentBody from './ActivityComponentBody';
 import ActivityComponentFooter from './ActivityComponentFooter';
 import { BasicStyledLink } from '../MainStyledComponents/MainStyledComponents';
+import Icon from '../../components/Icon/Icon';
 import ReactToPrint from 'react-to-print';
 import './ActivityComponent.scss';
 import getLocale from '../../../modules/get-locale';
@@ -55,7 +56,7 @@ class ActivityComponent extends React.Component {
                         href="#"
                         backcolor={'#ffffff'}
                         color={'#0e8ed5'}>
-                        Print
+                        <Icon icon={'print'} />{` Print`}
                     </BasicStyledLink>}
                 content={() => this.componentRef}
                 bodyClass="printActivity" />
