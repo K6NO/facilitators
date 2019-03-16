@@ -112,9 +112,9 @@ class ActivityComponentBody extends React.Component {
                             </Col>
                             {activity.images.map(image => 
                                 <ActivityImagesComponent 
-                                key={image}    
-                                url={image} 
-                                isMobile={isMobile}/>
+                                    key={image}    
+                                    url={image} 
+                                    isMobile={isMobile}/>
                             )}
                         </Row>    
                     </Col>

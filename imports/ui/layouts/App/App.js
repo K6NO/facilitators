@@ -65,8 +65,7 @@ class App extends React.Component {
   render() {
     const { props, state, setAfterLoginPath } = this;
     const isMobile = this.state.isMobile;
-    console.log('App render, locale in state: ', this.state.locale, ' locale from getLocale: ', i18n.getLocale());
-        
+            
     return (
       <Router>
         {!props.loading ? (
