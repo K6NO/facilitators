@@ -6,6 +6,8 @@ import Icon from '../Icon/Icon';
 import { BasicStyledButton } from '../MainStyledComponents/MainStyledComponents';
 
 const StyledLikesComponent = styled.div`
+    display: inline;
+    float: left;
     background: ${props => props.backcolor || '#ffffff'};
     color: ${props => props.color || '#777777'};
     border-radius: 15rem;

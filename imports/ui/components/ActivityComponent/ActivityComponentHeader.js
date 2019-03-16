@@ -96,6 +96,12 @@ class ActivityComponentHeader extends React.Component {
                         xs={{size: 12, order: 1}} sm={{size: 4, order: 2}}
                         backcolor={color}
                         >
+                         <LikesComponent
+                            color={color}
+                            backcolor={'#ffffff'}
+                            activity={activity}
+                            user={props.user}
+                            emailAddress={props.emailAddress} />
                         <BasicStyledLink 
                             backcolor={color}
                             color={'#ffffff'}
@@ -106,11 +112,11 @@ class ActivityComponentHeader extends React.Component {
                         </BasicStyledLink>
                     </RightStyledContainer>
                     <StyledTagContainer
-                        xs={{size: 9, order: 3}}
+                        xs={{size: 12, order: 3}}
                         backcolor={color}>
                         {this.renderTags({activity, locale, color})}
                     </StyledTagContainer>
-                    <StyledTagContainer 
+                    {/* <StyledTagContainer 
                         xs={{size: 3, order: 4}}
                         backcolor={color}>
                         <LikesComponent
@@ -119,7 +125,7 @@ class ActivityComponentHeader extends React.Component {
                             activity={activity}
                             user={props.user}
                             emailAddress={props.emailAddress} />
-                    </StyledTagContainer>
+                    </StyledTagContainer> */}
                 </Row>
             </StyledContainer>
         )

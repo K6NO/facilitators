@@ -39,7 +39,7 @@ class Navigation extends React.Component {
     const { props } = this;
     const logoUrl = props.isMobile 
       ? "/img/ui/logo@0.15x.png" 
-      : "/img/ui/logo@0.25x.png";
+      : "/img/ui/logo@0.25x.png"; 
 
     return (
       <div>
