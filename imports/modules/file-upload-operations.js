@@ -34,7 +34,8 @@ export const checkFileDimensions = (file, maxWidth, maxHeight, whenReady) => {
   // receives file and metacontext object with name and type
   export const uploadImageToAmazon = (file, metacontext, callback) => {
     // UPLOAD - metacontext.mobile decides file path in aws.js --> uploadToAmazonS3
-    const uploader = new Slingshot.Upload( "uploadToAmazonS3", metacontext );
+    console.log('fileupload')
+    const uploader = new Slingshot.Upload("uploadToAmazonS3", metacontext );
     uploader.send( file, ( error, url ) => {
       if (error) {
         console.error('error', error.message);

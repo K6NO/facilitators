@@ -3,14 +3,14 @@ import { Slingshot } from 'meteor/edgee:slingshot';
 import { AWS } from 'meteor/peerlibrary:aws-sdk';
 import { check } from 'meteor/check';
 
-const amazonS3Bucket = "facilitators-images-dev"; 
+const amazonS3Bucket = "ecofacility"; 
 
-Slingshot.fileRestrictions( "uploadToAmazonS3", {
+Slingshot.fileRestrictions("uploadToAmazonS3", {
   allowedFileTypes: [ "image/png", "image/jpeg", "image/gif", "image/jpg" ],
   maxSize: 10 * 1024 * 1024
 });
-
-Slingshot.createDirective( "uploadToAmazonS3", Slingshot.S3Storage, {
+console.log('aws.js runs');
+Slingshot.createDirective("uploadToAmazonS3", Slingshot.S3Storage, {
   AWSAccessKeyId: Meteor.settings.private.AWS.AccessKeyId,
   AWSSecretAccessKey: Meteor.settings.private.AWS.SecretAccessKey,
   bucket: amazonS3Bucket,
@@ -21,8 +21,8 @@ Slingshot.createDirective( "uploadToAmazonS3", Slingshot.S3Storage, {
   },
   key: function ( file, metacontext ) {
     return metacontext.mobile 
-      ? `activityImages/mobile/${metacontext.name}/${metacontext.type}`
-      : `activityImages/original/${metacontext.name}/${metacontext.type}`;
+      ? `activityImages/mobile/${metacontext.name}.${metacontext.type}`
+      : `activityImages/original/${metacontext.name}.${metacontext.type}`;
   },
 });
 

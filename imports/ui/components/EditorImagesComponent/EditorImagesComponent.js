@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import ImageUploader from '../ImageUploader/ImageUploader';
@@ -15,7 +14,8 @@ class EditorImagesComponent extends React.Component {
     }
 
     render() {
-        const { activity, language } = this.props;
+        // limit 
+        const { activity } = this.props;
         return (
             <Row className="EditorImagesComponent">
                 <Col sm="12">
@@ -23,9 +23,11 @@ class EditorImagesComponent extends React.Component {
                 </Col>
                 <Col sm="12">
                     <Row>
-                        <Col sm="6">
-                            <ImageUploader activity={activity} />
-                        </Col>
+                        {activity.images.length < 5 
+                            ? <Col sm="6">
+                                <ImageUploader activity={activity} />
+                            </Col>
+                            : ''}
                         {activity.images.map(image => 
                             <Col 
                                 sm="6"
@@ -49,7 +51,6 @@ class EditorImagesComponent extends React.Component {
   
 EditorImagesComponent.propTypes = {
     activity: PropTypes.object.isRequired,
-    language: PropTypes.string.isRequired,
 };
 export default EditorImagesComponent;
 

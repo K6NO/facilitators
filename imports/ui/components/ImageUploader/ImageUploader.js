@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Bert } from 'meteor/themeteorchef:bert';
 import './ImageUploader.scss';
-import { checkFileDimensions, renameFile, uploadStoryImageToAmazon } from '../../../modules/file-upload-operations';
+import { checkFileDimensions, renameFile, uploadImageToAmazon } from '../../../modules/file-upload-operations';
 import { Resizer } from 'meteor/thinksoftware:image-resize-client';
 
 
