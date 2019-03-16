@@ -138,10 +138,11 @@ Meteor.methods({
       console.error('Non-admin tried to perform admin role: reset password');
     }
   },
-  'users.adminRemoveAccount' : function usersAdminRemoveAccount (_id) {
-    check(_id, String);
+  'users.adminRemoveAccount' : function usersAdminRemoveAccount (userId) {
+    check(userId, String);
     if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
-      return deleteAccount(_id)
+      // The parameter of deleteAccount must be embedded in {}
+      return deleteAccount({userId})
       .then(response => response)
       .catch((exception) => {
         handleMethodException(exception);

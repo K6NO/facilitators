@@ -189,7 +189,8 @@ class AdminUserComponent extends React.Component {
                 {Roles.userIsInRole(userListed._id, ['admin'])
                     ? '' 
                     :
-                    <DeleteUserButton userId={this.props.userListed._id}/>
+                    <DeleteUserButton 
+                        userId={this.props.userListed._id}/>
                 }
             </td>
             <td>
