@@ -9,7 +9,7 @@ Slingshot.fileRestrictions("uploadToAmazonS3", {
   allowedFileTypes: [ "image/png", "image/jpeg", "image/gif", "image/jpg" ],
   maxSize: 10 * 1024 * 1024
 });
-console.log('aws.js runs');
+
 Slingshot.createDirective("uploadToAmazonS3", Slingshot.S3Storage, {
   AWSAccessKeyId: Meteor.settings.private.AWS.AccessKeyId,
   AWSSecretAccessKey: Meteor.settings.private.AWS.SecretAccessKey,

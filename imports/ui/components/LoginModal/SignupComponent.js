@@ -61,8 +61,8 @@ class SignupComponent extends React.Component {
   }
 
   handleSubmit = (form) => {
-    
     // sign up user
+    
     const newUser = {
       email: form.emailAddress.value,
       password: form.password.value,
@@ -72,7 +72,7 @@ class SignupComponent extends React.Component {
           last: '',
         },
         username: form.username.value,
-      },
+      }
     };
     if(form.privacy.checked) {
 
@@ -89,7 +89,7 @@ class SignupComponent extends React.Component {
             } else {
               if(form.newsletter.checked) {
                 console.log('Add to Mailchimp list');
-                
+                // TODO set up mailchimp connection here
                 this.setState({emailAddress: '', username: ''});
               }
               // Meteor.call('users.sendVerificationEmail', userId);

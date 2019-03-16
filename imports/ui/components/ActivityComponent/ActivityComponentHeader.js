@@ -116,16 +116,6 @@ class ActivityComponentHeader extends React.Component {
                         backcolor={color}>
                         {this.renderTags({activity, locale, color})}
                     </StyledTagContainer>
-                    {/* <StyledTagContainer 
-                        xs={{size: 3, order: 4}}
-                        backcolor={color}>
-                        <LikesComponent
-                            color={color}
-                            backcolor={'#ffffff'}
-                            activity={activity}
-                            user={props.user}
-                            emailAddress={props.emailAddress} />
-                    </StyledTagContainer> */}
                 </Row>
             </StyledContainer>
         )

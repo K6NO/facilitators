@@ -8,6 +8,8 @@ import deleteAccount from './delete-account';
 import handleMethodException from '../../../modules/handle-method-exception';
 import rateLimit from '../../../modules/rate-limit';
 
+
+
 Meteor.methods({
   'users.signup' : function usersSignup(user) {
     check(user, {
