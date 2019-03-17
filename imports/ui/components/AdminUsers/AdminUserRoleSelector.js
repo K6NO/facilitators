@@ -49,7 +49,9 @@ class AdminUserRoleSelector extends React.Component {
                     </ButtonGroup>
             ) : (
                 <span>
-                    {this.state.cSelected.reduce((result, role) => result + role + ', ' , [])}
+                    {this.props.user.roles 
+                    ? this.props.user.roles.reduce((result, role) => result + role + ', ' , [])
+                    : ''}
                 </span>
             )
         )

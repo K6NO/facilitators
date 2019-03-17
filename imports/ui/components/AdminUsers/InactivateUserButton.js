@@ -34,7 +34,9 @@ class InactivateUserButton extends React.Component {
   
     render() {
       const { userListed } = this.props;
-      const inactive = userListed.roles.includes('inactive');
+      const inactive = userListed.roles 
+        ? userListed.roles.includes('inactive')
+        : false;
       return ( 
         inactive ? 
           <Button color="warning" 
