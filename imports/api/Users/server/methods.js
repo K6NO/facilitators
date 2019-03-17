@@ -81,11 +81,34 @@ Meteor.methods({
     check(_id, String);
     check(roles, Array);
     const userId = Meteor.userId();
+    console.log('updaterole functions server. roles: ' , roles, _id )
     if(Roles.userIsInRole(userId, ['admin'])) {
       Roles.addUsersToRoles(_id, roles);
       return userId;
     } else {
       throw new Meteor.Error('Users updateRole', 'Non-admin tried to perform admin role: role change');
+    }
+  },
+  'users.inactivate': function usersInactivate(_id) {
+    check(_id, String);
+    const userId = Meteor.userId();
+    if(Roles.userIsInRole(userId, ['admin'])) {
+      Roles.removeUsersFromRoles(_id, ['user', 'editor', 'admin']);
+      Roles.addUsersToRoles(_id, ['inactive']);
+      return userId;
+    } else {
+      throw new Meteor.Error('Users inactivate', 'Non-admin tried to perform admin role: inactivate user');
+    }
+  },
+  'users.activate': function usersInactivate(_id) {
+    check(_id, String);
+    const userId = Meteor.userId();
+    if(Roles.userIsInRole(userId, ['admin'])) {
+      Roles.removeUsersFromRoles(_id, 'inactive');
+      Roles.addUsersToRoles(_id, ['user']);
+      return userId;
+    } else {
+      throw new Meteor.Error('Users activate', 'Non-admin tried to perform admin role: activate user');
     }
   },
   'users.updateOrg': function usersUpdateRole(_id, org) {

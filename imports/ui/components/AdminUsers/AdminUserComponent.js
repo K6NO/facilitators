@@ -5,6 +5,7 @@ import { Button } from 'reactstrap';
 import AdminSelectOrganisationComponent from './AdminSelectOrganisationComponent';
 import AdminUserRoleSelector from './AdminUserRoleSelector';
 import DeleteUserButton from './DeleteUserButton';
+import InactivateUserButton from './InactivateUserButton';
 import saveUserProfile from './saveUserProfile';
 import storePassword from './storePassword';
 import './AdminUserComponent.scss';
@@ -191,6 +192,14 @@ class AdminUserComponent extends React.Component {
                     :
                     <DeleteUserButton 
                         userId={this.props.userListed._id}/>
+                }
+            </td>
+            <td>
+                {Roles.userIsInRole(userListed._id, ['admin'])
+                    ? '' 
+                    :
+                    <InactivateUserButton 
+                        userListed={this.props.userListed}/>
                 }
             </td>
             <td>
