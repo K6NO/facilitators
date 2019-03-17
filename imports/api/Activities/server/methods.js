@@ -65,7 +65,9 @@ Meteor.methods({
             images: Match.Optional(Array),
             comments: Match.Optional(Array),
             tags: Match.Optional(Array),
-            likes: Match.Optional(Array)
+            likes: Match.Optional(Array),
+            organisationId: Match.Optional(String),
+            languages: Array
         });
         try {
             const user = Meteor.user();

@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import ImageUploader from '../ImageUploader/ImageUploader';
-
+import DeleteImageButton from './DeleteImageButton';
 
 class EditorImagesComponent extends React.Component {
     constructor(props){
       super(props);
-      this.state = {
-        
-      }
     }
 
+    
+
     render() {
-        // limit 
         const { activity } = this.props;
         return (
             <Row className="EditorImagesComponent">
@@ -28,7 +26,7 @@ class EditorImagesComponent extends React.Component {
                                 <ImageUploader activity={activity} />
                             </Col>
                             : ''}
-                        {activity.images.map(image => 
+                        {activity.images.map((image, i) => 
                             <Col 
                                 sm="6"
                                 key={image}
@@ -40,6 +38,7 @@ class EditorImagesComponent extends React.Component {
                                     minHeight: '140px'
                                 }}
                             >
+                                <DeleteImageButton activity={activity} index={i} />
                             </Col>
                             )}
                     </Row>

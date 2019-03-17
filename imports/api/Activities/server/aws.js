@@ -47,7 +47,6 @@ Meteor.methods({
         console.error('Error when deleting AWS object - aws.js/deleteFileFromAmazon', err); // an error occurred
         throw new Meteor.Error('Error when deleting AWS object - aws.js/deleteFileFromAmazon ', err.reason);
       } else {
-        console.log('Object deleted from AWS S3', data);
         return;
       }
     });
