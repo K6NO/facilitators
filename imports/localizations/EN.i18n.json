@@ -62,7 +62,8 @@
         "resources" : "Resources",
         "back" : "Back",
         "backsearch" : "Back to search results",
-        "images" : "Images"
+        "images" : "Images",
+        "public": "Make activity publicly available"
     },
     "tags" : {
         "0" : "tag 1---" , 

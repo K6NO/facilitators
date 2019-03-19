@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup } from 'reactstrap';
+import i18n from 'meteor/universe:i18n';
 import './EditorPublicCBComponent.scss';
 
 class EditorPublicCBComponent extends React.Component {
@@ -42,8 +43,7 @@ class EditorPublicCBComponent extends React.Component {
                             checked={this.state.public}
                             onChange={this.handleCheckbox} />
                         <span className="cbCheckmark"></span>
-                        Make activity publicly available
-                    
+                        {i18n.__('activity.public')}
                     </label>
                 </FormGroup>
             </div>

@@ -7,6 +7,7 @@ import EditorTitleComponent from '../EditorTitleComponent/EditorTitleComponent';
 import EditorCategoriesComponent from '../EditorCategoriesComponent/EditorCategoriesComponent';
 import EditorTagsComponent from '../EditorTagsComponent/EditorTagsComponent';
 import EditorPublicCBComponent from '../EditorPublicCBComponent/EditorPublicCBComponent';
+import RenderEmailLink from './RenderEmailLink'
 
 import './EditorActivityHeader.scss';
 
@@ -25,6 +26,9 @@ class EditorActivityHeader extends React.Component {
         const { activity, language } = this.props;
         const category = activity.category;
         const color = category ? getColorByCategory(category) : '#cccccc';
+        
+        const showPublishChekbox = Roles.userIsInRole(Meteor.userId(), ['admin']);
+
         return (
             <div className="EditorActivityHeader">
                 <Row>
@@ -40,7 +44,10 @@ class EditorActivityHeader extends React.Component {
                             language={language} />
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
-                    <EditorPublicCBComponent activity={activity} />
+                        {showPublishChekbox 
+                        ? <EditorPublicCBComponent activity={activity} />
+                        : <RenderEmailLink activity={activity} />
+                        }
                     </Col>
                 </Row>
             </div>
