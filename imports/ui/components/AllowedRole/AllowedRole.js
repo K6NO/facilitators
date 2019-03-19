@@ -13,7 +13,7 @@ class AllowedRole extends React.Component {
     } = this.props;
   
     const user = Meteor.user();
-    const allowed = Roles.userIsInRole(user, ['admin', 'editor']);
+    const allowed = Roles.userIsInRole(user, allowedRoles);
 
     return (
       <Route

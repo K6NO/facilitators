@@ -47,7 +47,7 @@ class AuthenticatedNavigation extends React.Component {
             onClick={()=> this.logoutUser()}>
             {i18n.__('menu.signout')}
           </NavItem>
-          {(user && !!Roles.userIsInRole(user, ['admin', 'editor'])
+          {(user && !!Roles.userIsInRole(user, ['admin', 'user'])
             && 
           <LinkContainer to="/editor">
             <NavItem className={`pl-3 ${isMobile && 'pt-4'}`}>
