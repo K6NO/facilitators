@@ -174,7 +174,6 @@ Meteor.methods({
         } catch (exception) {
             handleMethodException(exception);
         }
-
     },
     'activities.storeImageUrl' : function activitiesStoreImageUrl (url, activityId) {
         check(url, String);
@@ -199,6 +198,28 @@ Meteor.methods({
                 throw new Meteor.Error('Store File Url in Database', "User has no organisation. Contact admins to set user organisation.");
             } // end userId check 
             throw new Meteor.Error('Store File Url in Database', 'Not a registered user.');
+        } catch (exception) {
+            handleMethodException(exception);
+        }
+    },
+    'activities.likeUpdate' : function activitiesUpdateAttributes (activityId, likes) {
+        check(activityId, String);        
+        check(likes, Array);
+        
+        try {
+            const user = Meteor.user();
+            if(user._id) {
+                // Inactive users cannot like or dislike
+                if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                    return Activities.update(activityId, {
+                        $set: {
+                            likes : likes
+                        }
+                    }); 
+                } // end inactive if check
+                throw new Meteor.Error('Like', "User account inactivated. Contact admins.");
+            } // end userId if check
+            throw new Meteor.Error('Like', 'No userId.');
         } catch (exception) {
             handleMethodException(exception);
         }

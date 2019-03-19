@@ -49,25 +49,30 @@ const StyledLikeButton = styled(BasicStyledButton)`
     
 `;
 const userHasLiked = (props) => {
-    return props.user.profile.likes.indexOf(props.activity._id) > -1;
+    return props.user.profile.likes 
+        ? props.user.profile.likes.indexOf(props.activity._id) > -1
+        : false;
 }
 const userLikeHandle = (props) => {
     if(!userHasLiked(props)) {
+        // check if the user already has a likes array, if not create, if yes add activity
         const profile = props.user.profile;
-        profile.likes.push(props.activity._id)
+        profile.likes 
+        ? profile.likes.push(props.activity._id)
+        : profile.likes = [props.activity._id]
         
         Meteor.call('users.editProfile', profile, (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
             } else {
-                Bert.alert(props.activity.title, ' has been added to your favourites.', 'success');
+                // register user's Id in the activity likes array
                 const newLikes = props.activity.likes;
-                newLikes.push(props.activity._id);
-                Meteor.call('activities.updateAttributes', props.activity._id, 'likes', newLikes, (error) => {
+                newLikes.push(props.user._id);
+                Meteor.call('activities.likeUpdate', props.activity._id, newLikes, (error) => {
                     if(error) {
                         Bert.alert(error.reason, 'danger');
                     } else {
-                        Bert.alert('Like saved', 'success');
+                        Bert.alert('Activity removed from your favourites.', 'info');
                     }
                 })
             }
@@ -79,18 +84,19 @@ const userDislikeHandle = (props) => {
     if(userHasLiked(props)) {
         const profile = props.user.profile;
         profile.likes.splice(profile.likes.indexOf(props.activity._id), 1);
+        // remove activityId from user profile's like array
         Meteor.call('users.editProfile', profile, (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
             } else {
-                Bert.alert(props.activity.title, ' has been removed from your favourites.', 'success');
+                // remove userId from activity's like array
                 const newLikes = props.activity.likes;
-                newLikes.splice(newLikes.indexOf(props.activity._id), 1);
-                Meteor.call('activities.updateAttributes', props.activity._id, 'likes', newLikes, (error) => {
+                newLikes.splice(newLikes.indexOf(props.user._id), 1);
+                Meteor.call('activities.likeUpdate', props.activity._id, newLikes, (error) => {
                     if(error) {
                         Bert.alert(error.reason, 'danger');
                     } else {
-                        Bert.alert('Like removed', 'warning');
+                        Bert.alert('Activity removed from your favourites.', 'info');
                     }
                 })
             }
@@ -108,6 +114,7 @@ const LikesComponent = (props) => (
             backcolor={props.color}>
             {` ${props.activity.likes.length} `}
             <Icon icon={'heart'} /> {` `}
+            {console.log('LikesComp', props.activity)}
         </StyledCounter>
         {!userHasLiked(props) ? 
             <StyledLikeButton

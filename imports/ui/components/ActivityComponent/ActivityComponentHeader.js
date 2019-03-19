@@ -76,6 +76,7 @@ class ActivityComponentHeader extends React.Component {
         const category = activity.category;
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
+        console.log(activity);
         
         return (
             <StyledContainer backcolor={color}>
