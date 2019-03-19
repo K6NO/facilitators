@@ -53,7 +53,7 @@ class EditorListActivitiesComponent extends React.Component{
                     </td>
                     <td>
                         {activity.languages.map(language => 
-                            <span key={language}>{getLanguageName(language)}</span>
+                            <span key={language}>{`${getLanguageName(language)}, `}</span>
                         )}
                     </td>
                     <td>
