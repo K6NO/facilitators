@@ -35,14 +35,17 @@ Meteor.methods({
           const user = Meteor.user();
           if(user._id) {
             if(user.organisation) {
-                return Activities.insert({ 
-                    owner: user._id, 
-                    organisationId: user.organisation, 
-                    ...activity 
-                });
-            }
+                if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                    return Activities.insert({ 
+                        owner: user._id, 
+                        organisationId: user.organisation, 
+                        ...activity 
+                    });
+                } // end inactive if check
+                throw new Meteor.Error('Insert Activity', "User account inactivated. Contact admins.");
+            } // end organisation if check
             throw new Meteor.Error('Insert Activity', 'User has no organisation. Contact admins to set user organisation before adding an activity.');
-          }
+          } // end iserId if check
           throw new Meteor.Error('Insert Activity', 'No user ID. Only registered users can create new activities.');
       } catch (exception) {
         handleMethodException(exception);
@@ -73,22 +76,25 @@ Meteor.methods({
             const user = Meteor.user();
             if(user._id) {
                 if(user.organisation) {
-                    if(Roles.userIsInRole(user._id, ['admin'])) {
-                        // admins can overwrite any Activities
-                        return Activities.update(activity._id, {
+                    if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                        if(Roles.userIsInRole(user._id, ['admin'])) {
+                            // admins can overwrite any Activities
+                            return Activities.update(activity._id, {
+                                $set: activity
+                            });
+                        }
+                        // registered users can update own Activities
+                        return Activities.update({
+                            _id: activity._id,
+                            owner: user._id
+                        }, {
                             $set: activity
                         });
-                    }
-                    // registered users can update own Activities
-                    return Activities.update({
-                        _id: activity._id,
-                        owner: user._id
-                    }, {
-                        $set: activity
-                    });
-                }
+                    } // end inactive if check
+                    throw new Meteor.Error('Update Activity', "User account inactivated. Contact admins.");
+                } // end organisation if check
                 throw new Meteor.Error('Update Activity', 'User has no organisation. Contact admins to set user organisation before updating an activity.');
-            }
+            } // end userId if check
           throw new Meteor.Error('Update Activity', 'No userId. Only registered users can update activities.');
         } catch (exception) {
           handleMethodException(exception);
@@ -103,25 +109,31 @@ Meteor.methods({
         try {
             const user = Meteor.user();
             if(user._id) {
-                if(Roles.userIsInRole(user._id, ['admin'])) {
-                    // admins can overwrite any activities
-                    return Activities.update(activityId, {
-                        $set: {
-                            [`${attributeName}.${locale}`] : value
-                            }
+                if(user.organisation) {
+                    if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                        if(Roles.userIsInRole(user._id, ['admin'])) {
+                            // admins can overwrite any activities
+                            return Activities.update(activityId, {
+                                $set: {
+                                    [`${attributeName}.${locale}`] : value
+                                    }
+                                }
+                            );
                         }
-                    );
-                }
-                return Activities.update({
-                    _id: activityId,
-                    owner: user._id
-                    }, {
-                    $set: {
-                        [`${attributeName}.${locale}`] : value
-                    }
-                });
-            }
-            throw new Meteor.Error('Update Activity by Field', 'No userId.');
+                        return Activities.update({
+                            _id: activityId,
+                            owner: user._id
+                            }, {
+                            $set: {
+                                [`${attributeName}.${locale}`] : value
+                            }
+                        });
+                    } // end inactive if check
+                    throw new Meteor.Error('Update Activity LangAttributes', "User account inactivated. Contact admins.");
+                } // end organisation if check
+                throw new Meteor.Error('Update Activity LangAttributes', 'User has no organisation. Contact admins to set user organisation before updating an activity.');
+            } // end userId if check
+            throw new Meteor.Error('Update Activity LangAttributes', 'No userId.');
         } catch (exception) {
             handleMethodException(exception);
         }
@@ -134,24 +146,30 @@ Meteor.methods({
         try {
             const user = Meteor.user();
             if(user._id) {
-                if(Roles.userIsInRole(user._id, ['admin'])) {
-                    // admins can overwrite any activities
-                    return Activities.update(activityId, {
-                        $set: {
-                            [attributeName] : value
-                        }
-                    });
-                } 
-                return Activities.update({
-                    _id: activityId,
-                    owner: user._id
-                    }, {
-                    $set: {
-                        [attributeName] : value,
-                    }
-                });
-            }
-            throw new Meteor.Error('Update Activity by Field', 'No userId.');
+                if(user.organisation) {
+                    if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                        if(Roles.userIsInRole(user._id, ['admin'])) {
+                            // admins can overwrite any activities
+                            return Activities.update(activityId, {
+                                $set: {
+                                    [attributeName] : value
+                                }
+                            });
+                        } 
+                        return Activities.update({
+                            _id: activityId,
+                            owner: user._id
+                            }, {
+                            $set: {
+                                [attributeName] : value,
+                            }
+                        });
+                    } // end inactive if check
+                    throw new Meteor.Error('Update Activity Attributes', "User account inactivated. Contact admins.");
+                } // end organisation if check
+                throw new Meteor.Error('Update Activity Attributes', 'User has no organisation. Contact admins to set user organisation before updating an activity.');
+            } // end userId if check
+            throw new Meteor.Error('Update Activity Attributes', 'No userId.');
             
         } catch (exception) {
             handleMethodException(exception);
@@ -161,53 +179,63 @@ Meteor.methods({
     'activities.storeImageUrl' : function activitiesStoreImageUrl (url, activityId) {
         check(url, String);
         check(activityId, String);
-        const userId = Meteor.userId();
-        if(userId) {
-            if(Roles.userIsInRole(userId, ['admin', 'editor'])) {
-                try {
-                    Activities.update(activityId, {
-                        $push : {
-                            images : url
-                        }
-                    });
-                } catch (exception) {
-                    handleMethodException(exception);
-                }
-            } else {
-                throw new Meteor.Error('Store File Url in Database', 'User is not editor or admin.');
-            }
-        } else {
+        try {
+            const user = Meteor.user();
+                      
+            if(user._id) {
+                if(user.organisation) {
+                    if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                        if(Roles.userIsInRole(user._id, ['admin', 'user'])) {
+                            return Activities.update(activityId, {
+                                $push : {
+                                    images : url
+                                }
+                            });
+                        } // end admin / user check
+                        throw new Meteor.Error('Store File Url in Database', 'User is not editor or admin.');
+                    } // end inactive if check
+                    throw new Meteor.Error('Store File Url in Database', "User account inactivated. Contact admins.");
+                } // end organisation if check
+                throw new Meteor.Error('Store File Url in Database', "User has no organisation. Contact admins to set user organisation.");
+            } // end userId check 
             throw new Meteor.Error('Store File Url in Database', 'Not a registered user.');
+        } catch (exception) {
+            handleMethodException(exception);
         }
     },
     'activities.addComment' : function activitiesStoreImageUrl (activityId, commentMessage) {
         check(commentMessage, String);
         check(activityId, String);
-        const user = Meteor.user();
-        const userId = user._id;
-        const username = user.profile.username;
-        if(userId) {
-            const comment = {
-                userId : userId,
-                username: username,
-                message: commentMessage,
-                authorized: true
-            }
-            if(Roles.userIsInRole(userId, ['admin', 'editor', 'user'])) {
-                try {
-                    Activities.update(activityId, {
-                        $push : {
-                            comments : comment
+        
+        try {
+            const user = Meteor.user();
+            const userId = user._id;
+            const username = user.profile.username;
+            if (userId) {
+                if(user.organisation) {
+                    if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                        const comment = {
+                            userId : userId,
+                            username: username,
+                            message: commentMessage,
+                            authorized: true
                         }
-                    });
-                } catch (exception) {
-                    handleMethodException(exception);
-                }
-            } else {
-                throw new Meteor.Error('Add Comment', 'User is not user, editor or admin.');
-            }
-        } else {
+                        if(Roles.userIsInRole(userId, ['admin', 'editor', 'user'])) {
+                            return Activities.update(activityId, {
+                                $push : {
+                                    comments : comment
+                                }
+                            });
+                        } // end role checking
+                        throw new Meteor.Error('Add Comment', 'User is has no privilege to post a comment. Contact admins.');
+                    } // end inactive if check
+                    throw new Meteor.Error('Add Comment', "User account inactivated. Contact admins.");
+                } // end organisation if check
+                throw new Meteor.Error('Add Comment', "User has no organisation. Contact admins to set user organisation.");
+            } //end userId check
             throw new Meteor.Error('Add Comment', 'Not a registered user.');
+        } catch (exception) {
+            handleMethodException(exception);
         }
     },
     'activities.remove' : function activitiesRemove (activity) {
@@ -215,20 +243,26 @@ Meteor.methods({
         try {
             const user = Meteor.user();
             if(user._id) {
-                // Admins can remove anything
-                if(Roles.userIsInRole(user._id, ['admin'])) {
-                    return Activities.remove(activity._id);
-                } else if(user._id === activity.owner) {
-                    // Users can remove own content
-                    return Activities.remove(activity._id);
-                } else {
-                    throw new Meteor.Error('Remove Activity', 'Not authorized to remove this activity.');
-                }
-            }
+                if(user.organisation) {
+                    if(!Roles.userIsInRole(user._id, ['inactive'])) {
+                        // Admins can remove anything
+                        if(Roles.userIsInRole(user._id, ['admin'])) {
+                            return Activities.remove(activity._id);
+                        } else if(user._id === activity.owner) {
+                            // Users can remove own content
+                            return Activities.remove(activity._id);
+                        } else {
+                            throw new Meteor.Error('Remove Activity', 'Not authorized to remove this activity.');
+                        }
+                    } // end inactive if check
+                    throw new Meteor.Error('Add Comment', "User account inactivated. Contact admins.");
+                } // end organisation if check
+                throw new Meteor.Error('Add Comment', "User has no organisation. Contact admins to set user organisation.");
+            } // end userId check
             throw new Meteor.Error('Remove Activity', 'No userId.');
         } catch (exception) {
             handleMethodException(exception);
-        } 
+        }
     },
 });
 

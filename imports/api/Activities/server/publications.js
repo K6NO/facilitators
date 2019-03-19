@@ -6,7 +6,7 @@ import Activities from '../Activities';
 /** 
  * Admins can view and edit all Activities
  * Registered users can view and edit public and own Activities
- * Non-registered users can view public activities
+ * Non-registered visitors can view public activities
 **/
 Meteor.publish('activities.all', (pageNum, pageSize) => {
     check(pageNum, Number);
@@ -41,11 +41,7 @@ Meteor.publish('activities.all', (pageNum, pageSize) => {
     });
 });
 
-Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
-    check(filterObject, Object);
-    check(pageNum, Number);
-    check(pageSize, Number);
-    /**
+/**
      * Querying the db with multiple, non-exclusive criteria.
      * 1. Examine the filterObject, check for existing key-value pairs
      * 2. Values of the filterObject must be in an array
@@ -57,7 +53,10 @@ Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
      * Inspired by https://stackoverflow.com/questions/49628432/how-to-convert-an-object-to-array-of-objects#
      * and https://stackoverflow.com/questions/21417711/search-multiple-fields-for-multiple-values-in-mongodb
      */
-
+Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
+    check(filterObject, Object);
+    check(pageNum, Number);
+    check(pageSize, Number);
 
     const mongoFilterArray = Object.entries(filterObject).map(([key, values]) => (
         { [key] : {$in : values } }
@@ -95,7 +94,9 @@ Meteor.publish('activities.allFilter', (filterObject, pageNum, pageSize) => {
         sort: { categories : -1 }
     });
 });
-
+/*
+    Count subs for pagination (filter and all versions)
+ */
 Meteor.publish('activities.filterCount', (filterObject) => {
     check(filterObject, Object);
     
@@ -141,6 +142,9 @@ Meteor.publish('activities.allCount', () => {
     });
 });
 
+/**
+ * Single activity view (admin, reg. user, visitor)
+ */
 Meteor.publish('activities.view', (activityId) => {
     check(activityId, String);
     const userId = Meteor.userId();

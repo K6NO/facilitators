@@ -7,7 +7,7 @@ const amazonS3Bucket = "ecofacility";
 
 Slingshot.fileRestrictions("uploadToAmazonS3", {
   allowedFileTypes: [ "image/png", "image/jpeg", "image/gif", "image/jpg" ],
-  maxSize: 10 * 1024 * 1024
+  maxSize: 5 * 1024 * 1024
 });
 
 Slingshot.createDirective("uploadToAmazonS3", Slingshot.S3Storage, {
@@ -17,7 +17,7 @@ Slingshot.createDirective("uploadToAmazonS3", Slingshot.S3Storage, {
   acl: "public-read",
   region: "eu-west-1",
   authorize: function () {
-    return Roles.userIsInRole(this.userId, ['admin', 'editor']) ? true : false;
+    return Roles.userIsInRole(this.userId, ['admin', 'user']) ? true : false;
   },
   key: function ( file, metacontext ) {
     return metacontext.mobile 
