@@ -4,7 +4,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 export const BasicStyledButton = styled.button`
     height: 40px;
     padding: .8rem 1.5rem;
-    border-radius: 15px;
+    border-radius: .5rem;
     background: ${props => props.backcolor};
     color: ${props => props.color};
     font-size: 1.3rem;

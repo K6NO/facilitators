@@ -4,7 +4,7 @@ import i18n from 'meteor/universe:i18n';
 import styled from 'styled-components';
 import { getColorByCategory } from '../../../modules/get-colors';
 import Icon from '../Icon/Icon';
-import { Row, Col, Badge, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { BasicStyledButton, BasicStyledBadge } from '../MainStyledComponents/MainStyledComponents';
 
 const ColorIconWrapper = styled.h5`
@@ -48,11 +48,11 @@ class ActivityPreviewComponentBody extends React.Component {
         )
     }
     renderTags = (activity, color) => {
-        return activity.tags.map((tagIndex) =>   
+        return activity.tags.map((tagIndex, i) =>   
             <StyledBadge 
                 color={color}
                 backcolor={"#ffffff"}
-                key={tagIndex}
+                key={tagIndex + i}
                 
                 >
                 {i18n.__(`tags.${tagIndex}`)}

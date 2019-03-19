@@ -13,7 +13,6 @@ const TopFlexContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    border-radius: 10px;
 `;
 const StyledFlexContainer = styled.div`
     flex: 0 0 100%;
@@ -28,7 +27,7 @@ const StyledTextArea = styled.textarea`
     height: 80px;
     font-size: 1.3rem;
     border: ${props => props.color ? `1px solid ${props.color}77` : "1px solid #33333377"};
-    border-radius: 10px;
+    border-radius: .5rem;
     padding: .3rem 1rem;
     &:focus {
         outline: 0;
@@ -54,16 +53,18 @@ class WriteCommentComponent extends React.Component {
         e.preventDefault();
         if(this.state.message.length > 0){
             // TODO drop an alert here before posting / OK - Cancel
-            Meteor.call('activities.addComment', activity._id, this.state.message, (error) => {
-                if(error) {
-                    Bert.alert(error.reason, 'danger');
-                } else {
-                    Bert.alert('Comment posted', 'success');
-                    this.setState({
-                        message: ''
-                    });
-                }
-            });
+            if (confirm('Comments are public. Post comment?')) {
+                Meteor.call('activities.addComment', activity._id, this.state.message, (error) => {
+                    if(error) {
+                        Bert.alert(error.reason, 'danger');
+                    } else {
+                        Bert.alert('Comment posted', 'success');
+                        this.setState({
+                            message: ''
+                        });
+                    }
+                });
+            }
         }
     }
 

@@ -72,7 +72,7 @@ const userLikeHandle = (props) => {
                     if(error) {
                         Bert.alert(error.reason, 'danger');
                     } else {
-                        Bert.alert('Activity removed from your favourites.', 'info');
+                        Bert.alert('Activity added to your favourites.', 'info');
                     }
                 })
             }
@@ -114,7 +114,6 @@ const LikesComponent = (props) => (
             backcolor={props.color}>
             {` ${props.activity.likes.length} `}
             <Icon icon={'heart'} /> {` `}
-            {console.log('LikesComp', props.activity)}
         </StyledCounter>
         {!userHasLiked(props) ? 
             <StyledLikeButton

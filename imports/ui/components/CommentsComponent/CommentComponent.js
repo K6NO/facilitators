@@ -13,7 +13,7 @@ const TopFlexContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    border-radius: 10px;
+    border-radius: .5rem;
 `;
 const StyledFlexContainer = styled.div`
     flex: 0 0 100%;

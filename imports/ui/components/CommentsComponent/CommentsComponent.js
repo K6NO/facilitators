@@ -42,9 +42,9 @@ class CommentsComponent extends React.Component {
                     {this.renderActivityField('comments', 'activity.comments')}
                 </Col>
                 <Col xs={12}>
-                    {activity.comments.map(comment => 
+                    {activity.comments.map((comment, i) => 
                         <CommentComponent 
-                        key={comment.updatedAt}
+                        key={comment.updatedAt + i}
                         color={color}    
                         comment={comment}
                             isMobile={this.props.isMobile}

@@ -33,7 +33,7 @@ const StyledContainer = styled.div`
 `;
 const StyledHeaderContainer = styled(Col)`
     background: ${props => props.backcolor || "#777777"};
-    border-radius: ${props => props.ismobile ? "0" : "10px 10px 0 0"};
+    border-radius: ${window.innerWidth < 450 ? "0" : "10px 10px 0 0"};
     padding-top: 1rem!important;
     padding-bottom: 1rem!important;
     padding-left: 1.5rem!important;
@@ -60,11 +60,11 @@ class ActivityComponentHeader extends React.Component {
     }
 
     renderTags = ({activity, color}) => {
-        return activity.tags.map((tagIndex) =>   
+        return activity.tags.map((tagIndex, i) =>   
             <StyledBadge 
                 color={color}
                 backcolor={'#ffffff'}
-                key={tagIndex}
+                key={tagIndex + i} 
                 >
                 {i18n.__(`tags.${tagIndex}`)}
             </StyledBadge>
@@ -76,14 +76,12 @@ class ActivityComponentHeader extends React.Component {
         const category = activity.category;
         const color = getColorByCategory(category);
         const categoryName = getCategoryName(category);
-        console.log(activity);
         
         return (
             <StyledContainer backcolor={color}>
                 <Row>
                     <StyledHeaderContainer
                         backcolor={color}
-                        ismobile={isMobile}
                         xs={{size: 12, order: 2}} sm={{size: 8, order: 1}}>
                         <ActivityTitle>{activity.title[locale]}</ActivityTitle>
                         <CategoryLink 
