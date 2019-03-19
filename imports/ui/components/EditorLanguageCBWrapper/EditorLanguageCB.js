@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLanguageName } from '../../../modules/get-select-translations';
+import styled from 'styled-components';
+
+const StyledCB = styled.input`
+    margin-right: .5rem!important;`
+;
+const StyledLabel = styled.label`
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #ffffff;
+`;
 
 class EditorLanguageCB extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        // checked: this.props.activity.languages.indexOf(language) > -1
+        
       };
     }
 
@@ -75,16 +85,16 @@ class EditorLanguageCB extends React.Component {
     const { language } = this.props;
 
     return (
-        <li>
-            <label className="cbContainer">
-                <input
+        <li className="list-inline-item">
+            <StyledLabel className="cbContainer">
+                <StyledCB
                     type="checkbox"
                     name={language}
                     checked={this.state.checked || false}
                     onChange={this.handleCheckbox} />
                 <span className="cbCheckmark"></span>
                 {getLanguageName(language)}
-            </label>
+            </StyledLabel>
         </li>
     )}
 }

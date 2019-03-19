@@ -12,7 +12,7 @@ class EditorLanguageCBWrapper extends React.Component {
         const languageArray = ['en-US', 'es', 'hu', 'ro', 'sk'];
         const { activity } = this.props;
         return ( 
-            <ul>
+            <ul className="list-inline">
                 {languageArray.map((lang, i) => 
                     <EditorLanguageCB 
                         key={lang + i}

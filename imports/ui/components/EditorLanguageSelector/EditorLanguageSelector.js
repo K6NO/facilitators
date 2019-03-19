@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import i18n from 'meteor/universe:i18n';
+import styled from 'styled-components';
 import { getLanguageArray, getLanguageName } from '../../../modules/get-select-translations';
 import './EditorLanguageSelector.scss';
+
+const StyledText = styled.span`
+  color: #ffffff;
+
+`;
 
 class EditorLanguageSelector extends React.Component {
     constructor(props){
@@ -18,7 +23,7 @@ class EditorLanguageSelector extends React.Component {
         const { selectLanguageCallback, language } = this.props;
         return (
           <div>
-            <span>Editing the </span>
+            <StyledText>Editing the </StyledText>
               <Select 
                   className="basic-single EditorLanguageSelector"
                   classNamePrefix="select-editorlanguage"
@@ -31,7 +36,7 @@ class EditorLanguageSelector extends React.Component {
                   aria-label="Select Language"
                   name="LanguageSelector"
                   />
-            <span> language version</span>
+            <StyledText> language version</StyledText>
           </div>
         )
     }
