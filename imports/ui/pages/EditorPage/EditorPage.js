@@ -46,6 +46,7 @@ class EditorPage extends React.Component{
         <EditorSingleActivityWrapper
           language={this.state.language}
           activityId={this.state.activityId}
+          selectLanguageCallback={this.selectLanguage}
         /> 
         :
         <EditorListActivitiesWrapper

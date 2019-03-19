@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Select from 'react-select';
 import i18n from 'meteor/universe:i18n';
 import getLocale from '../../../modules/get-locale';
@@ -46,9 +45,6 @@ class LanguageSelector extends React.Component {
         )
     }
 }
-  
-LanguageSelector.propTypes = {
-};
   
 export default LanguageSelector;
   

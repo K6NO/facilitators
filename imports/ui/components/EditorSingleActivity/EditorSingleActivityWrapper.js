@@ -35,7 +35,8 @@ EditorSingleActivityWrapper.defaultProps = {
 EditorSingleActivityWrapper.propTypes = {
   activity: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  activityId: PropTypes.string
 };
 
 
