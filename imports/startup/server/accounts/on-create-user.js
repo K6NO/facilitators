@@ -4,7 +4,7 @@ import sendWelcomeEmail from '../../../api/Users/server/send-welcome-email';
 Accounts.onCreateUser((options, user) => {
   const userToCreate = user;
   if(!user.organisation) {
-    const publicOrganizationId = 'iCmCYQjnEB2uGpqQ5';
+    const publicOrganizationId = 'pu8XgZJa7gScmzFBb';
     userToCreate.organisation = publicOrganizationId;
   }
   userToCreate.profile = options.profile;
