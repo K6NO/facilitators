@@ -1,9 +1,21 @@
 [
     {
-        "name": "Era Kálmán", 
-        "organisation": "Szatyor", 
+        "name": "Erika Kálmán", 
+        "organisation": "Szatyor Egyesület", 
         "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-1.jpg"
+    },
+    {
+        "name": "Nagy Attila",
+        "organisation": "Asociația de Tineri din Ardeal",
+        "text": "Attila is a facilitator, trainer and project writer, working in the youth field since 2007",
+        "url": "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-9/1455195_10152078426591162_1576398481_n.jpg?_nc_cat=103&_nc_ht=scontent-otp1-1.xx&oh=394974424b4b53dcd392f6ecc73e196a&oe=5D128E30"
+      },
+    {
+        "name": "Gagyi Réka",
+        "organisation": "Asociația de Tineri din Ardeal",
+        "text": "Réka is a youth worker and coordinator of volunteers, passionate about the environment",
+        "url": "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-9/17523355_10158352995760545_3137893371829902992_n.jpg?_nc_cat=109&_nc_ht=scontent-otp1-1.xx&oh=44ca2374de95ce86786618028022a96f&oe=5D04DA4C"
     },
     {
         "name": "FirstN LastN", 
