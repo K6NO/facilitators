@@ -12,7 +12,7 @@
     "searchbox" : {
         "title" : " Vitajte! Vyberte aktivitu",
         "categoryDefault" : "Vyberte kategóriu",
-        "groupDefault" : " Vyberte ve�kos� skupiny",
+        "groupDefault" : "Vyberte veľkosť skupiny",
         "ageDefault" : " Vyberte vek",
         "timeDefault" : " Vyberte trvanie",
         "tagsDefault" : "Vyberte tagy",
@@ -32,9 +32,9 @@
     "activity" : {
         "titleLabel" : "Titul",
         "languagesLabel" : "Jazyky",
-        "category" : "Kateg�rie",
+        "category" : "Kategórie",
         "group" : "Velkosti skupiny",
-        "groupvs" : "Men��/ Najmensí (1-4)",
+        "groupvs" : "Menší/ Najmenší (1-4)",
         "groupsm" : "Malé (5-10)",
         "groupmd" : "Stredná (11-20)",
         "grouplg" : "Veľký (21-40)",
@@ -43,23 +43,23 @@
         "age" : "Vek",
         "agech" : "Deti (3-10)",
         "agete" : "Tínedžeri (11-17)",
-        "ageya" : "Mlad� dospelí (18-35)",
+        "ageya" : "Mladí dospelí (18-35)",
         "agead" : "Dospelí (36-60)",
         "ageel" : "Seniori (61+)",
         "years" : "Roky",
         "time": "Cas",
         "timevs" : "veľmi krátky doba/ r�chly (5-10)",
-        "timesh" : "krátky doba/r�chly (11-25)",
+        "timesh" : "krátky doba (11-25)",
         "timemd" : "stredne krátky doba/ stredne r�chly (26-45)",
-        "timeln" : "dlh� doba/ pomal� (46-90)",
-        "timevl" : " ve�mi dlh� doba/pomal�� (91+)",
+        "timeln" : "dlhá doba/ pomalý (46-90)",
+        "timevl" : "veľmi dlhá doba/pomalší (91+)",
         "minutes" : "Minuty",
         "preparations" : "Próprava",
         "description" : "Opis",
         "objectives" : "Ciele",
-        "tools" : "Potrebn� nástroje",
+        "tools" : "Potrebné nástroje",
         "comments" : "Komentáre",
-        "writecomment" : "Napí n�zor",
+        "writecomment" : "Napís názor",
         "send" : "odoslať",
         "resources" : "Zdroje",
         "back" : "Spät",
@@ -90,25 +90,25 @@
     },
     "categories" : {
         "footprint" : "Ekologická stopa",
-        "deepeco" : "Hlbinn� ekológia",
+        "deepeco" : "Hlbinná ekológia",
         "ecofem" : " Ekofeminizmus",
         "landart" : "Land art",
         "food" : "Potravinová sebestačnosť",
         "community" : "Budovanie komunity"
     },
     "categoryDescriptions" : {
-        "footprint" : "English Description of Ecological footprint. Max. 10.000 characters.",
-        "deepeco" : "English Description of Deep ecology. Max. 10.000 characters.",
-        "ecofem" : "gfdghgdfhfdghgt",
-        "landart" : "435435",
-        "food" : "ijo;iojsdfrijlo;dsfijlndfslnijdfsvljnudfsvljndfsdfijlk",
-        "community" : "dfgdfsgdsfgdsfgdsrg"
+        "footprint" : "More information coming soon.",
+        "deepeco" : "More information coming soon.",
+        "ecofem" : "More information coming soon.",
+        "landart" : "More information coming soon.",
+        "food" : "More information coming soon.",
+        "community" : "More information coming soon."
     },
     "about" : {
-        "title" : "O je ekofacilit�cia",
-        "description" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+        "title" : "O je ekofacilitácia",
+        "description" : "More information is coming soon.",
         "people" : "Nas l'udia",
-        "organisations" : "Partneri/Partnersk� organizácie/Spolupracujeme organizácie",
+        "organisations" : "Partneri/Partnerskí organizácie/Spolupracujeme organizácie",
         "sponsor" : "Podporovatelia",
         "contributors" : "Prispievatelia"
     },
@@ -118,10 +118,10 @@
         "name" : "Vase meno",
         "message" : "Vasa správa",
         "send" : "odoslať",
-        "notification": " Vase meno a�emailová adresa tret�m osob�m sa pristup�uj� iba na z�klade V�ho v�slovn�ho s�hlasu. /Va�e meno a�emailov� adresu postupujeme len v�pr�pade V�ho v�slovn�ho s�hlasu."
+        "notification": "Vaše meno a emailová adresa tretím osobám sa pristupňujú iba na základe Vášho výslovného súhlasu."
     },	
     "footer" : {
-        "privacy" : "Ochrana osobn�ch �dajov",
-        "terms" : "Podmienky pou��vania"
+        "privacy" : "Ochrana osobných údajov",
+        "terms" : "Podmienky používania"
     }
 }
