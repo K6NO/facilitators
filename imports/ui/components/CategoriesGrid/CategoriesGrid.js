@@ -54,16 +54,17 @@ class CategoriesGrid extends React.Component {
         });
     }
 
-    handleSetCategory = (category) => {
+    handleSetCategory = (category, callback) => {
         this.props.history.push('/category/' + category.value);
+        callback(category);
         this.setState({
             single: true,
             category: category
         });
     }
-    handleResetCategory = () => {
+    handleResetCategory = (callback) => {
         this.props.history.push('/');
-
+        callback('');
         this.setState({
             single: false,
             category: {
@@ -72,7 +73,7 @@ class CategoriesGrid extends React.Component {
         });
     }
 
-    renderCategory = (category) => 
+    renderCategory = (category, callback) => 
         (
             <Col xs={12}
                 key={category.value}
@@ -94,13 +95,13 @@ class CategoriesGrid extends React.Component {
             </Col>
         );
 
-    renderCategories = () => getCategoriesGrid().map(category => (
+    renderCategories = (callback) => getCategoriesGrid().map(category => (
         <Col xs={12} sm={6} md={4}
             key={category.value}
             className="p-md-0">
             <div>
                 <StyledTitle>
-                    <StyledButton onClick={() => this.handleSetCategory(category)}>{category.text}</StyledButton>
+                    <StyledButton onClick={() => this.handleSetCategory(category, callback)}>{category.text}</StyledButton>
                 </StyledTitle>
             </div>
             <div>
@@ -111,13 +112,13 @@ class CategoriesGrid extends React.Component {
     ))
 
     render() {
-    const {category} = this.props;
+    const {category, callback} = this.props;
     return (
             <div className="CategoriesGrid">
                 <Row>
                     {category && category.value.length > 0
-                        ? this.renderCategory(category)    
-                        : this.renderCategories()}
+                        ? this.renderCategory(category, callback)    
+                        : this.renderCategories(callback)}
                 </Row>
             </div>
         )   
@@ -128,6 +129,7 @@ CategoriesGrid.propTypes = {
     category: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
+    callback: PropTypes.func.isRequired
 };
 
 export default withTracker(({match}) => {

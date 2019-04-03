@@ -41,7 +41,7 @@ class App extends React.Component {
       if(this.state.locale !== newLocale) {
         this.setState({
           locale: newLocale,
-        }, () => {console.log('App cdm, locale in state: ', this.state.locale)});
+        });
       }
     });
     this.updateWindowDimensions();
@@ -93,7 +93,7 @@ class App extends React.Component {
               {/* Editor */}
               <AllowedRole allowedRoles={['admin', 'user']} exact path="/editor" component={EditorPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
               
-              {/* User manager  */}
+              {/* Admin  */}
               <AllowedRoleAdmin allowedRoles={['admin']} exact path="/editor/admin" component={AdminPage} setAfterLoginPath={setAfterLoginPath} {...props} {...state}/>
               
               <Route component={NotFound} />

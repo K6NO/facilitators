@@ -48,12 +48,26 @@ class LandingPage extends React.Component {
       pageNum: 0,
     };
   };
+  /**
+   * This is a non-Reacty hack. An event listener is attached to another component (Navigation) in the DOM.
+   * This is needed, as otherwise the entire LandingPage state management would have to be moved to App.js.
+   * This could be solwed more elegantly with redux.
+   */
+  componentDidMount () {
+    const homepageLink = document.getElementsByClassName('navbar-brand')[0];
+    homepageLink.addEventListener('click', this.backToLanding);
+  }
+  componentWillUnmount () {
+    const homepageLink = document.getElementsByClassName('navbar-brand')[0];
+    homepageLink.addEventListener('click', this.backToLanding);
+  }
 
   setActivityId = (activityId) => {
     this.setState({
       ...this.state,
       activityId: activityId,
       singleActivity: true,
+      showAbout: false,
     });
   }
 
@@ -95,7 +109,15 @@ class LandingPage extends React.Component {
       showAbout: false,
       category: category
     })
-  } 
+  }
+
+  backToLanding = () => {
+    this.setState({
+      singleActivity: false,
+      showCategories: true,
+      showAbout: true
+    })
+  }
 
   handlePageNumber = (pageNumber) => {
     this.setState({
@@ -122,7 +144,7 @@ class LandingPage extends React.Component {
                 </StyledImageDiv>
               </SearchBoxRow>
               {this.state.showCategories ? 
-                <CategoriesGrid {...props}/> 
+                <CategoriesGrid {...props} callback={this.backToCategoriesGrid}/> 
               : ''}
               {!this.state.showCategories && !this.state.singleActivity
                 ? <Row>
@@ -148,9 +170,11 @@ class LandingPage extends React.Component {
                   </Row>
                 : ''}
             </Col>
-            <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
-              <AboutComponent isMobile={isMobile} />
-            </Col>
+            {this.state.showAbout 
+              ? <Col className="px-5 px-sm-0" xs={12} lg={{size: 10, offset: 2}} xl={{size: 8, offset: 4}}>
+                  <AboutComponent isMobile={isMobile} />
+                </Col>
+              : ''}
             </Row>
         </div>
         <div className="container-fluid">
