@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const StyledCard = styled(Col)`
     box-shadow: 0 1px 1px 0 #cccccc;
-    height: 150px;
+    min-height: 200px;
 `;
 const StyledOverlayDiv = styled.div`
     position: absolute;
@@ -21,6 +21,7 @@ const StyledImage = styled.img`
     width: 65px;
     height: 65px;
     border-radius: 5rem;
+    margin-top: 1rem;
 `;
 
 const StyledName = styled.p`
@@ -57,11 +58,11 @@ class ContributorsCard extends React.Component {
                 className="px-0 text-center" 
                 onMouseEnter={this.switchHover}
                 onMouseLeave={this.switchHover}>
-                <div>
+                {/* <div> */}
                     <StyledImage src={c.url} alt={`Picture of ${c.name}`}/>
                     <StyledName>{c.name}</StyledName>
                     <StyledOrg>{c.organisation}</StyledOrg>
-                </div>
+                {/* </div> */}
                 
                 {this.state.hover ? <StyledOverlayDiv>{c.text}</StyledOverlayDiv> : ''}
             </StyledCard>

@@ -26,17 +26,18 @@ class ContributorsComponent extends React.Component {
         const { isMobile } = this.props;
         
         return (
-            <Row>
-                 <Col xs={12}>
-                    <StyledTitle>{i18n.__('about.contributors')}</StyledTitle>
-                </Col>
-                <Col xs={12}>
-                {getContributors().map(c => 
-                    <ContributorsCard key={c.name} c={c} isMobile={isMobile} />
-                )}
-                </Col>
-            </Row>
-            
+            <div>
+                <Row>
+                    <Col xs={12}>
+                        <StyledTitle>{i18n.__('about.contributors')}</StyledTitle>
+                    </Col>
+                </Row>
+                <Row className="justify-content-center">
+                    {getContributors().map(c => 
+                        <ContributorsCard key={c.name} c={c} isMobile={isMobile} />
+                    )}
+                </Row>
+            </div>
         )
     }
 }

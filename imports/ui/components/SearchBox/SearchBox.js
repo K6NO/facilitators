@@ -21,7 +21,9 @@ class SearchBox extends React.Component{
         detailed: false,
     }
   }
-
+    /**
+     * Render fields for normal search
+     */
     renderSearchBoxValues = (updateSearchCallback) => getSearchBoxValues().map(boxValue => 
         <Col xs={12} sm={6} key={boxValue.name} className="py-2 pr-0">
             <MultiSelector
@@ -34,7 +36,9 @@ class SearchBox extends React.Component{
                 custom={false} />
         </Col>
     )
-
+    /**
+     * Render fields for detailed search
+     */
     renderDetailedSearchBoxValues = (updateSearchCallback) => getDetailedSearchBoxValues().map(boxValue => 
         <Col xs={12} key={boxValue.name} className="py-2 pr-0">
             <MultiSelector
@@ -48,6 +52,9 @@ class SearchBox extends React.Component{
         </Col>
     )
     
+    /**
+     * Switches between normal and detailed search
+     */
     switchDetailedSearch = () => {
         this.setState({
             detailed: !this.state.detailed
@@ -60,29 +67,28 @@ class SearchBox extends React.Component{
    
     return (
         <div className="SearchBox">
-                <Row>
-                    <Col>
-                        <SearchTitle>{i18n.__('searchbox.title')}</SearchTitle>
-                    </Col>
+            <Row>
+                <Col>
+                    <SearchTitle>{i18n.__('searchbox.title')}</SearchTitle>
+                </Col>
+            </Row>
+            <Row className="mt-2">
+                {this.renderSearchBoxValues(updateSearchCallback)}
+            </Row>
+            {this.state.detailed 
+                ? <Row>
+                    {this.renderDetailedSearchBoxValues(updateSearchCallback)}
                 </Row>
-                <Row className="mt-2">
-                    {this.renderSearchBoxValues(updateSearchCallback)}
-                </Row>
-                {this.state.detailed 
-                    ? <Row>
-                        {this.renderDetailedSearchBoxValues(updateSearchCallback)}
-                    </Row>
                 : ''}
-                
-                <Row >
-                    <Col className="mt-2 text-right">
-                        <SearchButton
-                            searchCallback={searchCallback} />
-                        <DetailedSearchButton 
-                            detailed={this.state.detailed}
-                            callback={this.switchDetailedSearch} />
-                    </Col>
-                </Row>
+            <Row >
+                <Col className="mt-2 text-right">
+                    <SearchButton
+                        searchCallback={searchCallback} />
+                    <DetailedSearchButton 
+                        detailed={this.state.detailed}
+                        callback={this.switchDetailedSearch} />
+                </Col>
+            </Row>
         </div>
     );
   }

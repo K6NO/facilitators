@@ -9,7 +9,6 @@ import { getOrganisations, getSponsors } from '../../../modules/get-select-trans
 
 const StyledPartnersComponent = styled(Row)`
     margin-top: 5rem;
-    margin-bottom: 5rem;
     text-align: center;
 `;
 const StyledTitle = styled.h1`
@@ -46,28 +45,33 @@ class PartnersComponent extends React.Component {
         const partners = getOrganisations();
         const sponsors = getSponsors();
         return (
-            <StyledPartnersComponent>
-                <Col className="align-self-end">
-                    <StyledTitle>{i18n.__('about.organisations')}</StyledTitle>
-                </Col>
-                <Col xs={12}>
+            <div>
+                <StyledPartnersComponent className="justifiy-content-center">
+                    <Col>
+                        <StyledTitle>{i18n.__('about.organisations')}</StyledTitle>
+                    </Col>
+                </StyledPartnersComponent>
+                <Row>
                     {partners.map(p => 
                         <PartnerCard key={p.name} p={p} isMobile={isMobile} />
                     )}
-                </Col>
-                <Col>
-                    <StyledTitleSponsor>{i18n.__('about.sponsor')}</StyledTitleSponsor>
-                </Col>
-                <Col xs={12} >
-                    {sponsors.map(s => 
-                        <SponsorCard key={s.name} s={s} isMobile={isMobile} />
-                    )}
-                </Col>
-                <StyledImageDiv isMobile={isMobile}>
-                    <StyledImage src="/img/ui/orgs.png" alt="Organisations illustration"/>
-                </StyledImageDiv>  
-   
-            </StyledPartnersComponent>
+                </Row>
+                <Row>
+                    <Col>
+                        <StyledTitleSponsor>{i18n.__('about.sponsor')}</StyledTitleSponsor>
+                    </Col>
+                </Row>
+                <Row style={{marginBottom: '5rem'}}>
+                    <Col xs={12} >
+                        {sponsors.map(s => 
+                            <SponsorCard key={s.name} s={s} isMobile={isMobile} />
+                        )}
+                    </Col>
+                    <StyledImageDiv isMobile={isMobile}>
+                        <StyledImage src="/img/ui/orgs.png" alt="Organisations illustration"/>
+                    </StyledImageDiv>        
+                </Row>
+            </div>
         )
     }
 }

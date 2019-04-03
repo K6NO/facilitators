@@ -41,6 +41,7 @@ class LandingPage extends React.Component {
       activityId: '',
       singleActivity: false,
       showCategories: true,
+      showAbout: true,
       searchObject: {},
       filterObject: {},
       pageSize: 9,
@@ -57,12 +58,15 @@ class LandingPage extends React.Component {
   }
 
   updateSearchObject = (key, value) => {
+    // update the searchObject - does not run search
     this.setState({
         searchObject : {
             ...this.state.searchObject,
             [key]: value
         },
         singleActivity : false,
+        showCategories: false,
+        showAbout: false,
     });
   }
 
@@ -72,6 +76,7 @@ class LandingPage extends React.Component {
       filterObject : this.state.searchObject,
       pageNum: 0,
       showCategories: false,
+      showAbout: false,
     });
   }
 
@@ -79,6 +84,7 @@ class LandingPage extends React.Component {
     this.setState({
       singleActivity: false,
       showCategories: false,
+      showAbout: false,
     });
   }
 
@@ -86,6 +92,7 @@ class LandingPage extends React.Component {
     this.setState({
       singleActivity: false,
       showCategories: true,
+      showAbout: false,
       category: category
     })
   } 
