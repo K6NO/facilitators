@@ -30,7 +30,7 @@ class EditorCategoriesComponent extends React.Component {
     render() {
         const categoryArray = getCategoryArray();
         return (
-            <div className="EditorCategoriesComponent">
+            <div className="EditorCategoriesComponent" style={{fontSize: '1.2rem'}}>
                  <Select 
                     className="basic-single CategorySelector"
                     classNamePrefix="category-edit"

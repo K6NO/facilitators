@@ -84,7 +84,8 @@
         "16" : "tag 17",
         "17" : "tag 18",
         "18" : "tag 19",
-        "19" : "tag 20"
+        "19" : "tag 20",
+        "21" : "outdoor"
     },
     "categories" : {
         "footprint" : "Ecological footpring",

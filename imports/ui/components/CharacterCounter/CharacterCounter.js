@@ -6,11 +6,11 @@ const styles = {
   counter: {
     height: 11,
     position: "relative",
-    top: "3px",
-    left: "93%",
-    fontSize: 12,
+    top: "-15px",
+    left: "90%",
+    fontSize: '12px',
     lineHeight: '11px',
-    color: '#FFFFFF',
+    color: '#333',
   },
 }
 
@@ -33,10 +33,12 @@ export default class CharacterCounter extends React.Component {
 
   render() {
 
-    const { valueLength } = this.state
-    const { children, style } = this.props
-    const maxLength = (['text', 'email', 'password', 'textarea'].includes(children.props.type)) && children.props.maxLength ? children.props.maxLength : false
-
+    const { valueLength } = this.state;
+    const { children, style } = this.props;
+    
+    const maxLength = children.props.maxLength;
+    // (['text', 'email', 'password', 'textarea'].includes(children.props.type)) && children.props.maxLength ? children.props.maxLength : false
+    
     return (
       <div ref={div => this.container = div}>
         {children}

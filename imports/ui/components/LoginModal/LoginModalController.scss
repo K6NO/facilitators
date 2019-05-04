@@ -25,6 +25,7 @@
   top: 4rem;
   left: 3rem;
   right: 3rem;
+  bottom: 4rem;
   background: white;
   border-radius: 25px;
   margin-bottom: 1rem;
@@ -36,16 +37,19 @@
     top: 4rem;
     left: 20rem;
     right: 20rem;
+    bottom: 4rem;
    }
    @include breakpoint(desktop) {
     top: 4rem;
     left: 35rem;
     right: 35rem;
+    bottom: 4rem;
    }
    @include breakpoint(desktop-large) {
     top: 4rem;
     left: 40rem;
     right: 40rem;
+    bottom: 4rem;
    }
 }
 

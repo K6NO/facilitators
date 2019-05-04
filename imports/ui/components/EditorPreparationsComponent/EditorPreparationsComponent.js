@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
+import CharacterCounter from '../CharacterCounter/CharacterCounter';
 
 class EditorPreparationsComponent extends React.Component {
     constructor(props){
@@ -59,12 +60,14 @@ class EditorPreparationsComponent extends React.Component {
                 : <Row className="EditorPreparationsComponent">
                     <Col>
                         {renderActivityBodyField('pause-circle', 'activity.preparations')}
-                        <StyledTextarea
-                            ref={textarea => textarea && textarea.focus()}
-                            value={this.state.preparations}
-                            onChange={this.updatePreps}
-                            onBlur={this.savePreps} />
-
+                        <CharacterCounter>
+                            <StyledTextarea
+                                ref={textarea => textarea && textarea.focus()}
+                                value={this.state.preparations}
+                                onChange={this.updatePreps}
+                                maxLength={400}
+                                onBlur={this.savePreps} />
+                        </CharacterCounter>
                     </Col>
                 </Row>
         )

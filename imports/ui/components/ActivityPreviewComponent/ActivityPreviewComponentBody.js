@@ -31,6 +31,7 @@ const StyledTagsWrapper = styled(Col)`
     margin-top: 1rem;
     margin-bottom: 1rem;
     min-height: 50px;
+    display: inline-block;
 `;
 
 class ActivityPreviewComponentBody extends React.Component {

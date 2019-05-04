@@ -86,7 +86,8 @@
         "17" : "team",
         "18" : "tolerance",
         "19" : "trust",
-        "20" : "visualization"
+        "20" : "visualization",
+        "21" : "outdoor"
     },
     "categories" : {
         "footprint" : "Ecological footprint",

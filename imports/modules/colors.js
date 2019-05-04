@@ -9,7 +9,4 @@ export const Colors = {
     },
     text: "rgba(0, 0, 0, 0.7)",
     textDark: "#333333"
-
-    
-    
 }

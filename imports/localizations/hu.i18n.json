@@ -85,7 +85,8 @@
         "17" : "csoport",
         "18" : "tolerancia",
         "19" : "bizalom",
-        "20" : "vizualizáció"
+        "20" : "vizualizáció",
+        "21" : "szabadtér"
     },
     "categories" : {
         "footprint" : "Környezeti lábnyom",

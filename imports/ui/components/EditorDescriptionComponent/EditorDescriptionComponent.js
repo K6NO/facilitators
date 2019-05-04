@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
+import CharacterCounter from '../CharacterCounter/CharacterCounter';
 import { StyledTallTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 
 class EditorDescriptionComponent extends React.Component {
@@ -60,13 +61,16 @@ class EditorDescriptionComponent extends React.Component {
                 : <Row className="EditorDescriptionComponent">
                     <Col>
                         {renderActivityBodyField('align-left', 'activity.description')}
-                        <StyledTallTextarea
-                            ref={descriptionTextarea => descriptionTextarea && descriptionTextarea.focus()}
-                            className="activitydescriptionEditing"
-                            value={this.state.description}
-                            onChange={this.updateDescription}
-                            onBlur={this.saveDescription} />
-
+                        <CharacterCounter>
+                            <StyledTallTextarea
+                                ref={descriptionTextarea => descriptionTextarea && descriptionTextarea.focus()}
+                                className="activitydescriptionEditing"
+                                value={this.state.description}
+                                onChange={this.updateDescription}
+                                onBlur={this.saveDescription}
+                                maxLength={10000}
+                                />
+                        </CharacterCounter>
                     </Col>
                 </Row>
         )

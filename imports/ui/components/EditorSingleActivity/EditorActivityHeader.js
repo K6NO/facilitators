@@ -9,6 +9,12 @@ import EditorPublicCBComponent from '../EditorPublicCBComponent/EditorPublicCBCo
 import RenderEmailLink from './RenderEmailLink';
 import EditorLanguageSelector from '../EditorLanguageSelector/EditorLanguageSelector';
 import EditorLanguageCBWrapper from '../EditorLanguageCBWrapper/EditorLanguageCBWrapper';
+import styled from 'styled-components';
+
+const StyledText = styled.p`
+    color: #ffffff;
+
+`;
 
 import './EditorActivityHeader.scss';
 
@@ -38,8 +44,7 @@ class EditorActivityHeader extends React.Component {
                                 language={language}
                                 selectLanguageCallback={this.props.selectLanguageCallback}
                             />
-                            <EditorLanguageCBWrapper 
-                            activity={activity} />
+                            
                         <EditorTitleComponent
                             activity={activity}
                             language={language} />
@@ -52,7 +57,12 @@ class EditorActivityHeader extends React.Component {
                     </Col>
                     <Col sm="6" className="text-right pt-3" style={this.setBackground(color)}>
                         {showPublishChekbox 
-                        ? <EditorPublicCBComponent activity={activity} />
+                        ? <div className="text-center">
+                            <EditorPublicCBComponent activity={activity} />
+                            <StyledText>Published language versions: </StyledText>
+                            <EditorLanguageCBWrapper 
+                            activity={activity} />
+                            </div>
                         : <RenderEmailLink activity={activity} />
                         }
                     </Col>

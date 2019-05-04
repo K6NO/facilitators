@@ -8,6 +8,7 @@ import OAuthLoginButtons from '../../components/OAuthLoginButtons/OAuthLoginButt
 import InputHint from '../../components/InputHint/InputHint';
 import validate from '../../../modules/validate';
 import './SignupComponent.scss';
+import { StyledImage } from './StyledComponents'
 
 const StyledCheckboxLabel = styled.span`
       white-space: normal;

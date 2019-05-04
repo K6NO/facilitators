@@ -39,6 +39,7 @@ const StyledButton = styled.button`
 const StyledTagBadge = styled(Badge)`
     display: inline-block;
     margin-right: 1rem;
+    font-size: 11px!important;
     padding: .25rem 1rem!important;
     border-radius: .25rem;
     border-radius: 10rem;   
@@ -61,7 +62,7 @@ class EditorTagsComponent extends React.Component {
 
     getTags = () => {
         const tagsArray = [];
-        for (let i=0; i<20; i++) {
+        for (let i=0; i<22; i++) {
             tagsArray.push({value: i, label: i18n.__(`tags.${i}`)});
         }
         return tagsArray;

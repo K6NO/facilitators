@@ -10,6 +10,7 @@ const StyledLabel = styled.label`
     font-size: 1.3rem;
     font-weight: 400;
     color: #ffffff;
+    text-transform: uppercase;
 `;
 
 class EditorLanguageCB extends React.Component {

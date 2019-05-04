@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
-
+import CharacterCounter from '../CharacterCounter/CharacterCounter';
 
 class EditorToolsComponent extends React.Component {
     constructor(props){
@@ -60,13 +60,16 @@ class EditorToolsComponent extends React.Component {
                 : <Row className="EditorToolsComponent">
                     <Col>
                         {renderActivityBodyField('wrench', 'activity.tools')}
-                        <StyledTextarea
-                            ref={toolsTextarea => toolsTextarea && toolsTextarea.focus()}
-                            className="activityToolsEditing"
-                            value={this.state.tools}
-                            onChange={this.updateTools}
-                            onBlur={this.saveTools} />
-
+                        <CharacterCounter>
+                            <StyledTextarea
+                                ref={toolsTextarea => toolsTextarea && toolsTextarea.focus()}
+                                className="activityToolsEditing"
+                                value={this.state.tools}
+                                onChange={this.updateTools}
+                                maxLength={400}
+                                name="tools"
+                                onBlur={this.saveTools} />
+                        </CharacterCounter>
                     </Col>
                 </Row>
         )

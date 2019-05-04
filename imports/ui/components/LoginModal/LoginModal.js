@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import SignupComponent from './SignupComponent';
 import LoginComponent from './LoginComponent';
 import { Button, Row, Col } from 'reactstrap';
+import { StyledImage } from './StyledComponents'
 
 import './LoginModal.scss';
+
 
 
 class LoginModal extends React.Component {
@@ -36,8 +38,8 @@ class LoginModal extends React.Component {
                             <img className="crossImage" src="/img/ui/icon_cross_dark.svg" alt="closeIcon"/>
                         </Button>
                     </Col>
-                    <Col xs="12">
-                        <img src="/img/ui/logo@0.15x.png"/>
+                    <Col xs="12 text-center">
+                        <StyledImage src="/img/ui/logo@0.15x.png"/>
                     </Col>
                 </Row>
                 {this.state.which === 'login' &&
@@ -45,7 +47,7 @@ class LoginModal extends React.Component {
                     <Col className="switchButtonHolder" xs="12">
                         <LoginComponent />
                         <Button className="SwitchButton" onClick={this.switchToSignupCallback}>
-                            No account? Sign Up.
+                            No account? Sigdfsfsfs n Up.
                         </Button>
                     </Col>
                 </Row>

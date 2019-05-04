@@ -1,10 +1,10 @@
 {
     "title": {
-        "en-US" : "No EN translation - title",
-        "es" : "No ES translation - title",
-        "hu" : "No HU translation - title",
-        "ro" : "No RO translation - title",
-        "sk" : "No SK translation - title"
+        "en-US" : "Click here to give a title in English",
+        "es" : "Click here to give a title in Spanish",
+        "hu" : "Click here to give a title in Hungarian",
+        "ro" : "Click here to give a title in Romanian",
+        "sk" : "Click here to give a title in Slovak"
     },
     "description" : {
         "en-US" : "No EN translation -  description",

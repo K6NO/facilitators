@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import styled from 'styled-components';
 import { Colors } from '../../../modules/colors';
+const StyledTitle = styled.h2`
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+    color: #ffffff;
+`;
 const StyledInput = styled.input`
     font-family: 'Amatic SC', cursive;
     font-size: 2rem;
@@ -14,6 +21,7 @@ const StyledInput = styled.input`
         background: #ffffffaa;
         outline: none;
         border: 1px solid white;
+        color: ${Colors.textDark};
     }
 `;
 
@@ -67,9 +75,10 @@ class EditorTitleComponent extends React.Component {
                     onChange={this.updateTitle}
                     onBlur={this.saveTitle}
                     category={activity.category} />
-                : <h2 
+                : <StyledTitle 
                     className="activityTitle"
-                    onClick={this.startEditHandler}>{activity.title[language] || 'Click here to add a title'}</h2>}
+                    onClick={this.startEditHandler}>{activity.title[language] || 'Click here to add a title'}
+                </StyledTitle>}
             </div>
         )
     }

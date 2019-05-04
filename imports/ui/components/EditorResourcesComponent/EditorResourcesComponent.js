@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
+import CharacterCounter from '../CharacterCounter/CharacterCounter';
 import i18n from 'meteor/universe:i18n';
 
 class EditorResourcesComponent extends React.Component {
@@ -61,12 +62,15 @@ class EditorResourcesComponent extends React.Component {
                 : <Row className="EditorResourcesComponent">
                     <Col>
                         {renderActivityBodyField('book-open', 'activity.resources')}
-                        <StyledTextarea
-                            ref={resourcesTextarea => resourcesTextarea && resourcesTextarea.focus()}
-                            className="activityResourcesEditing"
-                            value={this.state.resources}
-                            onChange={this.updateResources}
-                            onBlur={this.saveResources} />
+                        <CharacterCounter>
+                            <StyledTextarea
+                                ref={resourcesTextarea => resourcesTextarea && resourcesTextarea.focus()}
+                                className="activityResourcesEditing"
+                                value={this.state.resources}
+                                onChange={this.updateResources}
+                                maxLength={400}
+                                onBlur={this.saveResources} />
+                        </CharacterCounter>
 
                     </Col>
                 </Row>

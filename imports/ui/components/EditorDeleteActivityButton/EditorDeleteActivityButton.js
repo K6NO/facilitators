@@ -10,14 +10,16 @@ class EditorDeleteActivityButton extends React.Component{
   }
     
   deleteActivity = () => {
-      const { activity } = this.props;
-      Meteor.call('activities.remove', activity, (error) => {
-          if(error) {
-              Bert.alert(error.message, 'danger');
-          } else {
-              Bert.alert('Activity deleted', 'success');
-          }
-      });
+    if (confirm('Delete activity? This is permanent!')) {  
+        const { activity } = this.props;
+        Meteor.call('activities.remove', activity, (error) => {
+            if(error) {
+                Bert.alert(error.message, 'danger');
+            } else {
+                Bert.alert('Activity deleted', 'success');
+            }
+        });
+    }
   }
   render () {
       const { activity, userId } = this.props;

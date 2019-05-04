@@ -85,7 +85,8 @@
     "17" : "echipă",
     "18" : "toleranţă",
     "19" : "încredere",
-    "20" : "vizualizare"
+    "20" : "vizualizare",
+    "21" : "outdoor"
 },
   "categories": {
     "footprint": "Amprenta ecologicp",
