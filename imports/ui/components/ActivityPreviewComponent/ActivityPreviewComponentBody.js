@@ -19,6 +19,8 @@ const Text = styled.span`
 const StyledBadge = styled(BasicStyledBadge)`
       border: ${props => `1px solid ${props.color}`};
       text-transform: uppercase;
+      display: inline-flex;
+      margin: .5rem;
 `;
 
 const StyledSelectButton = styled(BasicStyledButton)`

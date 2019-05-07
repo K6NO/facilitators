@@ -47,7 +47,7 @@ class LoginModal extends React.Component {
                     <Col className="switchButtonHolder" xs="12">
                         <LoginComponent />
                         <Button className="SwitchButton" onClick={this.switchToSignupCallback}>
-                            No account? Sigdfsfsfs n Up.
+                            No account? Sign Up Here
                         </Button>
                     </Col>
                 </Row>
@@ -57,7 +57,7 @@ class LoginModal extends React.Component {
                     <Col className="switchButtonHolder" xs="12">
                         <SignupComponent history={history}/>
                         <Button className="SwitchButton" onClick={this.switchToLoginCallback}>
-                            Have an account? Login.
+                            Have an account? Login Here
                         </Button>
                     </Col>
                 </Row>
