@@ -6,7 +6,7 @@ export default (options, user) => {
   const OAuthProfile = getOAuthProfile(options, user);
 
   const applicationName = 'Ecofacilitators';
-  const firstName = OAuthProfile ? OAuthProfile.name.first : options.profile.name.first;
+  const firstName = OAuthProfile ? OAuthProfile.name.first : options.profile.username;
   const emailAddress = OAuthProfile ? OAuthProfile.email : options.email;
 
   return sendEmail({
