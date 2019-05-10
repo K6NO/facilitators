@@ -5,6 +5,7 @@ import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
 import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
 import CharacterCounter from '../CharacterCounter/CharacterCounter';
+import EditorRTE from '../EditorRTE/EditorRTE';
 
 class EditorToolsComponent extends React.Component {
     constructor(props){
@@ -22,16 +23,16 @@ class EditorToolsComponent extends React.Component {
         }
     }
 
-    updateTools = (e) => {
-        this.setState({tools: e.target.value})
-    }
+    // updateTools = (e) => {
+    //     this.setState({tools: e.target.value})
+    // }
 
-    saveTools = () => {        
+    saveTools = (value) => {        
         const activityId = this.props.activity._id;
         const { language } = this.props;
 
         Meteor.call('activities.updateLangAttributes', 
-        activityId, 'tools', language, this.state.tools,
+        activityId, 'tools', language, value,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -52,24 +53,28 @@ class EditorToolsComponent extends React.Component {
                     <Col
                         onClick={()=> this.setState({editing: true})}>
                         {renderActivityBodyField('wrench', 'activity.tools')}
-                        <p>
-                            {activity.tools[`${language}`]}
-                        </p>
+                        <div dangerouslySetInnerHTML={{__html: activity.tools[`${language}`]}}>
+                        </div>
                     </Col>
                 </Row>
                 : <Row className="EditorToolsComponent">
                     <Col>
                         {renderActivityBodyField('wrench', 'activity.tools')}
-                        <CharacterCounter>
-                            <StyledTextarea
+                        {/* <CharacterCounter> */}
+                            <EditorRTE
+                                startValue={this.props.activity.tools[this.props.language]}
+                                saveCallback={this.saveTools}
+                                maxValue={400}
+                             /> 
+                            {/* <StyledTextarea
                                 ref={toolsTextarea => toolsTextarea && toolsTextarea.focus()}
                                 className="activityToolsEditing"
                                 value={this.state.tools}
                                 onChange={this.updateTools}
                                 maxLength={400}
                                 name="tools"
-                                onBlur={this.saveTools} />
-                        </CharacterCounter>
+                                onBlur={this.saveTools} /> */}
+                        {/* </CharacterCounter> */}
                     </Col>
                 </Row>
         )

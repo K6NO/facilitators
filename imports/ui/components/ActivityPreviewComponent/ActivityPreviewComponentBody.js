@@ -21,6 +21,9 @@ const StyledBadge = styled(BasicStyledBadge)`
       text-transform: uppercase;
       display: inline-flex;
       margin: .5rem;
+      font-size: 8px;
+        font-weight: bold;
+        padding: .3rem .8rem;
 `;
 
 const StyledSelectButton = styled(BasicStyledButton)`
@@ -75,7 +78,7 @@ class ActivityPreviewComponentBody extends React.Component {
                             <Col xs="2" className="pt-2">
                                 {this.renderActivityField('address-card', 'activity.age')}
                             </Col>
-                            <Col xs="10" >
+                            <Col xs="10 my-auto" >
                                 <Text>{i18n.__(`activity.${activity.age}`)}</Text>
                             </Col>
                         </Row>
@@ -83,7 +86,7 @@ class ActivityPreviewComponentBody extends React.Component {
                             <Col xs="2" className="pt-2">
                                 {this.renderActivityField('clock', 'activity.time')}
                             </Col>
-                            <Col xs="10" >
+                            <Col xs="10 my-auto" >
                                 <Text>{i18n.__(`activity.${activity.time}`)}</Text>
                             </Col>
                         </Row>
@@ -91,12 +94,12 @@ class ActivityPreviewComponentBody extends React.Component {
                             <Col xs="2" className="pt-2">
                                 {this.renderActivityField('users', 'activity.group')}
                             </Col>
-                            <Col xs="10" >
+                            <Col xs="10 my-auto" >
                                 <Text>{i18n.__(`activity.${activity.group}`)}</Text>
                             </Col>
                         </Row>
                     </Col>
-                    <StyledTagsWrapper xs="11">
+                    <StyledTagsWrapper xs="12">
                         {this.renderTags(activity, color)}
                     </StyledTagsWrapper>
                 </Row>

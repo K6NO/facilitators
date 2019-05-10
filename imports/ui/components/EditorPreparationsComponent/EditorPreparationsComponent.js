@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
-import CharacterCounter from '../CharacterCounter/CharacterCounter';
+import EditorRTE from '../EditorRTE/EditorRTE';
 
 class EditorPreparationsComponent extends React.Component {
     constructor(props){
@@ -22,15 +21,11 @@ class EditorPreparationsComponent extends React.Component {
         }
     }
 
-    updatePreps = (e) => {
-        this.setState({preparations: e.target.value})
-    }
-
-    savePreps = () => {        
+    savePreps = (value) => {        
         const activityId = this.props.activity._id;
         const { language } = this.props;
         Meteor.call('activities.updateLangAttributes', 
-        activityId, 'preparations', language, this.state.preparations,
+        activityId, 'preparations', language, value,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -52,22 +47,18 @@ class EditorPreparationsComponent extends React.Component {
                     <Col
                         onClick={()=> this.setState({editing: true})}>
                         {renderActivityBodyField('pause-circle', 'activity.preparations')}
-                        <p>
-                            {activity.preparations[`${language}`]}
-                        </p>
+                        <div dangerouslySetInnerHTML={{__html: activity.preparations[`${language}`]}}>
+                        </div>
                     </Col>
                 </Row>
                 : <Row className="EditorPreparationsComponent">
                     <Col>
                         {renderActivityBodyField('pause-circle', 'activity.preparations')}
-                        <CharacterCounter>
-                            <StyledTextarea
-                                ref={textarea => textarea && textarea.focus()}
-                                value={this.state.preparations}
-                                onChange={this.updatePreps}
-                                maxLength={400}
-                                onBlur={this.savePreps} />
-                        </CharacterCounter>
+                        <EditorRTE
+                            startValue={this.props.activity.preparations[this.props.language]}
+                            saveCallback={this.savePreps}
+                            maxValue={400}
+                        /> 
                     </Col>
                 </Row>
         )

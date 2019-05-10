@@ -105,27 +105,27 @@ Activities.schema = new SimpleSchema({
     description: Object,
     'description.en-US': {
         type: String,
-        max: 10000,
+        
         label: "Activity description. Max. 10000 chars."
     },
     'description.es': {
         type: String,
-        max: 10000,
+        
         label: "Activity description. Max. 10000 chars."
     },
     'description.hu': {
         type: String,
-        max: 10000,
+        
         label: "Activity description. Max. 10000 chars."
     },
     'description.ro': {
         type: String,
-        max: 10000,
+        
         label: "Activity description. Max. 10000 chars"
     },
     'description.sk': {
         type: String,
-        max: 10000,
+        
         label: "Activity description. Max. 10000 chars."
     },
     category: {
@@ -151,105 +151,99 @@ Activities.schema = new SimpleSchema({
     preparations: Object,
     'preparations.en-US': {
         type: String,
-        max: 400,
+        
         label: "Activity prep. Max. 400 chars.",
     },
     'preparations.es': {
         type: String,
-        max: 400,
+        
         label: "Activity prep. Max. 400 chars.",
     },
     'preparations.hu': {
         type: String,
-        max: 400,
+        
         label: "Activity prep. Max. 400 chars.",
     },
     'preparations.ro': {
         type: String,
-        max: 400,
+        
         label: "Activity prep. Max. 400 chars.",
     },
     'preparations.sk': {
         type: String,
-        max: 400,
+        
         label: "Activity prep. Max. 400 chars.",
     },
     objectives: Object, 
     'objectives.en-US': {
         type: String,
-        max: 400,
+        
         label: "Activity objectives. Max. 400 chars.",
     },
     'objectives.es': {
         type: String,
-        max: 400,
+        
         label: "Activity objectives. Max. 400 chars.",
     },
     'objectives.hu': {
         type: String,
-        max: 400,
+        
         label: "Activity objectives. Max. 400 chars.",
     },
     'objectives.ro': {
         type: String,
-        max: 400,
+        
         label: "Activity objectives. Max. 400 chars.",
     },
     'objectives.sk': {
         type: String,
-        max: 400,
+        
         label: "Activity objectives. Max. 400 chars.",
     },
     tools: Object,
     'tools.en-US': {
         type: String,
-        max: 400,
+        
         label: "Activity tools. Max. 400 chars.",
     },
     'tools.es': {
         type: String,
-        max: 400,
+        
         label: "Activity tools. Max. 400 chars.",
     },
     'tools.hu': {
         type: String,
-        max: 400,
+        
         label: "Activity objectives. Max. 400 chars.",
     },
     'tools.ro': {
         type: String,
-        max: 400,
+        
         label: "Activity tools. Max. 400 chars.",
     },
     'tools.sk': {
         type: String,
-        max: 400,
         label: "Activity tools. Max. 400 chars.",
     },
     resources: Object,
     'resources.en-US': {
         type: String,
-        max: 400,
         label: "Activity tools. Max. 400 chars.",
     },
     'resources.es': {
         type: String,
-        max: 400,
         label: "Activity tools. Max. 400 chars.",
     },
     'resources.hu': {
         type: String,
-        max: 400,
         label: "Activity objectives. Max. 400 chars.",
     },
     'resources.ro': {
         type: String,
-        max: 400,
         label: "Activity tools. Max. 400 chars.",
     },
     'resources.sk': {
         type: String,
-        max: 400,
         label: "Activity resources. Max. 400 chars.",
     },
     images: { 

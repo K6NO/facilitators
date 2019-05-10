@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-import CharacterCounter from '../CharacterCounter/CharacterCounter';
-import { StyledTallTextarea } from '../EditorStyledComponents/EditorStyledComponets';
+import EditorRTE from '../EditorRTE/EditorRTE';
+import SimpleCharCounter from '../CharacterCounter/SimpleCharCounter';
 
 class EditorDescriptionComponent extends React.Component {
     constructor(props){
@@ -21,18 +21,13 @@ class EditorDescriptionComponent extends React.Component {
             })
         }
     }
-    
 
-    updateDescription = (e) => {
-        this.setState({description: e.target.value})
-    }
-
-    saveDescription = () => {        
+    saveDescription = (value) => {        
         const activityId = this.props.activity._id;
         const { language } = this.props;
 
         Meteor.call('activities.updateLangAttributes', 
-        activityId, 'description', language, this.state.description,
+        activityId, 'description', language, value,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -47,30 +42,27 @@ class EditorDescriptionComponent extends React.Component {
 
     render() {
         const { activity, language } = this.props;
+    
         return (
                 !this.state.editing ? 
                 <Row className="EditorDescriptionComponent">
                     <Col
                         onClick={()=> this.setState({editing: true})}>
                         {renderActivityBodyField('align-left', 'activity.description')}
-                        <p>
-                            {activity.description[`${language}`]}
-                        </p>
+                        <div dangerouslySetInnerHTML={{__html: activity.description[`${language}`]}}>
+                            
+                        </div>
+                    
                     </Col>
                 </Row>
                 : <Row className="EditorDescriptionComponent">
                     <Col>
                         {renderActivityBodyField('align-left', 'activity.description')}
-                        <CharacterCounter>
-                            <StyledTallTextarea
-                                ref={descriptionTextarea => descriptionTextarea && descriptionTextarea.focus()}
-                                className="activitydescriptionEditing"
-                                value={this.state.description}
-                                onChange={this.updateDescription}
-                                onBlur={this.saveDescription}
-                                maxLength={10000}
-                                />
-                        </CharacterCounter>
+                        <EditorRTE
+                            startValue={this.props.activity.description[this.props.language]}
+                            saveCallback={this.saveDescription}
+                            maxValue={10000}
+                        />
                     </Col>
                 </Row>
         )

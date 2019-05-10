@@ -33,6 +33,7 @@ class App extends React.Component {
     this.state = {
       afterLoginPath: null,
       locale: i18n.getLocale(),
+      isMobile: false
     };
   }
 

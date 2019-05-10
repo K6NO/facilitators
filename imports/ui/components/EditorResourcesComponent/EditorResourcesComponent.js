@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Row, Col } from 'reactstrap';
 import renderActivityBodyField from '../EditorSingleActivity/renderActivityBodyField';
-import { StyledTextarea } from '../EditorStyledComponents/EditorStyledComponets';
-import CharacterCounter from '../CharacterCounter/CharacterCounter';
+import EditorRTE from '../EditorRTE/EditorRTE';
 import i18n from 'meteor/universe:i18n';
 
 class EditorResourcesComponent extends React.Component {
@@ -22,18 +21,13 @@ class EditorResourcesComponent extends React.Component {
             })
         }
     }
-    
 
-    updateResources = (e) => {
-        this.setState({resources: e.target.value})
-    }
-
-    saveResources = () => {        
+    saveResources = (value) => {        
         const activityId = this.props.activity._id;
         const { language } = this.props;
 
         Meteor.call('activities.updateLangAttributes', 
-        activityId, 'resources', language, this.state.resources,
+        activityId, 'resources', language, value,
         (error) => {
             if(error) {
                 Bert.alert(error.reason, 'danger');
@@ -54,24 +48,18 @@ class EditorResourcesComponent extends React.Component {
                     <Col
                         onClick={()=> this.setState({editing: true})}>
                         {renderActivityBodyField('book-open', 'activity.resources')}
-                        <p>
-                            {activity.resources[`${language}`]}
-                        </p>
+                        <div dangerouslySetInnerHTML={{__html: activity.resources[`${language}`]}}>
+                        </div>
                     </Col>
                 </Row>
                 : <Row className="EditorResourcesComponent">
                     <Col>
                         {renderActivityBodyField('book-open', 'activity.resources')}
-                        <CharacterCounter>
-                            <StyledTextarea
-                                ref={resourcesTextarea => resourcesTextarea && resourcesTextarea.focus()}
-                                className="activityResourcesEditing"
-                                value={this.state.resources}
-                                onChange={this.updateResources}
-                                maxLength={400}
-                                onBlur={this.saveResources} />
-                        </CharacterCounter>
-
+                        <EditorRTE
+                            startValue={this.props.activity.resources[this.props.language]}
+                            saveCallback={this.saveResources}
+                            maxValue={400}
+                        /> 
                     </Col>
                 </Row>
         )

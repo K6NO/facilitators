@@ -22,10 +22,6 @@ class AuthenticatedNavigation extends React.Component {
     history.push('/');
   }
 
-  // handleScoreboardClick = () => {
-  //   eventAnalytics.registerEvent('Users', 'Visit Profile page');
-  // }
-
   render() {
     const { navbarCallback, isMobile, ...props } = this.props;
     const user = Meteor.user();

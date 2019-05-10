@@ -68,8 +68,7 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 {this.renderActivityField('pause-circle', 'activity.preparations')}
-                                <p>
-                                    {activity.preparations[locale]}
+                                <p dangerouslySetInnerHTML={{__html: activity.preparations[locale]}}>
                                 </p>
                             </Col>
                         </Row>
@@ -78,16 +77,16 @@ class ActivityComponentBody extends React.Component {
                         <Row>
                             <Col>
                                 {this.renderActivityField('bullseye', 'activity.objectives')}
-                                <p>
-                                    {activity.objectives[locale]}
+                                <p dangerouslySetInnerHTML={{__html: activity.objectives[locale]}}>
+                                    
                                 </p>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                             {this.renderActivityField('wrench', 'activity.tools')}
-                                <p>
-                                    {activity.tools[locale]}
+                                <p dangerouslySetInnerHTML={{__html: activity.tools[locale]}}>
+                                    
                                 </p>
                             </Col>
                         </Row>
@@ -96,9 +95,9 @@ class ActivityComponentBody extends React.Component {
                 <StyledRow>
                     <Col sm="6" className="pt-3">
                     {this.renderActivityField('align-left', 'activity.description')}
-                        <p>
-                            {activity.description[locale]}
+                        <p dangerouslySetInnerHTML={{__html: activity.description[locale]}}>
                         </p>
+                
                     </Col>
                     <Col sm="6" className="pt-3">
                         <CommentsComponent 
@@ -122,9 +121,8 @@ class ActivityComponentBody extends React.Component {
                 <StyledRow>
                     <Col className="pt-3">
                     {this.renderActivityField('book-open', 'activity.resources')}
-                        <p>
-                            {activity.resources[locale]}
-                        </p>
+                    <p dangerouslySetInnerHTML={{__html: activity.resources[locale]}}>
+                    </p>
                     </Col>
                 </StyledRow>
             </div>
