@@ -12,19 +12,7 @@ const handleLogin = (service, callback) => {
     facebook: {
       requestPermissions: ['email'],
       loginStyle: 'popup',
-    },
-    github: {
-      requestPermissions: ['user:email'],
-      loginStyle: 'popup',
-    },
-    google: {
-      requestPermissions: ['email', 'profile'],
-      requestOfflineToken: true,
-      loginStyle: 'popup',
-    },
-    twitter: {
-      loginStyle: 'popup',
-    },
+    }
   }[service];
 
   // log Oauth login to Google Analytics
@@ -38,9 +26,7 @@ const handleLogin = (service, callback) => {
 };
 
 const serviceLabel = {
-  facebook: <span><img src="/img/ui/icon_facebook.svg" alt="facebook-icon" /></span>,
-  twitter: <span><img src="/img/ui/icon_twitter_white.svg" alt="twitter-icon" /></span>,
-  google: <span><img src="/img/ui/icon_google2.svg" alt="twitter-icon" /></span>,
+  facebook: <span>Sign in with <img src="/img/ui/icon_facebook.svg" alt="facebook-icon" /></span>,
 };
 
 const OAuthLoginButton = ({ service, callback }) => (

@@ -38,7 +38,7 @@ class LoginModal extends React.Component {
                             <img className="crossImage" src="/img/ui/icon_cross_dark.svg" alt="closeIcon"/>
                         </Button>
                     </Col>
-                    <Col xs="12 text-center">
+                    <Col xs="12 text-left">
                         <StyledImage src="/img/ui/logo@0.15x.png"/>
                     </Col>
                 </Row>

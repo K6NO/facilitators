@@ -2,17 +2,22 @@
 @import '../../stylesheets/mixins';
 
 .OAuthLoginButton {
-  width: 32%;
+  width: 100%;
   margin: 0 .5%;
   padding: 10px 10px;
   border: none;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
   
-  border-radius: 0;
+
   @include breakpoint(tablet) {
     min-width: 60px;
+    width: 45%;
   }
   img {
     max-width: 25px;
+    margin-top: -1rem;
   }
 
   &.OAuthLoginButton-facebook {

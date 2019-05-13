@@ -11,7 +11,7 @@ class EditorAgeComponent extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-          selected : this.props.activity.age,
+          selected : i18n.__(this.props.activity.age),
           editing: false
       }
     }
@@ -25,7 +25,7 @@ class EditorAgeComponent extends React.Component {
                 Bert.alert(error.reason, 'danger');
             } else {
                 this.setState({
-                    selected: selection.value,
+                    selected: selection.label,
                     editing: false
                 });
                 Bert.alert('Saved changes', 'success');
@@ -36,10 +36,7 @@ class EditorAgeComponent extends React.Component {
     getAgeOptions = () => {
         return [ 
             { value: "agech", label: i18n.__('activity.agech') }, 
-            { value: "agete", label: i18n.__('activity.agete') }, 
-            { value: "ageya", label : i18n.__('activity.ageya') },
-            { value: "agead", label:  i18n.__('activity.agead') }, 
-            { value: "ageel", label : i18n.__('activity.ageel') }
+            { value: "agead", label:  i18n.__('activity.agead') }
         ];
     }
 

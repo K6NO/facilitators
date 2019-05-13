@@ -8,5 +8,6 @@ export const Colors = {
         community : '#9b6e33'
     },
     text: "rgba(0, 0, 0, 0.7)",
-    textDark: "#333333"
+    textDark: "#333333",
+    facebook: "#1877f2"
 }

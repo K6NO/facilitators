@@ -113,7 +113,7 @@ class SignupComponent extends React.Component {
             <Row>
               <Col xs={12}>
                 <OAuthLoginButtons
-                  services={['facebook', 'twitter', 'google']}
+                  services={['facebook']}
                   emailMessage={{
                     offset: 97,
                     text: 'Sign Up With Email',

@@ -4,12 +4,15 @@
 .LoginModalController {
   .openButton {
     border: 1px solid transparent;
+    background: transparent;
     padding-top: .4rem;
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    &:hover {
+    &:hover, &:active, &:focus {
       color: $ef-ecofem-dark;
+      background: transparent;
+      outline: none;
     }
   }
   @include breakpoint(tablet) {
@@ -35,20 +38,20 @@
   --webkit-overflow-scrolling: touch;
   @include breakpoint(tablet) {
     top: 4rem;
-    left: 20rem;
-    right: 20rem;
+    left: 15%;
+    right: 15%;
     bottom: 4rem;
    }
    @include breakpoint(desktop) {
     top: 4rem;
-    left: 35rem;
-    right: 35rem;
+    left: 30%;
+    right: 30%;
     bottom: 4rem;
    }
    @include breakpoint(desktop-large) {
     top: 4rem;
-    left: 40rem;
-    right: 40rem;
+    left: 30%;
+    right: 30%;
     bottom: 4rem;
    }
 }
