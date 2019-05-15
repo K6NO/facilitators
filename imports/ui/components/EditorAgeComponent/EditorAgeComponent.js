@@ -36,7 +36,8 @@ class EditorAgeComponent extends React.Component {
     getAgeOptions = () => {
         return [ 
             { value: "agech", label: i18n.__('activity.agech') }, 
-            { value: "agead", label:  i18n.__('activity.agead') }
+            { value: "agead", label:  i18n.__('activity.agead') },
+            { value: "ageall", label:  i18n.__('activity.ageall') }
         ];
     }
 

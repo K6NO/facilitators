@@ -61,7 +61,7 @@ class EditorDescriptionComponent extends React.Component {
                         <EditorRTE
                             startValue={this.props.activity.description[this.props.language]}
                             saveCallback={this.saveDescription}
-                            maxValue={10000}
+                            maxValue={15000}
                         />
                     </Col>
                 </Row>
