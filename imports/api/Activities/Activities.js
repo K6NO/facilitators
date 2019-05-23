@@ -136,7 +136,7 @@ Activities.schema = new SimpleSchema({
     age: {
         type: String,
         label: "Activity age.",
-        allowedValues: ["agech", "agete", "ageya", "agead", "ageel" ],
+        allowedValues: ["agech", "agete", "ageya", "agead", "ageel", "ageall" ],
     },
     time: {
         type: String,
