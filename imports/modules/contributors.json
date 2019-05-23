@@ -2,7 +2,7 @@
     {
         "name": "Erika Kálmán", 
         "organisation": "Szatyor Egyesület", 
-        "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
+        "text": "Erika Karman is one of the founder and former president of SZATYOR Association. She has over 10 years of national and international non-formal training experiences, and has provided courses and workshops in human ecology, deep ecology and art of hosting. She belives in collective inteligeny and communities strength that we will need all for a brighter future.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-1.jpg"
     },
     {
@@ -18,33 +18,63 @@
         "url": "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-9/17523355_10158352995760545_3137893371829902992_n.jpg?_nc_cat=109&_nc_ht=scontent-otp1-1.xx&oh=44ca2374de95ce86786618028022a96f&oe=5D04DA4C"
     },
     {
-        "name": "FirstN LastN", 
-        "organisation": "Organisation name", 
-        "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
+        "name": "Urbán Péter", 
+        "organisation": "TANDEM,  n.o.", 
+        "text": "senior trainer, coach, one of the founders of the organization and current director. During his studies he lived in Maastricht, Bremen and Koblenz. He likes people, books and football. In this order. His motto is: If you want to be happy, be.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
     },
     {
-        "name": "FirstN LastN", 
-        "organisation": "Organisation name", 
-        "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
+        "name": "Borvák Mária", 
+        "organisation": "TANDEM,  n.o.", 
+        "text": "She works as the professional leader and senior trainer of the organization. In addition, she is a wine-maker, company manager and guide. She likes developing, learning something new, learning from others, and learning from the group. In a group where laughter is one of the sources of joy.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
     },
     {
-        "name": "FirstN LastN", 
-        "organisation": "Organisation name", 
-        "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
+        "name": "Szendi Tünde", 
+        "organisation": "TANDEM,  n.o.", 
+        "text": "Works as a project coordinator in TANDEM, n.o. and she is also instrumental in realizing some Erasmus+ projects. She has experience both in formal and non-formal education with children and youth.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
     },
     {
-        "name": "FirstN LastN", 
-        "organisation": "Organisation name", 
-        "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
+        "name": "Alexandru Vlad", 
+        "organisation": "Szatyor Egyesület", 
+        "text": "Alex is a ESC volunteer from Brașov, Romania. After studying Classical Philology and Medieval Studies he joined Szatyor Egyesület for ten months and corrected the chapters 1, 4 and 6.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
     },
     {
-        "name": "FirstN LastN", 
-        "organisation": "Organisation name", 
-        "text": "Some introduction, max 100 characters, not more. Otherwise no one will read about the team.", 
+        "name": "Remus Iosifescu", 
+        "organisation": "Szatyor Egyesület", 
+        "text": "Remus is currently an ESC volunteer in a green-living and permaculture project in Hungary. His broad interests reach fields such as Historical Linguistics, (Geo)Politics, Geography, but also Human Relationships and Personal Development. He would like to organize his own youth peograms in the future.", 
+        "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
+    },
+    {
+        "name": "Dóra Halász", 
+        "organisation": "Szatyor Egyesület", 
+        "text": "", 
+        "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
+    },
+    {
+        "name": "Lucia Fanjul Diaz", 
+        "organisation": "Medra Asociacion", 
+        "text": "Medra’s vice presient. She has years of training in the field of agro-ecology and feminism and is actively involved in other associations and networks in rural areas. She has extensive experience as a facilitator of groups as well as in the field of non-formal education and environmental journalism. Currently she is developing a self-employment project in an ecological nursery garden.", 
+        "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
+    },
+    {
+        "name": "Estefania Bravo Roman", 
+        "organisation": "Medra Asociacion", 
+        "text": "Co-founder of the association Medra, Spain. She has been part of the coordination and facilitation group of European Erasmus + projects with the Medra association in Asturias, Spain, in themes related to Nature, Ecology and Environmental Education. She has a solid experience in non-formal education with children, young people and adults, interested in methods related to Deep Ecology. I studied Environmental Sciences and holistic therapies such as Yoga, meditation and Oriental philosophy, which i try to implement in facilitation skills.", 
+        "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
+    },
+    {
+        "name": "Julia Plasencia Matute", 
+        "organisation": "Medra Asociacion", 
+        "text": "Medra's president. She has extensive experience in volunteering and non-formal education, has taken part in the management of international cooperation projects in Haiti and collaborated in school exchange projects between France and Mali-Senegal. Currently it is developing a community project in rural areas where agro-ecology and development of an orchard of consumption, management of forest resources, bioconstruccióny generating a life and self-employment is included.", 
+        "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
+    },
+    {
+        "name": "Sergio Santurio", 
+        "organisation": "Medra Asociacion", 
+        "text": "Sergio Santurio is the author of the drawings that illustrate different results in this project. Sergio is a painter and experimental artist of Asturian origin, whose work is strongly linked to nature and a holistic view of the world around us.", 
         "url": "http://lorempixel.com/output/people-q-c-119-84-5.jpg"
     }
   ]
