@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { Col } from 'reactstrap';
 import styled from 'styled-components';
 
-// const StyledCard = styled(Col)`
-//     box-shadow: 0 1px 1px 0 #cccccc;
-//     height: 150px;
-// `;
 const StyledOverlayDiv = styled.div`
     position: absolute;
-    top: 0;
-    left: 0;
-    background: #ffffffaa;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    z-index: 10;
+    background: #ffffff;
+    border: 1px solid #777;
     color: #777;
     padding: .5rem;
-    height: 140px;
     font-size: 1.3rem;
 `;
 const StyledImageDiv = styled.div`

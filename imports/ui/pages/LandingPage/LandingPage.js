@@ -51,7 +51,7 @@ class LandingPage extends React.Component {
   /**
    * This is a non-Reacty hack. An event listener is attached to another component (Navigation) in the DOM.
    * This is needed, as otherwise the entire LandingPage state management would have to be moved to App.js.
-   * This could be solwed more elegantly with redux.
+   * This would be handled more elegantly with redux.
    */
   componentDidMount () {
     const homepageLink = document.getElementsByClassName('navbar-brand')[0];
@@ -71,8 +71,15 @@ class LandingPage extends React.Component {
     });
   }
 
+  // update the searchObject - does not run search
   updateSearchObject = (key, value) => {
-    // update the searchObject - does not run search
+    
+    // if user selects all age show children, adult and all age options
+    // if user selects more than one category, show all
+    if(key === 'age' && (value.indexOf('ageall') > -1 ) || value.length > 1) {
+      value = ['agech', 'agead', 'ageall'];
+    }
+    
     this.setState({
         searchObject : {
             ...this.state.searchObject,
@@ -84,8 +91,8 @@ class LandingPage extends React.Component {
     });
   }
 
+  // search Activities by resetting the state of sub-component
   updateFilterObject = () => {
-    // search Activities by resetting the state of sub-component
     this.setState({
       filterObject : this.state.searchObject,
       pageNum: 0,

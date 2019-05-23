@@ -10,11 +10,13 @@ const StyledCard = styled(Col)`
 const StyledOverlayDiv = styled.div`
     position: absolute;
     top: 0;
-    left: 0;
-    background: #ffffffaa;
+    left: -100%;
+    width: 400%;
+    background: #ffffff;
+    border: 1px solid #777;
+    z-index: 10;
     color: #777;
     padding: .5rem;
-    height: 150px;
     font-size: 1.3rem;
 `;
 const StyledImage = styled.img`
