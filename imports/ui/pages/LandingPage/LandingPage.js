@@ -76,7 +76,7 @@ class LandingPage extends React.Component {
     
     // if user selects all age show children, adult and all age options
     // if user selects more than one category, show all
-    if(key === 'age' && (value.indexOf('ageall') > -1 ) || value.length > 1) {
+    if(key === 'age' && (value.indexOf('ageall') > -1  || value.length > 1)) {
       value = ['agech', 'agead', 'ageall'];
     }
     
