@@ -11,6 +11,7 @@ import EditorToolsComponent from '../EditorToolsComponent/EditorToolsComponent';
 import EditorDescriptionComponent from '../EditorDescriptionComponent/EditorDescriptionComponent';
 import EditorResourcesComponent from '../EditorResourcesComponent/EditorResourcesComponent';
 import EditorImagesComponent from '../EditorImagesComponent/EditorImagesComponent';
+import EditorCommentsComponent from '../EditorCommentsComponent/EditorCommentsComponent';
 import './EditorActivityBody.scss';
 
 
@@ -49,6 +50,9 @@ class EditorActivityBody extends React.Component {
                         <EditorDescriptionComponent activity={activity} language={language} />
                     </Col>
                     <Col sm="6">
+                        <EditorCommentsComponent 
+                            activity={activity}  
+                        />
                         <EditorImagesComponent activity={activity} language={language} />
                     </Col>
                 </Row>

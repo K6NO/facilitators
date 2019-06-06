@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { NavLink } from 'reactstrap';
 
 export const BasicStyledButton = styled.button`
     height: 40px;

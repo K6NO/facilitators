@@ -5,9 +5,7 @@ import styled from 'styled-components';
 import { withTracker } from 'meteor/react-meteor-data';
 import Icon from '../Icon/Icon';
 import { Row, Col } from 'reactstrap';
-import CommentComponent from './CommentComponent';
-import LoginModalController from '../LoginModal/LoginModalController';
-import WriteCommentComponent from './WriteCommentComponent';
+import CommentComponent from '../CommentsComponent/CommentComponent';
 import { getColorByCategory } from '../../../modules/get-colors';
 
 
@@ -18,7 +16,7 @@ const ActivityText = styled.p`
     letter-spacing: .4px;
 
 `;
-class CommentsComponent extends React.Component {
+class EditorCommentsComponent extends React.Component {
     constructor(props){
       super(props);
     }
@@ -32,6 +30,21 @@ class CommentsComponent extends React.Component {
                 <span className="ml-3">{i18n.__(activityField)}</span>
             </h5>
         )
+    }
+    removeComment = (comment) => {
+        const { activity } = this.props;
+        
+        const authorized = !comment.authorized;
+        console.log(comment, activity, authorized);
+        Meteor.call('activities.updateComment', comment, activity, authorized, (error) => {
+            if(error) {
+                Bert.alert('Cannot remove comment. ' + error.message, 'danger');
+            } else {
+                Bert.alert(!authorized ? 
+                    'Comment was removed from public page.'
+                    :'Comment was re-published.', 'success');
+            }
+        })
     }
     render () {
         const { activity, isMobile, userId } = this.props;
@@ -47,36 +60,19 @@ class CommentsComponent extends React.Component {
                             key={comment.updatedAt + i}
                             color={color}    
                             comment={comment}
+                            isEditor={true}
+                            removeComment={this.removeComment}
                         /> )}
-                </Col>
-                <Col xs={12}>
-                    {this.renderActivityField('comment-dots', 'activity.writecomment')}
-                </Col>
-                <Col xs={12}>
-                    {userId ? 
-                        <WriteCommentComponent 
-                        activity={activity}
-                        color={color}    
-                        isMobile={isMobile}
-                        />
-                    : <div className="text-center">
-                        <p>You need to sign in to write a comment.</p>
-                        <LoginModalController />
-                    </div>
-                    }
-                    
                 </Col>
             </Row>
         )
     }
 }
-CommentsComponent.defaultProps = {
+EditorCommentsComponent.defaultProps = {
     userId: '',
 };
-CommentsComponent.propTypes = {
+EditorCommentsComponent.propTypes = {
   activity: PropTypes.object.isRequired,
-  isMobile: PropTypes.bool.isRequired,
-  userId: PropTypes.string
 };
 
-export default CommentsComponent; 
+export default EditorCommentsComponent; 

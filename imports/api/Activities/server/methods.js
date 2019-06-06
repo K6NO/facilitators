@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import Activities from '../Activities';
+import { Mongo } from 'meteor/mongo';
 import handleMethodException from '../../../modules/handle-method-exception';
 import rateLimit from '../../../modules/rate-limit';
 
@@ -232,10 +233,16 @@ Meteor.methods({
             const user = Meteor.user();
             const userId = user._id;
             const username = user.profile.username;
+            
+            // generate client-side ID for array element in Activities schema
+            // https://stackoverflow.com/questions/19236685/how-do-i-use-new-meteor-collection-objectid-in-my-mongo-queries-with-meteor
+            const o = new Mongo.ObjectID().valueOf();
+            
             if (userId) {
                 if(user.organisation) {
                     if(!Roles.userIsInRole(user._id, ['inactive'])) {
                         const comment = {
+                            _id: o,
                             userId : userId,
                             username: username,
                             message: commentMessage,
@@ -255,6 +262,29 @@ Meteor.methods({
                 throw new Meteor.Error('Add Comment', "User has no organisation. Contact admins to set user organisation.");
             } //end userId check
             throw new Meteor.Error('Add Comment', 'Not a registered user.');
+        } catch (exception) {
+            handleMethodException(exception);
+        }
+    },
+    'activities.updateComment' : function activitiesUpdateComment (comment, activity, authorized) {
+        check(comment, Object);
+        check(activity, Object);
+        check(authorized, Boolean);
+        try {
+            const user = Meteor.user();
+            if(user._id && user.organisation) {
+                if(Roles.userIsInRole(user._id, ['admin', 'editor'])) {
+                    // use of positional operator for nested update
+                    // https://docs.mongodb.com/manual/reference/operator/update/positional/
+                    return Activities.update({_id: activity._id, 'comments._id': comment._id},  {
+                        $set : {
+                            'comments.$.authorized' : authorized
+                        }
+                    });
+                } else {
+                    throw new Meteor.Error('Remove Comment', 'Not authorized to remove comments.');
+                }
+            }
         } catch (exception) {
             handleMethodException(exception);
         }

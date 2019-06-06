@@ -2,6 +2,9 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 const commentSchema = new SimpleSchema({
+    _id: {
+        type: String
+    },
     createdAt: {
         type: String,
         label: 'The date this comment was created.',
