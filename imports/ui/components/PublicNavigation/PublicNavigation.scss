@@ -23,11 +23,11 @@
         &:hover:active {
           background: transparent;
         }
-        // @include breakpoint(tablet) {
-        //     display: flex;
-        //     flex-direction: row;
-        //     align-items: center;
-        //     padding: 0 1rem;
-        // }
+        @include breakpoint(tablet) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 1rem;
+        }
     }
 }
