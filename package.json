@@ -23,7 +23,7 @@
     "history": "^4.7.2",
     "jquery": "^3.4.1",
     "jquery-validation": "^1.17.0",
-    "jszip": "^3.1.5",
+    "jszip": "^3.7.0",
     "juice": "^4.2.2",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "^0.4.1",
